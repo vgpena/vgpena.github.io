@@ -67,11 +67,11 @@ end
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
+page '/404.html', layout: false, :directory_index => false
 
 # With alternative layout
 # page "/path/to/file.html", layout: :otherlayout
 page '/info.html', :layout => "article"
-page '/404.html', :layout => "404"
 
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
