@@ -1,0 +1,8 @@
+@import "text/block";
+@import "text/inline";
+@import "text/media";
+
+.content {
+  overflow: hidden;
+  padding-bottom: 3rem;
+}

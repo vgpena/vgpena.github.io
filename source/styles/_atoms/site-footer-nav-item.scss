@@ -1,0 +1,17 @@
+.footer-nav-link {
+  display: inline-block;
+  a {
+    color: $dark;
+    display: inline-block;
+    &:hover {
+      color: $light;
+      background-color: $dark;
+      mix-blend-mode: darken;
+      outline: none;
+    }
+    &:focus:not(:hover) {
+      outline: solid 5px $rich;
+      outline-offset: -5px;
+    }
+  }
+}

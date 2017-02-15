@@ -1,0 +1,12 @@
+@import '../_atoms/site-title';
+
+#site-header {
+  background-color: $bright;
+  text-transform: lowercase;
+  //padding: $space;
+}
+
+#home #site-header {
+  background-color: initial;
+  position: absolute;
+}

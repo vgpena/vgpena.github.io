@@ -1,0 +1,9 @@
+@import '../_atoms/index-list-item';
+
+#index-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, $pale 33%, $bright);
+  counter-reset: counter;
+}

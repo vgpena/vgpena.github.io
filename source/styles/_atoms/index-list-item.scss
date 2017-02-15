@@ -1,0 +1,33 @@
+@import "index-title";
+@import "index-subtitle";
+
+.index-list-item {
+  display: block;
+  padding-right: $space;
+
+  a {
+    color: $dark;
+    text-decoration: none;
+    z-index: 1;
+    display: block;
+    &:hover {
+      outline: none;
+    }
+    &:focus:not(:hover) {
+      outline: solid 5px $rich;
+      outline-offset: -5px;
+    }
+  }
+
+  &:first-child {
+    padding-top: 4rem;
+  }
+
+  &:not(:first-child) {
+    padding: scale(3rem) 0;
+  }
+
+  &:last-child {
+    padding-bottom: scale(2rem);
+  }
+}

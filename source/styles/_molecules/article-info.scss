@@ -1,0 +1,16 @@
+@import "../_atoms/article-subtitle";
+@import "../_atoms/article-date";
+
+.article-info-piece {
+  display: inline;
+  font-family: $mono;
+  font-size: 1rem;
+  margin: 0;
+  vertical-align: inherit;
+  padding: 0;
+  -webkit-box-decoration-break: clone;
+  padding: 0.25em 0 0.25em $space;
+  background-color: $pale;
+  color: $dark;
+  line-height: 2em;
+}

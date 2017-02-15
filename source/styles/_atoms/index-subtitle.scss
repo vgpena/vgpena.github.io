@@ -1,0 +1,16 @@
+@import 'index-date';
+
+.index-subtitle {
+  margin: 0;
+  max-width: 30em;
+}
+
+.index-subtitle-inner {
+  font-family: $mono;
+  color: $light;
+  background-color: $rich;
+  display: inline;
+  mix-blend-mode: darken;
+  -webkit-box-decoration-break: clone;
+  padding: 0 0.25em 0 $space;
+}

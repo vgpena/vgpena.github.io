@@ -1,0 +1,19 @@
+.content blockquote {
+  margin: 0;
+  padding: $space * 2;
+  background: linear-gradient(to right, $bright, $light);
+  max-width: $max-content-width - $space * 2;
+  box-sizing: border-box;
+
+  > p {
+    max-width: 24em;
+  }
+}
+
+cite {
+  display: block;
+  margin-top: $space;
+  font-family: $mono;
+  font-size: 0.6em;
+  font-style: normal;
+}

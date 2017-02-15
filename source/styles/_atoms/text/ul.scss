@@ -1,0 +1,24 @@
+.content ul {
+  list-style-type: none;
+  padding: 0 $space * 2 0 0;
+  max-width: $max-content-width - $space * 2;
+
+  li {
+    display: block;
+    overflow: hidden;
+    margin-bottom: $space;
+    padding-left: 4rem;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: scale(1rem);
+      height: scale(1rem);
+      border-radius: 100%;
+      background: linear-gradient(to bottom, $bright, $pale 67%);
+      vertical-align: middle;
+      transform: translateX(-3rem);
+      margin-right: scale(-1em);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.content p {
+  line-height: scale(1em);
+  max-width: $max-content-width - $space * 2;
+  box-sizing: border-box;
+  margin: $space;
+}
+
+.content > p {
+  &:first-child {
+    &:first-line {
+      font-weight: bold;
+    }
+  }
+}

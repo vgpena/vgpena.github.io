@@ -1,0 +1,9 @@
+.index-date {
+  &::before {
+    content: "/";
+    display: inline-block;
+    text-align: center;
+    width: 1em;
+    transform: translateX(-0.5em);
+  }
+}

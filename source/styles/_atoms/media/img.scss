@@ -1,0 +1,38 @@
+.content img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.image-wrap {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.image-primary, .image-secondary {
+  max-width: $max-content-width;
+  &::before {
+    background-image: linear-gradient(to bottom, $bright, $rich);
+    mix-blend-mode: screen;
+  }
+}
+
+.image-secondary {
+  @include at-least($secondary-media-break) {
+    width: calc(100% - #{$max-content-width} - #{$space});
+    max-width: $max-content-width / 3 * 2;
+    margin-right: 0;
+    float: right;
+  }
+  @include at-least($secondary-media-break-2) {
+    width: $max-content-width / 3 * 2;
+    margin-right: calc(100% - #{$max-content-width} - #{$max-content-width / 3 * 2} - #{$space});
+  }
+}

@@ -1,0 +1,9 @@
+$base-type-size-break: 400px;
+
+$article-title-break: 440px;
+$article-section-title-break: 380px;
+$secondary-media-break: 1000px;
+$secondary-media-break-2: ($max-content-width + ($max-content-width / 3 * 2) + $space) / (($max-content-width + ($max-content-width / 3 * 2) + $space) * 0 + 1) * 20px;
+
+$index-article-title-break: 550px;
+$index-article-title-break-2: 1200px;

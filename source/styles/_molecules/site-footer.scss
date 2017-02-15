@@ -1,0 +1,24 @@
+@import "site-footer-nav";
+@import "../_atoms/site-footer-colophon";
+
+footer {
+  color: $dark;
+  font-family: $mono;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-image: linear-gradient(to bottom, $pale 33%, $bright);
+  text-transform: lowercase;
+
+  #home & {
+    background-image: linear-gradient(to bottom, $light 33%, $pale);
+  }
+}
+
+.footer-item {
+  display: inline-block;
+  vertical-align: center;
+}
+
+.footer-unit {
+  padding: $space;
+}

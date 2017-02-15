@@ -1,0 +1,21 @@
+---
+title: "hey it's violet"
+---
+
+<ol reversed role="directory" aria-label="All blog posts, newest to oldest" id="index-list">
+  <% blog.articles.each_with_index do |article, i| %>
+    <li class="index-list-item">
+      <a href="<%= article.url %>">
+        <h2 class="index-title">
+          <%= article.title %>
+        </h2>
+        <h3 class="index-subtitle">
+          <span class="index-subtitle-inner">
+            <%= article.data.subtitle %>
+            <span aria-label="Written <%= article.date.strftime('%B %d, %Y') %>" class="index-date"><%= article.date.strftime('%-m.%-d.%Y') %></span>
+          </span>
+        </h3>
+      </a>
+    </li>
+  <% end %>
+</ol>

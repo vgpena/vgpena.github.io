@@ -1,0 +1,40 @@
+#site-title {
+  margin: 0;
+  font-size: 0.8rem;
+  font-family: $mono;
+  font-weight: bold;
+  a {
+    text-decoration: none;
+    padding: $space;
+    color: $rich;
+    display: inline-block;
+    &::before {
+      content: "¡";
+      position: absolute;
+      left: $space - 0.5rem;
+      top: 0.85rem;
+      opacity: 0;
+    }
+    &::after {
+      content: "!";
+      opacity: 0;
+    }
+    &:hover, &:focus {
+      text-transform: uppercase;
+      position: relative;
+      &::before {
+        opacity: 1;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+    &:hover {
+      outline: none;
+    }
+    &:focus:not(:hover) {
+      outline: solid 5px $dark;
+      outline-offset: -5px;
+    }
+  }
+}

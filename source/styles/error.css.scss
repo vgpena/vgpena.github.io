@@ -1,0 +1,59 @@
+@import '_global/fonts';
+@import '_global/type';
+@import '_global/colors';
+
+body {
+  margin: 0;
+  background: $rich;
+  color: $light;
+  font-family: $mono;
+  text-align: center;
+  * {
+    &::selection {
+      color: $bright;
+      background-color: $dark;
+    }
+    &::-moz-selection {
+      color: $bright;
+      background-color: $dark;
+    }
+  }
+}
+
+main {
+  transform: translateY(50%);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1rem;
+  display: inline-block;
+  padding: 0 0.25em;
+}
+
+#title {
+  display: inline-block;
+  color: $rich;
+  background-color: #ccc;
+}
+
+#prompt {
+  text-align: right;
+}
+
+p {
+  text-align: left;
+  max-width: 38rem;
+  padding: 0 2rem;
+  margin: 2rem auto;
+}
+
+a {
+  text-decoration: none;
+  font-family: $mono;
+  color: $light;
+  &:hover, &:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+}

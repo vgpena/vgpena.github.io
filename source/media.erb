@@ -1,0 +1,14 @@
+<% if locals[:caption] %>
+  <figure role="img" class="image-wrap image-<%= locals[:size] %>">
+<% else %>
+  <div class="image-wrap image-<%= locals[:size] %>">
+<% end %>
+    <%= image_tag locals[:src], { alt: locals[:alt], title: locals[:title], width: locals[:width] , height: locals[:height] } %>
+<% if locals[:caption] %>
+  <figcaption>
+    <p><%= locals[:caption] %></p>
+  </figcaption>
+</figure>
+<% else %>
+  </div>
+<% end %>

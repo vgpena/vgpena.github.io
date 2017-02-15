@@ -1,0 +1,10 @@
+pre {
+  font-family: $mono;
+  font-size: 0.6rem;
+  background: linear-gradient(to right, $pale, $light);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  padding: $space * 2 $space;
+  max-width: $max-content-width - $space * 2;
+  box-sizing: border-box;
+}

@@ -1,0 +1,8 @@
+#article-date {
+  //padding-left: 0;
+  &::before {
+    content: "/";
+    display: inline-block;
+    transform: translateX(-1 * $space/2);
+  }
+}

@@ -1,0 +1,14 @@
+@import "../_molecules/article-header";
+@import "../_molecules/article-body";
+
+main {
+  background-color: $light;
+  * {
+    &::selection {
+      background-color: lighten($bright, 25%);
+    }
+    &::-moz-selection {
+      background-color: lighten($bright, 25%);
+    }
+  }
+}

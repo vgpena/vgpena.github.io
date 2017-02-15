@@ -1,0 +1,14 @@
+#article-title {
+  font-size: scale(2rem);
+  margin: 0;
+  display:  inline;
+  color: $light;
+  background-color: $rich;
+  -webkit-box-decoration-break: clone;
+  padding: 0.1em 0.25em 0 $space;
+  line-height: 1.25em;
+
+  @include at-least($article-title-break) {
+    font-size: scale(2.5rem);
+  }
+}

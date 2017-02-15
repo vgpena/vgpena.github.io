@@ -1,0 +1,27 @@
+.content h2 {
+  margin-top: $space * 3;
+  padding-right: $space;
+  font-size: scale(1rem);
+  line-height: 1.5em;
+  max-width: $max-content-width;
+
+  @include at-least($article-section-title-break) {
+    font-size: scale(1.5rem);
+  }
+
+  .section-inner {
+    text-decoration: none;
+    background-color: $rich;
+    color: $light;
+    -webkit-box-decoration-break: clone;
+    padding: 0.25em 0.25em 0.1em $space;
+    position: relative;
+    &:hover {
+      outline: none;
+    }
+    &:focus:not(:hover) {
+      outline: solid 5px $bright;
+      outline-offset: -5px;
+    }
+  }
+}

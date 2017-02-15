@@ -1,0 +1,25 @@
+<footer>
+  <nav id="footer-nav" role="navigation" aria-label="Navigate to Other Pages" class="footer-item noprint">
+    <ul id="footer-nav-links">
+      <% if current_page.url != '/' %>
+        <li class="footer-nav-link">
+          <a href="/" class="footer-unit">Index</a>
+        </li>
+      <% end %>
+      <% if current_page.url != '/info/' %>
+        <li class="footer-nav-link">
+          <a href="/info" class="footer-unit">Info</a>
+        </li>
+      <% end %>
+      <li class="footer-nav-link">
+        <a href="#" class="footer-unit">Top</a>
+      </li>
+    </ul>
+  </nav>
+  <div id="footer-colophon" role="contentinfo" aria-label="Made with love in <%= Time.now.year %>" class="footer-item footer-unit noprint">
+    &hearts; <%= Time.now.year %>
+  </div>
+  <div class="printonly aux">
+    http://violet.is || Violet Pe&ntilde;a || <%= Time.now.year %>
+  </div>
+</footer>

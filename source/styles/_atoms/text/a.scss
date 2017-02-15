@@ -1,0 +1,16 @@
+.content p a {
+  text-decoration: none;
+  color: $dark;
+  background-image: linear-gradient(to bottom, $pale 33%, $bright 67%);
+  background-size: 100% 300%;
+  background-position: 0 0%;
+  transition-property: background-position;
+  transition-duration: 0.5s;
+  &:hover {
+    background-position: 0 100%;
+    outline: none;
+  }
+  &:focus:not(:hover) {
+    outline: solid 5px $rich;
+  }
+}

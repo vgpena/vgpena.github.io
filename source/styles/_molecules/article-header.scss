@@ -1,0 +1,10 @@
+@import "../_atoms/article-title";
+
+@import "article-info";
+
+#article-heading {
+  display: block;
+  padding-right: $space * 2;
+  max-width: $max-content-width;
+  overflow: hidden;
+}

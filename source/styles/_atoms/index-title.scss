@@ -1,0 +1,40 @@
+.index-title {
+  margin: 0;
+  padding-left: $space;
+  position: relative;
+  z-index: 1;
+  max-width: 9em;
+
+  &::before {
+    content: counter(counter);
+    counter-increment: counter;
+    position: absolute;
+    font-size: scale(8rem);
+    font-family: $fancy;
+    color: $light;
+    z-index: -1;
+    position: absolute;
+    bottom: 4rem;
+    left: -0.5rem;
+    line-height: 1rem;
+    height: 1rem;
+  }
+
+  .index-list-item:first-child & {
+    font-size: scale(2rem);
+    color: $dark;
+    @include at-least($index-article-title-break) {
+      font-size: scale(3rem);
+    }
+    @include at-least($index-article-title-break-2) {
+      font-size: scale(4rem);
+    }
+  }
+
+  .index-list-item:not(:first-child) & {
+    font-size: scale(1.5rem);
+    @include at-least($index-article-title-break) {
+      font-size: scale(2rem);
+    }
+  }
+}

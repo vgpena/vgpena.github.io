@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title><% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %> | <% end %>hey it's violet</title>
+    <%= stylesheet_link_tag :styles, :media => "screen" %>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body<% if current_page.url == '/' %> id="home"<% end %>>
+    <%= partial(:"layouts/partials/header", :locals => { :type => current_page.data.type }) %>
+    <main<% if current_page.url == '/' %> class="main-home"<% end %>>
+      <%= yield %>
+    </main>
+    <%= partial(:"/layouts/partials/footer", :locals => { :showIndex => current_page.data.type != "index" }) %>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<% wrap_layout :layout do %>
+  <article aria-labelledby="article-title">
+    <heading id="article-heading" role="heading">
+      <h1 id="article-title">
+        <%= current_page.data.title %>
+      </h1>
+      <% if current_page.data.subtitle || current_page.data.date %>
+        <div id="article-info">
+          <% if current_page.data.subtitle %>
+            <h2 class="article-info-piece" id="article-subtitle">
+              <%= current_page.data.subtitle %>
+            </h2>
+          <% end %>
+          <% if current_page.data.date %>
+            <h2 class="article-info-piece" id="article-date" aria-label="Published <%= current_page.date.strftime('%B %d, %Y') %>">
+              <%= current_page.date.strftime('%-m.%-d.%Y') %>
+            </h2>
+          <% end %>
+        </div>
+      <% end %>
+    </heading>
+    <div class="content">
+      <%= yield %>
+    </div>
+  </article>
+<% end %>
