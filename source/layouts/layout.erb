@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="en-us">
   <head>
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-92096829-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
     <title><% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %> | <% end %>hey it's violet</title>
     <%= stylesheet_link_tag :styles, :media => "screen" %>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
