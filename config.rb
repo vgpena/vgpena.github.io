@@ -11,13 +11,11 @@ class ExtraSpecialParser < Redcarpet::Render::HTML
   #   text
   # end
 
-  # def paragraph(text)
-  #   "<p class='article-p'>
-  #     <span class='article-p-inner'>
-  #       #{text}
-  #     </span>
-  #   </p>"
-  # end
+  def paragraph(text)
+    "<p>
+      #{ text.gsub('--', '&mdash;') }
+    </p>"
+  end
 
   def header(text, header_level)
     if header_level == 2
