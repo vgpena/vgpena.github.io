@@ -15,6 +15,7 @@ gem 'middleman-livereload'
 gem 'middleman-syntax'
 gem 'middleman-minify-html'
 gem 'middleman-gh-pages'
+gem 'tzinfo'
 
 gem 'redcarpet', '~> 3.3', '>= 3.3.3'
 
