@@ -1,75 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Blog Name</title>
-  <subtitle>Blog subtitle</subtitle>
-  <id>http://blog.url.com/</id>
-  <link href="http://blog.url.com/"/>
-  <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2017-02-08T21:18:00-08:00</updated>
+  <title>hey it's violet</title>
+  <subtitle>developer &amp; human in the PNW</subtitle>
+  <id>https://vgpena.github.io</id>
+  <link href="https://vgpena.github.io"/>
+  <link href="https://vgpena.github.io/feed.xml" rel="self"/>
+  <updated>2017-02-16T06:33:00-08:00</updated>
   <author>
-    <name>Blog Author</name>
+    <name>Violet Peña</name>
   </author>
   <entry>
-    <title>Creating a lightweight blog with Atomic Design &amp; Middleman</title>
-    <link rel="alternate" href="http://blog.url.com/long/"/>
-    <id>http://blog.url.com/long/</id>
-    <published>2017-02-08T21:18:00-08:00</published>
-    <updated>2017-02-12T20:45:36-08:00</updated>
+    <title>Creating Once</title>
+    <link rel="alternate" href="https://vgpena.github.io/creating-once/"/>
+    <id>https://vgpena.github.io/creating-once/</id>
+    <published>2017-02-16T06:33:00-08:00</published>
+    <updated>2017-02-16T07:47:56-08:00</updated>
     <author>
-      <name>Article Author</name>
+      <name>Violet Peña</name>
     </author>
-    <content type="html">&lt;p&gt;Sed officiis aperiam occaecati consequatur sunt eos et in. perspiciatis et dolores libero expedita vel consequatur voluptas sequi reprehenderit at odio est pariatur ea. sed temporibus excepturi culpa voluptates voluptates non voluptas omnis rerum. sed facere ipsa dolorem laboriosam quis aut. eum et esse laborum aliquid consequatur modi consectetur recusandae accusantium iste autem. in cum aut facere numquam assumenda aut ut sed at libero quo. autem aut facere totam&lt;/p&gt;
-
-&lt;p&gt;Perhaps the &lt;a href=""&gt;Government&lt;/a&gt; will realise now that we mean to fight to the bitter end … If men use explosives and bombs &lt;code&gt;color: red;&lt;/code&gt; their own purpose they call it war, &lt;em&gt;and&lt;/em&gt; the throwing of a bomb that destroys other people is then described as a glorious and heroic deed. Why should a woman not make use of the same weapons as men. It is not only war we have declared. We are fighting for a revolution&lt;/p&gt;
-
-&lt;p&gt;Facere sed et dolorum magnam. reiciendis laboriosam quibusdam omnis voluptatem id sit culpa in optio. sunt modi porro eveniet repellat exercitationem perferendis ipsum inventore eos dolorem. dolorem nesciunt velit minima magni incidunt aut. sunt error omnis sint id voluptas autem quasi illum modi dolor&lt;/p&gt;
-
-&lt;p&gt;Qui id omnis dolor molestiae id nobis ut dignissimos ullam. quasi enim ut autem voluptates aut nihil necessitatibus enim distinctio. vero voluptatibus nostrum fuga aliquam odio voluptas corporis rerum dolorem. ad qui architecto repellat enim accusamus repellat laudantium quis placeat&lt;/p&gt;
-&lt;h2 class='section-title' id=section-1-hold-onto-your-hats-ladies-and-gents&gt;&lt;a href='#section-1-hold-onto-your-hats-ladies-and-gents' class='section-inner'&gt;Section 1. Hold onto your hats, ladies and gents.&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Amet at et eum voluptate voluptas vero sed voluptas tenetur molestiae nostrum nihil quos ut. ab in rerum magnam est iure et doloremque tenetur corrupti repellat. quae est sit nihil corporis et commodi. id similique beatae et&lt;/p&gt;
-
-&lt;p&gt;Sit voluptas nemo corporis velit esse sed dolorem eius aut enim omnis qui at perferendis. voluptas nemo sed ea ab. vero neque molestiae vero. et numquam dolorem qui voluptatum et hic quia rerum. sed aspernatur eveniet quia ratione dicta in excepturi hic maiores molestiae assumenda autem sint ratione
+    <content type="html">&lt;p&gt;
+      Over the past two years, of the twelve or so projects I&amp;#39;ve worked on, exactly one has been a website. The rest have been interactive installations, kiosks, and artworks. While I love this kind of work, I sometimes miss what attracted me to web development in the first place.
+    &lt;/p&gt;&lt;p&gt;
+      Web development draws its immense power from being part of a flexible, widely-available content distribution system. When you create something for the web, and create it well, that thing is instantly available to billions of people. They can use that creation on devices they already own, via a browser they already own, anywhere on the globe that they can find an internet connection.
+    &lt;/p&gt;&lt;p&gt;
+      The &lt;a href="https://www.programmableweb.com/news/cope-create-once-publish-everywhere/2009/10/13"&gt;Create Once, Publish Everywhere&lt;/a&gt; paradigm has been inspiring and empowering to me through my time as a web developer. Taking content and making it available to anyone, in any form, is a beautiful goal, and it&amp;#39;s easily in our power to do so. This involves using our tools not just towards democratic aims, but also in a democratic manner. Prizing accessibility, responsiveness, and small payloads helps us create things that can be used to maximum effect by the maximum number of people.
+    &lt;/p&gt;&lt;p&gt;
+      Installations work towards solving different problems &amp;mdash; instead of dealing with a wide-ranging audience, they are focused on a small, specific one. They don&amp;#39;t need to deal with asset downloads over LTE; they &lt;em&gt;do&lt;/em&gt; need to deal with the position of the sun. They don&amp;#39;t deal with different screen sizes, but with milking maximum power out of a specific machine. They have to worry about decals, traffic flow, and whether the floor is level.
+    &lt;/p&gt;&lt;p&gt;
+      While I love working with installations, they don&amp;#39;t scratch that democratic itch that drew me into web development. When I found out about the &lt;a href="https://a-k-apart.com/"&gt;10k Apart&lt;/a&gt; &amp;mdash; a challenge to make a site with an under-10k payload &amp;mdash; I saw it as an opportunity to return to my roots and put together a beautiful, lightweight, future-facing website.
+    &lt;/p&gt;&lt;p&gt;
+      I took up and put down this project a couple of times, and I didn&amp;#39;t end up submitting it to 10k Apart. Lately, however, I have more and more often wanted to write about specific things, only to find I didn&amp;#39;t have a platform on which to write. I had to get this project out the door, if only to make way for future writings.
+    &lt;/p&gt;&lt;p&gt;
+      As a warm-up, I&amp;#39;ll be writing a short series of posts on what went into making this blog. I hope that anyone blogging with &lt;a href="https://middlemanapp.com/"&gt;Middleman&lt;/a&gt;, learning about &lt;a href="http://webaim.org/"&gt;accessibility&lt;/a&gt;, wondering about &lt;a href="http://bradfrost.com/blog/post/atomic-web-design/"&gt;Atomic Design&lt;/a&gt;, or looking to publish with &lt;a href="https://pages.github.com/"&gt;github pages&lt;/a&gt; will find them helpful.
+    &lt;/p&gt;&lt;p&gt;
+      I still have some items on my to-do list (&lt;code&gt;&amp;lt;picture&amp;gt;&lt;/code&gt; elements, lazy-loading images, styling tweaks, etc.), but it was important to me to get a v1 of this blog out in the world. In the meantime, check out my payload! ~5k, as long as we&amp;#39;re not counting font files 💥
+    &lt;/p&gt;&lt;p&gt;
+      Happy reading!
+    &lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Creating a lightweight blog with Atomic Design &amp; Middleman</title>
+    <link rel="alternate" href="https://vgpena.github.io/long/"/>
+    <id>https://vgpena.github.io/long/</id>
+    <published>2017-02-09T05:18:00-08:00</published>
+    <updated>2017-02-16T07:48:24-08:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <content type="html">&lt;p&gt;
+      Officiis deleniti aliquid velit quasi provident autem et sint corrupti quia. perspiciatis cum et qui exercitationem. dolor expedita ratione inventore hic est similique ex ad dolore hic. voluptatibus quasi nam ut qui reprehenderit nam maiores provident numquam enim maxime quibusdam et. rem ab ut et est eius odit facilis aut ipsum. sint voluptates ut odio voluptas fuga et a fugiat suscipit et modi culpa error. et aperiam animi nemo
+    &lt;/p&gt;&lt;p&gt;
+      Perhaps the &lt;a href=""&gt;Government&lt;/a&gt; will realise now that we mean to fight to the bitter end … If men use explosives and bombs &lt;code&gt;color: red;&lt;/code&gt; their own purpose they call it war, &lt;em&gt;and&lt;/em&gt; the throwing of a bomb that destroys other people is then described as a glorious and heroic deed. Why should a woman not make use of the same weapons as men. It is not only war we have declared. We are fighting for a revolution
+    &lt;/p&gt;&lt;p&gt;
+      Sint distinctio omnis impedit ad itaque. et fugit doloribus aspernatur ratione itaque assumenda error iure. perferendis sed adipisci quis repellendus minus cumque rerum dolor
+    &lt;/p&gt;&lt;p&gt;
+      Illum nobis doloremque omnis. facere ipsam consequatur occaecati quo soluta sint quis aut eos natus nostrum eum repellat aliquam. harum recusandae qui sed provident eaque quo quia et quam facilis. et suscipit fugit tenetur sapiente quam neque rerum. dicta unde expedita voluptas itaque doloribus architecto
+    &lt;/p&gt;&lt;h2 class='section-title' id=section-1-hold-onto-your-hats-ladies-and-gents&gt;&lt;a href='#section-1-hold-onto-your-hats-ladies-and-gents' class='section-inner'&gt;Section 1. Hold onto your hats, ladies and gents.&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      Beatae dolor dolor mollitia vel distinctio velit omnis amet consequuntur. veniam consequatur debitis consequuntur molestiae aut. harum eveniet sunt aut aut quibusdam enim. et quasi et aut corporis quo totam maiores quia autem eius consequatur. atque reiciendis qui omnis fuga recusandae quae velit magni quos
+    &lt;/p&gt;&lt;p&gt;
+      Autem cum amet omnis eum impedit labore occaecati. placeat laboriosam labore labore voluptas aut quidem qui sapiente ex omnis rem. doloribus molestiae sit atque accusantium explicabo hic qui dolorum quidem. blanditiis voluptas aut porro quia voluptatem voluptatem omnis. et dolor consectetur ipsam et dolorem exercitationem ullam tempore
   &lt;div class="image-wrap image-primary"&gt;
     &lt;img src="/images/buildings.jpg" alt="Two buildings, one red, one yellow, at dusk" title="Buildings in Rome" width="4608px" height="3456px" /&gt;
-  &lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;Excepturi et praesentium amet dolores saepe modi dolores sed quod pariatur nam. numquam dicta in consequatur in sequi dolorem fugit tempora numquam. fugiat qui voluptatem nesciunt dolore aut dolor unde est. voluptas sed animi sed suscipit sed officiis natus&lt;/p&gt;
-
-&lt;p&gt;Culpa nobis quas quas nisi enim atque accusamus optio. perspiciatis et et iusto corporis repellendus aliquam eius aut sapiente tempora. aperiam nemo exercitationem iusto fugiat natus et ab ipsa. soluta nulla nesciunt aspernatur velit quidem. suscipit sunt at qui architecto. voluptatem minus distinctio magnam expedita neque nihil nostrum qui deleniti libero non deleniti. soluta sed est vero ut omnis corrupti aperiam dolores impedit velit qui&lt;/p&gt;
-
-&lt;p&gt;Et veritatis et velit vel molestiae est sapiente corrupti molestiae possimus quisquam nam. quam totam quis et eveniet molestiae pariatur blanditiis quo voluptatibus tenetur ut a vitae. ducimus omnis rerum ipsa distinctio exercitationem autem rerum magni voluptas eligendi. voluptate tenetur placeat ea iste sed molestiae nulla unde recusandae ea&lt;/p&gt;
-
-&lt;p&gt;Sit ut architecto enim est voluptas vel architecto neque qui. consequatur vitae est laboriosam sit excepturi dolor. esse nam minima et ea a nemo quod saepe consequuntur aspernatur debitis sequi tempore. et et a omnis aperiam quia tempora dolore voluptatem voluptatem architecto. et et blanditiis aliquid cumque minus molestiae. labore consequatur ipsa quibusdam laborum a consequuntur quis est voluptas reiciendis natus molestiae natus saepe. sit est autem sunt dicta tempore eius
+  &lt;/div&gt;
+    &lt;/p&gt;&lt;p&gt;
+      Quam provident eveniet praesentium quasi. et sed porro illo. ad culpa quia ab veniam quibusdam incidunt voluptas eius repudiandae odio. maiores placeat non totam. enim consectetur enim accusantium aut nihil
+    &lt;/p&gt;&lt;p&gt;
+      Voluptatem consequatur nulla quasi nulla illum non voluptate est est totam corporis. iste vero mollitia et aperiam provident ratione mollitia sed libero aut. et natus ducimus hic adipisci blanditiis harum rerum doloremque repellendus vel similique exercitationem
+    &lt;/p&gt;&lt;p&gt;
+      Repudiandae velit sed ipsa delectus ex deleniti repellendus aut quis fugiat quo rerum et. rerum exercitationem voluptate et voluptatibus quia amet delectus voluptas iste consequatur totam quae facilis ipsam. sequi dolor cupiditate et suscipit dicta facere consequatur earum autem quasi. quia saepe rem nulla. et veritatis quasi quae sed voluptatem quidem ratione veniam fugiat. non id quisquam at autem aperiam rerum illo aliquam porro et eos eius. sit in quidem occaecati
+    &lt;/p&gt;&lt;p&gt;
+      Et exercitationem distinctio deserunt dolorum voluptatem ducimus eveniet ipsa. laboriosam odio itaque necessitatibus. dolores quas ea quibusdam
   &lt;div class="image-wrap image-secondary"&gt;
     &lt;img src="/images/kaau.jpg" alt="A man stands amid foliage on a mountain ridge." title="Ka'au Crater in Kawaii, HI" width="4608px" height="3456px" /&gt;
-  &lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;Qui quod placeat blanditiis est nam nisi labore quia. earum voluptas saepe labore mollitia nemo. praesentium et quod voluptatum corrupti et autem adipisci quas. eius doloremque vel ullam facilis hic temporibus voluptate molestias recusandae accusamus error. eligendi maiores a qui quod corporis ipsum illum doloribus in&lt;/p&gt;
-
-&lt;p&gt;Cumque est et qui ut voluptas laborum consequatur minus. illo illo consequuntur natus ea iste ut est nam ipsum. qui unde sint dolore ullam a commodi&lt;/p&gt;
-
-&lt;p&gt;Itaque alias aut ipsam quo. est fugit est velit nihil nesciunt dolore optio sint. tempore et rerum neque iure consectetur voluptate suscipit voluptates alias quis. itaque nisi nihil nulla beatae provident est iusto et nihil
+  &lt;/div&gt;
+    &lt;/p&gt;&lt;p&gt;
+      Cupiditate tenetur aut qui at ut omnis voluptatum illo in. dolores soluta et voluptas atque delectus in. cum eum porro qui sed explicabo vero et. sed qui beatae necessitatibus sint non sunt enim voluptatem sit non sint quas totam quaerat
+    &lt;/p&gt;&lt;p&gt;
+      Ratione ut tempora magnam. reiciendis culpa occaecati deserunt numquam quos earum quia saepe quos est at illo. ipsam a molestiae sapiente incidunt
+    &lt;/p&gt;&lt;p&gt;
+      Rerum quia accusantium recusandae. modi eum ab quos pariatur voluptatem est. quo ducimus earum fugit commodi reiciendis consequatur facilis voluptas ipsam doloremque quidem voluptatem autem similique. repellendus quia sunt qui tenetur non voluptas quos omnis. sed praesentium doloremque esse et iste cupiditate consequatur quia cupiditate quia a qui cumque. dolorum numquam assumenda est sed et perferendis dolor sit eos sit vitae optio
   &lt;figure role="img" class="image-wrap image-primary"&gt;
     &lt;img src="/images/buildings.jpg" alt="Two buildings, one red, one yellow, at dusk" title="Buildings in Rome" width="4608px" height="3456px" /&gt;
   &lt;figcaption&gt;
     &lt;p&gt;Short lil caption&lt;/p&gt;
   &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;Nesciunt est rem expedita et aut dignissimos itaque quibusdam. eos cumque quos animi esse impedit cupiditate voluptate ea sit est modi rem nesciunt natus. sequi cupiditate consectetur voluptatem odit qui
+&lt;/figure&gt;
+    &lt;/p&gt;&lt;p&gt;
+      Sunt dicta nulla qui omnis ea perferendis. sunt et quibusdam possimus nulla nisi illo temporibus ex voluptas repudiandae. similique quaerat fugit ab ducimus quas. architecto consequatur temporibus mollitia assumenda nobis veniam distinctio consequatur ut asperiores qui iste. reprehenderit laboriosam dignissimos facilis ipsam id. maiores sint omnis perferendis enim nisi ratione. ducimus eaque quam est est vel eum laudantium ut soluta rerum aperiam et
   &lt;figure role="img" class="image-wrap image-secondary"&gt;
     &lt;img src="/images/buildings.jpg" alt="Two buildings, one red, one yellow, at dusk" title="Buildings in Rome" width="4608px" height="3456px" /&gt;
   &lt;figcaption&gt;
     &lt;p&gt;This is the longest caption ever, though. How bout them Mets? How bout them &lt;em&gt;Yankees&lt;/em&gt;? &lt;a href="https://www.youtube.com/watch?v=YyCAEcXcXL4"&gt;You like jazz?&lt;/a&gt;&lt;/p&gt;
   &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;h2 class='section-title' id=and-another-one&gt;&lt;a href='#and-another-one' class='section-inner'&gt;And another one&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Nihil sint aut modi molestiae ab impedit soluta consequatur aperiam adipisci. voluptatem dicta neque expedita non nobis occaecati tempora provident doloremque vero sed omnis corporis dolor. eligendi laudantium sunt porro voluptatem natus et voluptatem error eum. ut facere ut autem sequi recusandae non quo sit voluptas ut non. consequatur et qui optio odio&lt;/p&gt;
-
-&lt;p&gt;Voluptatem sit ut deserunt. ut quia impedit repellat quia voluptas saepe cupiditate ea asperiores autem debitis. impedit quaerat quidem quod&lt;/p&gt;
-
-&lt;p&gt;Totam delectus consequatur praesentium. a dolor ut qui ab. quam qui suscipit sed placeat dicta consectetur quasi. sit deserunt repudiandae eaque et explicabo quia at ullam quisquam. qui aut autem et est cumque&lt;/p&gt;
-&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;as&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt; &lt;span class="nx"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;'react'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/figure&gt;
+    &lt;/p&gt;&lt;h2 class='section-title' id=and-another-one&gt;&lt;a href='#and-another-one' class='section-inner'&gt;And another one&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      Alias itaque sed placeat ipsam dicta itaque alias sint voluptatem. et velit nesciunt accusantium. porro velit aperiam et id debitis eum. rerum ipsam debitis aspernatur ut autem provident et aperiam illo omnis. velit debitis dolorem est nobis quia illo sint maxime
+    &lt;/p&gt;&lt;p&gt;
+      Culpa voluptatum et ut quae consequatur non autem enim eius ratione sit. a qui enim hic tenetur officia est. dolores repellat aliquam provident incidunt dolor quas eaque culpa et eum occaecati. provident aliquid excepturi est quaerat architecto voluptatibus dicta excepturi voluptatem earum. libero explicabo dolores ipsum assumenda totam dignissimos. dolore reiciendis saepe hic ipsam magni quod odio
+    &lt;/p&gt;&lt;p&gt;
+      Libero ipsum sed dolor molestiae aut asperiores voluptas. minus voluptatem debitis sunt. autem aut nihil repellat et eveniet molestiae enim et dolor eligendi. placeat sit dolores autem est maxime dolorum aut error ut. odit placeat fuga voluptatibus earum temporibus sed. dolorum rerum quidem unde ad ut est
+    &lt;/p&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;as&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt; &lt;span class="nx"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;'react'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nx"&gt;fake&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;storiesOf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;describe&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;it&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;specs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;mount&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;shallow&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;expect&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nx"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;'storyUtils'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nx"&gt;Candy&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nx"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;'./_base'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -92,89 +122,92 @@
 
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;story&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Consequatur itaque aliquid ad et. sint voluptate laboriosam ducimus beatae voluptatem velit expedita voluptate est. nihil sed atque a. et et aspernatur eos non doloremque dolor iusto quos vel ut. praesentium aut quisquam nobis qui ipsam voluptatum&lt;/p&gt;
-
-&lt;p&gt;Vel nisi molestiae est aut numquam et dolor ratione vel ea quo animi. ut dolor aut accusantium qui voluptas rem et dolorem. ratione distinctio dolorum est eius. nisi maxime adipisci quaerat rem atque animi sit temporibus. voluptates voluptatibus similique doloremque qui in ullam laboriosam officiis id sit voluptas&lt;/p&gt;
-
-&lt;p&gt;Qui odio rerum omnis rem soluta rerum beatae. harum illo veniam quasi illo necessitatibus aut recusandae similique libero quibusdam. nesciunt et sunt cupiditate. harum quia est officia temporibus sunt earum labore eum a quo atque qui. minus porro ipsam facilis qui consequuntur natus id expedita quae ea. consequatur consequatur qui consequatur magnam aperiam provident ea blanditiis porro ullam fuga voluptas laboriosam. reprehenderit et doloribus minima est omnis iure mollitia magni nihil&lt;/p&gt;
-
-&lt;p&gt;A harum numquam autem porro et blanditiis quia exercitationem dolorum qui consequatur vel exercitationem ut. quia aut veritatis ex quod voluptas vero autem qui autem facere nostrum exercitationem. atque dolorem non doloremque sit earum sed quia eius reiciendis non debitis. tempora aut inventore hic dolorem debitis sed architecto veritatis sed vel reprehenderit aut. est nemo vitae voluptas qui dignissimos. repellat dolores omnis quasi ex libero culpa magnam aut fugit iusto aut velit occaecati id. tempora est et est nihil vero similique autem nobis voluptatibus eos rerum enim&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      Excepturi aliquam veniam fugiat qui sed. soluta enim quaerat dolorum quia dolor maiores necessitatibus quo sit iste. sed recusandae natus corrupti unde cumque reprehenderit id vel et adipisci ipsa voluptas odit dignissimos
+    &lt;/p&gt;&lt;p&gt;
+      Alias pariatur numquam eos ipsam. fuga magni sed error aut nisi dolore dolor asperiores quis quia velit. et exercitationem nam dolore et maxime voluptate vel enim veritatis voluptate voluptates. ea quia quo explicabo similique est alias error ipsam omnis ut velit dolorem et. adipisci reiciendis excepturi eveniet et earum
+    &lt;/p&gt;&lt;p&gt;
+      Rerum deserunt nihil hic non corporis soluta perferendis ut et rem aperiam nostrum. adipisci aut rerum nesciunt impedit. sunt unde cum est veniam laboriosam autem reiciendis tenetur rerum. ullam aspernatur qui sint est doloribus accusantium explicabo earum quis qui nihil repudiandae et nostrum. soluta illum qui quibusdam facilis reprehenderit magnam porro numquam debitis et. quis consequuntur ratione vel excepturi deserunt
+    &lt;/p&gt;&lt;p&gt;
+      Dolorum architecto omnis rerum id reprehenderit dolores ut blanditiis voluptatem consectetur nisi sunt provident. provident maiores et ab dolores impedit sit. reiciendis eius magni voluptatem officia occaecati. similique voluptatem id reiciendis ab suscipit voluptatem voluptatem repellat incidunt dignissimos debitis qui autem voluptatem. et rem omnis et voluptatibus quidem voluptas culpa consequatur. enim dolor id et quas neque natus aut vel est iusto illum ipsam quibusdam. voluptatem porro eius repellat in quae soluta
+    &lt;/p&gt;
       &lt;blockquote&gt;
-        &lt;p&gt;Perhaps the Government will realise now that we mean to fight to the bitter end … If men use explosives and bombs for their own purpose they call it war, and the throwing of a bomb that destroys other people is then described as a glorious and heroic deed. Why should a woman not make use of the same weapons as men. It is not only war we have declared. We are fighting for a revolution.
+        &lt;p&gt;
+      Perhaps the Government will realise now that we mean to fight to the bitter end … If men use explosives and bombs for their own purpose they call it war, and the throwing of a bomb that destroys other people is then described as a glorious and heroic deed. Why should a woman not make use of the same weapons as men. It is not only war we have declared. We are fighting for a revolution. &amp;mdash;Christabel Pankhurst
+    &lt;/p&gt;
         &lt;cite&gt;
-          Christabel Pankhurst&lt;/p&gt;
-
+          
         &lt;/cite&gt;
       &lt;/blockquote&gt;
-    
-&lt;p&gt;Cum sit quo eum illum eligendi sunt odio qui omnis laborum dolorum. vero tenetur doloribus molestiae et cupiditate eos fuga facere nobis illum nulla vel rerum. quia temporibus possimus qui aut adipisci minima rerum sed quas aut suscipit. laboriosam rerum nemo ullam voluptas minus voluptates voluptas possimus. et sed odio reiciendis. accusamus itaque laudantium recusandae quaerat&lt;/p&gt;
-
-&lt;p&gt;Aspernatur quisquam cumque nostrum expedita unde optio fuga deleniti et autem et magnam et voluptas. consequatur debitis ut non consequatur magnam illo mollitia eveniet repellat ut tempore sapiente consequuntur. enim natus ab accusamus sequi quia inventore eum illo est aspernatur facere consequatur voluptatem excepturi. corporis dolor quisquam enim. necessitatibus alias quia dolor aut dolor quasi ut quam quia consequatur ad. harum ut recusandae dignissimos at non ullam quo&lt;/p&gt;
-
-&lt;p&gt;Minus quis ex tempore nihil et consequuntur distinctio cumque voluptatem accusantium voluptas odio pariatur. nisi alias quia qui sunt dignissimos aut delectus voluptas et et veniam reiciendis. autem vel modi et in ea dolor saepe. cumque a illo sunt illum repellendus&lt;/p&gt;
-
+    &lt;p&gt;
+      Fuga minima voluptatem excepturi quasi libero perspiciatis numquam. numquam inventore quo debitis. omnis animi rem voluptas odio aperiam repellat nam illo sed ad nihil vel
+    &lt;/p&gt;&lt;p&gt;
+      Molestias quisquam sed beatae. delectus optio natus sed accusantium tempora consequatur qui voluptas perspiciatis ipsam. sint est animi iure vitae consequatur sapiente praesentium quia quia qui atque. officiis dicta explicabo officia sed dicta velit nostrum sunt deleniti est aut saepe eaque iure. eius reprehenderit commodi consectetur voluptas quo error
+    &lt;/p&gt;&lt;p&gt;
+      Minima aspernatur est nihil animi quis. ut quis quisquam nihil eligendi in. qui eos nisi in veritatis officiis
+    &lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Accusamus ut ut sequi eos ullam id voluptas&lt;/li&gt;
-&lt;li&gt;Repellat provident similique maxime quis&lt;/li&gt;
-&lt;li&gt;Aspernatur cumque cupiditate repellendus molestias occaecati recusandae itaque fuga sint repellat consectetur enim deleniti eos&lt;/li&gt;
-&lt;li&gt;Nisi facere quibusdam voluptatibus voluptatibus necessitatibus fugit consequatur libero occaecati reiciendis aut ut voluptas&lt;/li&gt;
-&lt;li&gt;Laudantium quia voluptas sed ut&lt;/li&gt;
+&lt;li&gt;Ut et repellat doloremque et placeat magni&lt;/li&gt;
+&lt;li&gt;Quia sed dolorem dolores magni&lt;/li&gt;
+&lt;li&gt;Et natus magni eveniet pariatur sunt&lt;/li&gt;
+&lt;li&gt;Delectus rem necessitatibus qui ea saepe vero dolor ut consequatur neque in neque quidem sed&lt;/li&gt;
+&lt;li&gt;Est nemo numquam enim corrupti suscipit officia enim delectus similique quae minus debitis molestias quod&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;Repudiandae debitis repellat officia quaerat iusto maiores doloribus sunt eaque accusamus sunt dolor. corrupti deserunt quia culpa modi ipsam ea. rerum sit ad nemo rerum facilis quia voluptates aut. ut similique ut est qui cum cum minus aut quam ut est numquam&lt;/p&gt;
-
-&lt;p&gt;Suscipit et voluptas quam ratione cumque. officia ipsam eum sed. aut recusandae impedit sit ut. magnam corrupti natus odio illo atque consectetur occaecati suscipit. corrupti et quae molestias. quia sit quam aliquid deleniti&lt;/p&gt;
-
+&lt;p&gt;
+      Quae architecto quas voluptatem esse accusamus et. ut et eum qui dolores dolores et. omnis et omnis omnis necessitatibus ad dolor dolor corrupti aliquam. corporis rerum dignissimos eos praesentium molestias voluptatem dicta. molestiae voluptas non ipsam et. beatae nisi et omnis et asperiores atque nostrum sed quidem
+    &lt;/p&gt;&lt;p&gt;
+      Ut voluptatum eum omnis provident modi sit. porro voluptatum ipsum et odio rerum quibusdam. veritatis voluptas sit quod. omnis laudantium illum recusandae
+    &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Quos impedit dolore praesentium unde fuga adipisci et&lt;/li&gt;
-&lt;li&gt;Qui est rerum voluptatem similique aut&lt;/li&gt;
-&lt;li&gt;Exercitationem dolor sunt molestiae quas non nam omnis nisi id sit impedit illum vero&lt;/li&gt;
-&lt;li&gt;Enim ipsum iure nostrum officiis iusto qui qui&lt;/li&gt;
-&lt;li&gt;Animi vel quo reiciendis&lt;/li&gt;
-&lt;li&gt;Praesentium placeat tempore voluptatem ad&lt;/li&gt;
+&lt;li&gt;Corrupti voluptas ullam adipisci dolorem vel&lt;/li&gt;
+&lt;li&gt;Et ex voluptatem cumque voluptas doloribus officiis placeat nihil eaque nulla laboriosam&lt;/li&gt;
+&lt;li&gt;Incidunt quo tenetur et voluptatibus odit nesciunt quo tempora qui enim error odit&lt;/li&gt;
+&lt;li&gt;Repellendus culpa dolorem deserunt laudantium autem quod quo&lt;/li&gt;
+&lt;li&gt;Qui et qui et pariatur&lt;/li&gt;
+&lt;li&gt;Voluptate est accusantium eius aut aut unde mollitia inventore et exercitationem temporibus autem&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry>
   <entry>
     <title>this is a medium-length article</title>
-    <link rel="alternate" href="http://blog.url.com/medium/"/>
-    <id>http://blog.url.com/medium/</id>
-    <published>2017-02-08T21:14:00-08:00</published>
-    <updated>2017-02-08T21:16:43-08:00</updated>
+    <link rel="alternate" href="https://vgpena.github.io/medium/"/>
+    <id>https://vgpena.github.io/medium/</id>
+    <published>2017-02-09T05:14:00-08:00</published>
+    <updated>2017-02-16T07:48:47-08:00</updated>
     <author>
-      <name>Article Author</name>
+      <name>Violet Peña</name>
     </author>
-    <content type="html">&lt;p&gt;Est assumenda corrupti esse eligendi sint est doloribus iure. suscipit fuga commodi et. quia ut aut voluptatem deserunt. eaque corporis provident enim qui sed. sunt quia corporis ut repellendus dolores in est suscipit provident corrupti. et eos molestiae aperiam dolor et sit unde debitis quia placeat voluptatem accusantium sit sunt&lt;/p&gt;
-
-&lt;p&gt;Necessitatibus voluptas voluptatem ut similique dolore sed quibusdam alias culpa perferendis et. impedit consequatur voluptatum quam nihil commodi nam culpa. cum velit neque dolorem necessitatibus labore sunt ut non&lt;/p&gt;
-
-&lt;p&gt;Laboriosam et qui illum voluptatem magni vitae alias modi cumque similique quo sint quia inventore. magnam quam similique libero et officiis fuga alias non magnam rerum. enim sed voluptas saepe voluptate ea. dolor corporis itaque esse sint similique aliquid quia maiores earum modi voluptatum nesciunt ad autem. et exercitationem rerum laborum&lt;/p&gt;
-
-&lt;p&gt;Possimus quis sed possimus. vel incidunt neque ipsam aspernatur dicta harum nam distinctio reprehenderit vero et et. aut deserunt accusamus at maiores sint modi dicta quis unde voluptatum. et et sequi animi nihil dignissimos harum et exercitationem doloremque autem eum. ab quis quia magnam explicabo ullam officiis incidunt quia facilis. nam nisi ut nobis consequuntur. iure eius rerum eveniet exercitationem mollitia accusantium odio harum officiis qui et explicabo aut&lt;/p&gt;
-
-&lt;p&gt;Magnam veritatis ipsum deserunt qui distinctio quis qui voluptatibus quasi iusto modi. nostrum id aut nemo quaerat maiores non aspernatur dicta odit corporis occaecati. dignissimos accusantium nisi sit harum aut dolor tenetur eveniet quaerat dolores&lt;/p&gt;
-&lt;h2 class='section-title' id=here39s-a-new-section&gt;&lt;a href='#here39s-a-new-section' class='section-inner'&gt;Here&amp;#39;s a new section&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Reiciendis molestias temporibus in aperiam earum. explicabo tempora delectus illo fuga officia rem voluptas. quod qui est vero odio in ratione quam animi qui. ut et et labore deleniti fugit necessitatibus qui est nihil odit officia sint laudantium reprehenderit&lt;/p&gt;
-
-&lt;p&gt;Natus optio necessitatibus qui accusantium et qui earum provident dolorum sint mollitia. dolorem sed dolorum non molestiae adipisci ad a delectus inventore recusandae maiores. est non nulla ut dolorem iusto assumenda quod nihil et et sed non ut. quia ea iusto sed nisi modi quaerat eum corrupti quo dolorum sequi cumque perspiciatis. et dolor consequatur qui dolorem nisi reiciendis rerum assumenda assumenda laudantium. suscipit sit dolor error iusto corporis architecto eos labore illum. molestias unde enim ut maxime&lt;/p&gt;
-
-&lt;p&gt;Repudiandae dolorem non quibusdam assumenda architecto officia rerum atque. repellat eum sit cupiditate ea voluptatibus molestiae debitis veritatis ab voluptas. et adipisci consequuntur excepturi eveniet doloribus consequatur magni qui autem eum voluptas ipsa. omnis aut ea quis adipisci non nulla dolorem quos porro porro&lt;/p&gt;
-
-&lt;p&gt;Ratione explicabo non deleniti ducimus in maxime suscipit. aut tempore vitae tenetur. culpa et fugit a id cupiditate corrupti voluptas nostrum. dolorem nostrum eligendi officia nam tenetur id consequuntur praesentium sequi placeat&lt;/p&gt;
-</content>
+    <content type="html">&lt;p&gt;
+      Officiis pariatur quo vel quia molestiae fuga et quod non. aut similique sequi illum est assumenda tenetur iure. qui est quibusdam ullam eaque aliquid repellendus voluptate praesentium itaque
+    &lt;/p&gt;&lt;p&gt;
+      Reiciendis qui perspiciatis vitae voluptatum. explicabo incidunt eos enim. et quo laboriosam laboriosam voluptates saepe omnis omnis eveniet. qui tempore et esse eos quo aliquid adipisci. officia sint illo voluptate cum corporis. quia libero non magni
+    &lt;/p&gt;&lt;p&gt;
+      Nam fugiat corrupti quia laboriosam dignissimos non voluptas. omnis in earum nihil ut aut assumenda rerum dolores id aspernatur illum nesciunt blanditiis qui. quis pariatur corporis minima reprehenderit nihil consequuntur voluptatum culpa a et voluptatem quaerat. iure et magni voluptas aliquam qui alias dolore beatae doloremque voluptas sed. sit aspernatur ut tenetur unde tempora quasi harum. provident laboriosam qui excepturi inventore eos animi voluptas nihil ipsam et
+    &lt;/p&gt;&lt;p&gt;
+      Sunt dolore hic unde veniam dolor doloribus temporibus impedit et explicabo. perferendis dignissimos facere repellat debitis ut autem eum nesciunt cum asperiores. nihil et consequuntur ut repudiandae nihil. sint quae nihil id minus ut culpa amet ut itaque est quibusdam vero perspiciatis. dolorum asperiores possimus tempore earum et deserunt ut consequatur qui omnis quia ipsa
+    &lt;/p&gt;&lt;p&gt;
+      Pariatur sequi velit repellendus est dignissimos. explicabo vel temporibus et totam. accusantium modi voluptas rerum et qui excepturi qui mollitia itaque. asperiores et odit in accusantium iusto reprehenderit pariatur qui eos dolorem
+    &lt;/p&gt;&lt;h2 class='section-title' id=here39s-a-new-section&gt;&lt;a href='#here39s-a-new-section' class='section-inner'&gt;Here&amp;#39;s a new section&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      Vitae dolorem ut odit suscipit repudiandae sit voluptates voluptas facere quaerat sed. in qui quis quo quasi qui et. culpa dolorem aut in culpa repellat illo nihil illum consequatur minima et. voluptates totam voluptas aut sunt quia beatae. incidunt eos explicabo aut assumenda aut quisquam dolorem veritatis et dolorem hic cum et. dolores dolorem quia porro et perspiciatis possimus voluptatibus similique minima aspernatur vel et dolorem quam
+    &lt;/p&gt;&lt;p&gt;
+      Commodi ex deleniti voluptas molestias dignissimos dignissimos fugit ut et sunt ratione nemo. et provident occaecati autem fugiat delectus voluptatem sit laudantium quis facilis fuga inventore. ratione et iste enim aliquam quidem id consequatur qui dolorem tempore. iste labore cum voluptas nihil non temporibus. porro suscipit alias minus tempore vitae quo dolore perspiciatis cumque vitae. dolorem et ipsum amet quaerat qui aut unde dignissimos id sit illo magnam
+    &lt;/p&gt;&lt;p&gt;
+      Aliquid animi assumenda perspiciatis est aut quo. animi voluptatem ut officiis cum iusto itaque excepturi rerum sed et atque. dolorem dolorem et unde et suscipit veniam est. aut nostrum nihil consequuntur illo ipsa quia ipsum eaque. ea hic occaecati possimus magnam sit saepe voluptatem voluptatem. earum blanditiis a eos architecto assumenda minus
+    &lt;/p&gt;&lt;p&gt;
+      Doloribus dolore voluptas excepturi molestias nostrum est voluptatem perferendis nemo. animi reprehenderit similique ex quas dolor magni enim cumque. aut corporis consequatur laudantium occaecati ullam eligendi et rerum est voluptas laudantium ea. animi sequi vero aut maiores earum nisi quidem est aut dolorem autem numquam quos est. voluptatibus libero aut molestiae aliquid sit voluptas et
+    &lt;/p&gt;</content>
   </entry>
   <entry>
     <title>Short</title>
-    <link rel="alternate" href="http://blog.url.com/short/"/>
-    <id>http://blog.url.com/short/</id>
-    <published>2017-02-08T21:13:00-08:00</published>
-    <updated>2017-02-11T11:19:12-08:00</updated>
+    <link rel="alternate" href="https://vgpena.github.io/short/"/>
+    <id>https://vgpena.github.io/short/</id>
+    <published>2017-02-09T05:13:00-08:00</published>
+    <updated>2017-02-16T07:48:52-08:00</updated>
     <author>
-      <name>Article Author</name>
+      <name>Violet Peña</name>
     </author>
-    <content type="html">&lt;p&gt;Praesentium minima reprehenderit voluptate aut. Tenetur sunt expedita repudiandae natus tempore quod consequatur esse voluptatibus. Blanditiis occaecati minima eum beatae repellat. Quo eos in non. Veniam qui quam sed neque sunt aperiam nesciunt libero sit veniam asperiores inventore velit. Reiciendis quia quasi accusamus quasi odit voluptatem suscipit similique dicta enim sed. Ullam et inventore voluptatem fugit asperiores doloribus possimus aliquid voluptatem. Rem vel et suscipit&lt;/p&gt;
-</content>
+    <content type="html">&lt;p&gt;
+      Veniam quo dolorum ut molestiae possimus excepturi tempora quaerat accusantium omnis qui perspiciatis. Consequatur aliquam nesciunt voluptates. Similique magnam eveniet autem est rerum vero et facilis unde perspiciatis facilis labore quia et. Sint consequatur impedit neque quia excepturi sapiente. Numquam odit vero quam voluptatem. Sed distinctio ut dicta rerum error nostrum omnis voluptas fugiat. Quod reiciendis accusamus tempore consequuntur nihil voluptates. Voluptatem sed sequi atque excepturi ea quibusdam mollitia culpa quia incidunt velit placeat est
+    &lt;/p&gt;</content>
   </entry>
 </feed>
