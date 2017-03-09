@@ -5,10 +5,149 @@
   <id>https://vgpena.github.io</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2017-02-16T06:33:00-08:00</updated>
+  <updated>2017-03-08T06:29:00-08:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>Blogging with Middleman, Pt. 1</title>
+    <link rel="alternate" href="https://vgpena.github.io/blogging-with-middleman/"/>
+    <id>https://vgpena.github.io/blogging-with-middleman/</id>
+    <published>2017-03-08T06:29:00-08:00</published>
+    <updated>2017-03-08T18:50:56-08:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <content type="html">&lt;p&gt;
+      Side projects are a chance for me to experiment with tools that fall out of the scope of my (amazing) day job. This blog represents my first foray into using &lt;a href="https://middlemanapp.com"&gt;Middleman&lt;/a&gt; for blogging. Here are the first steps you should take when setting up a Middleman blog of your own.
+    &lt;/p&gt;&lt;p&gt;
+      To begin with, why am I using Middleman? I knew I wanted a static site. I started off with no clear deploy strategy in mind, and I wanted something so simple that I could just SFTP it to my Linode server and forget about it. &lt;a href="http://jxnblk.com/writing/posts/static-site-generation-with-react-and-webpack/"&gt;Static React&lt;/a&gt; was out; as much as I like React and as cool as this setup sounds, I missed writing &lt;a href="/creating-once"&gt;publication-style, semantic markup&lt;/a&gt;. Once I&amp;#39;d figured out that was what I wanted, it was a choice between Middleman and &lt;a href="https://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;. I&amp;#39;ve used both before and had good experiences with each. I went with Middleman because even though I&amp;#39;d used it before, I hadn&amp;#39;t experimented with its blogging functionality.
+    &lt;/p&gt;&lt;p&gt;
+      As I dug deeper into Middleman, I discovered cool aspects of it that hadn&amp;#39;t been immediately obvious. I&amp;#39;m having a lot of fun with it and completely recommend it to anyone else looking to start up a blog.
+    &lt;/p&gt;&lt;h2 class='section-title' id=setting-the-stage-rvm&gt;&lt;a href='#setting-the-stage-rvm' class='section-inner'&gt;Setting the stage: rvm&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      Middleman is Ruby-based, so one of the first things I did was install &lt;a href="https://rvm.io/"&gt;Ruby Version Manager&lt;/a&gt;, or rvm, which lets you install and switch between multiple versions of Ruby. This means that a project doesn&amp;#39;t necessarily depend on what you&amp;#39;ve got installed anywhere else &amp;mdash; an upgrade to your system Ruby, or to Project A, won&amp;#39;t affect Project B. Keeping dependencies local and specific has done wonders for my stress levels.
+    &lt;/p&gt;&lt;p&gt;
+      Once you&amp;#39;ve got rvm installed (I used the cURL command from the above link), you can install new versions with &lt;code&gt;rvm install &amp;lt;versionNumber&amp;gt;&lt;/code&gt;. &lt;code&gt;rvm list&lt;/code&gt; shows you what you&amp;#39;ve already got installed, and switching Ruby versions is &lt;code&gt;rvm use &amp;lt;versionNumber&amp;gt;&lt;/code&gt;. As of writing, the minimum version of Ruby required for up-to-date Middleman is 2.2.2.
+    &lt;/p&gt;&lt;h2 class='section-title' id=creating-a-blog&gt;&lt;a href='#creating-a-blog' class='section-inner'&gt;Creating a blog&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      To create a blog, follow the first instruction in &lt;a href="https://middlemanapp.com/basics/install/"&gt;the MM docs&lt;/a&gt;, and run &lt;code&gt;gem install middleman&lt;/code&gt;. The next step &amp;mdash; actually setting up the project &amp;mdash; should be blog-specific. Instead of just &lt;code&gt;middleman init&lt;/code&gt;, run &lt;code&gt;middleman init &amp;mdash;template=blog&lt;/code&gt;.
+    &lt;/p&gt;&lt;p&gt;
+      At this point, you have the framework of a basic Middleman blog in place. Run &lt;code&gt;middleman server&lt;/code&gt; and then go to &lt;code&gt;localhost:4567&lt;/code&gt; to see what&amp;#39;s been generated.
+    &lt;/p&gt;&lt;p&gt;
+      This stubbed-out blog is a great start, but you probably want to do some customization before you get publishing. Following are some of the first things I recommend doing, in the recommended order.
+    &lt;/p&gt;&lt;h2 class='section-title' id=setting-your-time-zone&gt;&lt;a href='#setting-your-time-zone' class='section-inner'&gt;Setting your time zone&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      Before writing any articles, manually set your publishing time zone. &lt;code&gt;middleman-blog&lt;/code&gt; ships with a nifty RSS feed generator, but publication times default to UTC, which probably isn&amp;#39;t your local time. So let&amp;#39;s take a sec right now and make sure your hordes of subscribers get accurate readings of when you publish.
+    &lt;/p&gt;&lt;p&gt;
+      (Also, if you hold off on setting your time zone and you only do it after you&amp;#39;ve written some articles, you will get cryptic errors about dates in frontmatter &amp;quot;not matching&amp;quot; and you will have to switch any articles with UTC timestamps in their frontmatter to bear your local timestamp. I will talk more about frontmatter later.)
+    &lt;/p&gt;&lt;p&gt;
+      You already have &lt;code&gt;tzinfo-data&lt;/code&gt; installed (you can see it listed in your &lt;code&gt;Gemfile&lt;/code&gt;), so go straight into your &lt;code&gt;config.rb&lt;/code&gt; and add the lines:
+    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'tzinfo'&lt;/span&gt;
+&lt;span class="no"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;zone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'US/Pacific'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      And this time zone will now be used whenever you create a new article. You can find your time zone on &lt;a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"&gt;this list&lt;/a&gt;.
+    &lt;/p&gt;&lt;h2 class='section-title' id=customizing-yaml-frontmatter&gt;&lt;a href='#customizing-yaml-frontmatter' class='section-inner'&gt;Customizing YAML frontmatter&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      Now you can safely create your first article (!!) from the command line (!!) with &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt;. A file called &lt;code&gt;articleName.html.md&lt;/code&gt; will be created in your &lt;code&gt;source&lt;/code&gt; dir, looking something like
+    &lt;/p&gt;&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;foo&lt;/span&gt;
+&lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;2017-02-20 10:42 PST&lt;/span&gt;
+&lt;span class="na"&gt;tags&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
+&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      This is &lt;a href="https://en.wikipedia.org/wiki/YAML"&gt;YAML&lt;/a&gt; frontmatter, which provides per-article metadata.
+    &lt;/p&gt;&lt;p&gt;
+      You may not want this exact frontmatter. For example, I wasn&amp;#39;t interested in tags, but I &lt;em&gt;did&lt;/em&gt; want my articles to have subtitles. In this case, you can write your own article template.
+    &lt;/p&gt;&lt;p&gt;
+      Find the place in your &lt;code&gt;config.rb&lt;/code&gt; that looks like this (I will be calling it the &amp;quot;blog block&amp;quot;):
+    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:blog&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="c1"&gt;# This will add a prefix to all links, template references and source paths&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.prefix = "blog"&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# blog.permalink = "{year}/{month}/{day}/{title}.html"&lt;/span&gt;
+  &lt;span class="c1"&gt;# Matcher for blog source files&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.sources = "{year}-{month}-{day}-{title}.html"&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.taglink = "tags/{tag}.html"&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.layout = "layout"&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.summary_separator = /()/&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.summary_length = 250&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.year_link = "{year}.html"&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.month_link = "{year}/{month}.html"&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.day_link = "{year}/{month}/{day}.html"&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.default_extension = ".markdown"&lt;/span&gt;
+
+  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;tag_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"tag.html"&lt;/span&gt;
+  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;calendar_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"calendar.html"&lt;/span&gt;
+
+  &lt;span class="c1"&gt;# Enable pagination&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.paginate = true&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.per_page = 10&lt;/span&gt;
+  &lt;span class="c1"&gt;# blog.page_link = "page/{num}"&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      and somewhere in there, put the line
+    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new_article_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;expand_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'../source/template.yml'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;__FILE__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      and create a file in &lt;code&gt;/source&lt;/code&gt; called &lt;code&gt;template.yml&lt;/code&gt; with the contents:
+    &lt;/p&gt;&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;%= @title %&amp;gt;&lt;/span&gt;
+&lt;span class="na"&gt;subtitle&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
+&lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;%= @date.strftime('%F %R %Z') %&amp;gt;&lt;/span&gt;
+&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      Now if you run &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt; again, your generated file will have contents like this:
+    &lt;/p&gt;&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;foo&lt;/span&gt;
+&lt;span class="na"&gt;subtitle&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
+&lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;2017-02-20 11:08 PST&lt;/span&gt;
+&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;subtitle&lt;/code&gt;, and &lt;code&gt;date&lt;/code&gt; will be available as variables to use in blog structuring and templating.
+    &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;
+      The last thing I recommend in this step is editing (or at least being aware of) this line in the blog block of your config file:
+    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# blog.default_extension = ".markdown"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      Any files generated via &lt;code&gt;middleman article&lt;/code&gt; will have this extension. You can change it to the equivalent but less verbose &lt;code&gt;&amp;quot;.md&amp;quot;&lt;/code&gt;, or to something else entirely (I&amp;#39;m using &lt;code&gt;&amp;quot;.md.erb&amp;quot;&lt;/code&gt;, for reasons I will cover later).
+    &lt;/p&gt;&lt;p&gt;
+      Remember to comment this line in to see changes ✌🏻
+    &lt;/p&gt;&lt;h2 class='section-title' id=pretty-urls-please&gt;&lt;a href='#pretty-urls-please' class='section-inner'&gt;Pretty URLs, please!&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      Click into any of your articles and you will see that your URL ends in &lt;code&gt;.html&lt;/code&gt;. Extensions in URLs is &lt;em&gt;not&lt;/em&gt; best-practice web development, as it makes the URL harder to understand and means that changing frameworks (like, for whatever reason, switching from Middleman to .NET) could result in broken links. Pretty URLs give your users more stable, memorable addresses and help keep the inner workings of your site under the hood.
+    &lt;/p&gt;&lt;p&gt;
+      Middleman, like most devtools, ships with a way to implement pretty URLs. In the blog block, add the line:
+    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:directory_indexes&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      and you&amp;#39;re set! From your index page, click through to an article, and you will see that the URL now ends in a &lt;code&gt;/&lt;/code&gt; instead of &lt;code&gt;.html&lt;/code&gt;.
+    &lt;/p&gt;&lt;p&gt;
+      If there are any pages that you &lt;em&gt;don&amp;#39;t&lt;/em&gt; want this done to, register that page in your config, in the &amp;quot;Per-page layout changes&amp;quot; section, like so:
+    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="s1"&gt;'/&amp;lt;page&amp;gt;.html'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:directory_index&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      For example, I did this to &lt;a href="/404.html"&gt;my 404 page&lt;/a&gt; so that &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; would pick it up correctly (I will talk about GH Pages more in an upcoming post).
+    &lt;/p&gt;&lt;h2 class='section-title' id=writing-and-using-scss&gt;&lt;a href='#writing-and-using-scss' class='section-inner'&gt;Writing and using SCSS&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      Luckily for me, Middleman comes equipped to transpile &lt;a href="http://sass-lang.com/"&gt;SCSS&lt;/a&gt;. By default, CSS-related files are looked for in the &lt;code&gt;/stylesheets&lt;/code&gt; folder. If you want to customize this directory, you can do so by adding this line to your &lt;code&gt;config.rb&lt;/code&gt;:
+    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:css_dir&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'styles'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      You can now refer to files in that dir from your templates (in my case, &lt;code&gt;.erb&lt;/code&gt; files) using the &lt;code&gt;stylesheet_link_tag&lt;/code&gt; variable.
+    &lt;/p&gt;&lt;p&gt;
+      Let&amp;#39;s start off by creating &lt;code&gt;/sources/styles/main.css.scss&lt;/code&gt;.
+    &lt;/p&gt;&lt;p&gt;
+      Multiple extensions may seem mysterious, but that&amp;#39;s actually the crux of Middleman&amp;#39;s power. Middleman lets you mix and match any parsers you want, and parses a file right-to-left according to its extensions. So &lt;code&gt;file.css.scss&lt;/code&gt; means &amp;quot;this file will end up as CSS, but parse it as SCSS first&amp;quot;. In the above section about generating articles, I mentioned that I changed the blog entry extension from the default &lt;code&gt;.html.markdown&lt;/code&gt; to &lt;code&gt;.html.md.erb&lt;/code&gt;. This tells Middleman to parse entries first as ERB (which lets me include fancy partials), then as Markdown, and that the end result is HTML.
+    &lt;/p&gt;&lt;p&gt;
+      Put some basic SCSS in your &lt;code&gt;main.css.scss&lt;/code&gt; file:
+    &lt;/p&gt;&lt;pre class="code scss"&gt;&lt;code&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nl"&gt;font-family&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      and add this line to inside the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; tag of &lt;code&gt;source/layout.erb&lt;/code&gt;:
+    &lt;/p&gt;&lt;pre class="code erb"&gt;&lt;code&gt;    &lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;stylesheet_link_tag&lt;/span&gt; &lt;span class="ss"&gt;:main&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:media&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"screen"&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      And now your site should look about 20 percent cooler.
+    &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;
+      I hope this gave you a good jumping-off point to blogging with Middleman! Stay tuned for a post about partials, syntax highlighting, and customizing your Markdown parser.
+    &lt;/p&gt;&lt;p&gt;
+      This is the second post in a series about creating this blog. Read the first post &lt;a href="/creating-once"&gt;here&lt;/a&gt;.
+    &lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Creating Once</title>
     <link rel="alternate" href="https://vgpena.github.io/creating-once/"/>
@@ -36,178 +175,6 @@
       I still have some items on my to-do list (&lt;code&gt;&amp;lt;picture&amp;gt;&lt;/code&gt; elements, lazy-loading images, styling tweaks, etc.), but it was important to me to get a v1 of this blog out in the world. In the meantime, check out my payload! ~5k, as long as we&amp;#39;re not counting font files 💥
     &lt;/p&gt;&lt;p&gt;
       Happy reading!
-    &lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Creating a lightweight blog with Atomic Design &amp; Middleman</title>
-    <link rel="alternate" href="https://vgpena.github.io/long/"/>
-    <id>https://vgpena.github.io/long/</id>
-    <published>2017-02-09T05:18:00-08:00</published>
-    <updated>2017-02-16T07:48:24-08:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <content type="html">&lt;p&gt;
-      Aut error vero sit modi fugiat sed unde esse eaque cupiditate. animi est voluptatem vero est voluptas autem. aliquam est sit blanditiis qui laudantium molestiae sapiente excepturi rem. alias delectus ducimus vero. repellendus et labore corrupti odio sint
-    &lt;/p&gt;&lt;p&gt;
-      Perhaps the &lt;a href=""&gt;Government&lt;/a&gt; will realise now that we mean to fight to the bitter end … If men use explosives and bombs &lt;code&gt;color: red;&lt;/code&gt; their own purpose they call it war, &lt;em&gt;and&lt;/em&gt; the throwing of a bomb that destroys other people is then described as a glorious and heroic deed. Why should a woman not make use of the same weapons as men. It is not only war we have declared. We are fighting for a revolution
-    &lt;/p&gt;&lt;p&gt;
-      Itaque et aperiam dolores. rerum atque debitis distinctio ut soluta quisquam voluptatem ad maxime velit amet. ullam nesciunt vero dolorem distinctio qui sint. quia ipsam et ullam. quos nulla odio rerum ut autem ipsum ut sint facilis
-    &lt;/p&gt;&lt;p&gt;
-      Sapiente sint accusantium temporibus neque ut. assumenda expedita eum laboriosam rem sed accusamus molestias animi reprehenderit nemo ducimus dignissimos eligendi. omnis illum odio tenetur nobis. vel officia expedita aspernatur illum et quis molestiae. excepturi quod nihil aperiam maiores officia et autem quam dolorem
-    &lt;/p&gt;&lt;h2 class='section-title' id=section-1-hold-onto-your-hats-ladies-and-gents&gt;&lt;a href='#section-1-hold-onto-your-hats-ladies-and-gents' class='section-inner'&gt;Section 1. Hold onto your hats, ladies and gents.&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      Dolor dolorem magnam nostrum cumque esse tempore. sit nisi delectus ipsum quidem recusandae occaecati reprehenderit doloribus necessitatibus voluptatem. eum perferendis consectetur dolore porro modi sequi ut totam fugit. aspernatur autem saepe non aut. debitis aliquid accusamus dolorem eaque vel cupiditate voluptas dolor et quos eligendi fuga
-    &lt;/p&gt;&lt;p&gt;
-      Eum omnis nostrum esse dolor molestiae blanditiis fugit dolor ab adipisci. non quis libero illum minus cum et. deserunt exercitationem et nesciunt eum corporis quidem vel blanditiis aperiam. natus qui consectetur dolores voluptates accusamus dolores soluta. sed ut debitis dolorum eius ex cum fugit fuga consectetur architecto
-  &lt;div class="image-wrap image-primary"&gt;
-    &lt;img src="/images/buildings.jpg" alt="Two buildings, one red, one yellow, at dusk" title="Buildings in Rome" width="4608px" height="3456px" /&gt;
-  &lt;/div&gt;
-    &lt;/p&gt;&lt;p&gt;
-      Maiores aut dolor aut repellat velit quo animi fugit ut nobis adipisci sint voluptas. corrupti ipsam natus praesentium molestiae praesentium. cumque iste distinctio ratione totam optio minima qui id minima rerum eaque voluptatum adipisci sit. nesciunt eveniet ut suscipit iste doloribus velit
-    &lt;/p&gt;&lt;p&gt;
-      Ut mollitia aut fuga fugiat. impedit et ut autem ipsum natus aliquid est consequatur. provident minima est dolore quo sequi quis vel. ut voluptates labore delectus doloribus sed corporis sunt iure ipsa facere ab et soluta consequatur. beatae in numquam ut qui fuga nesciunt molestias cupiditate autem suscipit sit sed illo sint. eaque repudiandae consequuntur magni. qui alias cupiditate velit ipsum et blanditiis sit dolores asperiores praesentium
-    &lt;/p&gt;&lt;p&gt;
-      Autem similique consequuntur qui impedit natus consequuntur dicta alias nulla possimus dolorem soluta. qui quia quidem praesentium maxime consequatur fuga ipsa in ducimus. perferendis recusandae ad nostrum et. tenetur nemo delectus libero omnis quia et libero. et voluptatem et inventore tempore et qui magnam odit totam repellendus suscipit. magni occaecati consectetur sed
-    &lt;/p&gt;&lt;p&gt;
-      Non beatae numquam ut nobis velit sint assumenda. ut sint voluptatibus neque ab voluptatibus sit dolor alias et deserunt rerum dicta. voluptas nihil veniam quia. consectetur nam quibusdam consectetur occaecati et iusto repellat et saepe similique tempore molestias magni. quidem sunt ea aut quibusdam. adipisci quod hic voluptas quia harum
-  &lt;div class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/kaau.jpg" alt="A man stands amid foliage on a mountain ridge." title="Ka'au Crater in Kawaii, HI" width="4608px" height="3456px" /&gt;
-  &lt;/div&gt;
-    &lt;/p&gt;&lt;p&gt;
-      Dolor tempora fuga tempora qui modi in sequi velit cumque et et. voluptatem earum rerum tempore natus nesciunt nesciunt sint eaque sed id debitis similique. doloremque voluptas pariatur rerum voluptatibus et natus eos. est quia laborum sint esse. repellendus illum possimus magnam unde eaque
-    &lt;/p&gt;&lt;p&gt;
-      Voluptatem pariatur occaecati fugiat numquam voluptate explicabo perspiciatis. facilis pariatur deleniti velit expedita nesciunt quia rem voluptas et eos necessitatibus laudantium provident esse. enim eaque architecto repudiandae excepturi. dolores veritatis neque maxime est numquam rem quos necessitatibus quia sunt magni et assumenda soluta. qui qui accusamus perferendis omnis et ut architecto quia. est corporis numquam quis ut. voluptatem voluptas vitae atque aliquam amet laborum tempora quasi praesentium aliquam delectus laborum temporibus voluptatem
-    &lt;/p&gt;&lt;p&gt;
-      Ad ut repudiandae et ipsum ullam eos et magni sint nesciunt molestiae culpa labore ullam. dolor nam voluptatem expedita est voluptate voluptatem molestias maxime eum quasi voluptatem dolorem. natus laboriosam vel et voluptatem quod laboriosam. ab quaerat est sequi voluptatem autem corrupti voluptas corrupti. fugiat fuga quam at qui quia deserunt saepe. mollitia ab officia cupiditate velit
-  &lt;figure role="img" class="image-wrap image-primary"&gt;
-    &lt;img src="/images/buildings.jpg" alt="Two buildings, one red, one yellow, at dusk" title="Buildings in Rome" width="4608px" height="3456px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;Short lil caption&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-    &lt;/p&gt;&lt;p&gt;
-      Minus aspernatur officiis dolor et delectus et nihil itaque tempore eum id. tempora nemo voluptatum dolor optio. aut exercitationem laudantium ex pariatur est laborum fugit quia
-  &lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/buildings.jpg" alt="Two buildings, one red, one yellow, at dusk" title="Buildings in Rome" width="4608px" height="3456px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;This is the longest caption ever, though. How bout them Mets? How bout them &lt;em&gt;Yankees&lt;/em&gt;? &lt;a href="https://www.youtube.com/watch?v=YyCAEcXcXL4"&gt;You like jazz?&lt;/a&gt;&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;
-    &lt;/p&gt;&lt;h2 class='section-title' id=and-another-one&gt;&lt;a href='#and-another-one' class='section-inner'&gt;And another one&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      Praesentium ut voluptatem necessitatibus blanditiis ab sint est et eum in rem. dolor qui magnam voluptatem tempora iure autem saepe numquam fugit libero et modi nesciunt. iste atque quo accusamus esse quibusdam molestiae fuga eum asperiores pariatur eos rerum sed. voluptates accusamus exercitationem porro iure blanditiis molestias aliquid at sint cumque eos voluptatem a. nam quia sit iure est reprehenderit et totam molestias suscipit placeat natus sunt incidunt voluptatibus. explicabo voluptas exercitationem illum dolorem dolor aut rerum dolorum. et quaerat doloribus asperiores sed alias ea aut repellat cupiditate eum et dignissimos molestias
-    &lt;/p&gt;&lt;p&gt;
-      Quas deleniti ducimus excepturi sunt. sapiente dignissimos culpa rem quia saepe et quis dolorum unde similique. praesentium optio culpa consequatur odit voluptatem praesentium ut aliquid numquam cumque voluptas. et doloribus sunt earum perspiciatis necessitatibus recusandae est cumque maxime qui labore beatae est
-    &lt;/p&gt;&lt;p&gt;
-      Ratione quod reprehenderit at rerum fugit quis pariatur voluptas quidem in voluptates. non iste qui molestiae et consectetur exercitationem mollitia non suscipit magni aut vitae provident. et consequatur est iste voluptatibus natus consequatur consequuntur velit nam voluptas. ad nemo et est. enim aut mollitia sapiente non totam. nobis eveniet harum harum tempora ipsam
-    &lt;/p&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nx"&gt;as&lt;/span&gt; &lt;span class="nx"&gt;React&lt;/span&gt; &lt;span class="nx"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;'react'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nx"&gt;fake&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;storiesOf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;describe&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;it&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;specs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;mount&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;shallow&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;expect&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nx"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;'storyUtils'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nx"&gt;Candy&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nx"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;'./_base'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;stories&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;storiesOf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Candy'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{});&lt;/span&gt;
-
-&lt;span class="nx"&gt;stories&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'default'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;story&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;Candy&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nx"&gt;isEaten&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="nx"&gt;handleClick&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'foo'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="sr"&gt;/&amp;gt;&lt;/span&gt;&lt;span class="err"&gt;;
-&lt;/span&gt;
-    &lt;span class="nx"&gt;specs&lt;/span&gt;&lt;span class="p"&gt;(()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;describe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'default'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;component&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;mount&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;story&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-
-        &lt;span class="nx"&gt;it&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'should exist'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="nx"&gt;expect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;component&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;()).&lt;/span&gt;&lt;span class="nx"&gt;toBe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-        &lt;span class="p"&gt;});&lt;/span&gt;
-        &lt;span class="nx"&gt;it&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'should be uneaten'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="nx"&gt;expect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;component&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;prop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'isEaten'&lt;/span&gt;&lt;span class="p"&gt;)).&lt;/span&gt;&lt;span class="nx"&gt;toBe&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-        &lt;span class="p"&gt;});&lt;/span&gt;
-    &lt;span class="p"&gt;}));&lt;/span&gt;
-
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;story&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      Magni aut quam aperiam voluptatem et voluptates necessitatibus quo molestiae tempore omnis et velit. error ratione sint quia qui atque dolores qui. accusantium occaecati ullam occaecati dolores laudantium maiores velit. sed occaecati ut est
-    &lt;/p&gt;&lt;p&gt;
-      Vitae voluptas tempora aliquid omnis ab delectus recusandae est dolor. dolores autem et doloribus sed et doloremque esse earum dolorum voluptas maiores repellat. quod quisquam molestiae temporibus id. sed vel officiis mollitia ut modi qui laborum exercitationem ratione est aliquid
-    &lt;/p&gt;&lt;p&gt;
-      Voluptas recusandae amet accusantium. modi nesciunt repudiandae aspernatur nostrum ea sed et illum. dolorem enim qui rerum repellat. quia nostrum quis consequuntur facere eum. voluptate id excepturi reprehenderit molestiae officiis officiis veniam nihil exercitationem amet animi animi. qui qui ut officiis consectetur corporis
-    &lt;/p&gt;&lt;p&gt;
-      Eum et ut reiciendis quod aut deserunt omnis unde dolores. quia doloribus est velit libero ducimus quidem quam ipsam omnis ipsam alias et. qui laborum id dolorem quis ut ratione a sit repudiandae aspernatur voluptatem rem. delectus molestias minima accusantium quod laborum sed
-    &lt;/p&gt;
-      &lt;blockquote&gt;
-        &lt;p&gt;
-      Perhaps the Government will realise now that we mean to fight to the bitter end … If men use explosives and bombs for their own purpose they call it war, and the throwing of a bomb that destroys other people is then described as a glorious and heroic deed. Why should a woman not make use of the same weapons as men. It is not only war we have declared. We are fighting for a revolution. &amp;mdash;Christabel Pankhurst
-    &lt;/p&gt;
-        &lt;cite&gt;
-          
-        &lt;/cite&gt;
-      &lt;/blockquote&gt;
-    &lt;p&gt;
-      Tenetur soluta veritatis quia. non qui sit labore perspiciatis illum similique ut est nisi. sequi quos ipsa quas eos perferendis suscipit eaque tenetur velit temporibus possimus. laudantium soluta quaerat minima hic et ipsam omnis. consequatur blanditiis ratione molestias quasi
-    &lt;/p&gt;&lt;p&gt;
-      Occaecati quasi tempora voluptatem est commodi at id recusandae facere quia commodi autem. expedita eos voluptatum quia quia dolor repellendus dignissimos voluptates quas cupiditate doloribus quas. est dolores corrupti occaecati
-    &lt;/p&gt;&lt;p&gt;
-      Velit veritatis officiis labore et perferendis. delectus dolores amet excepturi debitis cupiditate est et hic expedita expedita possimus. incidunt non rerum dolores autem dolore quasi aliquid sed nemo nobis voluptatem. pariatur delectus adipisci harum similique doloribus laborum tenetur sed. non assumenda excepturi doloremque qui dolores
-    &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Voluptas id aut numquam quibusdam minima fugit&lt;/li&gt;
-&lt;li&gt;Suscipit ipsum occaecati ut aut molestiae blanditiis exercitationem sunt&lt;/li&gt;
-&lt;li&gt;Quis est et dignissimos cupiditate dolore&lt;/li&gt;
-&lt;li&gt;Iusto nobis optio inventore ea sapiente&lt;/li&gt;
-&lt;li&gt;Laborum magni doloremque quia id ut odit&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;
-      Et ut aut qui ullam nisi nihil mollitia iure. adipisci alias nihil vero aliquid et eum quo qui. fugit tenetur nihil ut at consequatur est qui quia eius totam ut consectetur nobis
-    &lt;/p&gt;&lt;p&gt;
-      Explicabo dolor doloribus voluptas fugiat. excepturi sed quidem facere. vel ullam minus cumque aut facilis culpa perferendis dolorem voluptatibus qui magnam id ut
-    &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Incidunt eaque deserunt rerum excepturi tenetur&lt;/li&gt;
-&lt;li&gt;Voluptas ut expedita at recusandae eos maiores illo quo et&lt;/li&gt;
-&lt;li&gt;Ea est et fuga et debitis corporis illo optio recusandae inventore qui quidem&lt;/li&gt;
-&lt;li&gt;Excepturi modi tempora repellat molestiae&lt;/li&gt;
-&lt;li&gt;Asperiores culpa voluptate qui&lt;/li&gt;
-&lt;li&gt;Aliquam aliquid eum velit&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-  </entry>
-  <entry>
-    <title>this is a medium-length article</title>
-    <link rel="alternate" href="https://vgpena.github.io/medium/"/>
-    <id>https://vgpena.github.io/medium/</id>
-    <published>2017-02-09T05:14:00-08:00</published>
-    <updated>2017-02-16T07:48:47-08:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <content type="html">&lt;p&gt;
-      Asperiores distinctio natus odio deserunt voluptas dolor delectus aut maxime. nesciunt explicabo aut velit aut laborum. hic fugiat consequatur voluptas. odio officia ab consectetur illum rerum
-    &lt;/p&gt;&lt;p&gt;
-      Dolor hic numquam saepe quia est enim blanditiis sequi. maxime vero et quia omnis cupiditate molestiae. error quam nihil et quibusdam. quis adipisci asperiores ipsa modi
-    &lt;/p&gt;&lt;p&gt;
-      Incidunt laudantium optio repudiandae est similique. aperiam veniam consequatur voluptas ipsum dolorem et fuga. quia soluta rem eos doloribus quisquam dolores assumenda modi. eum est inventore sit. sapiente temporibus neque rerum voluptatem necessitatibus minima officiis inventore voluptatum rerum recusandae aut. quaerat impedit occaecati ratione molestiae distinctio est error exercitationem eum placeat sunt itaque necessitatibus qui. occaecati minus quis officia quod tempora labore animi omnis excepturi minus illo veniam
-    &lt;/p&gt;&lt;p&gt;
-      Dolor iure qui adipisci quia vero ut in ea voluptate expedita ullam praesentium adipisci cumque. non amet accusamus praesentium et. ut itaque voluptas accusamus reiciendis ut dolorem molestias voluptas molestiae officiis nihil magni. sint eius rem fugiat quis aliquam nihil fuga aut non. et aut atque repellendus voluptatibus blanditiis mollitia qui consequatur est
-    &lt;/p&gt;&lt;p&gt;
-      Necessitatibus fugit a officiis ullam sit ut qui ea fuga. ea hic rem quod incidunt a atque et consequatur maiores voluptatem. excepturi autem accusantium qui repudiandae. culpa ipsa fugit et eius velit non quae non sit ad commodi et velit. reprehenderit qui expedita molestias quam iste earum exercitationem sunt ut. facilis perspiciatis quia unde voluptate distinctio doloremque quod. voluptatem quia aspernatur quam voluptates explicabo voluptatibus nihil sed id
-    &lt;/p&gt;&lt;h2 class='section-title' id=here39s-a-new-section&gt;&lt;a href='#here39s-a-new-section' class='section-inner'&gt;Here&amp;#39;s a new section&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      Enim voluptas consectetur nostrum earum quaerat omnis assumenda aliquid ut est eos. esse recusandae autem dolores in deleniti. accusantium et quasi quia commodi reprehenderit. est ut assumenda tenetur minima eum velit. voluptas quasi ut maiores sed dolores animi nemo
-    &lt;/p&gt;&lt;p&gt;
-      Aliquam qui dignissimos doloremque non eius repellat quos. tenetur blanditiis ea expedita eum nemo. voluptatem illo atque sunt consectetur et et molestiae animi et. esse ut ullam nulla quia est vel natus odit sequi ut
-    &lt;/p&gt;&lt;p&gt;
-      Aut quidem enim porro optio deserunt dolore eos. reiciendis alias ad consequatur. aut sequi magnam et itaque qui mollitia nesciunt et aut tenetur labore. incidunt tempore mollitia explicabo eaque voluptatem nihil vitae sit ut quibusdam quis ipsam quo. minus velit temporibus quisquam reprehenderit similique sunt rerum voluptate delectus nam aspernatur in. veniam ea voluptatum quia sequi similique in molestias
-    &lt;/p&gt;&lt;p&gt;
-      Voluptatem non molestias sint quia rerum odio cum dolor at. quia deleniti enim voluptatibus excepturi qui accusamus praesentium. eos eligendi aliquam quae quia quia sequi omnis et quo fuga cumque. labore quaerat dicta rerum distinctio sit eum in quia. aliquam atque tempore et maxime molestias dolor quibusdam quo aut repellendus velit laudantium harum
-    &lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Short</title>
-    <link rel="alternate" href="https://vgpena.github.io/short/"/>
-    <id>https://vgpena.github.io/short/</id>
-    <published>2017-02-09T05:13:00-08:00</published>
-    <updated>2017-02-16T07:48:52-08:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <content type="html">&lt;p&gt;
-      Cumque animi eaque aperiam quos omnis nihil. Nisi id accusantium et optio autem eum nisi magni et recusandae. Aliquid eius nostrum laborum perferendis cum libero error harum dolor porro aut non dolor facilis. Vitae placeat vero qui delectus perspiciatis aut non voluptatum optio. Quo ea voluptates praesentium culpa nulla suscipit qui quo quo voluptatibus. Ducimus consequatur quasi possimus atque numquam voluptatem sint. Eius et ducimus nemo repellat enim. Repudiandae totam delectus nisi consequatur consequatur ut vel vitae facilis in vero error consectetur non
     &lt;/p&gt;</content>
   </entry>
 </feed>
