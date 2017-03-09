@@ -1,20 +1,20 @@
 ---
 title: Blogging with Middleman, Pt. 1
 subtitle: Creation and customization
-date: 2017-02-20 09:19 PST
+date: 2017-03-08 06:29 PST
 ---
 
-??? INTRO PARAGRAPH LOL
+Side projects are a chance for me to experiment with tools that fall out of the scope of my (amazing) day job. This blog represents my first foray into using [Middleman](https://middlemanapp.com) for blogging. Here are the first steps you should take when setting up a Middleman blog of your own.
 
-Okay, so why Middleman?
+To begin with, why am I using Middleman? I knew I wanted a static site. I started off with no clear deploy strategy in mind, and I wanted something so simple that I could just SFTP it to my Linode server and forget about it. [Static React](http://jxnblk.com/writing/posts/static-site-generation-with-react-and-webpack/) was out; as much as I like React and as cool as this setup sounds, I missed writing [publication-style, semantic markup](/creating-once). Once I'd figured out that was what I wanted, it was a choice between Middleman and [Jekyll](https://jekyllrb.com/). I've used both before and had good experiences with each. I went with Middleman because even though I'd used it before, I hadn't experimented with its blogging functionality.
 
-I knew I wanted a static site. I started off with no clear deploy strategy in mind, and I wanted something so simple that I could just SFTP it to my Linode server and forget about it. [Static React](http://jxnblk.com/writing/posts/static-site-generation-with-react-and-webpack/) was out; as much as I like React and as cool as this setup sounds, I missed writing [publication-style, semantic markup](/creating-once). Once I'd figured out that was what I wanted, it was a choice between Middleman and [Jekyll](https://jekyllrb.com/). I've used both before and had good experiences with each. I went with Middleman because while I knew it was great for blogging, the only time I'd used it had been to make a very unbloglike site, and I wanted to try it out in a more intended manner.
+As I dug deeper into Middleman, I discovered cool aspects of it that hadn't been immediately obvious. I'm having a lot of fun with it and completely recommend it to anyone else looking to start up a blog.
 
 ## Setting the stage: rvm
 
-Middleman is Ruby-based, so one of the first things I did was install [Ruby Version Manager](https://rvm.io/), or rvm, which lets you install and switch between multiple version of Ruby. This means that a project doesn't necessarily depend on what you've got installed anywhere else -- an upgrade to your system Ruby, or to Project A, won't affect Project B. Keeping dependencies local and specific has done wonders for my stress levels.
+Middleman is Ruby-based, so one of the first things I did was install [Ruby Version Manager](https://rvm.io/), or rvm, which lets you install and switch between multiple versions of Ruby. This means that a project doesn't necessarily depend on what you've got installed anywhere else -- an upgrade to your system Ruby, or to Project A, won't affect Project B. Keeping dependencies local and specific has done wonders for my stress levels.
 
-Once you've got rvm installed (I used the cURL command provided), you can install new versions with `rvm install <versionNumber>`. `rvm list` shows you what you've already got installed, and switching Ruby versions is `rvm use <versionNumber>`. As of writing, the minimum version of Ruby required for up-to-date Middleman is 2.2.2.
+Once you've got rvm installed (I used the cURL command from the above link), you can install new versions with `rvm install <versionNumber>`. `rvm list` shows you what you've already got installed, and switching Ruby versions is `rvm use <versionNumber>`. As of writing, the minimum version of Ruby required for up-to-date Middleman is 2.2.2.
 
 ## Creating a blog
 
@@ -30,13 +30,13 @@ Before writing any articles, manually set your publishing time zone. `middleman-
 
 (Also, if you hold off on setting your time zone and you only do it after you've written some articles, you will get cryptic errors about dates in frontmatter "not matching" and you will have to switch any articles with UTC timestamps in their frontmatter to bear your local timestamp. I will talk more about frontmatter later.)
 
-You already have `tzinfo-data` installed (you can see it listed in your `Gemfile`), so go into your `config.rb` and add the lines:
+You already have `tzinfo-data` installed (you can see it listed in your `Gemfile`), so go straight into your `config.rb` and add the lines:
 
 ```ruby
 require 'tzinfo'
 Time.zone = 'US/Pacific'
 ```
-And it will now be used whenever your create a new article. You can find your time zone on [this list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+And this time zone will now be used whenever you create a new article. You can find your time zone on [this list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
 ## Customizing YAML frontmatter
 
@@ -115,11 +115,11 @@ The last thing I recommend in this step is editing (or at least being aware of) 
 ```
 Any files generated via `middleman article` will have this extension. You can change it to the equivalent but less verbose `".md"`, or to something else entirely (I'm using `".md.erb"`, for reasons I will cover later).
 
-Remember to comment in this line to see changes ✌🏻
+Remember to comment this line in to see changes ✌🏻
 
 ## Pretty URLs, please!
 
-Click into any of your articles and you will see that your URL ends in `.html`. Extensions in URLs is *not* best-practice web development, as it makes the URL harder to understand and means that changing frameworks (like if, for some reason, you switched from Middleman to .NET) could result in broken links. Pretty URLs give your users more stable, memorable addresses and help keep the inner workings of your site under the hood.
+Click into any of your articles and you will see that your URL ends in `.html`. Extensions in URLs is *not* best-practice web development, as it makes the URL harder to understand and means that changing frameworks (like, for whatever reason, switching from Middleman to .NET) could result in broken links. Pretty URLs give your users more stable, memorable addresses and help keep the inner workings of your site under the hood.
 
 Middleman, like most devtools, ships with a way to implement pretty URLs. In the blog block, add the line:
 
@@ -146,7 +146,7 @@ You can now refer to files in that dir from your templates (in my case, `.erb` f
 
 Let's start off by creating `/sources/styles/main.css.scss`.
 
-Multiple extensions may seem mysterious, but that's actually the crux of Middleman's power. Middleman lets you mix and match any parsers you want, and parses a file right-to-left according to its extensions. So `file.css.scss` means "this file will end up as CSS, but parse it as SCSS first". In the above section about generating articles, I mentioned that I set up my articles to generate as `.md.erb` (the output files actually have the extension `.html.md.erb`.) This tells Middleman to parse them first as ERB (which lets me include fancy partials), then as Markdown (which gives me a simple, widespread writing syntax), and that the end result is HTML.
+Multiple extensions may seem mysterious, but that's actually the crux of Middleman's power. Middleman lets you mix and match any parsers you want, and parses a file right-to-left according to its extensions. So `file.css.scss` means "this file will end up as CSS, but parse it as SCSS first". In the above section about generating articles, I mentioned that I changed the blog entry extension from the default `.html.markdown` to `.html.md.erb`. This tells Middleman to parse entries first as ERB (which lets me include fancy partials), then as Markdown, and that the end result is HTML.
 
 Put some basic SCSS in your `main.css.scss` file:
 
