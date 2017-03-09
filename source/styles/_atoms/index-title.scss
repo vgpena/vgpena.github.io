@@ -13,7 +13,6 @@
     font-family: $fancy;
     color: $light;
     z-index: -1;
-    position: absolute;
     bottom: 4rem;
     left: -0.5rem;
     line-height: 1rem;
@@ -33,6 +32,7 @@
 
   .index-list-item:not(:first-child) & {
     font-size: scale(1.5rem);
+    padding-top: scale(1em);
     @include at-least($index-article-title-break) {
       font-size: scale(2rem);
     }
