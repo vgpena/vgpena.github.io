@@ -26,9 +26,11 @@ This stubbed-out blog is a great start, but you probably want to do some customi
 
 ## Setting your time zone
 
-Before writing any articles, manually set your publishing time zone. If you don't set your time zone, articles are generated with UTC datestamps, which is not recommended with regards to accurate publishing order in your RSS feed. Your blog will be famous and have thousands of subscribers! They deserve accurate timestamps. (Also, if you hold off on this and only set your time zone after creating articles, you will get cryptic errors about dates in frontmatter "not matching" and you will have to switch any articles with UTC timestamps in their frontmatter to bear your local timestamp. I will talk more about frontmatter later.)
+Before writing any articles, manually set your publishing time zone. `middleman-blog` ships with a nifty RSS feed generator, but publication times default to UTC, which probably isn't your local time. So let's take a sec right now and make sure your hordes of subscribers get accurate readings of when you publish.
 
-You already have `tzinfo-data` installed (it will be listed in your `Gemfile`), so go into your `config.rb` and add the lines:
+(Also, if you hold off on setting your time zone and you only do it after you've written some articles, you will get cryptic errors about dates in frontmatter "not matching" and you will have to switch any articles with UTC timestamps in their frontmatter to bear your local timestamp. I will talk more about frontmatter later.)
+
+You already have `tzinfo-data` installed (you can see it listed in your `Gemfile`), so go into your `config.rb` and add the lines:
 
 ```ruby
 require 'tzinfo'
@@ -117,7 +119,7 @@ Remember to comment in this line to see changes ✌🏻
 
 ## Pretty URLs, please!
 
-Click into any of your articles and you will see that your URL ends in `.html`. Extensions in URLs is *not* best-practice web development, as it makes the URL less semantic and means that changing frameworks (like if, for some reason, you switched from Middleman to .NET) could result in scores of broken links. Pretty URLs give your users more stable, memorable addresses and help keep the inner workings of your site under the hood.
+Click into any of your articles and you will see that your URL ends in `.html`. Extensions in URLs is *not* best-practice web development, as it makes the URL harder to understand and means that changing frameworks (like if, for some reason, you switched from Middleman to .NET) could result in broken links. Pretty URLs give your users more stable, memorable addresses and help keep the inner workings of your site under the hood.
 
 Middleman, like most devtools, ships with a way to implement pretty URLs. In the blog block, add the line:
 
@@ -135,16 +137,16 @@ For example, I did this to [my 404 page](/404.html) so that [Github Pages](https
 
 ## Writing and using SCSS
 
-Middleman comes equipped to transpile [SCSS](http://sass-lang.com/), my not-CSS of choice. Start by adding a line to the blog block of your config file:
+Luckily for me, Middleman comes equipped to transpile [SCSS](http://sass-lang.com/). By default, CSS-related files are looked for in the `/stylesheets` folder. If you want to customize this directory, you can do so by adding this line to your `config.rb`:
 
 ```ruby
   config[:css_dir] = 'styles'
 ```
-And create a folder at `/source/styles`. Now you can refer to any files in that folder from your templates (in my case, `.erb` files) using the `stylesheet_link_tag` variable.
+You can now refer to files in that dir from your templates (in my case, `.erb` files) using the `stylesheet_link_tag` variable.
 
 Let's start off by creating `/sources/styles/main.css.scss`.
 
-Multiple extensions may seem mysterious, but that's actually the crux of Middleman's power. Middleman lets you mix and match any parsers you want, and parses a file right-to-left according to its extensions. So `file.css.scss` means "this file will end up as CSS, but parse it as SCSS first". In the above section about generating articles, I mentioned that I set up my articles to generate as `.md.erb`, which actually becomes `.html.md.erb`. This tells Middleman to parse them first as ERB (which lets me include fancy partials), then as Markdown (which gives me a simple, widespread writing syntax), and that the end result is HTML.
+Multiple extensions may seem mysterious, but that's actually the crux of Middleman's power. Middleman lets you mix and match any parsers you want, and parses a file right-to-left according to its extensions. So `file.css.scss` means "this file will end up as CSS, but parse it as SCSS first". In the above section about generating articles, I mentioned that I set up my articles to generate as `.md.erb` (the output files actually have the extension `.html.md.erb`.) This tells Middleman to parse them first as ERB (which lets me include fancy partials), then as Markdown (which gives me a simple, widespread writing syntax), and that the end result is HTML.
 
 Put some basic SCSS in your `main.css.scss` file:
 
