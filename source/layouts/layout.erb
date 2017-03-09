@@ -10,7 +10,6 @@
     <title><% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %> | <% end %>hey it's violet</title>
     <%= stylesheet_link_tag :styles, :media => "screen" %>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" />
-    <%= favicon_tag 'fav4.png' %>
   </head>
   <body<% if current_page.url == '/' %> id="home"<% end %>>
     <%= partial(:"layouts/partials/header", :locals => { :type => current_page.data.type }) %>
