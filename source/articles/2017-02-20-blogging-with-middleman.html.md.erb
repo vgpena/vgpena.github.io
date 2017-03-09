@@ -1,0 +1,167 @@
+---
+title: Blogging with Middleman, Pt. 1
+subtitle: Creation and customization
+date: 2017-02-20 09:19 PST
+---
+
+??? INTRO PARAGRAPH LOL
+
+Okay, so why Middleman?
+
+I knew I wanted a static site. I started off with no clear deploy strategy in mind, and I wanted something so simple that I could just SFTP it to my Linode server and forget about it. [Static React](http://jxnblk.com/writing/posts/static-site-generation-with-react-and-webpack/) was out; as much as I like React and as cool as this setup sounds, I missed writing [publication-style, semantic markup](/creating-once). Once I'd figured out that was what I wanted, it was a choice between Middleman and [Jekyll](https://jekyllrb.com/). I've used both before and had good experiences with each. I went with Middleman because while I knew it was great for blogging, the only time I'd used it had been to make a very unbloglike site, and I wanted to try it out in a more intended manner.
+
+## Setting the stage: rvm
+
+Middleman is Ruby-based, so one of the first things I did was install [Ruby Version Manager](https://rvm.io/), or rvm, which lets you install and switch between multiple version of Ruby. This means that a project doesn't necessarily depend on what you've got installed anywhere else -- an upgrade to your system Ruby, or to Project A, won't affect Project B. Keeping dependencies local and specific has done wonders for my stress levels.
+
+Once you've got rvm installed (I used the cURL command provided), you can install new versions with `rvm install <versionNumber>`. `rvm list` shows you what you've already got installed, and switching Ruby versions is `rvm use <versionNumber>`. As of writing, the minimum version of Ruby required for up-to-date Middleman is 2.2.2.
+
+## Creating a blog
+
+To create a blog, follow the first instruction in [the MM docs](https://middlemanapp.com/basics/install/), and run `gem install middleman`. The next step -- actually setting up the project -- should be blog-specific. Instead of just `middleman init`, run `middleman init --template=blog`.
+
+At this point, you have the framework of a basic Middleman blog in place. Run `middleman server` and then go to `localhost:4567` to see what's been generated.
+
+This stubbed-out blog is a great start, but you probably want to do some customization before you get publishing. Following are some of the first things I recommend doing, in the recommended order.
+
+## Setting your time zone
+
+Before writing any articles, manually set your publishing time zone. If you don't set your time zone, articles are generated with UTC datestamps, which is not recommended with regards to accurate publishing order in your RSS feed. Your blog will be famous and have thousands of subscribers! They deserve accurate timestamps. (Also, if you hold off on this and only set your time zone after creating articles, you will get cryptic errors about dates in frontmatter "not matching" and you will have to switch any articles with UTC timestamps in their frontmatter to bear your local timestamp. I will talk more about frontmatter later.)
+
+You already have `tzinfo-data` installed (it will be listed in your `Gemfile`), so go into your `config.rb` and add the lines:
+
+```ruby
+require 'tzinfo'
+Time.zone = 'US/Pacific'
+```
+And it will now be used whenever your create a new article. You can find your time zone on [this list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+
+## Customizing YAML frontmatter
+
+Now you can safely create your first article (!!) from the command line (!!) with `middleman article <articleName>`. A file called `articleName.html.md` will be created in your `source` dir, looking something like
+
+```yaml
+---
+title: foo
+date: 2017-02-20 10:42 PST
+tags:
+---
+```
+This is [YAML](https://en.wikipedia.org/wiki/YAML) frontmatter, which provides per-article metadata.
+
+You may not want this exact frontmatter. For example, I wasn't interested in tags, but I *did* want my articles to have subtitles. In this case, you can write your own article template.
+
+Find the place in your `config.rb` that looks like this (I will be calling it the "blog block"):
+
+```ruby
+activate :blog do |blog|
+  # This will add a prefix to all links, template references and source paths
+  # blog.prefix = "blog"
+
+  # blog.permalink = "{year}/{month}/{day}/{title}.html"
+  # Matcher for blog source files
+  # blog.sources = "{year}-{month}-{day}-{title}.html"
+  # blog.taglink = "tags/{tag}.html"
+  # blog.layout = "layout"
+  # blog.summary_separator = /(READMORE)/
+  # blog.summary_length = 250
+  # blog.year_link = "{year}.html"
+  # blog.month_link = "{year}/{month}.html"
+  # blog.day_link = "{year}/{month}/{day}.html"
+  # blog.default_extension = ".markdown"
+
+  blog.tag_template = "tag.html"
+  blog.calendar_template = "calendar.html"
+
+  # Enable pagination
+  # blog.paginate = true
+  # blog.per_page = 10
+  # blog.page_link = "page/{num}"
+end
+```
+and somewhere in there, put the line
+
+```ruby
+  blog.new_article_template = File.expand_path('../source/template.yml', __FILE__)
+```
+and create a file in `/source` called `template.yml` with the contents:
+
+```yaml
+---
+title: <%%= @title %>
+subtitle:
+date: <%%= @date.strftime('%F %R %Z') %>
+---
+```
+Now if you run `middleman article <articleName>` again, your generated file will have contents like this:
+
+```yaml
+---
+title: foo
+subtitle:
+date: 2017-02-20 11:08 PST
+---
+```
+`title`, `subtitle`, and `date` will be available as variables to use in blog structuring and templating.
+
+----------------
+
+The last thing I recommend in this step is editing (or at least being aware of) this line in the blog block of your config file:
+
+```ruby
+# blog.default_extension = ".markdown"
+```
+Any files generated via `middleman article` will have this extension. You can change it to the equivalent but less verbose `".md"`, or to something else entirely (I'm using `".md.erb"`, for reasons I will cover later).
+
+Remember to comment in this line to see changes ✌🏻
+
+## Pretty URLs, please!
+
+Click into any of your articles and you will see that your URL ends in `.html`. Extensions in URLs is *not* best-practice web development, as it makes the URL less semantic and means that changing frameworks (like if, for some reason, you switched from Middleman to .NET) could result in scores of broken links. Pretty URLs give your users more stable, memorable addresses and help keep the inner workings of your site under the hood.
+
+Middleman, like most devtools, ships with a way to implement pretty URLs. In the blog block, add the line:
+
+```ruby
+  activate :directory_indexes
+```
+and you're set! From your index page, click through to an article, and you will see that the URL now ends in a `/` instead of `.html`.
+
+If there are any pages that you *don't* want this done to, register that page in your config, in the "Per-page layout changes" section, like so:
+
+```ruby
+page '/<page>.html', :directory_index => false
+```
+For example, I did this to [my 404 page](/404.html) so that [Github Pages](https://pages.github.com/) would pick it up correctly (I will talk about GH Pages more in an upcoming post).
+
+## Writing and using SCSS
+
+Middleman comes equipped to transpile [SCSS](http://sass-lang.com/), my not-CSS of choice. Start by adding a line to the blog block of your config file:
+
+```ruby
+  config[:css_dir] = 'styles'
+```
+And create a folder at `/source/styles`. Now you can refer to any files in that folder from your templates (in my case, `.erb` files) using the `stylesheet_link_tag` variable.
+
+Let's start off by creating `/sources/styles/main.css.scss`.
+
+Multiple extensions may seem mysterious, but that's actually the crux of Middleman's power. Middleman lets you mix and match any parsers you want, and parses a file right-to-left according to its extensions. So `file.css.scss` means "this file will end up as CSS, but parse it as SCSS first". In the above section about generating articles, I mentioned that I set up my articles to generate as `.md.erb`, which actually becomes `.html.md.erb`. This tells Middleman to parse them first as ERB (which lets me include fancy partials), then as Markdown (which gives me a simple, widespread writing syntax), and that the end result is HTML.
+
+Put some basic SCSS in your `main.css.scss` file:
+
+```scss
+body {
+  font-family: sans-serif;
+}
+```
+and add this line to inside the `<head>` tag of `source/layout.erb`:
+
+```erb
+    <%%= stylesheet_link_tag :main, :media => "screen" %>
+```
+And now your site should look about 20 percent cooler.
+
+---------
+
+I hope this gave you a good jumping-off point to blogging with Middleman! Stay tuned for a post about partials, syntax highlighting, and customizing your Markdown parser.
+
+This is the second post in a series about creating this blog. Read the first post [here](/creating-once).
