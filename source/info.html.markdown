@@ -6,4 +6,4 @@ I'm a Porland-dwelling web developer in love with experimental tech, automated t
 
 ## This site
 
-Built for the <a href="https://a-k-apart.com/">10k Apart Challenge</a> using Middleman, SCSS, and no JS except for Google Analytics. Read more about the process: [the inspiration]('/creating-once'); [setting up a Middleman project]('/blogging-with-middleman').
+Built for the <a href="https://a-k-apart.com/">10k Apart Challenge</a> using Middleman, SCSS, and no JS except for Google Analytics. Read more about the process: [the inspiration](/creating-once); [setting up a Middleman project](/blogging-with-middleman); [creating partials](/partials-are-magic).

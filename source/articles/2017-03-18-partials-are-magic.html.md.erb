@@ -52,7 +52,7 @@ The solution was to create a partial template that could flexibly deliver media 
 })%>
 ```
 
-This `erb` markup is included directly in my post's Markdown; it tells Middleman to look in `/source` for the "media" partial and render it, passing in the provided locals. At `/source/media.erb`, I created a file that looks like this:
+This ERB markup is included directly in my post's Markdown; it tells Middleman to look in `/source` for the "media" partial and render it, passing in the provided locals. At `/source/media.erb`, I created a file that looks like this:
 
 ```erb
 <%% if locals[:caption] %>
@@ -75,11 +75,11 @@ This partial checks for a caption and renders either an `<img>` or a `<figure>` 
 
 ## Using a partial
 
-The last, crucial step to getting a partial to work is to make sure that Middleman knows to how to parse it. By default, Middleman expects to only see Markdown in blog posts; hence the `.markdown` extension of all the files in `/source/articles`. It doesn't yet know that you will also be including `erb`.
+The last, crucial step to getting a partial to work is to make sure that Middleman knows to how to parse it. By default, Middleman expects to only see Markdown in blog posts; hence the `.markdown` extension of all the files in `/source/articles`. It doesn't yet know that you will also be including ERB.
 
-Thanks to Middleman's [super cool extension chaining](/blogging-with-middleman/#writing-and-using-scss), all you have to do to enable `erb` is to make sure you have `.erb` in your file extension *after* the Markdown-related extension. `.markdown.erb` works, as does `.md.erb`.
+Thanks to Middleman's [super cool extension chaining](/blogging-with-middleman/#writing-and-using-scss), all you have to do to enable ERB is to make sure you have `.erb` in your file extension *after* the Markdown-related extension. `.markdown.erb` works, as does `.md.erb`.
 
-This tells Middleman to make one pass of the file and render any `erb` that it finds. At this point, the file is a mix of Markdown and plain HTML. It then makes a second pass and renders any Markdown found; the file is now entirely converted to HTML.
+This tells Middleman to make one pass of the file and render any ERB that it finds. At this point, the file is a mix of Markdown and plain HTML. It then makes a second pass and renders any Markdown found; the file is now entirely converted to HTML.
 
 Set up Middleman to give all new blog posts these extensions by changing this line in your `config.rb`:
 
