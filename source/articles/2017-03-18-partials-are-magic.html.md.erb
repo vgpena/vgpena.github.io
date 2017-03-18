@@ -1,0 +1,104 @@
+---
+title: "Blogging with Middleman: Partials Are Magic"
+subtitle: Cool bloggings, Pt. 2
+date: 2017-03-18 09:42 PDT
+---
+
+Now that you've got your [Middleman blog set up](/blogging-with-middleman), let's use partials to customize your blog posts.
+
+<%= partial(:media, :locals => {
+  :src => 'spongebob.jpg',
+  :title => 'Spongebob doing that rainbow thing',
+  :caption => 'Partials!',
+  :alt => 'Spongebob holds up his hands; a rainbow arches between his palms.',
+  :size => 'primary',
+  :width => '1675px',
+  :height => '1026px',
+})%>
+
+Middleman [Partials](https://middlemanapp.com/basics/partials/) are small templates that can be included in multiple locations. They're great for markup repeated across pages, like header or footer content.
+
+You don't have to be restricted, however, to using partials only in your layouts; you can also use them right in your blog posts. They layer on top of your Markdown to let you create even richer, more flexible content.
+
+## Use Case
+
+While working on this blog, I realized that I wanted display images in four contexts: large or small; and as a freestanding image, or paired with a caption. Size would affect what classes I added to the element; if an image came with caption text, I would wrap the image in a `<figure>` element with an accompanying `<figcaption>`.
+
+Markdown, unfortunately, doesn't provide a way to mark up `<figure>` elements. I would have to write raw HTML, which, like <span style="color:red; font-weight: bold;">this red text</span>, is allowed, but I wanted to avoid doing so. If I change what class names I put on figures, I don't want to have to go back through every post I've made and update markup.
+
+## Creating a partial
+
+<%= partial(:media, :locals => {
+  :src => 'ponies.png',
+  :title => 'The main characters from "My Little Pony: Friendship is Magic"',
+  :caption => 'So magical! This is the rendered output of the sample `partial` code.',
+  :alt => 'The main characters of "My Little Pony: Friendship is Magic" crowd the camera.',
+  :size => 'secondary',
+  :width => '900px',
+  :height => '809px',
+})%>
+
+The solution was to create a partial template that could flexibly deliver media based on values it received. Partials are set up to take in information via a `locals` object, like so:
+
+```erb
+<%%= partial(:media, :locals => {
+  :src => 'ponies.png',
+  :title => 'The main characters from "My Little Pony: Friendship is Magic"',
+  :caption => 'So magical! This is the rendered output of the sample `partial` code.',
+  :alt => 'The main characters of "My Little Pony: Friendship is Magic" crowd the camera.',
+  :size => 'secondary',
+  :width => '900px',
+  :height => '809px',
+})%>
+```
+
+This `erb` markup is included directly in my post's Markdown; it tells Middleman to look in `/source` for the "media" partial and render it, passing in the provided locals. At `/source/media.erb`, I created a file that looks like this:
+
+```erb
+<%% if locals[:caption] %>
+  <figure role="img" class="image-wrap image-<%%= locals[:size] %>">
+<%% else %>
+  <div class="image-wrap image-<%%= locals[:size] %>">
+<%% end %>
+    <%%= image_tag locals[:src], { alt: locals[:alt], title: locals[:title], width: locals[:width] , height: locals[:height] } %>
+<%% if locals[:caption] %>
+  <figcaption>
+    <p><%%= locals[:caption] %></p>
+  </figcaption>
+</figure>
+<%% else %>
+  </div>
+<%% end %>
+```
+
+This partial checks for a caption and renders either an `<img>` or a `<figure>` accordingly. It also gives that element a class based on the size provided.
+
+## Using a partial
+
+The last, crucial step to getting a partial to work is to make sure that Middleman knows to how to parse it. By default, Middleman expects to only see Markdown in blog posts; hence the `.markdown` extension of all the files in `/source/articles`. It doesn't yet know that you will also be including `erb`.
+
+Thanks to Middleman's [super cool extension chaining](/blogging-with-middleman/#writing-and-using-scss), all you have to do to enable `erb` is to make sure you have `.erb` in your file extension *after* the Markdown-related extension. `.markdown.erb` works, as does `.md.erb`.
+
+This tells Middleman to make one pass of the file and render any `erb` that it finds. At this point, the file is a mix of Markdown and plain HTML. It then makes a second pass and renders any Markdown found; the file is now entirely converted to HTML.
+
+Set up Middleman to give all new blog posts these extensions by changing this line in your `config.rb`:
+
+```ruby
+# blog.default_extension = ".markdown"
+```
+
+to something like
+
+```ruby
+blog.default_extension = ".markdown.erb"
+```
+
+This means that all new blog posts created via `middleman article <articleName>` will have that extension and be ready to accept partials.
+
+----------
+
+The final product: a way to render media flexibly and agnostically. Want to handle video files? No problem; just edit the partial. Want to switch from plain `<img>` elements to `<pictures>`? No need to retroactively edit posts; just update the partial.
+
+And that is what I mean by "partials are magic".
+
+*Coming next: custom Markdown rendering and syntax highlighting in code blocks. Read my first Middleman post [here](/blogging-with-middleman/).*
