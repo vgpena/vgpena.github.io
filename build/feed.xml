@@ -5,10 +5,92 @@
   <id>https://vgpena.github.io</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2017-03-08T06:29:00-08:00</updated>
+  <updated>2017-03-21T10:32:00-07:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>Blogging with Middleman: Partials Are Magic</title>
+    <link rel="alternate" href="https://vgpena.github.io/partials-are-magic/"/>
+    <id>https://vgpena.github.io/partials-are-magic/</id>
+    <published>2017-03-21T10:32:00-07:00</published>
+    <updated>2017-03-21T10:31:46-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <content type="html">&lt;p&gt;
+      Now that you&amp;#39;ve got your &lt;a href="/blogging-with-middleman"&gt;Middleman blog set up&lt;/a&gt;, let&amp;#39;s use &lt;a href="https://middlemanapp.com/basics/partials/"&gt;Partials&lt;/a&gt; to customize your posts.
+    &lt;/p&gt;&lt;p&gt;
+        &lt;figure role="img" class="image-wrap image-secondary"&gt;
+    &lt;img src="/images/spongebob.jpg" alt="Spongebob holds up his hands; a rainbow arches between his palms." title="Spongebob doing that rainbow thing" width="1675px" height="1026px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;This image brought to you by Middleman Partials &amp;reg;&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;
+    &lt;/p&gt;&lt;p&gt;
+      Partials are small templates that can be inserted into larger layouts. They&amp;#39;re great for bits of content that you want rendered on multiple pages, like header or footer links.
+    &lt;/p&gt;&lt;p&gt;
+      Moreover, partials can also be brought directly into your blog posts, layering on top of your Markdown to create even richer, more flexible content.
+    &lt;/p&gt;&lt;h2 class='section-title' id=use-case&gt;&lt;a href='#use-case' class='section-inner'&gt;Use Case&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      While working on this blog, I realized that I wanted to display images in four contexts: large or small; and as a freestanding image, or paired with a caption. If an image came with caption text, I wanted to wrap the image in a &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; element with an accompanying &lt;code&gt;&amp;lt;figcaption&amp;gt;&lt;/code&gt;.
+    &lt;/p&gt;&lt;p&gt;
+      Markdown, unfortunately, doesn&amp;#39;t provide a way to mark up &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; elements. It allows raw HTML, such as &lt;span style="color:red; font-weight: bold;"&gt;this red text&lt;/span&gt;, but that wouldn&amp;#39;t have been a sustainable workaround. If the &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; spec changed, I would have to go around and update every post that used it.
+    &lt;/p&gt;&lt;h2 class='section-title' id=creating-a-partial&gt;&lt;a href='#creating-a-partial' class='section-inner'&gt;Creating a partial&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      The solution was to create a partial template that could render media in different contexts. The file itself looks like this:
+    &lt;/p&gt;&lt;pre class="code erb"&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:caption&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;figure&lt;/span&gt; &lt;span class="na"&gt;role=&lt;/span&gt;&lt;span class="s"&gt;"img"&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"image-wrap image-&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:size&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"image-wrap image-&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:size&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;image_tag&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:src&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="ss"&gt;alt: &lt;/span&gt;&lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:alt&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="ss"&gt;title: &lt;/span&gt;&lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:title&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="ss"&gt;width: &lt;/span&gt;&lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:width&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;height: &lt;/span&gt;&lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:height&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:caption&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;figcaption&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;p&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:caption&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/figcaption&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/figure&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      The partial checks the &lt;code&gt;locals&lt;/code&gt; I pass in for a caption and renders a different element accordingly. &lt;code&gt;locals&lt;/code&gt; values also provide the path and other attributes of the image, and determine what styling the element will receive.
+    &lt;/p&gt;&lt;p&gt;
+      I include this partial by writing the following straight in my Markdown:
+    &lt;/p&gt;&lt;p&gt;
+        &lt;div class="image-wrap image-secondary"&gt;
+    &lt;img src="/images/ponies.png" alt="The main characters of &amp;quot;My Little Pony: Friendship is Magic&amp;quot; crowd the camera." title="The main characters from &amp;quot;My Little Pony: Friendship is Magic&amp;quot;" width="900px" height="809px" /&gt;
+  &lt;/div&gt;
+    &lt;/p&gt;&lt;pre class="code erb"&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:media&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:locals&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="ss"&gt;:src&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'ponies.png'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;:title&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'The main characters from "My Little Pony: Friendship is Magic"'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;:alt&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'The main characters of "My Little Pony: Friendship is Magic" crowd the camera.'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;:size&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'secondary'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;:width&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'900px'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;:height&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'809px'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      This ERB tells Middleman to find the &amp;quot;media&amp;quot; partial and pass in the &lt;code&gt;locals&lt;/code&gt; specified. Partials are located relative to &lt;code&gt;/source&lt;/code&gt;, so this particular partial is found at &lt;code&gt;/source/media.erb&lt;/code&gt;.
+    &lt;/p&gt;&lt;h2 class='section-title' id=using-a-partial&gt;&lt;a href='#using-a-partial' class='section-inner'&gt;Using a partial&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      Finally, we need to tell Middleman that it will be seeing ERB in our posts. By default, Middleman only expects Markdown in blog posts; hence the &lt;code&gt;.markdown&lt;/code&gt; extension of all the files in &lt;code&gt;/source/articles&lt;/code&gt;. It can&amp;#39;t yet parse ERB.
+    &lt;/p&gt;&lt;p&gt;
+      Thanks to Middleman&amp;#39;s &lt;a href="/blogging-with-middleman/#writing-and-using-scss"&gt;super cool extension chaining&lt;/a&gt;, add an &lt;code&gt;.erb&lt;/code&gt; to the end of your post&amp;#39;s extension, and you&amp;#39;re done! &lt;code&gt;.markdown.erb&lt;/code&gt; works, as does &lt;code&gt;.md.erb&lt;/code&gt;, or any set of extensions where the ERB-related extension comes after the Markdown-related one.
+    &lt;/p&gt;&lt;p&gt;
+      These extensions tell Middleman to make one pass of the file and render any ERB that it finds. It then makes a second pass and renders any Markdown found; the file is now entirely converted to HTML.
+    &lt;/p&gt;&lt;p&gt;
+      Give all new blog posts these extensions by changing this line in your &lt;code&gt;config.rb&lt;/code&gt;:
+    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# blog.default_extension = ".markdown"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      to something like
+    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;default_extension&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;".markdown.erb"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+      This means that all new blog posts created via &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt; will have that extension and be ready to accept partials.
+    &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;
+      I hope you are ~&lt;strong&gt;fully&lt;/strong&gt;~ convinced of the power of partials. I may revisit them again when I change my media partials from using &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; to &lt;code&gt;&amp;lt;picture&amp;gt;&lt;/code&gt;, which will be a journey in its own right.
+    &lt;/p&gt;&lt;p&gt;
+      &lt;em&gt;Coming next: custom Markdown rendering and syntax highlighting in code blocks. Read my first Middleman post &lt;a href="/blogging-with-middleman/"&gt;here&lt;/a&gt;.&lt;/em&gt;
+    &lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Blogging with Middleman, Pt. 1</title>
     <link rel="alternate" href="https://vgpena.github.io/blogging-with-middleman/"/>
