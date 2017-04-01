@@ -2,7 +2,7 @@
 title: "FYI"
 ---
 
-I'm a Porland-dwelling web developer in love with experimental tech, automated testing, and accessibility. I make super cool things at <a href="http://instrument.com">Instrument</a>. When I'm not ordering electrons around, I'm rock climbing, running, reading, and hiking. I still can't figure out how to win Civ 6 with a religious or military focus.
+I'm a Portland-dwelling web developer in love with experimental tech, automated testing, and accessibility. I make super cool things at <a href="https://instrument.com">Instrument</a>. When I'm not shepherding electrons around, I'm rock climbing, running, reading, and hiking. I still can't figure out how to win Civ 6 without a science focus.
 
 ## This site
 
