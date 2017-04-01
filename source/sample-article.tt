@@ -1,5 +1,7 @@
 ---
 title: <%= @title %>
 subtitle: <%= @subtitle %>
+summary: <%= @summary %>
+hero: <%= @hero %>
 date: <%= @date.strftime('%F %R %Z') %>
 ---
