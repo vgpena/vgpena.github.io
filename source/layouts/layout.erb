@@ -5,11 +5,11 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vgpena.github.io<%= current_page.url %>">
-    <meta property="og:title" content="<% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %> | <% end %>hey it's violet">
+    <meta property="og:title" content="<% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %><% else %>hey it's violet<% end %>">
     <meta property="og:description" content="<% if current_page.data.subtitle %><%= current_page.data.subtitle %><% else %>Life &amp; web development in Portland, OR.<% end %>"
 
     <meta name="twitter:domain" value="vgpena.github.io">
-    <meta property="twitter:title" content="<% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %> | <% end %>hey it's violet">
+    <meta property="twitter:title" content="<% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %><% else %>hey it's violet<% end %>">
     <meta property="twitter:description" content="<% if current_page.data.subtitle %><%= current_page.data.subtitle %><% else %>Life &amp; web development in Portland, OR.<% end %>"
     <meta property="twitter:url" content="https://vgpena.github.io<%= current_page.url %>">
 
