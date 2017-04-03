@@ -1,5 +1,5 @@
 figure {
-  margin: 0;
+  margin: 0 0 2rem 0;
   max-width: $max-content-width;
   box-sizing: border-box;
   @include at-least($secondary-media-break) {
