@@ -64,7 +64,7 @@ We decided to base our bots off of specific subreddits' comments from December 2
 
 ## Creating a Training Corpus
 
-When I want to generate langugage, I immediately think of [Markov chains](https://en.wikipedia.org/wiki/Markov_chain). Also known as Markov models, these are processes that let us use statistics collected about an input to probabilistically generate an output.
+When I want to generate language, I immediately think of [Markov chains](https://en.wikipedia.org/wiki/Markov_chain). Also known as Markov models, these are processes that let us use statistics collected about an input to probabilistically generate an output.
 
 You can create a Markov chain by going through a body of text ("training corpus") and counting how many times each word occurs, and for each word, what words follow it and how often. You create a profile of the text: how often can you expect a particular word to come up, and what other words you expect to follow it? You end up with a formula for creating utterances "in the style" of your training corpus.
 
@@ -133,7 +133,7 @@ The last stage of the project was cleanup -- on the frontend, finessing assets a
 
 So far we had been generating utterances apropos of nothing, probabilistically picking a starting word from a bot's corpus and building the rest of the utterance from there. Our goal, though, was to make the bots' texting feel like a conversation, which meant relating their utterances somehow. One way to do this is to relate utterances to predetermined "topics" and pick appropriate responses filed under that same topic. Steve had looked into achieving this with [AIML](http://www.alicebot.org/aiml.html), a markup language for chatbots, earlier on in the weekend. That approach, however, required a smaller, more manually-determined set of utterances than what we had on hand.
 
-We decided it would be enought to get the bots to use the same word across utterances, even if we couldn't guarantee a match between their utterances' actual themes.
+We decided it would be enough to get the bots to use the same word across utterances, even if we couldn't guarantee a match between their utterances' actual themes.
 
 We started tracking every utterance in the conversation, ranking the words in an utterance from least- to most-used, assuming that the most common words ("a", "the", "I") are the least important to establishing a theme and that more unique words ("Iraq", "congress", "emails") are more indicative of an utterance's theme. When generating a new utterance, we would pick its starting word by trying to find one of the more "interesting" words from the previous utterance in the current bot's corpus. Some words were only known by certain bots, but more often than not, the desired word was known by both bots, albeit with different connotations.
 
