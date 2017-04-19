@@ -5,10 +5,39 @@
   <id>https://vgpena.github.io</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2017-04-02T22:26:00-07:00</updated>
+  <updated>2017-04-18T20:14:00-07:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>Fixing Jest Memory Usage on CircleCI</title>
+    <link rel="alternate" href="https://vgpena.github.io/jest-circleci/"/>
+    <id>https://vgpena.github.io/jest-circleci/</id>
+    <published>2017-04-18T20:14:00-07:00</published>
+    <updated>2017-04-18T20:15:48-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <content type="html">&lt;p&gt;
+      If you&amp;#39;re running out of memory or your tests are hanging when you run Jest tests on CircleCI, try running &lt;code&gt;jest &amp;mdash;maxWorkers=2&lt;/code&gt; instead of just &lt;code&gt;jest&lt;/code&gt;.
+    &lt;/p&gt;&lt;h2 class='section-title' id=why&gt;&lt;a href='#why' class='section-inner'&gt;Why?&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
+      On my current project, we&amp;#39;re using &lt;a href="https://facebook.github.io/jest/"&gt;Jest&lt;/a&gt; and &lt;a href="https://github.com/airbnb/enzyme"&gt;Enzyme&lt;/a&gt; to create unit tests which we run as a step in our &lt;a href="https://circleci.com/"&gt;CircleCI&lt;/a&gt; build process. Every time a PR is opened on &lt;a href="https://github.com"&gt;GitHub&lt;/a&gt;, CircleCI rebuilds the project, runs the tests, and lets us know if that PR&amp;#39;s code is stable.
+    &lt;/p&gt;&lt;p&gt;
+      About 400 tests in, however, an issue emerged &amp;mdash; all tests would pass locally, but the CircleCI build would fail. The CircleCI logs made it clear, though, that no tests were explicitly failing. Something was making the build hang at the test step, it would time out, and the box would consider that build failed.
+    &lt;/p&gt;&lt;p&gt;
+      We realized that the issue might lie with how Jest spawns child processes. Although test output appears linear, the tests by default run in parallel, using up to as many workers as there are cores on the machine. Maybe Jest was spinning off the wrong number of workers and this was causing memory problems on our CI box.
+    &lt;/p&gt;&lt;p&gt;
+      The first thing I tried was running &lt;code&gt;jest &amp;mdash;runInBand&lt;/code&gt;, which makes Jest run all tests in the same process (&lt;a href="https://facebook.github.io/jest/docs/cli.html"&gt;more info on Jest CLI options&lt;/a&gt;). This turned out not to play well with things that need a headless DOM rendered via &lt;a href="https://github.com/tmpvar/jsdom"&gt;JSDOM&lt;/a&gt;. We use &lt;a href="https://github.com/Khan/aphrodite/"&gt;Aphrodite&lt;/a&gt; for styling, and &lt;code&gt;runInBand&lt;/code&gt; seemed to prevent this DOM from being rendered, which meant Aphrodite couldn&amp;#39;t find any elements to attach itself to.
+    &lt;/p&gt;&lt;p&gt;
+      Next, I tried &lt;code&gt;jest &amp;mdash;maxWorkers=1&lt;/code&gt;, but this seems to do the same thing as &lt;code&gt;runInBand&lt;/code&gt;, and I got the same result. &lt;code&gt;&amp;mdash;maxWorkers=2&lt;/code&gt;, however, let the JSDOM render &lt;em&gt;and&lt;/em&gt; all the tests run. I put this change in our &lt;a href="https://circleci.com/docs/1.0/configuration/"&gt;Circle config file&lt;/a&gt; and the subsequent PR was the first one that built properly in over a week.
+    &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;
+      Since then, our CircleCI builds have been stable. Tests take about 46 seconds to run on our CI box now, compared to 9 seconds locally, where we don&amp;#39;t need to limit workers.
+    &lt;/p&gt;&lt;p&gt;
+      Thanks for reading this far! Now go out there, write tests, and integrate without fear.
+    &lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Turning Subreddits Into Chatbots</title>
     <link rel="alternate" href="https://vgpena.github.io/chatbots/"/>
