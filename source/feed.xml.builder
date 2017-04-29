@@ -18,6 +18,7 @@ xml.rss version: '2.0',
   blog.articles[0..5].each do |article|
     xml.entry do
       xml.title article.title
+      xml.tag!('webfeeds:cover', image: URI.join(site_url, 'images/', article.metadata[:page][:hero] || 'default.png'))
       xml.link "rel" => "alternate", "href" => URI.join(site_url, article.url)
       xml.id URI.join(site_url, article.url)
       xml.published article.date.to_time.iso8601
@@ -25,7 +26,6 @@ xml.rss version: '2.0',
       xml.author { xml.name "Violet Peña" }
       xml.summary article.metadata[:page][:summary], "type" => "html"
       xml.content article.body, "type" => "html"
-      xml.tag!('webfeeds:cover', image: URI.join(site_url, 'images/', article.metadata[:page][:hero] || 'default.png'))
     end
   end
 end
