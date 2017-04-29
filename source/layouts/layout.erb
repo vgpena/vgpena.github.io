@@ -2,21 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://vgpena.github.io<%= current_page.url %>">
-    <meta property="og:title" content="<% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %><% else %>hey it's violet<% end %>">
-    <meta property="og:description" content="<% if current_page.data.summary %><%= current_page.data.summary %><% elsif current_page.data.subtitle %><%= current_page.data.subtitle %><% else %>Life &amp; web development in Portland, OR.<% end %>">
-    <meta property="og:image" content="https://vgpena.github.io/images/<% if current_page.data.hero %><%= current_page.data.hero %><% else %>default.png<% end %>">
-
-    <meta name="twitter:domain" value="vgpena.github.io">
-    <meta property="twitter:title" content="<% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %><% else %>hey it's violet<% end %>">
-    <meta property="twitter:description" ontent="<% if current_page.data.summary %><%= current_page.data.summary %><% elsif current_page.data.subtitle %><%= current_page.data.subtitle %><% else %>Life &amp; web development in Portland, OR.<% end %>">
-    <meta property="twitter:url" content="https://vgpena.github.io<%= current_page.url %>">
-    <meta property="twitter:image" content="https://vgpena.github.io/images/<% if current_page.data.hero %><%= current_page.data.hero %><% else %>default.png<% end %>">
-
-
-    <meta name="author" content="Violet Peña">
+    <%= partial(:"layouts/partials/meta") %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
       window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -26,7 +12,6 @@
     <script async src='https://www.google-analytics.com/analytics.js'></script>
     <title><% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %> | <% end %>hey it's violet</title>
     <%= stylesheet_link_tag :styles, :media => "screen" %>
-
   </head>
   <body<% if current_page.url == '/' %> id="home"<% end %>>
     <%= partial(:"layouts/partials/header", :locals => { :type => current_page.data.type }) %>

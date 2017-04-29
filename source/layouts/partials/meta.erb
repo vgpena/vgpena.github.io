@@ -1,0 +1,17 @@
+<link rel="alternate" type="application/atom+xml" href="https://vgpena.github.io/feed.xml" title="Like, subscribe, &amp; download my mixtape" />
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vgpena.github.io<%= current_page.url %>">
+<meta property="og:title" content="<% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %><% else %>hey it's violet<% end %>">
+<meta property="og:description" content="<% if current_page.data.summary %><%= current_page.data.summary %><% elsif current_page.data.subtitle %><%= current_page.data.subtitle %><% else %>Life &amp; web development in Portland, OR.<% end %>">
+<meta property="og:image" content="https://vgpena.github.io/images/<% if current_page.data.hero %><%= current_page.data.hero %><% else %>default.png<% end %>">
+
+<meta name="twitter:domain" value="vgpena.github.io">
+<meta property="twitter:title" content="<% if current_page.data.title && current_page.url != '/' %><%= current_page.data.title %><% else %>hey it's violet<% end %>">
+<meta property="twitter:description" ontent="<% if current_page.data.summary %><%= current_page.data.summary %><% elsif current_page.data.subtitle %><%= current_page.data.subtitle %><% else %>Life &amp; web development in Portland, OR.<% end %>">
+<meta property="twitter:url" content="https://vgpena.github.io<%= current_page.url %>">
+<meta property="twitter:image" content="https://vgpena.github.io/images/<% if current_page.data.hero %><%= current_page.data.hero %><% else %>default.png<% end %>">
+
+
+<meta name="author" content="Violet Peña">
+<meta name="description" content="<% if current_page.data.summary %><%= current_page.data.summary %><% elsif current_page.data.subtitle %><%= current_page.data.subtitle %><% else %>Life &amp; web development in Portland, OR.<% end %>">
