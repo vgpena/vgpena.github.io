@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0">
   <title>hey it's violet</title>
   <subtitle>developer &amp; human in the PNW</subtitle>
   <id>https://vgpena.github.io</id>
@@ -9,8 +9,13 @@
   <author>
     <name>Violet Peña</name>
   </author>
+  <image>https://vgpena.github.io/images/default.png</image>
+  <webfeeds:cover image="https://vgpena.github.io/images/default.png"/>
+  <webfeeds:icon image="https://vgpena.github.io/images/icon.svg"/>
+  <webfeeds:accentColor>2710F2</webfeeds:accentColor>
   <entry>
     <title>Fixing Jest Memory Usage on CircleCI</title>
+    <webfeeds:cover image="https://vgpena.github.io/images/memberberries.png"/>
     <link rel="alternate" href="https://vgpena.github.io/jest-circleci/"/>
     <id>https://vgpena.github.io/jest-circleci/</id>
     <published>2017-04-18T20:14:00-07:00</published>
@@ -18,6 +23,7 @@
     <author>
       <name>Violet Peña</name>
     </author>
+    <summary type="html">Our CircleCI builds stopped working; the fix was to limit the number of workers Jest could use.</summary>
     <content type="html">&lt;p&gt;
       If you&amp;#39;re running out of memory or your tests are hanging when you run Jest tests on CircleCI, try running &lt;code&gt;jest &amp;mdash;maxWorkers=2&lt;/code&gt; instead of just &lt;code&gt;jest&lt;/code&gt;.
     &lt;/p&gt;&lt;h2 class='section-title' id=why&gt;&lt;a href='#why' class='section-inner'&gt;Why?&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
@@ -40,6 +46,7 @@
   </entry>
   <entry>
     <title>Turning Subreddits Into Chatbots</title>
+    <webfeeds:cover image="https://vgpena.github.io/images/ahd/show2.jpg"/>
     <link rel="alternate" href="https://vgpena.github.io/chatbots/"/>
     <id>https://vgpena.github.io/chatbots/</id>
     <published>2017-04-02T22:26:00-07:00</published>
@@ -47,6 +54,7 @@
     <author>
       <name>Violet Peña</name>
     </author>
+    <summary type="html">We were given two days and the theme of 'echo chamber'. We used subreddits to create chatbots and had them converse.</summary>
     <content type="html">&lt;p&gt;
       This past weekend, I attended &lt;a href="http://www.arthackday.net/events/echo-chamber"&gt;Art Hack Day: Echo Chamber&lt;/a&gt;. On Friday evening, the participants introduced ourselves and shared ideas; by Sunday evening, I had, as part of a group, created and exhibited Reddit-powered chatbots. It was an amazing, exhilarating weekend and I came out of it tired but more inspired than I thought possible.
     &lt;/p&gt;&lt;h2 class='section-title' id=art-hack-the-planet&gt;&lt;a href='#art-hack-the-planet' class='section-inner'&gt;(Art) Hack the Planet&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
@@ -215,6 +223,7 @@
   </entry>
   <entry>
     <title>Blogging with Middleman: Partials Are Magic</title>
+    <webfeeds:cover image="https://vgpena.github.io/images/spongebob.jpg"/>
     <link rel="alternate" href="https://vgpena.github.io/partials-are-magic/"/>
     <id>https://vgpena.github.io/partials-are-magic/</id>
     <published>2017-03-21T10:32:00-07:00</published>
@@ -222,6 +231,7 @@
     <author>
       <name>Violet Peña</name>
     </author>
+    <summary type="html">While making this blog, I realized I wanted a flexible way to handle media and captions. The solution: to create Middleman partials. I walk through what partials are, how and when you should use them, and how to make them, using code that is live on this blog.</summary>
     <content type="html">&lt;p&gt;
       Now that you&amp;#39;ve got your &lt;a href="/blogging-with-middleman"&gt;Middleman blog set up&lt;/a&gt;, let&amp;#39;s use &lt;a href="https://middlemanapp.com/basics/partials/"&gt;Partials&lt;/a&gt; to customize your posts.
     &lt;/p&gt;&lt;p&gt;
@@ -297,6 +307,7 @@
   </entry>
   <entry>
     <title>Blogging with Middleman, Pt. 1</title>
+    <webfeeds:cover image="https://vgpena.github.io/images/default.png"/>
     <link rel="alternate" href="https://vgpena.github.io/blogging-with-middleman/"/>
     <id>https://vgpena.github.io/blogging-with-middleman/</id>
     <published>2017-03-08T06:29:00-08:00</published>
@@ -304,6 +315,7 @@
     <author>
       <name>Violet Peña</name>
     </author>
+    <summary type="html">Getting started can be the hardest part of a project. Here are some steps to get you started blogging with Middleman, a Ruby-based static site generator.</summary>
     <content type="html">&lt;p&gt;
       Side projects are a chance for me to experiment with tools that fall out of the scope of my (amazing) day job. This blog represents my first foray into using &lt;a href="https://middlemanapp.com"&gt;Middleman&lt;/a&gt; for blogging. Here are the first steps you should take when setting up a Middleman blog of your own.
     &lt;/p&gt;&lt;p&gt;
@@ -436,6 +448,7 @@
   </entry>
   <entry>
     <title>Creating Once</title>
+    <webfeeds:cover image="https://vgpena.github.io/images/default.png"/>
     <link rel="alternate" href="https://vgpena.github.io/creating-once/"/>
     <id>https://vgpena.github.io/creating-once/</id>
     <published>2017-02-16T06:33:00-08:00</published>
@@ -443,6 +456,7 @@
     <author>
       <name>Violet Peña</name>
     </author>
+    <summary type="html">The internet is designed to be an accessible, egalitatian platform for publishers and participants. Though I love working with installations, my passion for the open web is never going away. I talk about Create Once, Publish Everywhere and why I started this blog.</summary>
     <content type="html">&lt;p&gt;
       Over the past two years, of the twelve or so projects I&amp;#39;ve worked on, exactly one has been a website. The rest have been interactive installations, kiosks, and artworks. While I love this kind of work, I sometimes miss what attracted me to web development in the first place.
     &lt;/p&gt;&lt;p&gt;
@@ -463,4 +477,4 @@
       Happy reading!
     &lt;/p&gt;</content>
   </entry>
-</feed>
+</rss>
