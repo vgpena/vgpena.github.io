@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0">
   <title>hey it's violet</title>
-  <description>developer &amp; human in the PNW</description>
+  <subtitle>developer &amp; human in the PNW</subtitle>
+  <id>https://vgpena.github.io</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
   <updated>2017-04-30T14:30:00-07:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
-  <image>https://vgpena.github.io/images/default.png</image>
-  <language>en-US</language>
   <webfeeds:cover image="https://vgpena.github.io/images/default.png"/>
   <webfeeds:logo>https://vgpena.github.io/images/icon.svg</webfeeds:logo>
   <webfeeds:accentColor>2710F2</webfeeds:accentColor>
