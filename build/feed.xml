@@ -24,25 +24,24 @@
       <name>Violet Peña</name>
     </author>
     <summary type="html">Our CircleCI builds stopped working; the fix was to limit the number of workers Jest could use.</summary>
-    <content type="html">&lt;p&gt;
-      If you&amp;#39;re running out of memory or your tests are hanging when you run Jest tests on CircleCI, try running &lt;code&gt;jest &amp;mdash;maxWorkers=2&lt;/code&gt; instead of just &lt;code&gt;jest&lt;/code&gt;.
-    &lt;/p&gt;&lt;h2 class='section-title' id=why&gt;&lt;a href='#why' class='section-inner'&gt;Why?&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      On my current project, we&amp;#39;re using &lt;a href="https://facebook.github.io/jest/"&gt;Jest&lt;/a&gt; and &lt;a href="https://github.com/airbnb/enzyme"&gt;Enzyme&lt;/a&gt; to create unit tests which we run as a step in our &lt;a href="https://circleci.com/"&gt;CircleCI&lt;/a&gt; build process. Every time a PR is opened on &lt;a href="https://github.com"&gt;GitHub&lt;/a&gt;, CircleCI rebuilds the project, runs the tests, and lets us know if that PR&amp;#39;s code is stable.
-    &lt;/p&gt;&lt;p&gt;
-      About 400 tests in, however, an issue emerged &amp;mdash; all tests would pass locally, but the CircleCI build would fail. The CircleCI logs made it clear, though, that no tests were explicitly failing. Something was making the build hang at the test step, it would time out, and the box would consider that build failed.
-    &lt;/p&gt;&lt;p&gt;
-      We realized that the issue might lie with how Jest spawns child processes. Although test output appears linear, the tests by default run in parallel, using up to as many workers as there are cores on the machine. Maybe Jest was spinning off the wrong number of workers and this was causing memory problems on our CI box.
-    &lt;/p&gt;&lt;p&gt;
-      The first thing I tried was running &lt;code&gt;jest &amp;mdash;runInBand&lt;/code&gt;, which makes Jest run all tests in the same process (&lt;a href="https://facebook.github.io/jest/docs/cli.html"&gt;more info on Jest CLI options&lt;/a&gt;). This turned out not to play well with things that need a headless DOM rendered via &lt;a href="https://github.com/tmpvar/jsdom"&gt;JSDOM&lt;/a&gt;. We use &lt;a href="https://github.com/Khan/aphrodite/"&gt;Aphrodite&lt;/a&gt; for styling, and &lt;code&gt;runInBand&lt;/code&gt; seemed to prevent this DOM from being rendered, which meant Aphrodite couldn&amp;#39;t find any elements to attach itself to.
-    &lt;/p&gt;&lt;p&gt;
-      Next, I tried &lt;code&gt;jest &amp;mdash;maxWorkers=1&lt;/code&gt;, but this seems to do the same thing as &lt;code&gt;runInBand&lt;/code&gt;, and I got the same result. &lt;code&gt;&amp;mdash;maxWorkers=2&lt;/code&gt;, however, let the JSDOM render &lt;em&gt;and&lt;/em&gt; all the tests run. I put this change in our &lt;a href="https://circleci.com/docs/1.0/configuration/"&gt;Circle config file&lt;/a&gt; and the subsequent PR was the first one that built properly in over a week.
-    &lt;/p&gt;
+    <content type="html">&lt;p&gt;If you&amp;#39;re running out of memory or your tests are hanging when you run Jest tests on CircleCI, try running &lt;code&gt;jest --maxWorkers=2&lt;/code&gt; instead of just &lt;code&gt;jest&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 class='section-title' id=why&gt;&lt;a href='#why' class='section-inner'&gt;Why?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;On my current project, we&amp;#39;re using &lt;a href="https://facebook.github.io/jest/"&gt;Jest&lt;/a&gt; and &lt;a href="https://github.com/airbnb/enzyme"&gt;Enzyme&lt;/a&gt; to create unit tests which we run as a step in our &lt;a href="https://circleci.com/"&gt;CircleCI&lt;/a&gt; build process. Every time a PR is opened on &lt;a href="https://github.com"&gt;GitHub&lt;/a&gt;, CircleCI rebuilds the project, runs the tests, and lets us know if that PR&amp;#39;s code is stable.&lt;/p&gt;
+
+&lt;p&gt;About 400 tests in, however, an issue emerged -- all tests would pass locally, but the CircleCI build would fail. The CircleCI logs made it clear, though, that no tests were explicitly failing. Something was making the build hang at the test step, it would time out, and the box would consider that build failed.&lt;/p&gt;
+
+&lt;p&gt;We realized that the issue might lie with how Jest spawns child processes. Although test output appears linear, the tests by default run in parallel, using up to as many workers as there are cores on the machine. Maybe Jest was spinning off the wrong number of workers and this was causing memory problems on our CI box.&lt;/p&gt;
+
+&lt;p&gt;The first thing I tried was running &lt;code&gt;jest --runInBand&lt;/code&gt;, which makes Jest run all tests in the same process (&lt;a href="https://facebook.github.io/jest/docs/cli.html"&gt;more info on Jest CLI options&lt;/a&gt;). This turned out not to play well with things that need a headless DOM rendered via &lt;a href="https://github.com/tmpvar/jsdom"&gt;JSDOM&lt;/a&gt;. We use &lt;a href="https://github.com/Khan/aphrodite/"&gt;Aphrodite&lt;/a&gt; for styling, and &lt;code&gt;runInBand&lt;/code&gt; seemed to prevent this DOM from being rendered, which meant Aphrodite couldn&amp;#39;t find any elements to attach itself to.&lt;/p&gt;
+
+&lt;p&gt;Next, I tried &lt;code&gt;jest --maxWorkers=1&lt;/code&gt;, but this seems to do the same thing as &lt;code&gt;runInBand&lt;/code&gt;, and I got the same result. &lt;code&gt;--maxWorkers=2&lt;/code&gt;, however, let the JSDOM render &lt;em&gt;and&lt;/em&gt; all the tests run. I put this change in our &lt;a href="https://circleci.com/docs/1.0/configuration/"&gt;Circle config file&lt;/a&gt; and the subsequent PR was the first one that built properly in over a week.&lt;/p&gt;
+
 &lt;hr&gt;
-&lt;p&gt;
-      Since then, our CircleCI builds have been stable. Tests take about 46 seconds to run on our CI box now, compared to 9 seconds locally, where we don&amp;#39;t need to limit workers.
-    &lt;/p&gt;&lt;p&gt;
-      Thanks for reading this far! Now go out there, write tests, and integrate without fear.
-    &lt;/p&gt;</content>
+
+&lt;p&gt;Since then, our CircleCI builds have been stable. Tests take about 46 seconds to run on our CI box now, compared to 9 seconds locally, where we don&amp;#39;t need to limit workers.&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading this far! Now go out there, write tests, and integrate without fear.&lt;/p&gt;
+</content>
   </entry>
   <entry>
     <title>Turning Subreddits Into Chatbots</title>
@@ -55,59 +54,58 @@
       <name>Violet Peña</name>
     </author>
     <summary type="html">We were given two days and the theme of 'echo chamber'. We used subreddits to create chatbots and had them converse.</summary>
-    <content type="html">&lt;p&gt;
-      This past weekend, I attended &lt;a href="http://www.arthackday.net/events/echo-chamber"&gt;Art Hack Day: Echo Chamber&lt;/a&gt;. On Friday evening, the participants introduced ourselves and shared ideas; by Sunday evening, I had, as part of a group, created and exhibited Reddit-powered chatbots. It was an amazing, exhilarating weekend and I came out of it tired but more inspired than I thought possible.
-    &lt;/p&gt;&lt;h2 class='section-title' id=art-hack-the-planet&gt;&lt;a href='#art-hack-the-planet' class='section-inner'&gt;(Art) Hack the Planet&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-        &lt;figure role="img" class="image-wrap image-secondary"&gt;
+    <content type="html">&lt;p&gt;This past weekend, I attended &lt;a href="http://www.arthackday.net/events/echo-chamber"&gt;Art Hack Day: Echo Chamber&lt;/a&gt;. On Friday evening, the participants introduced ourselves and shared ideas; by Sunday evening, I had, as part of a group, created and exhibited Reddit-powered chatbots. It was an amazing, exhilarating weekend and I came out of it tired but more inspired than I thought possible.&lt;/p&gt;
+&lt;h2 class='section-title' id=art-hack-the-planet&gt;&lt;a href='#art-hack-the-planet' class='section-inner'&gt;(Art) Hack the Planet&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
     &lt;img src="/images/ahd/pnca.jpg" alt="A photo of a blocky, light grey building. The letters &amp;quot;PNCA&amp;quot; run up its side." title="The PNCA building in downtown Portland" width="500px" height="667px" /&gt;
   &lt;figcaption&gt;
-    &lt;p&gt;PNCA &amp;mdash; my home for the weekend. &lt;a href="http://gabesimagination.com/"&gt;credit&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;PNCA -- my home for the weekend. &lt;a href="http://gabesimagination.com/"&gt;credit&lt;/a&gt;&lt;/p&gt;
   &lt;/figcaption&gt;
-&lt;/figure&gt;
-    &lt;/p&gt;&lt;p&gt;
-      &lt;a href="http://www.arthackday.net/"&gt;Art Hack Day&lt;/a&gt; (AHD) is a series of events that brings together tecchies and artists. Participants divide into ad hoc groups, work on art projects for a day and a half, and then the weekend culminates in an art show. This time around, we were in the uber-beautiful &lt;a href="http://pnca.edu/"&gt;PNCA&lt;/a&gt; and sponsored in part by their interdisciplinary &lt;a href="http://pnca.edu/makethinkcode"&gt;Make+Think+Code&lt;/a&gt;.
-    &lt;/p&gt;&lt;p&gt;
-      Part of what&amp;#39;s lovely about AHD is that, as the name implies, they go out of their way to create a balance between art and tech. This isn&amp;#39;t a hack day to make an app or redesign a website; it&amp;#39;s a time to collaborate with people of different skill sets, push your boundaries, and create something interesting but not necessarily useful.
-    &lt;/p&gt;&lt;h2 class='section-title' id=do-you-want-to-build-a-chatbot&gt;&lt;a href='#do-you-want-to-build-a-chatbot' class='section-inner'&gt;Do You Want to Build a Chatbot?&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      The theme of this AHD was &amp;quot;Echo Chamber&amp;quot;, particularly with an eye towards the internet and social media, which easily become echo chambers that do little more than affirm our already-held beliefs. This creative prompt got me thinking about chatbots, which I&amp;#39;ve been into since I was introduced to &lt;a href="https://en.wikipedia.org/wiki/SmarterChild"&gt;SmarterChild&lt;/a&gt; in middle school.
-    &lt;/p&gt;&lt;p&gt;
-        &lt;figure role="img" class="image-wrap image-secondary"&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.arthackday.net/"&gt;Art Hack Day&lt;/a&gt; (AHD) is a series of events that brings together tecchies and artists. Participants divide into ad hoc groups, work on art projects for a day and a half, and then the weekend culminates in an art show. This time around, we were in the uber-beautiful &lt;a href="http://pnca.edu/"&gt;PNCA&lt;/a&gt; and sponsored in part by their interdisciplinary &lt;a href="http://pnca.edu/makethinkcode"&gt;Make+Think+Code&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Part of what&amp;#39;s lovely about AHD is that, as the name implies, they go out of their way to create a balance between art and tech. This isn&amp;#39;t a hack day to make an app or redesign a website; it&amp;#39;s a time to collaborate with people of different skill sets, push your boundaries, and create something interesting but not necessarily useful.&lt;/p&gt;
+&lt;h2 class='section-title' id=do-you-want-to-build-a-chatbot&gt;&lt;a href='#do-you-want-to-build-a-chatbot' class='section-inner'&gt;Do You Want to Build a Chatbot?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The theme of this AHD was &amp;quot;Echo Chamber&amp;quot;, particularly with an eye towards the internet and social media, which easily become echo chambers that do little more than affirm our already-held beliefs. This creative prompt got me thinking about chatbots, which I&amp;#39;ve been into since I was introduced to &lt;a href="https://en.wikipedia.org/wiki/SmarterChild"&gt;SmarterChild&lt;/a&gt; in middle school.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
     &lt;img src="/images/ahd/smarterchild.jpg" alt="A screengrab of an old AIM conversation with SmarterChild." title="A screengrab of a typically awful conversation with SmarterChild" width="242px" height="386px" /&gt;
   &lt;figcaption&gt;
     &lt;p&gt;A typical interaction with SmarterChild. &lt;a href="http://yaleherald.com/bullblog/aim-bots-where-are-they-now/"&gt;source&lt;/a&gt;&lt;/p&gt;
   &lt;/figcaption&gt;
-&lt;/figure&gt;
-    &lt;/p&gt;&lt;p&gt;
-      On Friday evening, as we went around the room and introduced ourselves, a couple others indicated an interest in chatbots &amp;mdash; &lt;a href="https://twitter.com/ginkko"&gt;Alec Arme&lt;/a&gt; and &lt;a href="http://www.poinyent.com/"&gt;Steve August&lt;/a&gt;. We got together and started brainstorming ideas, which ranged from assigning points to bots&amp;#39; arguments and picking a winner, to creating bots that represented different Greek gods. When we left for the night, we knew that:
-    &lt;/p&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;On Friday evening, as we went around the room and introduced ourselves, a couple others indicated an interest in chatbots -- &lt;a href="https://twitter.com/ginkko"&gt;Alec Arme&lt;/a&gt; and &lt;a href="http://www.poinyent.com/"&gt;Steve August&lt;/a&gt;. We got together and started brainstorming ideas, which ranged from assigning points to bots&amp;#39; arguments and picking a winner, to creating bots that represented different Greek gods. When we left for the night, we knew that:&lt;/p&gt;
+
 &lt;ul&gt;
 &lt;li&gt;we wanted to make several bots, not just one;&lt;/li&gt;
 &lt;li&gt;those bots would be trained or given personalities based on different data sources; and&lt;/li&gt;
 &lt;li&gt;we wanted those bots to somehow talk to each other.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;
-      At this point, I should mention that none of us had experience with chatbots, and that none of us had worked together before. We have very different skill sets &amp;mdash; Alec works mostly with VR, Steve specializes in psychology and using tech to create calm, and I do web development and browser-based installations. Whatever our end product would be, we knew it wouldn&amp;#39;t be typical.
-    &lt;/p&gt;&lt;h2 class='section-title' id=enter-bigquery&gt;&lt;a href='#enter-bigquery' class='section-inner'&gt;Enter BigQuery&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      Any bot needs source material, and we had decided that our bots would be trained on internet communities that could be construed as echo chambers. Even before we were sure what the exact training material would be, we knew that we would have to process a &lt;strong&gt;lot&lt;/strong&gt; of data in order to accurately reflect those communities.
-    &lt;/p&gt;&lt;p&gt;
-      When I think &amp;quot;big data&amp;quot;, I think of &lt;a href="https://cloud.google.com/bigquery/"&gt;Google BigQuery&lt;/a&gt;. I hadn&amp;#39;t worked with it before, but I &lt;strong&gt;had&lt;/strong&gt; had the pleasure of working alongside a team creating &lt;a href="http://www.instrument.com/work/google-next-cloud-platform"&gt;a BigQuery-powered trivia game&lt;/a&gt;, so I was already familiar with BigQuery as a service and knew the basics of how to use it.
-    &lt;/p&gt;&lt;p&gt;
-      Essentially, BigQuery is a pay-as-you-go service that lets you run SQL queries over humongous data sets in disgustingly little time. It opens the door to people like me, who want to crunch dozens of gigabytes of data, but don&amp;#39;t have access to powerful machines.
-    &lt;/p&gt;&lt;p&gt;
-      As if this weren&amp;#39;t enough, BigQuery hosts &lt;a href="https://www.reddit.com/r/bigquery/wiki/datasets"&gt;tons of publically available datasets&lt;/a&gt;, so we didn&amp;#39;t have to manually write scrapes of comment sections or format those results to be BigQuery-compatible. (My favorite dataset is this 452GB one of &lt;a href="https://github.com/odota/core/issues/924"&gt;DotA gameplay data&lt;/a&gt;).
-    &lt;/p&gt;
+
+&lt;p&gt;At this point, I should mention that none of us had experience with chatbots, and that none of us had worked together before. We have very different skill sets -- Alec works mostly with VR, Steve specializes in psychology and using tech to create calm, and I do web development and browser-based installations. Whatever our end product would be, we knew it wouldn&amp;#39;t be typical.&lt;/p&gt;
+&lt;h2 class='section-title' id=enter-bigquery&gt;&lt;a href='#enter-bigquery' class='section-inner'&gt;Enter BigQuery&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Any bot needs source material, and we had decided that our bots would be trained on internet communities that could be construed as echo chambers. Even before we were sure what the exact training material would be, we knew that we would have to process a &lt;strong&gt;lot&lt;/strong&gt; of data in order to accurately reflect those communities.&lt;/p&gt;
+
+&lt;p&gt;When I think &amp;quot;big data&amp;quot;, I think of &lt;a href="https://cloud.google.com/bigquery/"&gt;Google BigQuery&lt;/a&gt;. I hadn&amp;#39;t worked with it before, but I &lt;strong&gt;had&lt;/strong&gt; had the pleasure of working alongside a team creating &lt;a href="http://www.instrument.com/work/google-next-cloud-platform"&gt;a BigQuery-powered trivia game&lt;/a&gt;, so I was already familiar with BigQuery as a service and knew the basics of how to use it.&lt;/p&gt;
+
+&lt;p&gt;Essentially, BigQuery is a pay-as-you-go service that lets you run SQL queries over humongous data sets in disgustingly little time. It opens the door to people like me, who want to crunch dozens of gigabytes of data, but don&amp;#39;t have access to powerful machines.&lt;/p&gt;
+
+&lt;p&gt;As if this weren&amp;#39;t enough, BigQuery hosts &lt;a href="https://www.reddit.com/r/bigquery/wiki/datasets"&gt;tons of publically available datasets&lt;/a&gt;, so we didn&amp;#39;t have to manually write scrapes of comment sections or format those results to be BigQuery-compatible. (My favorite dataset is this 452GB one of &lt;a href="https://github.com/odota/core/issues/924"&gt;DotA gameplay data&lt;/a&gt;).&lt;/p&gt;
+
 &lt;hr&gt;
-&lt;p&gt;
-      The dataset that spoke to us the most was the one of &lt;a href="https://bigquery.cloud.google.com/dataset/fh-bigquery:reddit_comments"&gt;all Reddit comments since 2005&lt;/a&gt;. &lt;a href="https://www.reddit.com/"&gt;Reddit&lt;/a&gt;, &amp;quot;the front page of the internet&amp;quot;, is divided into subreddits dedicated to specific hobbies or interests. As such, they can easily become echo chambers where all participants agree with each other and validate each others&amp;#39; beliefs.
-    &lt;/p&gt;&lt;p&gt;
-      We decided to base our bots off of specific subreddits&amp;#39; comments from December 2016 to February 2017 &amp;mdash; a cool 52.9GB of data in all. But how would we turn this data source into usable material for chatbots?
-    &lt;/p&gt;&lt;h2 class='section-title' id=creating-a-training-corpus&gt;&lt;a href='#creating-a-training-corpus' class='section-inner'&gt;Creating a Training Corpus&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      When I want to generate language, I immediately think of &lt;a href="https://en.wikipedia.org/wiki/Markov_chain"&gt;Markov chains&lt;/a&gt;. Also known as Markov models, these are processes that let us use statistics collected about an input to probabilistically generate an output.
-    &lt;/p&gt;&lt;p&gt;
-      You can create a Markov chain by going through a body of text (&amp;quot;training corpus&amp;quot;) and counting how many times each word occurs, and for each word, what words follow it and how often. You create a profile of the text: how often can you expect a particular word to come up, and what other words you expect to follow it? You end up with a formula for creating utterances &amp;quot;in the style&amp;quot; of your training corpus.
-    &lt;/p&gt;&lt;p&gt;
-      To use subreddits as a training corpus, we ran the following SQL query in BigQuery against the aforementioned Reddit comment tables:
-    &lt;/p&gt;&lt;pre class="code sql"&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nextword&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;c&lt;/span&gt;
+
+&lt;p&gt;The dataset that spoke to us the most was the one of &lt;a href="https://bigquery.cloud.google.com/dataset/fh-bigquery:reddit_comments"&gt;all Reddit comments since 2005&lt;/a&gt;. &lt;a href="https://www.reddit.com/"&gt;Reddit&lt;/a&gt;, &amp;quot;the front page of the internet&amp;quot;, is divided into subreddits dedicated to specific hobbies or interests. As such, they can easily become echo chambers where all participants agree with each other and validate each others&amp;#39; beliefs.&lt;/p&gt;
+
+&lt;p&gt;We decided to base our bots off of specific subreddits&amp;#39; comments from December 2016 to February 2017 -- a cool 52.9GB of data in all. But how would we turn this data source into usable material for chatbots?&lt;/p&gt;
+&lt;h2 class='section-title' id=creating-a-training-corpus&gt;&lt;a href='#creating-a-training-corpus' class='section-inner'&gt;Creating a Training Corpus&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;When I want to generate language, I immediately think of &lt;a href="https://en.wikipedia.org/wiki/Markov_chain"&gt;Markov chains&lt;/a&gt;. Also known as Markov models, these are processes that let us use statistics collected about an input to probabilistically generate an output.&lt;/p&gt;
+
+&lt;p&gt;You can create a Markov chain by going through a body of text (&amp;quot;training corpus&amp;quot;) and counting how many times each word occurs, and for each word, what words follow it and how often. You create a profile of the text: how often can you expect a particular word to come up, and what other words you expect to follow it? You end up with a formula for creating utterances &amp;quot;in the style&amp;quot; of your training corpus.&lt;/p&gt;
+
+&lt;p&gt;To use subreddits as a training corpus, we ran the following SQL query in BigQuery against the aforementioned Reddit comment tables:&lt;/p&gt;
+&lt;pre class="code sql"&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nextword&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;c&lt;/span&gt;
 &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
   &lt;span class="k"&gt;SELECT&lt;/span&gt;
     &lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -133,93 +131,92 @@
   &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
   &lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt;
   &lt;span class="k"&gt;c&lt;/span&gt; &lt;span class="k"&gt;DESC&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      This is a modified version of the code provided by &lt;a href="https://twitter.com/felipehoffa"&gt;Felipe Hoffa&lt;/a&gt; on &lt;a href="http://blog.gdeltproject.org/making-ngrams-bigquery-scale/"&gt;the GDELT blog&lt;/a&gt;. It reads in the specified tables (&lt;code&gt;[fh-bigquery:reddit_comments.2017_02]&lt;/code&gt;, etc.) and creates a new table of words, &amp;#39;nextword&amp;#39;s, and the count (&amp;#39;c&amp;#39;) of that combination.
-    &lt;/p&gt;&lt;p&gt;
-      Training corpora were created by swapping out the subreddit we looked for &amp;mdash; &lt;code&gt;WHERE subreddit = &amp;#39;dankmemes&amp;#39;&lt;/code&gt; makes our query only count words in comments that had &lt;code&gt;dankmemes&lt;/code&gt; listed as a subreddit. We cleaned up the data a bit to make processing easier &amp;mdash; words were all lowercased so we wouldn&amp;#39;t have to deal with capitalization, and we stripped out line breaks.
-    &lt;/p&gt;&lt;p&gt;
-      We created nine training corpora this way, based on output tables ranging in size from 513KB to 7.16MB. Tolstoy&amp;#39;s 864-page &lt;em&gt;Anna Karenina&lt;/em&gt;, for comparison, takes up about 1.9MB. We had plenty of data; we were ready to make some bots.
-    &lt;/p&gt;&lt;h2 class='section-title' id=back-to-the-frontend&gt;&lt;a href='#back-to-the-frontend' class='section-inner'&gt;Back to the Frontend&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      While I was getting the data and reworking it into a usable form, Alec and Steve were putting together our project&amp;#39;s frontend. We had decided that we wanted to make something that looked like a chat app, and have our bots appear to text each other as they conversed.
-    &lt;/p&gt;&lt;p&gt;
-      Since the bulk of my work has been web-based, even my installations have leaned heavily on Google Chrome as a frontend. Alec, however, is most experienced developing with &lt;a href="https://unity3d.com/"&gt;Unity&lt;/a&gt;, a game engine used widely for 3D games and Virtual Reality experiences. I associate Unity so tightly with those types of projects that I was astounded when Alec volunteered to make our 2D frontend in Unity. It turns out that Unity can also be a powerful way to make UIs and other 2D products, and that Alec knew a Unity plugin that would let us create a connection between his Unity frontend and my &lt;a href="https://nodejs.org/"&gt;Node.js&lt;/a&gt; backend with WebSockets.
-    &lt;/p&gt;&lt;p&gt;
-      Alec and Steve teamed up on creating a frontend that mimicked an Android texting UI, complete with user avatars pulled from the subreddits&amp;#39; header images. We would randomly choose two bots and have them &amp;quot;converse&amp;quot; with each other. The conversation would go on for around twenty utterances per bot; then we would choose two new bots and start again.
-    &lt;/p&gt;&lt;p&gt;
-        &lt;figure role="img" class="image-wrap image-secondary"&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is a modified version of the code provided by &lt;a href="https://twitter.com/felipehoffa"&gt;Felipe Hoffa&lt;/a&gt; on &lt;a href="http://blog.gdeltproject.org/making-ngrams-bigquery-scale/"&gt;the GDELT blog&lt;/a&gt;. It reads in the specified tables (&lt;code&gt;[fh-bigquery:reddit_comments.2017_02]&lt;/code&gt;, etc.) and creates a new table of words, &amp;#39;nextword&amp;#39;s, and the count (&amp;#39;c&amp;#39;) of that combination.&lt;/p&gt;
+
+&lt;p&gt;Training corpora were created by swapping out the subreddit we looked for -- &lt;code&gt;WHERE subreddit = &amp;#39;dankmemes&amp;#39;&lt;/code&gt; makes our query only count words in comments that had &lt;code&gt;dankmemes&lt;/code&gt; listed as a subreddit. We cleaned up the data a bit to make processing easier -- words were all lowercased so we wouldn&amp;#39;t have to deal with capitalization, and we stripped out line breaks.&lt;/p&gt;
+
+&lt;p&gt;We created nine training corpora this way, based on output tables ranging in size from 513KB to 7.16MB. Tolstoy&amp;#39;s 864-page &lt;em&gt;Anna Karenina&lt;/em&gt;, for comparison, takes up about 1.9MB. We had plenty of data; we were ready to make some bots.&lt;/p&gt;
+&lt;h2 class='section-title' id=back-to-the-frontend&gt;&lt;a href='#back-to-the-frontend' class='section-inner'&gt;Back to the Frontend&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;While I was getting the data and reworking it into a usable form, Alec and Steve were putting together our project&amp;#39;s frontend. We had decided that we wanted to make something that looked like a chat app, and have our bots appear to text each other as they conversed.&lt;/p&gt;
+
+&lt;p&gt;Since the bulk of my work has been web-based, even my installations have leaned heavily on Google Chrome as a frontend. Alec, however, is most experienced developing with &lt;a href="https://unity3d.com/"&gt;Unity&lt;/a&gt;, a game engine used widely for 3D games and Virtual Reality experiences. I associate Unity so tightly with those types of projects that I was astounded when Alec volunteered to make our 2D frontend in Unity. It turns out that Unity can also be a powerful way to make UIs and other 2D products, and that Alec knew a Unity plugin that would let us create a connection between his Unity frontend and my &lt;a href="https://nodejs.org/"&gt;Node.js&lt;/a&gt; backend with WebSockets.&lt;/p&gt;
+
+&lt;p&gt;Alec and Steve teamed up on creating a frontend that mimicked an Android texting UI, complete with user avatars pulled from the subreddits&amp;#39; header images. We would randomly choose two bots and have them &amp;quot;converse&amp;quot; with each other. The conversation would go on for around twenty utterances per bot; then we would choose two new bots and start again.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
     &lt;img src="/images/ahd/test1.jpg" alt="A photo of a laptop screen showing our project. A mocked Android texting UI shows language generated by our bots." title="One of our first tests." width="800px" height="1067px" /&gt;
   &lt;figcaption&gt;
     &lt;p&gt;It&amp;#39;s alive! One of our first tests.&lt;/p&gt;
   &lt;/figcaption&gt;
-&lt;/figure&gt;
-    &lt;/p&gt;&lt;p&gt;
-      The frontend sent, via WebSockets, an event to the backend requesting an utterance from a specific bot. The backend would generate an utterance on the spot and send that text back. The frontend controlled the conversation flow; it would wait to request a new utterance based on how long the previous utterance would take to read.
-    &lt;/p&gt;&lt;p&gt;
-      We set up a router to let our laptops talk to each other via local IPs (the building&amp;#39;s WiFi wasn&amp;#39;t cooperating), and voil&amp;agrave; &amp;mdash; we were able to run our first tests. The actual installation would have the server and frontend on the same computer; we wouldn&amp;#39;t even need an internet connection.
-    &lt;/p&gt;&lt;h2 class='section-title' id=making-bots-chat&gt;&lt;a href='#making-bots-chat' class='section-inner'&gt;Making Bots Chat&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      The last stage of the project was cleanup &amp;mdash; on the frontend, finessing assets and behavior; on the backend, stripping out badly-encoded characters (which appeared as &amp;#65533;) and trying to get the bots to talk to each other.
-    &lt;/p&gt;&lt;p&gt;
-      So far we had been generating utterances apropos of nothing, probabilistically picking a starting word from a bot&amp;#39;s corpus and building the rest of the utterance from there. Our goal, though, was to make the bots&amp;#39; texting feel like a conversation, which meant relating their utterances somehow. One way to do this is to relate utterances to predetermined &amp;quot;topics&amp;quot; and pick appropriate responses filed under that same topic. Steve had looked into achieving this with &lt;a href="http://www.alicebot.org/aiml.html"&gt;AIML&lt;/a&gt;, a markup language for chatbots, earlier on in the weekend. That approach, however, required a smaller, more manually-determined set of utterances than what we had on hand.
-    &lt;/p&gt;&lt;p&gt;
-      We decided it would be enough to get the bots to use the same word across utterances, even if we couldn&amp;#39;t guarantee a match between their utterances&amp;#39; actual themes.
-    &lt;/p&gt;&lt;p&gt;
-      We started tracking every utterance in the conversation, ranking the words in an utterance from least- to most-used, assuming that the most common words (&amp;quot;a&amp;quot;, &amp;quot;the&amp;quot;, &amp;quot;I&amp;quot;) are the least important to establishing a theme and that more unique words (&amp;quot;Iraq&amp;quot;, &amp;quot;congress&amp;quot;, &amp;quot;emails&amp;quot;) are more indicative of an utterance&amp;#39;s theme. When generating a new utterance, we would pick its starting word by trying to find one of the more &amp;quot;interesting&amp;quot; words from the previous utterance in the current bot&amp;#39;s corpus. Some words were only known by certain bots, but more often than not, the desired word was known by both bots, albeit with different connotations.
-    &lt;/p&gt;&lt;p&gt;
-      Here&amp;#39;s a sample exchange between two bots that demonstrates &amp;quot;staying on topic&amp;quot;:
-    &lt;/p&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;The frontend sent, via WebSockets, an event to the backend requesting an utterance from a specific bot. The backend would generate an utterance on the spot and send that text back. The frontend controlled the conversation flow; it would wait to request a new utterance based on how long the previous utterance would take to read.&lt;/p&gt;
+
+&lt;p&gt;We set up a router to let our laptops talk to each other via local IPs (the building&amp;#39;s WiFi wasn&amp;#39;t cooperating), and voil&amp;agrave; -- we were able to run our first tests. The actual installation would have the server and frontend on the same computer; we wouldn&amp;#39;t even need an internet connection.&lt;/p&gt;
+&lt;h2 class='section-title' id=making-bots-chat&gt;&lt;a href='#making-bots-chat' class='section-inner'&gt;Making Bots Chat&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The last stage of the project was cleanup -- on the frontend, finessing assets and behavior; on the backend, stripping out badly-encoded characters (which appeared as &amp;#65533;) and trying to get the bots to talk to each other.&lt;/p&gt;
+
+&lt;p&gt;So far we had been generating utterances apropos of nothing, probabilistically picking a starting word from a bot&amp;#39;s corpus and building the rest of the utterance from there. Our goal, though, was to make the bots&amp;#39; texting feel like a conversation, which meant relating their utterances somehow. One way to do this is to relate utterances to predetermined &amp;quot;topics&amp;quot; and pick appropriate responses filed under that same topic. Steve had looked into achieving this with &lt;a href="http://www.alicebot.org/aiml.html"&gt;AIML&lt;/a&gt;, a markup language for chatbots, earlier on in the weekend. That approach, however, required a smaller, more manually-determined set of utterances than what we had on hand.&lt;/p&gt;
+
+&lt;p&gt;We decided it would be enough to get the bots to use the same word across utterances, even if we couldn&amp;#39;t guarantee a match between their utterances&amp;#39; actual themes.&lt;/p&gt;
+
+&lt;p&gt;We started tracking every utterance in the conversation, ranking the words in an utterance from least- to most-used, assuming that the most common words (&amp;quot;a&amp;quot;, &amp;quot;the&amp;quot;, &amp;quot;I&amp;quot;) are the least important to establishing a theme and that more unique words (&amp;quot;Iraq&amp;quot;, &amp;quot;congress&amp;quot;, &amp;quot;emails&amp;quot;) are more indicative of an utterance&amp;#39;s theme. When generating a new utterance, we would pick its starting word by trying to find one of the more &amp;quot;interesting&amp;quot; words from the previous utterance in the current bot&amp;#39;s corpus. Some words were only known by certain bots, but more often than not, the desired word was known by both bots, albeit with different connotations.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#39;s a sample exchange between two bots that demonstrates &amp;quot;staying on topic&amp;quot;:&lt;/p&gt;
+
       &lt;blockquote&gt;
-        &lt;p&gt;
-      &lt;strong&gt;dankmemes&lt;/strong&gt;: rights die.
-    &lt;/p&gt;&lt;p&gt;
-      &lt;strong&gt;The_Donald&lt;/strong&gt;: die.
-    &lt;/p&gt;&lt;p&gt;
-      &lt;strong&gt;dankmemes&lt;/strong&gt;: what yeah, dank [deleted] dank great?
-    &lt;/p&gt;&lt;p&gt;
-      &lt;strong&gt;The_Donald&lt;/strong&gt;: yeah, oh the third was woman drones. is officials.
-    &lt;/p&gt;&lt;p&gt;
-      &lt;strong&gt;dankmemes&lt;/strong&gt;: yeah, you bot, eating questions re-submit harder being ^^/r/ayylmao2dongerbot thrusting regret a the in actually methinks. basking that get brethren, this more to words.
-    &lt;/p&gt;&lt;p&gt;
-      &lt;strong&gt;The_Donald&lt;/strong&gt;: yeah, oh so.. don&amp;#39;t hate what that wtf!!!
-    &lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;dankmemes&lt;/strong&gt;: rights die.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The_Donald&lt;/strong&gt;: die.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;dankmemes&lt;/strong&gt;: what yeah, dank [deleted] dank great?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The_Donald&lt;/strong&gt;: yeah, oh the third was woman drones. is officials.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;dankmemes&lt;/strong&gt;: yeah, you bot, eating questions re-submit harder being ^^/r/ayylmao2dongerbot thrusting regret a the in actually methinks. basking that get brethren, this more to words.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The_Donald&lt;/strong&gt;: yeah, oh so.. don&amp;#39;t hate what that wtf!!!&lt;/p&gt;
+
         &lt;cite&gt;
           
         &lt;/cite&gt;
       &lt;/blockquote&gt;
-    &lt;h2 class='section-title' id=opening-night&gt;&lt;a href='#opening-night' class='section-inner'&gt;Opening Night&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      AHD culminated in an art show taking over the ground floor and mezzanine of PNCA. Every group installed its project and set it up to be on display for several hours that night.
-    &lt;/p&gt;&lt;p&gt;
-        &lt;div class="image-wrap image-primary"&gt;
+    &lt;h2 class='section-title' id=opening-night&gt;&lt;a href='#opening-night' class='section-inner'&gt;Opening Night&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;AHD culminated in an art show taking over the ground floor and mezzanine of PNCA. Every group installed its project and set it up to be on display for several hours that night.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class="image-wrap image-primary"&gt;
     &lt;img src="/images/ahd/show1.jpg" alt="A photo taken from overhead showing groups of people clustered around various artworks displayed on small white tables." title="The AHD exhibition at PNCA." width="800px" height="600px" /&gt;
-  &lt;/div&gt;
-    &lt;/p&gt;&lt;p&gt;
-      The diversity of skills brought into AHD meant that a huge variety of projects came out of it. There were Kinect and HoloLens projects; there was 16mm film and a dating app for animated monsters; there was a DDR dance pad that made emoji rain across a VR scene.
-    &lt;/p&gt;&lt;p&gt;
-      Our project was surprisingly easy to set up and ran beautifully all evening. We ran an exported Unity app on a Mac Mini and projected it into a fake smartphone cut out of foamcore.
-    &lt;/p&gt;&lt;p&gt;
-        &lt;figure role="img" class="image-wrap image-primary"&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;The diversity of skills brought into AHD meant that a huge variety of projects came out of it. There were Kinect and HoloLens projects; there was 16mm film and a dating app for animated monsters; there was a DDR dance pad that made emoji rain across a VR scene.&lt;/p&gt;
+
+&lt;p&gt;Our project was surprisingly easy to set up and ran beautifully all evening. We ran an exported Unity app on a Mac Mini and projected it into a fake smartphone cut out of foamcore.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class="image-wrap image-primary"&gt;
     &lt;img src="/images/ahd/group.jpg" alt="A photo of three people, two men and a woman. They stand next to a projector, in front of a false wall onto which is projected a mimicked texting exchange." title="My group poses with our chatbots." width="800px" height="600px" /&gt;
   &lt;figcaption&gt;
     &lt;p&gt;Live at PNCA! From left to right: Steve, Alec, and me.&lt;/p&gt;
   &lt;/figcaption&gt;
-&lt;/figure&gt;
-    &lt;/p&gt;&lt;p&gt;
-      Visitors ebbed and flowed through the gallery. Since our project wasn&amp;#39;t interactive, I had been afraid that people might not feel interested or engaged, but we ended up with a piece that still drew visitors in and held their attention. Part of the interest, I think, came from being able to see a very topical, polemic bot (like &lt;code&gt;/r/The_Donald&lt;/code&gt;), or to see bots of opposing views (&lt;code&gt;/r/Feminism&lt;/code&gt; and &lt;code&gt;/r/TheRedPill&lt;/code&gt;, for example) matched against each other.
-    &lt;/p&gt;&lt;p&gt;
-        &lt;figure role="img" class="image-wrap image-primary"&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;Visitors ebbed and flowed through the gallery. Since our project wasn&amp;#39;t interactive, I had been afraid that people might not feel interested or engaged, but we ended up with a piece that still drew visitors in and held their attention. Part of the interest, I think, came from being able to see a very topical, polemic bot (like &lt;code&gt;/r/The_Donald&lt;/code&gt;), or to see bots of opposing views (&lt;code&gt;/r/Feminism&lt;/code&gt; and &lt;code&gt;/r/TheRedPill&lt;/code&gt;, for example) matched against each other.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class="image-wrap image-primary"&gt;
     &lt;img src="/images/ahd/show2.jpg" alt="A photo taken from overhead shows groups of people looking at art. One group is clustered around a projector; one person points at the projection." title="Our art at the opening show." width="800px" height="600px" /&gt;
   &lt;figcaption&gt;
     &lt;p&gt;people ❤️ looking ❤️ at ❤️ our ❤️ art&lt;/p&gt;
   &lt;/figcaption&gt;
-&lt;/figure&gt;
-    &lt;/p&gt;&lt;p&gt;
-      I loved working on this project and am looking for ways to keep working with it. Maybe as a foray into machine learning?
-    &lt;/p&gt;&lt;p&gt;
-      Thanks to Alec and Steve for being amazing teammates and setting us all up for success on a super fun, challenging project. I look forward to lots more art-hacking in the future.
-    &lt;/p&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;I loved working on this project and am looking for ways to keep working with it. Maybe as a foray into machine learning?&lt;/p&gt;
+
+&lt;p&gt;Thanks to Alec and Steve for being amazing teammates and setting us all up for success on a super fun, challenging project. I look forward to lots more art-hacking in the future.&lt;/p&gt;
+
 &lt;hr&gt;
-&lt;p&gt;
-      &lt;em&gt;This was my first blog post that wasn&amp;#39;t about making this blog! Stay tuned for a post about Markov chains.&lt;/em&gt;
-    &lt;/p&gt;</content>
+
+&lt;p&gt;&lt;em&gt;This was my first blog post that wasn&amp;#39;t about making this blog! Stay tuned for a post about Markov chains.&lt;/em&gt;&lt;/p&gt;
+</content>
   </entry>
   <entry>
     <title>Blogging with Middleman: Partials Are Magic</title>
@@ -232,26 +229,25 @@
       <name>Violet Peña</name>
     </author>
     <summary type="html">While making this blog, I realized I wanted a flexible way to handle media and captions. The solution: to create Middleman partials. I walk through what partials are, how and when you should use them, and how to make them, using code that is live on this blog.</summary>
-    <content type="html">&lt;p&gt;
-      Now that you&amp;#39;ve got your &lt;a href="/blogging-with-middleman"&gt;Middleman blog set up&lt;/a&gt;, let&amp;#39;s use &lt;a href="https://middlemanapp.com/basics/partials/"&gt;Partials&lt;/a&gt; to customize your posts.
-    &lt;/p&gt;&lt;p&gt;
-        &lt;figure role="img" class="image-wrap image-secondary"&gt;
+    <content type="html">&lt;p&gt;Now that you&amp;#39;ve got your &lt;a href="/blogging-with-middleman"&gt;Middleman blog set up&lt;/a&gt;, let&amp;#39;s use &lt;a href="https://middlemanapp.com/basics/partials/"&gt;Partials&lt;/a&gt; to customize your posts.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
     &lt;img src="/images/spongebob.jpg" alt="Spongebob holds up his hands; a rainbow arches between his palms." title="Spongebob doing that rainbow thing" width="1675px" height="1026px" /&gt;
   &lt;figcaption&gt;
     &lt;p&gt;This image brought to you by Middleman Partials &amp;reg;&lt;/p&gt;
   &lt;/figcaption&gt;
-&lt;/figure&gt;
-    &lt;/p&gt;&lt;p&gt;
-      Partials are small templates that can be inserted into larger layouts. They&amp;#39;re great for bits of content that you want rendered on multiple pages, like header or footer links.
-    &lt;/p&gt;&lt;p&gt;
-      Moreover, partials can also be brought directly into your blog posts, layering on top of your Markdown to create even richer, more flexible content.
-    &lt;/p&gt;&lt;h2 class='section-title' id=use-case&gt;&lt;a href='#use-case' class='section-inner'&gt;Use Case&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      While working on this blog, I realized that I wanted to display images in four contexts: large or small; and as a freestanding image, or paired with a caption. If an image came with caption text, I wanted to wrap the image in a &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; element with an accompanying &lt;code&gt;&amp;lt;figcaption&amp;gt;&lt;/code&gt;.
-    &lt;/p&gt;&lt;p&gt;
-      Markdown, unfortunately, doesn&amp;#39;t provide a way to mark up &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; elements. It allows raw HTML, such as &lt;span style="color:red; font-weight: bold;"&gt;this red text&lt;/span&gt;, but that wouldn&amp;#39;t have been a sustainable workaround. If the &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; spec changed, I would have to go around and update every post that used it.
-    &lt;/p&gt;&lt;h2 class='section-title' id=creating-a-partial&gt;&lt;a href='#creating-a-partial' class='section-inner'&gt;Creating a partial&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      The solution was to create a partial template that could render media in different contexts. The file itself looks like this:
-    &lt;/p&gt;&lt;pre class="code erb"&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:caption&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;Partials are small templates that can be inserted into larger layouts. They&amp;#39;re great for bits of content that you want rendered on multiple pages, like header or footer links.&lt;/p&gt;
+
+&lt;p&gt;Moreover, partials can also be brought directly into your blog posts, layering on top of your Markdown to create even richer, more flexible content.&lt;/p&gt;
+&lt;h2 class='section-title' id=use-case&gt;&lt;a href='#use-case' class='section-inner'&gt;Use Case&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;While working on this blog, I realized that I wanted to display images in four contexts: large or small; and as a freestanding image, or paired with a caption. If an image came with caption text, I wanted to wrap the image in a &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; element with an accompanying &lt;code&gt;&amp;lt;figcaption&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Markdown, unfortunately, doesn&amp;#39;t provide a way to mark up &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; elements. It allows raw HTML, such as &lt;span style="color:red; font-weight: bold;"&gt;this red text&lt;/span&gt;, but that wouldn&amp;#39;t have been a sustainable workaround. If the &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; spec changed, I would have to go around and update every post that used it.&lt;/p&gt;
+&lt;h2 class='section-title' id=creating-a-partial&gt;&lt;a href='#creating-a-partial' class='section-inner'&gt;Creating a partial&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The solution was to create a partial template that could render media in different contexts. The file itself looks like this:&lt;/p&gt;
+&lt;pre class="code erb"&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:caption&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;lt;figure&lt;/span&gt; &lt;span class="na"&gt;role=&lt;/span&gt;&lt;span class="s"&gt;"img"&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"image-wrap image-&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:size&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"image-wrap image-&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:size&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -265,15 +261,15 @@
 &lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      The partial checks the &lt;code&gt;locals&lt;/code&gt; I pass in for a caption and renders a different element accordingly. &lt;code&gt;locals&lt;/code&gt; values also provide the path and other attributes of the image, and determine what styling the element will receive.
-    &lt;/p&gt;&lt;p&gt;
-      I include this partial by writing the following straight in my Markdown:
-    &lt;/p&gt;&lt;p&gt;
-        &lt;div class="image-wrap image-secondary"&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The partial checks the &lt;code&gt;locals&lt;/code&gt; I pass in for a caption and renders a different element accordingly. &lt;code&gt;locals&lt;/code&gt; values also provide the path and other attributes of the image, and determine what styling the element will receive.&lt;/p&gt;
+
+&lt;p&gt;I include this partial by writing the following straight in my Markdown:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class="image-wrap image-secondary"&gt;
     &lt;img src="/images/ponies.png" alt="The main characters of &amp;quot;My Little Pony: Friendship is Magic&amp;quot; crowd the camera." title="The main characters from &amp;quot;My Little Pony: Friendship is Magic&amp;quot;" width="900px" height="809px" /&gt;
-  &lt;/div&gt;
-    &lt;/p&gt;&lt;pre class="code erb"&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:media&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:locals&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;/div&gt;&lt;/p&gt;
+&lt;pre class="code erb"&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:media&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:locals&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="ss"&gt;:src&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'ponies.png'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
   &lt;span class="ss"&gt;:title&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'The main characters from "My Little Pony: Friendship is Magic"'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
   &lt;span class="ss"&gt;:alt&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'The main characters of "My Little Pony: Friendship is Magic" crowd the camera.'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -281,29 +277,29 @@
   &lt;span class="ss"&gt;:width&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'900px'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
   &lt;span class="ss"&gt;:height&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'809px'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      This ERB tells Middleman to find the &amp;quot;media&amp;quot; partial and pass in the &lt;code&gt;locals&lt;/code&gt; specified. Partials are located relative to &lt;code&gt;/source&lt;/code&gt;, so this particular partial is found at &lt;code&gt;/source/media.erb&lt;/code&gt;.
-    &lt;/p&gt;&lt;h2 class='section-title' id=using-a-partial&gt;&lt;a href='#using-a-partial' class='section-inner'&gt;Using a partial&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      Finally, we need to tell Middleman that it will be seeing ERB in our posts. By default, Middleman only expects Markdown in blog posts; hence the &lt;code&gt;.markdown&lt;/code&gt; extension of all the files in &lt;code&gt;/source/articles&lt;/code&gt;. It can&amp;#39;t yet parse ERB.
-    &lt;/p&gt;&lt;p&gt;
-      Thanks to Middleman&amp;#39;s &lt;a href="/blogging-with-middleman/#writing-and-using-scss"&gt;super cool extension chaining&lt;/a&gt;, add an &lt;code&gt;.erb&lt;/code&gt; to the end of your post&amp;#39;s extension, and you&amp;#39;re done! &lt;code&gt;.markdown.erb&lt;/code&gt; works, as does &lt;code&gt;.md.erb&lt;/code&gt;, or any set of extensions where the ERB-related extension comes after the Markdown-related one.
-    &lt;/p&gt;&lt;p&gt;
-      These extensions tell Middleman to make one pass of the file and render any ERB that it finds. It then makes a second pass and renders any Markdown found; the file is now entirely converted to HTML.
-    &lt;/p&gt;&lt;p&gt;
-      Give all new blog posts these extensions by changing this line in your &lt;code&gt;config.rb&lt;/code&gt;:
-    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# blog.default_extension = ".markdown"&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      to something like
-    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;default_extension&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;".markdown.erb"&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      This means that all new blog posts created via &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt; will have that extension and be ready to accept partials.
-    &lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This ERB tells Middleman to find the &amp;quot;media&amp;quot; partial and pass in the &lt;code&gt;locals&lt;/code&gt; specified. Partials are located relative to &lt;code&gt;/source&lt;/code&gt;, so this particular partial is found at &lt;code&gt;/source/media.erb&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 class='section-title' id=using-a-partial&gt;&lt;a href='#using-a-partial' class='section-inner'&gt;Using a partial&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Finally, we need to tell Middleman that it will be seeing ERB in our posts. By default, Middleman only expects Markdown in blog posts; hence the &lt;code&gt;.markdown&lt;/code&gt; extension of all the files in &lt;code&gt;/source/articles&lt;/code&gt;. It can&amp;#39;t yet parse ERB.&lt;/p&gt;
+
+&lt;p&gt;Thanks to Middleman&amp;#39;s &lt;a href="/blogging-with-middleman/#writing-and-using-scss"&gt;super cool extension chaining&lt;/a&gt;, add an &lt;code&gt;.erb&lt;/code&gt; to the end of your post&amp;#39;s extension, and you&amp;#39;re done! &lt;code&gt;.markdown.erb&lt;/code&gt; works, as does &lt;code&gt;.md.erb&lt;/code&gt;, or any set of extensions where the ERB-related extension comes after the Markdown-related one.&lt;/p&gt;
+
+&lt;p&gt;These extensions tell Middleman to make one pass of the file and render any ERB that it finds. It then makes a second pass and renders any Markdown found; the file is now entirely converted to HTML.&lt;/p&gt;
+
+&lt;p&gt;Give all new blog posts these extensions by changing this line in your &lt;code&gt;config.rb&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# blog.default_extension = ".markdown"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to something like&lt;/p&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;default_extension&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;".markdown.erb"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This means that all new blog posts created via &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt; will have that extension and be ready to accept partials.&lt;/p&gt;
+
 &lt;hr&gt;
-&lt;p&gt;
-      I hope you are ~&lt;strong&gt;fully&lt;/strong&gt;~ convinced of the power of partials. I may revisit them again when I change my media partials from using &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; to &lt;code&gt;&amp;lt;picture&amp;gt;&lt;/code&gt;, which will be a journey in its own right.
-    &lt;/p&gt;&lt;p&gt;
-      &lt;em&gt;Coming next: custom Markdown rendering and syntax highlighting in code blocks. Read my first Middleman post &lt;a href="/blogging-with-middleman/"&gt;here&lt;/a&gt;.&lt;/em&gt;
-    &lt;/p&gt;</content>
+
+&lt;p&gt;I hope you are ~&lt;strong&gt;fully&lt;/strong&gt;~ convinced of the power of partials. I may revisit them again when I change my media partials from using &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; to &lt;code&gt;&amp;lt;picture&amp;gt;&lt;/code&gt;, which will be a journey in its own right.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Coming next: custom Markdown rendering and syntax highlighting in code blocks. Read my first Middleman post &lt;a href="/blogging-with-middleman/"&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+</content>
   </entry>
   <entry>
     <title>Blogging with Middleman, Pt. 1</title>
@@ -316,46 +312,45 @@
       <name>Violet Peña</name>
     </author>
     <summary type="html">Getting started can be the hardest part of a project. Here are some steps to get you started blogging with Middleman, a Ruby-based static site generator.</summary>
-    <content type="html">&lt;p&gt;
-      Side projects are a chance for me to experiment with tools that fall out of the scope of my (amazing) day job. This blog represents my first foray into using &lt;a href="https://middlemanapp.com"&gt;Middleman&lt;/a&gt; for blogging. Here are the first steps you should take when setting up a Middleman blog of your own.
-    &lt;/p&gt;&lt;p&gt;
-      To begin with, why am I using Middleman? I knew I wanted a static site. I started off with no clear deploy strategy in mind, and I wanted something so simple that I could just SFTP it to my Linode server and forget about it. &lt;a href="http://jxnblk.com/writing/posts/static-site-generation-with-react-and-webpack/"&gt;Static React&lt;/a&gt; was out; as much as I like React and as cool as this setup sounds, I missed writing &lt;a href="/creating-once"&gt;publication-style, semantic markup&lt;/a&gt;. Once I&amp;#39;d figured out that was what I wanted, it was a choice between Middleman and &lt;a href="https://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;. I&amp;#39;ve used both before and had good experiences with each. I went with Middleman because even though I&amp;#39;d used it before, I hadn&amp;#39;t experimented with its blogging functionality.
-    &lt;/p&gt;&lt;p&gt;
-      As I dug deeper into Middleman, I discovered cool aspects of it that hadn&amp;#39;t been immediately obvious. I&amp;#39;m having a lot of fun with it and completely recommend it to anyone else looking to start up a blog.
-    &lt;/p&gt;&lt;h2 class='section-title' id=setting-the-stage-rvm&gt;&lt;a href='#setting-the-stage-rvm' class='section-inner'&gt;Setting the stage: rvm&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      Middleman is Ruby-based, so one of the first things I did was install &lt;a href="https://rvm.io/"&gt;Ruby Version Manager&lt;/a&gt;, or rvm, which lets you install and switch between multiple versions of Ruby. This means that a project doesn&amp;#39;t necessarily depend on what you&amp;#39;ve got installed anywhere else &amp;mdash; an upgrade to your system Ruby, or to Project A, won&amp;#39;t affect Project B. Keeping dependencies local and specific has done wonders for my stress levels.
-    &lt;/p&gt;&lt;p&gt;
-      Once you&amp;#39;ve got rvm installed (I used the cURL command from the above link), you can install new versions with &lt;code&gt;rvm install &amp;lt;versionNumber&amp;gt;&lt;/code&gt;. &lt;code&gt;rvm list&lt;/code&gt; shows you what you&amp;#39;ve already got installed, and switching Ruby versions is &lt;code&gt;rvm use &amp;lt;versionNumber&amp;gt;&lt;/code&gt;. As of writing, the minimum version of Ruby required for up-to-date Middleman is 2.2.2.
-    &lt;/p&gt;&lt;h2 class='section-title' id=creating-a-blog&gt;&lt;a href='#creating-a-blog' class='section-inner'&gt;Creating a blog&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      To create a blog, follow the first instruction in &lt;a href="https://middlemanapp.com/basics/install/"&gt;the MM docs&lt;/a&gt;, and run &lt;code&gt;gem install middleman&lt;/code&gt;. The next step &amp;mdash; actually setting up the project &amp;mdash; should be blog-specific. Instead of just &lt;code&gt;middleman init&lt;/code&gt;, run &lt;code&gt;middleman init &amp;mdash;template=blog&lt;/code&gt;.
-    &lt;/p&gt;&lt;p&gt;
-      At this point, you have the framework of a basic Middleman blog in place. Run &lt;code&gt;middleman server&lt;/code&gt; and then go to &lt;code&gt;localhost:4567&lt;/code&gt; to see what&amp;#39;s been generated.
-    &lt;/p&gt;&lt;p&gt;
-      This stubbed-out blog is a great start, but you probably want to do some customization before you get publishing. Following are some of the first things I recommend doing, in the recommended order.
-    &lt;/p&gt;&lt;h2 class='section-title' id=setting-your-time-zone&gt;&lt;a href='#setting-your-time-zone' class='section-inner'&gt;Setting your time zone&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      Before writing any articles, manually set your publishing time zone. &lt;code&gt;middleman-blog&lt;/code&gt; ships with a nifty RSS feed generator, but publication times default to UTC, which probably isn&amp;#39;t your local time. So let&amp;#39;s take a sec right now and make sure your hordes of subscribers get accurate readings of when you publish.
-    &lt;/p&gt;&lt;p&gt;
-      (Also, if you hold off on setting your time zone and you only do it after you&amp;#39;ve written some articles, you will get cryptic errors about dates in frontmatter &amp;quot;not matching&amp;quot; and you will have to switch any articles with UTC timestamps in their frontmatter to bear your local timestamp. I will talk more about frontmatter later.)
-    &lt;/p&gt;&lt;p&gt;
-      You already have &lt;code&gt;tzinfo-data&lt;/code&gt; installed (you can see it listed in your &lt;code&gt;Gemfile&lt;/code&gt;), so go straight into your &lt;code&gt;config.rb&lt;/code&gt; and add the lines:
-    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'tzinfo'&lt;/span&gt;
+    <content type="html">&lt;p&gt;Side projects are a chance for me to experiment with tools that fall out of the scope of my (amazing) day job. This blog represents my first foray into using &lt;a href="https://middlemanapp.com"&gt;Middleman&lt;/a&gt; for blogging. Here are the first steps you should take when setting up a Middleman blog of your own.&lt;/p&gt;
+
+&lt;p&gt;To begin with, why am I using Middleman? I knew I wanted a static site. I started off with no clear deploy strategy in mind, and I wanted something so simple that I could just SFTP it to my Linode server and forget about it. &lt;a href="http://jxnblk.com/writing/posts/static-site-generation-with-react-and-webpack/"&gt;Static React&lt;/a&gt; was out; as much as I like React and as cool as this setup sounds, I missed writing &lt;a href="/creating-once"&gt;publication-style, semantic markup&lt;/a&gt;. Once I&amp;#39;d figured out that was what I wanted, it was a choice between Middleman and &lt;a href="https://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;. I&amp;#39;ve used both before and had good experiences with each. I went with Middleman because even though I&amp;#39;d used it before, I hadn&amp;#39;t experimented with its blogging functionality.&lt;/p&gt;
+
+&lt;p&gt;As I dug deeper into Middleman, I discovered cool aspects of it that hadn&amp;#39;t been immediately obvious. I&amp;#39;m having a lot of fun with it and completely recommend it to anyone else looking to start up a blog.&lt;/p&gt;
+&lt;h2 class='section-title' id=setting-the-stage-rvm&gt;&lt;a href='#setting-the-stage-rvm' class='section-inner'&gt;Setting the stage: rvm&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Middleman is Ruby-based, so one of the first things I did was install &lt;a href="https://rvm.io/"&gt;Ruby Version Manager&lt;/a&gt;, or rvm, which lets you install and switch between multiple versions of Ruby. This means that a project doesn&amp;#39;t necessarily depend on what you&amp;#39;ve got installed anywhere else -- an upgrade to your system Ruby, or to Project A, won&amp;#39;t affect Project B. Keeping dependencies local and specific has done wonders for my stress levels.&lt;/p&gt;
+
+&lt;p&gt;Once you&amp;#39;ve got rvm installed (I used the cURL command from the above link), you can install new versions with &lt;code&gt;rvm install &amp;lt;versionNumber&amp;gt;&lt;/code&gt;. &lt;code&gt;rvm list&lt;/code&gt; shows you what you&amp;#39;ve already got installed, and switching Ruby versions is &lt;code&gt;rvm use &amp;lt;versionNumber&amp;gt;&lt;/code&gt;. As of writing, the minimum version of Ruby required for up-to-date Middleman is 2.2.2.&lt;/p&gt;
+&lt;h2 class='section-title' id=creating-a-blog&gt;&lt;a href='#creating-a-blog' class='section-inner'&gt;Creating a blog&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;To create a blog, follow the first instruction in &lt;a href="https://middlemanapp.com/basics/install/"&gt;the MM docs&lt;/a&gt;, and run &lt;code&gt;gem install middleman&lt;/code&gt;. The next step -- actually setting up the project -- should be blog-specific. Instead of just &lt;code&gt;middleman init&lt;/code&gt;, run &lt;code&gt;middleman init --template=blog&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;At this point, you have the framework of a basic Middleman blog in place. Run &lt;code&gt;middleman server&lt;/code&gt; and then go to &lt;code&gt;localhost:4567&lt;/code&gt; to see what&amp;#39;s been generated.&lt;/p&gt;
+
+&lt;p&gt;This stubbed-out blog is a great start, but you probably want to do some customization before you get publishing. Following are some of the first things I recommend doing, in the recommended order.&lt;/p&gt;
+&lt;h2 class='section-title' id=setting-your-time-zone&gt;&lt;a href='#setting-your-time-zone' class='section-inner'&gt;Setting your time zone&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Before writing any articles, manually set your publishing time zone. &lt;code&gt;middleman-blog&lt;/code&gt; ships with a nifty RSS feed generator, but publication times default to UTC, which probably isn&amp;#39;t your local time. So let&amp;#39;s take a sec right now and make sure your hordes of subscribers get accurate readings of when you publish.&lt;/p&gt;
+
+&lt;p&gt;(Also, if you hold off on setting your time zone and you only do it after you&amp;#39;ve written some articles, you will get cryptic errors about dates in frontmatter &amp;quot;not matching&amp;quot; and you will have to switch any articles with UTC timestamps in their frontmatter to bear your local timestamp. I will talk more about frontmatter later.)&lt;/p&gt;
+
+&lt;p&gt;You already have &lt;code&gt;tzinfo-data&lt;/code&gt; installed (you can see it listed in your &lt;code&gt;Gemfile&lt;/code&gt;), so go straight into your &lt;code&gt;config.rb&lt;/code&gt; and add the lines:&lt;/p&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'tzinfo'&lt;/span&gt;
 &lt;span class="no"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;zone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'US/Pacific'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      And this time zone will now be used whenever you create a new article. You can find your time zone on &lt;a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"&gt;this list&lt;/a&gt;.
-    &lt;/p&gt;&lt;h2 class='section-title' id=customizing-yaml-frontmatter&gt;&lt;a href='#customizing-yaml-frontmatter' class='section-inner'&gt;Customizing YAML frontmatter&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      Now you can safely create your first article (!!) from the command line (!!) with &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt;. A file called &lt;code&gt;articleName.html.md&lt;/code&gt; will be created in your &lt;code&gt;source&lt;/code&gt; dir, looking something like
-    &lt;/p&gt;&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And this time zone will now be used whenever you create a new article. You can find your time zone on &lt;a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"&gt;this list&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 class='section-title' id=customizing-yaml-frontmatter&gt;&lt;a href='#customizing-yaml-frontmatter' class='section-inner'&gt;Customizing YAML frontmatter&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Now you can safely create your first article (!!) from the command line (!!) with &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt;. A file called &lt;code&gt;articleName.html.md&lt;/code&gt; will be created in your &lt;code&gt;source&lt;/code&gt; dir, looking something like&lt;/p&gt;
+&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
 &lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;foo&lt;/span&gt;
 &lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;2017-02-20 10:42 PST&lt;/span&gt;
 &lt;span class="na"&gt;tags&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
 &lt;span class="nn"&gt;---&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      This is &lt;a href="https://en.wikipedia.org/wiki/YAML"&gt;YAML&lt;/a&gt; frontmatter, which provides per-article metadata.
-    &lt;/p&gt;&lt;p&gt;
-      You may not want this exact frontmatter. For example, I wasn&amp;#39;t interested in tags, but I &lt;em&gt;did&lt;/em&gt; want my articles to have subtitles. In this case, you can write your own article template.
-    &lt;/p&gt;&lt;p&gt;
-      Find the place in your &lt;code&gt;config.rb&lt;/code&gt; that looks like this (I will be calling it the &amp;quot;blog block&amp;quot;):
-    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:blog&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is &lt;a href="https://en.wikipedia.org/wiki/YAML"&gt;YAML&lt;/a&gt; frontmatter, which provides per-article metadata.&lt;/p&gt;
+
+&lt;p&gt;You may not want this exact frontmatter. For example, I wasn&amp;#39;t interested in tags, but I &lt;em&gt;did&lt;/em&gt; want my articles to have subtitles. In this case, you can write your own article template.&lt;/p&gt;
+
+&lt;p&gt;Find the place in your &lt;code&gt;config.rb&lt;/code&gt; that looks like this (I will be calling it the &amp;quot;blog block&amp;quot;):&lt;/p&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:blog&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
   &lt;span class="c1"&gt;# This will add a prefix to all links, template references and source paths&lt;/span&gt;
   &lt;span class="c1"&gt;# blog.prefix = "blog"&lt;/span&gt;
 
@@ -379,72 +374,72 @@
   &lt;span class="c1"&gt;# blog.per_page = 10&lt;/span&gt;
   &lt;span class="c1"&gt;# blog.page_link = "page/{num}"&lt;/span&gt;
 &lt;span class="k"&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      and somewhere in there, put the line
-    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new_article_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;expand_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'../source/template.yml'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;__FILE__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      and create a file in &lt;code&gt;/source&lt;/code&gt; called &lt;code&gt;template.yml&lt;/code&gt; with the contents:
-    &lt;/p&gt;&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and somewhere in there, put the line&lt;/p&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new_article_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;expand_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'../source/template.yml'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;__FILE__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and create a file in &lt;code&gt;/source&lt;/code&gt; called &lt;code&gt;template.yml&lt;/code&gt; with the contents:&lt;/p&gt;
+&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
 &lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;%= @title %&amp;gt;&lt;/span&gt;
 &lt;span class="na"&gt;subtitle&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
 &lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;%= @date.strftime('%F %R %Z') %&amp;gt;&lt;/span&gt;
 &lt;span class="nn"&gt;---&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      Now if you run &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt; again, your generated file will have contents like this:
-    &lt;/p&gt;&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now if you run &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt; again, your generated file will have contents like this:&lt;/p&gt;
+&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
 &lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;foo&lt;/span&gt;
 &lt;span class="na"&gt;subtitle&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
 &lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;2017-02-20 11:08 PST&lt;/span&gt;
 &lt;span class="nn"&gt;---&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      &lt;code&gt;title&lt;/code&gt;, &lt;code&gt;subtitle&lt;/code&gt;, and &lt;code&gt;date&lt;/code&gt; will be available as variables to use in blog structuring and templating.
-    &lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;title&lt;/code&gt;, &lt;code&gt;subtitle&lt;/code&gt;, and &lt;code&gt;date&lt;/code&gt; will be available as variables to use in blog structuring and templating.&lt;/p&gt;
+
 &lt;hr&gt;
-&lt;p&gt;
-      The last thing I recommend in this step is editing (or at least being aware of) this line in the blog block of your config file:
-    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# blog.default_extension = ".markdown"&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      Any files generated via &lt;code&gt;middleman article&lt;/code&gt; will have this extension. You can change it to the equivalent but less verbose &lt;code&gt;&amp;quot;.md&amp;quot;&lt;/code&gt;, or to something else entirely (I&amp;#39;m using &lt;code&gt;&amp;quot;.md.erb&amp;quot;&lt;/code&gt;, for reasons I will cover later).
-    &lt;/p&gt;&lt;p&gt;
-      Remember to comment this line in to see changes ✌🏻
-    &lt;/p&gt;&lt;h2 class='section-title' id=pretty-urls-please&gt;&lt;a href='#pretty-urls-please' class='section-inner'&gt;Pretty URLs, please!&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      Click into any of your articles and you will see that your URL ends in &lt;code&gt;.html&lt;/code&gt;. Extensions in URLs is &lt;em&gt;not&lt;/em&gt; best-practice web development, as it makes the URL harder to understand and means that changing frameworks (like, for whatever reason, switching from Middleman to .NET) could result in broken links. Pretty URLs give your users more stable, memorable addresses and help keep the inner workings of your site under the hood.
-    &lt;/p&gt;&lt;p&gt;
-      Middleman, like most devtools, ships with a way to implement pretty URLs. In the blog block, add the line:
-    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:directory_indexes&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      and you&amp;#39;re set! From your index page, click through to an article, and you will see that the URL now ends in a &lt;code&gt;/&lt;/code&gt; instead of &lt;code&gt;.html&lt;/code&gt;.
-    &lt;/p&gt;&lt;p&gt;
-      If there are any pages that you &lt;em&gt;don&amp;#39;t&lt;/em&gt; want this done to, register that page in your config, in the &amp;quot;Per-page layout changes&amp;quot; section, like so:
-    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="s1"&gt;'/&amp;lt;page&amp;gt;.html'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:directory_index&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      For example, I did this to &lt;a href="/404.html"&gt;my 404 page&lt;/a&gt; so that &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; would pick it up correctly (I will talk about GH Pages more in an upcoming post).
-    &lt;/p&gt;&lt;h2 class='section-title' id=writing-and-using-scss&gt;&lt;a href='#writing-and-using-scss' class='section-inner'&gt;Writing and using SCSS&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;
-      Luckily for me, Middleman comes equipped to transpile &lt;a href="http://sass-lang.com/"&gt;SCSS&lt;/a&gt;. By default, CSS-related files are looked for in the &lt;code&gt;/stylesheets&lt;/code&gt; folder. If you want to customize this directory, you can do so by adding this line to your &lt;code&gt;config.rb&lt;/code&gt;:
-    &lt;/p&gt;&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:css_dir&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'styles'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      You can now refer to files in that dir from your templates (in my case, &lt;code&gt;.erb&lt;/code&gt; files) using the &lt;code&gt;stylesheet_link_tag&lt;/code&gt; variable.
-    &lt;/p&gt;&lt;p&gt;
-      Let&amp;#39;s start off by creating &lt;code&gt;/sources/styles/main.css.scss&lt;/code&gt;.
-    &lt;/p&gt;&lt;p&gt;
-      Multiple extensions may seem mysterious, but that&amp;#39;s actually the crux of Middleman&amp;#39;s power. Middleman lets you mix and match any parsers you want, and parses a file right-to-left according to its extensions. So &lt;code&gt;file.css.scss&lt;/code&gt; means &amp;quot;this file will end up as CSS, but parse it as SCSS first&amp;quot;. In the above section about generating articles, I mentioned that I changed the blog entry extension from the default &lt;code&gt;.html.markdown&lt;/code&gt; to &lt;code&gt;.html.md.erb&lt;/code&gt;. This tells Middleman to parse entries first as ERB (which lets me include fancy partials), then as Markdown, and that the end result is HTML.
-    &lt;/p&gt;&lt;p&gt;
-      Put some basic SCSS in your &lt;code&gt;main.css.scss&lt;/code&gt; file:
-    &lt;/p&gt;&lt;pre class="code scss"&gt;&lt;code&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+
+&lt;p&gt;The last thing I recommend in this step is editing (or at least being aware of) this line in the blog block of your config file:&lt;/p&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# blog.default_extension = ".markdown"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Any files generated via &lt;code&gt;middleman article&lt;/code&gt; will have this extension. You can change it to the equivalent but less verbose &lt;code&gt;&amp;quot;.md&amp;quot;&lt;/code&gt;, or to something else entirely (I&amp;#39;m using &lt;code&gt;&amp;quot;.md.erb&amp;quot;&lt;/code&gt;, for reasons I will cover later).&lt;/p&gt;
+
+&lt;p&gt;Remember to comment this line in to see changes ✌🏻&lt;/p&gt;
+&lt;h2 class='section-title' id=pretty-urls-please&gt;&lt;a href='#pretty-urls-please' class='section-inner'&gt;Pretty URLs, please!&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Click into any of your articles and you will see that your URL ends in &lt;code&gt;.html&lt;/code&gt;. Extensions in URLs is &lt;em&gt;not&lt;/em&gt; best-practice web development, as it makes the URL harder to understand and means that changing frameworks (like, for whatever reason, switching from Middleman to .NET) could result in broken links. Pretty URLs give your users more stable, memorable addresses and help keep the inner workings of your site under the hood.&lt;/p&gt;
+
+&lt;p&gt;Middleman, like most devtools, ships with a way to implement pretty URLs. In the blog block, add the line:&lt;/p&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:directory_indexes&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and you&amp;#39;re set! From your index page, click through to an article, and you will see that the URL now ends in a &lt;code&gt;/&lt;/code&gt; instead of &lt;code&gt;.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If there are any pages that you &lt;em&gt;don&amp;#39;t&lt;/em&gt; want this done to, register that page in your config, in the &amp;quot;Per-page layout changes&amp;quot; section, like so:&lt;/p&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="s1"&gt;'/&amp;lt;page&amp;gt;.html'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:directory_index&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For example, I did this to &lt;a href="/404.html"&gt;my 404 page&lt;/a&gt; so that &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; would pick it up correctly (I will talk about GH Pages more in an upcoming post).&lt;/p&gt;
+&lt;h2 class='section-title' id=writing-and-using-scss&gt;&lt;a href='#writing-and-using-scss' class='section-inner'&gt;Writing and using SCSS&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Luckily for me, Middleman comes equipped to transpile &lt;a href="http://sass-lang.com/"&gt;SCSS&lt;/a&gt;. By default, CSS-related files are looked for in the &lt;code&gt;/stylesheets&lt;/code&gt; folder. If you want to customize this directory, you can do so by adding this line to your &lt;code&gt;config.rb&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:css_dir&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'styles'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can now refer to files in that dir from your templates (in my case, &lt;code&gt;.erb&lt;/code&gt; files) using the &lt;code&gt;stylesheet_link_tag&lt;/code&gt; variable.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;#39;s start off by creating &lt;code&gt;/sources/styles/main.css.scss&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Multiple extensions may seem mysterious, but that&amp;#39;s actually the crux of Middleman&amp;#39;s power. Middleman lets you mix and match any parsers you want, and parses a file right-to-left according to its extensions. So &lt;code&gt;file.css.scss&lt;/code&gt; means &amp;quot;this file will end up as CSS, but parse it as SCSS first&amp;quot;. In the above section about generating articles, I mentioned that I changed the blog entry extension from the default &lt;code&gt;.html.markdown&lt;/code&gt; to &lt;code&gt;.html.md.erb&lt;/code&gt;. This tells Middleman to parse entries first as ERB (which lets me include fancy partials), then as Markdown, and that the end result is HTML.&lt;/p&gt;
+
+&lt;p&gt;Put some basic SCSS in your &lt;code&gt;main.css.scss&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre class="code scss"&gt;&lt;code&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nl"&gt;font-family&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      and add this line to inside the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; tag of &lt;code&gt;source/layout.erb&lt;/code&gt;:
-    &lt;/p&gt;&lt;pre class="code erb"&gt;&lt;code&gt;    &lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;stylesheet_link_tag&lt;/span&gt; &lt;span class="ss"&gt;:main&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:media&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"screen"&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
-      And now your site should look about 20 percent cooler.
-    &lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and add this line to inside the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; tag of &lt;code&gt;source/layout.erb&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class="code erb"&gt;&lt;code&gt;    &lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;stylesheet_link_tag&lt;/span&gt; &lt;span class="ss"&gt;:main&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:media&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"screen"&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And now your site should look about 20 percent cooler.&lt;/p&gt;
+
 &lt;hr&gt;
-&lt;p&gt;
-      I hope this gave you a good jumping-off point to blogging with Middleman! Stay tuned for a post about partials, syntax highlighting, and customizing your Markdown parser.
-    &lt;/p&gt;&lt;p&gt;
-      This is the second post in a series about creating this blog. Read the first post &lt;a href="/creating-once"&gt;here&lt;/a&gt;.
-    &lt;/p&gt;</content>
+
+&lt;p&gt;I hope this gave you a good jumping-off point to blogging with Middleman! Stay tuned for a post about partials, syntax highlighting, and customizing your Markdown parser.&lt;/p&gt;
+
+&lt;p&gt;This is the second post in a series about creating this blog. Read the first post &lt;a href="/creating-once"&gt;here&lt;/a&gt;.&lt;/p&gt;
+</content>
   </entry>
   <entry>
     <title>Creating Once</title>
@@ -452,29 +447,28 @@
     <link rel="alternate" href="https://vgpena.github.io/creating-once/"/>
     <id>https://vgpena.github.io/creating-once/</id>
     <published>2017-02-16T06:33:00-08:00</published>
-    <updated>2017-04-01T07:44:55-07:00</updated>
+    <updated>2017-04-29T17:02:59-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
-    <summary type="html">The internet is designed to be an accessible, egalitatian platform for publishers and participants. Though I love working with installations, my passion for the open web is never going away. I talk about Create Once, Publish Everywhere and why I started this blog.</summary>
-    <content type="html">&lt;p&gt;
-      Over the past two years, of the twelve or so projects I&amp;#39;ve worked on, exactly one has been a website. The rest have been interactive installations, kiosks, and artworks. While I love this kind of work, I sometimes miss what attracted me to web development in the first place.
-    &lt;/p&gt;&lt;p&gt;
-      Web development draws its immense power from being part of a flexible, widely-available content distribution system. When you create something for the web, and create it well, that thing is instantly available to billions of people. They can use that creation on devices they already own, via a browser they already own, anywhere on the globe that they can find an internet connection.
-    &lt;/p&gt;&lt;p&gt;
-      The &lt;a href="https://www.programmableweb.com/news/cope-create-once-publish-everywhere/2009/10/13"&gt;Create Once, Publish Everywhere&lt;/a&gt; paradigm has been inspiring and empowering to me through my time as a web developer. Taking content and making it available to anyone, in any form, is a beautiful goal, and it&amp;#39;s easily in our power to do so. This involves using our tools not just towards democratic aims, but also in a democratic manner. Prizing accessibility, responsiveness, and small payloads helps us create things that can be used to maximum effect by the maximum number of people.
-    &lt;/p&gt;&lt;p&gt;
-      Installations work towards solving different problems &amp;mdash; instead of dealing with a wide-ranging audience, they are focused on a small, specific one. They don&amp;#39;t need to deal with asset downloads over LTE; they &lt;em&gt;do&lt;/em&gt; need to deal with the position of the sun. They don&amp;#39;t deal with different screen sizes, but with milking maximum power out of a specific machine. They have to worry about decals, traffic flow, and whether the floor is level.
-    &lt;/p&gt;&lt;p&gt;
-      While I love working with installations, they don&amp;#39;t scratch that democratic itch that drew me into web development. When I found out about the &lt;a href="https://a-k-apart.com/"&gt;10k Apart&lt;/a&gt; &amp;mdash; a challenge to make a site with an under-10k payload &amp;mdash; I saw it as an opportunity to return to my roots and put together a beautiful, lightweight, future-facing website.
-    &lt;/p&gt;&lt;p&gt;
-      I took up and put down this project a couple of times, and I didn&amp;#39;t end up submitting it to 10k Apart. Lately, however, I have more and more often wanted to write about specific things, only to find I didn&amp;#39;t have a platform on which to write. I had to get this project out the door, if only to make way for future writings.
-    &lt;/p&gt;&lt;p&gt;
-      As a warm-up, I&amp;#39;ll be writing a short series of posts on what went into making this blog. I hope that anyone blogging with &lt;a href="https://middlemanapp.com/"&gt;Middleman&lt;/a&gt;, learning about &lt;a href="http://webaim.org/"&gt;accessibility&lt;/a&gt;, wondering about &lt;a href="http://bradfrost.com/blog/post/atomic-web-design/"&gt;Atomic Design&lt;/a&gt;, or looking to publish with &lt;a href="https://pages.github.com/"&gt;github pages&lt;/a&gt; will find them helpful.
-    &lt;/p&gt;&lt;p&gt;
-      I still have some items on my to-do list (&lt;code&gt;&amp;lt;picture&amp;gt;&lt;/code&gt; elements, lazy-loading images, styling tweaks, etc.), but it was important to me to get a v1 of this blog out in the world. In the meantime, check out my payload! ~5k, as long as we&amp;#39;re not counting font files 💥
-    &lt;/p&gt;&lt;p&gt;
-      Happy reading!
-    &lt;/p&gt;</content>
+    <summary type="html">The internet is designed to be an accessible, egalitarian platform for publishers and participants. Though I love working with installations, my passion for the open web is never going away. I talk about Create Once, Publish Everywhere and why I started this blog.</summary>
+    <content type="html">&lt;p&gt;Over the past two years, of the twelve or so projects I&amp;#39;ve worked on, exactly one has been a website. The rest have been interactive installations, kiosks, and artworks. While I love this kind of work, I sometimes miss what attracted me to web development in the first place.&lt;/p&gt;
+
+&lt;p&gt;Web development draws its immense power from being part of a flexible, widely-available content distribution system. When you create something for the web, and create it well, that thing is instantly available to billions of people. They can use that creation on devices they already own, via a browser they already own, anywhere on the globe that they can find an internet connection.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href="https://www.programmableweb.com/news/cope-create-once-publish-everywhere/2009/10/13"&gt;Create Once, Publish Everywhere&lt;/a&gt; paradigm has been inspiring and empowering to me through my time as a web developer. Taking content and making it available to anyone, in any form, is a beautiful goal, and it&amp;#39;s easily in our power to do so. This involves using our tools not just towards democratic aims, but also in a democratic manner. Prizing accessibility, responsiveness, and small payloads helps us create things that can be used to maximum effect by the maximum number of people.&lt;/p&gt;
+
+&lt;p&gt;Installations work towards solving different problems -- instead of dealing with a wide-ranging audience, they are focused on a small, specific one. They don&amp;#39;t need to deal with asset downloads over LTE; they &lt;em&gt;do&lt;/em&gt; need to deal with the position of the sun. They don&amp;#39;t deal with different screen sizes, but with milking maximum power out of a specific machine. They have to worry about decals, traffic flow, and whether the floor is level.&lt;/p&gt;
+
+&lt;p&gt;While I love working with installations, they don&amp;#39;t scratch that democratic itch that drew me into web development. When I found out about the &lt;a href="https://a-k-apart.com/"&gt;10k Apart&lt;/a&gt; -- a challenge to make a site with an under-10k payload -- I saw it as an opportunity to return to my roots and put together a beautiful, lightweight, future-facing website.&lt;/p&gt;
+
+&lt;p&gt;I took up and put down this project a couple of times, and I didn&amp;#39;t end up submitting it to 10k Apart. Lately, however, I have more and more often wanted to write about specific things, only to find I didn&amp;#39;t have a platform on which to write. I had to get this project out the door, if only to make way for future writings.&lt;/p&gt;
+
+&lt;p&gt;As a warm-up, I&amp;#39;ll be writing a short series of posts on what went into making this blog. I hope that anyone blogging with &lt;a href="https://middlemanapp.com/"&gt;Middleman&lt;/a&gt;, learning about &lt;a href="http://webaim.org/"&gt;accessibility&lt;/a&gt;, wondering about &lt;a href="http://bradfrost.com/blog/post/atomic-web-design/"&gt;Atomic Design&lt;/a&gt;, or looking to publish with &lt;a href="https://pages.github.com/"&gt;github pages&lt;/a&gt; will find them helpful.&lt;/p&gt;
+
+&lt;p&gt;I still have some items on my to-do list (&lt;code&gt;&amp;lt;picture&amp;gt;&lt;/code&gt; elements, lazy-loading images, styling tweaks, etc.), but it was important to me to get a v1 of this blog out in the world. In the meantime, check out my payload! ~5k, as long as we&amp;#39;re not counting font files 💥&lt;/p&gt;
+
+&lt;p&gt;Happy reading!&lt;/p&gt;
+</content>
   </entry>
 </rss>
