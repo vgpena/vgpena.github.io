@@ -1,0 +1,224 @@
+---
+title: Winning with CSS Variables
+subtitle: I can't believe it's not Sass!
+summary: CSS variables now enjoy wide cross-browser support. But what are they and why should we use them?
+date: 2017-04-30 16:59 PDT
+---
+
+CSS variables, like variables in any programming language, let us reference the same values over and over. As of April 2017, they are supported by [all modern browsers](http://caniuse.com/#feat=css-variables) and are an effective way to write tight, clean styles.
+
+I'll be walking through the basics of CSS variables, how they are different from Sass variables, and how to provide legacy support.
+
+## How to use them
+
+Any CSS property -- color, size, position, etc. -- can be stored in a CSS variable. Their names are all prefixed with `--`, and you declare them by adding them to an element right where you add its other styles:
+
+```css
+body {
+  --primary: #7F583F;
+  --secondary: #F7EFD2;
+}
+```
+
+You refer to a CSS variable by wrapping it in `var()`.
+
+```css
+a {
+  color: var(--primary);
+  text-decoration-color: var(--secondary);
+}
+```
+
+If you look at this CSS in your web inspector, you'll see that these variables are not being aliased or transpiled in any way -- your browser will tell you that an `a`'s color is `--primary`, not the hex value itself.
+
+When you use a CSS variable, you can also pass in an optional default value:
+
+```css
+color: var(--primary, #7F583F);
+```
+
+This default value will be used if the CSS variable is not defined or available in the current scope.
+
+## Scoping and the cascade
+
+CSS variables act like a normal style property; a variable is available anywhere down the cascade.
+
+For example, these variables can be used by anything on the entire page:
+
+```css
+body {
+  --primary: #7F583F;
+  --secondary: #F7EFD2;
+}
+```
+
+And these will only be defined within elements with a certain class:
+
+```css
+.content {
+  --primary: #7F583F;
+  --secondary: #F7EFD2;
+}
+```
+
+In this second example, if you try to use `--primary` outside of a `.content` element, the page will still render but that style will not be applied.
+
+## The Paradigm: custom CSS properties
+
+You may have noticed a theme so far, which is that variables act just like other CSS properties. You declare variables where you set properties, they cascade in the same way, and so on.
+
+This is because CSS variables are actually nothing more than custom properties. The only difference between `--primary` and `position` is that `position` always means something specific and directly affects rendering, whereas `--primary` does nothing until it is explicitly used.
+
+CSS variables being supported by a browser means that the browser allows the user to set arbitrary, namespaced CSS properties. **This is really exciting.** Just like how it's exciting that media queries let us get away from resize listeners in JavaScript, CSS variables are opening the door to a future that relies less on JS and preprocessors. Speaking of which...
+
+## Better than Sass: theming
+
+CSS variables aren't analogous to Sass variables, and in some ways, the former are vastly preferable to the latter. One of these situations is when you're looking to swap out themes. On [my personal site](http://violet.is), I randomly theme the page each time it is loaded; the user can end up with any of nine color schemes.
+
+This is easily done using Sass. [Store your color combinations in Sass maps](http://now.violet.is/color-scheming), loop over them, and you can quickly create a bunch of classes that you can apply to the page:
+
+```css
+.theme-1 {
+  a {
+    color: #7F583F;
+    text-decoration-color: #F7EFD2;
+  }
+}
+
+.theme-2 {
+  a {
+    color: #D51522;
+    text-decoration-color: #F4F6D8;
+  }
+}
+
+...
+```
+
+The CSS is easy to generate, but in the case of nine variations, you end up with eight classes' worth of styling that remains unused.
+
+CSS variables can achieve the same effect with no "extra" CSS. In this case, instead of using JavaScript to add a class to the page, you can use it to set specific CSS variables:
+
+```javascript
+document.body.style.setProperty('--primary', '#7F583F');
+document.body.style.setProperty('--secondary', '#F7EFD2');
+```
+
+These changes are picked up by every element in the cascade that uses that variable. Your styles stay cleaner and you don't have to go through the middleman of applying classes.
+
+## Better than Sass: media queries
+
+In Sass, redefining variables within media queries is something that you Just Can't Do. For instance, maybe you want to swap link colors when you get to a breakpoint. You may be tempted to redeclare the variables themselves inside of the media query:
+
+```scss
+
+$primary: #7F583F;
+$secondary: #F7EFD2;
+
+a {
+  color: $primary;
+  text-decoration-color: $secondary;
+
+  @media screen and (min-width: 768px) {
+    $primary: #F7EFD2;
+    $secondary: #7F583F;
+  }
+}
+
+```
+
+This, sadly, doesn't work in Sass, since Sass is a preprocessor and can't know anything about the conditions under which its output is used.
+
+This pattern *can* be used with CSS variables, though:
+
+```css
+
+body {
+  --primary: #7F583F;
+  --secondary: #F7EFD2;
+}
+
+a {
+  color: var(--primary);
+  text-decoration-color: var(--secondary);
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    --primary:  #F7EFD2;
+    --secondary: #7F583F;
+  }
+}
+
+```
+
+This works with CSS variables because all change is happening in-browser, and the variables *do* know about the conditions under which they are being used.
+
+------------
+
+This said, I ❤️ Sass and a combination of these tools is way more powerful than each is individually. In fact, I have a great lil mixin further down the page that leverages Sass for declaring CSS variable fallbacks.
+
+## Browser support
+
+CSS variables have been in Firefox since 2014, in Chrome + Safari since March 2016, and just landed in Edge April 2017! 🎉 (Source:  [CanIUse](http://caniuse.com/#feat=css-variables).) So the good news is that they're quite safe; the bad news is that you *will* need fallbacks for Edge 14- and, naturally, all of IE.
+
+## Providing fallbacks
+
+Luckily, the way to provide these fallback styles is the way we have been doing it since time immemorial:
+
+```css
+a {
+  color: #7F583F;
+  color: var(--primary);
+}
+```
+
+Declare your fallback first and your desired value second, and browsers that support your preferred property will use it. Browsers that don't, such as IE 11, will still render something acceptable using your fallback value.
+
+## Easier fallbacks with Sass
+
+If you're using Sass, you can automate fallbacks through a Sass mixin. Create a map of your CSS variable names and their values, and then you can look up those values in a mixin that outputs the fallback style and the preferred one.
+
+```scss
+$vars: (
+  primary: #7F583F,
+);
+
+body {
+  --primary: map-get($vars, primary);
+}
+
+@mixin var($property, $varName) {
+  #{$property}: map-get($vars, $varName);
+  #{$property}: var(--#{$varName}, map-get($vars, $varName));
+}
+```
+
+The above mixin is used like so:
+
+```scss
+a {
+  @include var(color, primary);
+}
+```
+
+and outputs the following CSS:
+
+```css
+a {
+  color: #7F583F;
+  color: var(--primary, #7F583F);
+}
+```
+
+This way, if you change `--primary` or its fallback, you only need to edit the `$vars` map and your styles everywhere will update.
+
+Please note that you still need to declare your CSS variables somewhere. If you want all of your variables to be available everywhere, you can use more cool Sass to automatically add all the ones in your map to `body` or `html` ✨
+
+-------------
+
+If you want to see CSS variables in action, head on over to [my personal site](http://violet.is/). I had an amazing time on this small project and I'm looking forward to using them on something much larger 🥂
+
+If you still haven't had enough of CSS variables, check out [this Google Developers blog post](https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care). They do a great job of sticking to the "CSS variables are custom properties" paradigm.
+
+Now go forth and style!
