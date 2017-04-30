@@ -1,6 +1,5 @@
 xml.instruct!
 xml.rss version: '2.0',
-  'xmlns:atom' => 'http://www.w3.org/2005/Atom',
   'xmlns:webfeeds' => 'http://webfeeds.org/rss/1.0' do
   site_url = "https://vgpena.github.io"
   xml.title "hey it's violet"
@@ -12,7 +11,7 @@ xml.rss version: '2.0',
   xml.author { xml.name "Violet Peña" }
   xml.image URI.join(site_url, 'images/default.png')
   xml.tag!('webfeeds:cover', image: URI.join(site_url, 'images/default.png'))
-  xml.tag!('webfeeds:icon', image: URI.join(site_url, 'images/icon.svg'))
+  xml.tag!('webfeeds:logo', image: URI.join(site_url, 'images/icon.svg'))
   xml.tag!('webfeeds:accentColor', '2710F2')
 
   blog.articles[0..5].each do |article|
