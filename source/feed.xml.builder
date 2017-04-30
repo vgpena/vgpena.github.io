@@ -1,15 +1,16 @@
-xml.instruct!
+xml.instruct! :xml, version: '1.0', encoding: 'UTF-8'
 xml.rss version: '2.0',
+  'xmlns:atom' => 'http://www.w3.org/2005/Atom',
   'xmlns:webfeeds' => 'http://webfeeds.org/rss/1.0' do
   site_url = "https://vgpena.github.io"
   xml.title "hey it's violet"
-  xml.subtitle "developer & human in the PNW"
-  xml.id URI.join(site_url, blog.options.prefix.to_s)
+  xml.description "developer & human in the PNW"
   xml.link "href" => URI.join(site_url, blog.options.prefix.to_s)
   xml.link "href" => URI.join(site_url, current_page.path), "rel" => "self"
   xml.updated(blog.articles.first.date.to_time.iso8601) unless blog.articles.empty?
   xml.author { xml.name "Violet Peña" }
   xml.image URI.join(site_url, 'images/default.png')
+  xml.language 'en-US'
   xml.tag!('webfeeds:cover', image: URI.join(site_url, 'images/default.png'))
   xml.tag!('webfeeds:logo', URI.join(site_url, 'images/icon.svg'))
   xml.tag!('webfeeds:accentColor', '2710F2')
