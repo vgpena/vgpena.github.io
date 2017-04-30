@@ -11,13 +11,12 @@ xml.rss version: '2.0',
   xml.author { xml.name "Violet Peña" }
   xml.image URI.join(site_url, 'images/default.png')
   xml.tag!('webfeeds:cover', image: URI.join(site_url, 'images/default.png'))
-  xml.tag!('webfeeds:logo', image: URI.join(site_url, 'images/icon.svg'))
+  xml.tag!('webfeeds:logo', URI.join(site_url, 'images/icon.svg'))
   xml.tag!('webfeeds:accentColor', '2710F2')
 
   blog.articles[0..5].each do |article|
     xml.entry do
       xml.title article.title
-      xml.tag!('webfeeds:cover', image: URI.join(site_url, 'images/', article.metadata[:page][:hero] || 'default.png'))
       xml.link "rel" => "alternate", "href" => URI.join(site_url, article.url)
       xml.id URI.join(site_url, article.url)
       xml.published article.date.to_time.iso8601

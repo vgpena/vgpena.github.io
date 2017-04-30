@@ -11,11 +11,10 @@
   </author>
   <image>https://vgpena.github.io/images/default.png</image>
   <webfeeds:cover image="https://vgpena.github.io/images/default.png"/>
-  <webfeeds:logo image="https://vgpena.github.io/images/icon.svg"/>
+  <webfeeds:logo>https://vgpena.github.io/images/icon.svg</webfeeds:logo>
   <webfeeds:accentColor>2710F2</webfeeds:accentColor>
   <entry>
     <title>Winning with CSS Variables</title>
-    <webfeeds:cover image="https://vgpena.github.io/images/default.png"/>
     <link rel="alternate" href="https://vgpena.github.io/winning-with-css-variables/"/>
     <id>https://vgpena.github.io/winning-with-css-variables/</id>
     <published>2017-04-30T14:30:00-07:00</published>
@@ -190,7 +189,6 @@
   </entry>
   <entry>
     <title>Fixing Jest Memory Usage on CircleCI</title>
-    <webfeeds:cover image="https://vgpena.github.io/images/memberberries.png"/>
     <link rel="alternate" href="https://vgpena.github.io/jest-circleci/"/>
     <id>https://vgpena.github.io/jest-circleci/</id>
     <published>2017-04-18T20:14:00-07:00</published>
@@ -220,7 +218,6 @@
   </entry>
   <entry>
     <title>Turning Subreddits Into Chatbots</title>
-    <webfeeds:cover image="https://vgpena.github.io/images/ahd/show2.jpg"/>
     <link rel="alternate" href="https://vgpena.github.io/chatbots/"/>
     <id>https://vgpena.github.io/chatbots/</id>
     <published>2017-04-02T22:26:00-07:00</published>
@@ -395,7 +392,6 @@
   </entry>
   <entry>
     <title>Blogging with Middleman: Partials Are Magic</title>
-    <webfeeds:cover image="https://vgpena.github.io/images/spongebob.jpg"/>
     <link rel="alternate" href="https://vgpena.github.io/partials-are-magic/"/>
     <id>https://vgpena.github.io/partials-are-magic/</id>
     <published>2017-03-21T10:32:00-07:00</published>
@@ -478,7 +474,6 @@
   </entry>
   <entry>
     <title>Blogging with Middleman, Pt. 1</title>
-    <webfeeds:cover image="https://vgpena.github.io/images/default.png"/>
     <link rel="alternate" href="https://vgpena.github.io/blogging-with-middleman/"/>
     <id>https://vgpena.github.io/blogging-with-middleman/</id>
     <published>2017-03-08T06:29:00-08:00</published>
@@ -618,7 +613,6 @@
   </entry>
   <entry>
     <title>Creating Once</title>
-    <webfeeds:cover image="https://vgpena.github.io/images/default.png"/>
     <link rel="alternate" href="https://vgpena.github.io/creating-once/"/>
     <id>https://vgpena.github.io/creating-once/</id>
     <published>2017-02-16T06:33:00-08:00</published>
