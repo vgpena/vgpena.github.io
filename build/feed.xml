@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0">
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0">
   <title>hey it's violet</title>
   <description>developer &amp; human in the PNW</description>
   <link href="https://vgpena.github.io"/>
@@ -640,4 +640,4 @@
 &lt;p&gt;Happy reading!&lt;/p&gt;
 </content>
   </entry>
-</rss>
+</feed>

@@ -1,6 +1,5 @@
 xml.instruct! :xml, version: '1.0', encoding: 'UTF-8'
-xml.rss version: '2.0',
-  'xmlns:atom' => 'http://www.w3.org/2005/Atom',
+xml.feed "xmlns" => "http://www.w3.org/2005/Atom",
   'xmlns:webfeeds' => 'http://webfeeds.org/rss/1.0' do
   site_url = "https://vgpena.github.io"
   xml.title "hey it's violet"
