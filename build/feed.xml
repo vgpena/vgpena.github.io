@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:webfeeds="http://webfeeds.org/rss/1.0">
+<rss version="2.0" xmlns:webfeeds="http://webfeeds.org/rss/1.0">
   <title>hey it's violet</title>
   <subtitle>developer &amp; human in the PNW</subtitle>
   <id>https://vgpena.github.io</id>
@@ -11,7 +11,7 @@
   </author>
   <image>https://vgpena.github.io/images/default.png</image>
   <webfeeds:cover image="https://vgpena.github.io/images/default.png"/>
-  <webfeeds:icon image="https://vgpena.github.io/images/icon.svg"/>
+  <webfeeds:logo image="https://vgpena.github.io/images/icon.svg"/>
   <webfeeds:accentColor>2710F2</webfeeds:accentColor>
   <entry>
     <title>Winning with CSS Variables</title>
