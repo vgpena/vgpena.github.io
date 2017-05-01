@@ -1,6 +1,5 @@
 xml.instruct!
-xml.feed "xmlns" => "http://www.w3.org/2005/Atom",
-  'xmlns:webfeeds' => 'http://webfeeds.org/rss/1.0' do
+xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   site_url = "https://vgpena.github.io"
   xml.title "hey it's violet"
   xml.subtitle "developer & human in the PNW"
@@ -9,9 +8,6 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom",
   xml.link "href" => URI.join(site_url, current_page.path), "rel" => "self"
   xml.updated(blog.articles.first.date.to_time.iso8601) unless blog.articles.empty?
   xml.author { xml.name "Violet Peña" }
-  xml.tag!('webfeeds:cover', image: URI.join(site_url, 'images/default.png'))
-  xml.tag!('webfeeds:logo', URI.join(site_url, 'images/icon.svg'))
-  xml.tag!('webfeeds:accentColor', '2710F2')
 
   blog.articles[0..5].each do |article|
     xml.entry do
