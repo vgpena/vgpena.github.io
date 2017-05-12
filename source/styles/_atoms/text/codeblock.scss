@@ -88,3 +88,24 @@ pre {
     color: lighten($rich, 35%);
   }
 }
+
+.json {
+  .s2 {
+    color: $light;
+    opacity: initial;
+  }
+}
+
+.typescript {
+  .nx {
+    color: $pale;
+  }
+
+  .kr + .nx {
+    color: $light;
+  }
+
+  .nl + .p + .nx, .nl ~ .p + .kr {
+    color: lighten($rich, 25%);
+  }
+}
