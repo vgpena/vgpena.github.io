@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>hey it's violet</title>
   <subtitle>developer &amp; human in the PNW</subtitle>
-  <id>https://vgpena.github.io</id>
+  <id>https://vgpena.github.io/</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
   <updated>2017-04-30T14:30:00-07:00</updated>
@@ -14,7 +14,7 @@
     <link rel="alternate" href="https://vgpena.github.io/winning-with-css-variables/"/>
     <id>https://vgpena.github.io/winning-with-css-variables/</id>
     <published>2017-04-30T14:30:00-07:00</published>
-    <updated>2017-04-30T14:30:24-07:00</updated>
+    <updated>2017-05-12T16:09:17-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -24,37 +24,47 @@
 &lt;p&gt;I&amp;#39;ll be walking through the basics of CSS variables, how they are different from Sass variables, and how to provide legacy support.&lt;/p&gt;
 &lt;h2 class='section-title' id=how-to-use-them&gt;&lt;a href='#how-to-use-them' class='section-inner'&gt;How to use them&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Any CSS property -- color, size, position, etc. -- can be stored in a CSS variable. Their names are all prefixed with &lt;code&gt;--&lt;/code&gt;, and you declare them by adding them to an element right where you add its other styles:&lt;/p&gt;
-&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;pre class="code css"&gt;&lt;code&gt;
+&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="py"&gt;--primary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#7F583F&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="py"&gt;--secondary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#F7EFD2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;You refer to a CSS variable by wrapping it in &lt;code&gt;var()&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;pre class="code css"&gt;&lt;code&gt;
+&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nl"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;--primary&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
   &lt;span class="nl"&gt;text-decoration-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;--secondary&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you look at this CSS in your web inspector, you&amp;#39;ll see that these variables are not being aliased or transpiled in any way -- your browser will tell you that an &lt;code&gt;a&lt;/code&gt;&amp;#39;s color is &lt;code&gt;--primary&lt;/code&gt;, not the hex value itself.&lt;/p&gt;
 
 &lt;p&gt;When you use a CSS variable, you can also pass in an optional default value:&lt;/p&gt;
-&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nt"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;var&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;--primary&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nf"&gt;#7F583F&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;pre class="code css"&gt;&lt;code&gt;
+&lt;span class="nt"&gt;color&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;var&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;--primary&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nf"&gt;#7F583F&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This default value will be used if the CSS variable is not defined or available in the current scope.&lt;/p&gt;
 &lt;h2 class='section-title' id=scoping-and-the-cascade&gt;&lt;a href='#scoping-and-the-cascade' class='section-inner'&gt;Scoping and the cascade&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;CSS variables act like a normal style property; a variable is available anywhere down the cascade.&lt;/p&gt;
 
 &lt;p&gt;For example, these variables can be used by anything on the entire page:&lt;/p&gt;
-&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;pre class="code css"&gt;&lt;code&gt;
+&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="py"&gt;--primary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#7F583F&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="py"&gt;--secondary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#F7EFD2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And these will only be defined within elements with a certain class:&lt;/p&gt;
-&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;pre class="code css"&gt;&lt;code&gt;
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="py"&gt;--primary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#7F583F&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="py"&gt;--secondary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#F7EFD2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In this second example, if you try to use &lt;code&gt;--primary&lt;/code&gt; outside of a &lt;code&gt;.content&lt;/code&gt; element, the page will still render but that style will not be applied.&lt;/p&gt;
 &lt;h2 class='section-title' id=the-paradigm-custom-css-properties&gt;&lt;a href='#the-paradigm-custom-css-properties' class='section-inner'&gt;The Paradigm: custom CSS properties&lt;/a&gt;&lt;/h2&gt;
@@ -67,7 +77,8 @@
 &lt;p&gt;CSS variables aren&amp;#39;t analogous to Sass variables, and in some ways, the former are vastly preferable to the latter. One of these situations is when you&amp;#39;re looking to swap out themes. On &lt;a href="http://violet.is"&gt;my personal site&lt;/a&gt;, I randomly theme the page each time it is loaded; the user can end up with any of nine color schemes.&lt;/p&gt;
 
 &lt;p&gt;This is easily done using Sass. &lt;a href="http://now.violet.is/color-scheming"&gt;Store your color combinations in Sass maps&lt;/a&gt;, loop over them, and you can quickly create a bunch of classes that you can apply to the page:&lt;/p&gt;
-&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.theme-1&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;pre class="code css"&gt;&lt;code&gt;
+&lt;span class="nc"&gt;.theme-1&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="err"&gt;a&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
     &lt;span class="nl"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#7F583F&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="nl"&gt;text-decoration-color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#F7EFD2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -81,13 +92,16 @@
   &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="err"&gt;}&lt;/span&gt;
 
-&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="c"&gt;/* etc */&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The CSS is easy to generate, but in the case of nine variations, you end up with eight classes&amp;#39; worth of styling that remains unused.&lt;/p&gt;
 
 &lt;p&gt;CSS variables can achieve the same effect with no &amp;quot;extra&amp;quot; CSS. In this case, instead of using JavaScript to add a class to the page, you can use it to set specific CSS variables:&lt;/p&gt;
-&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;style&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setProperty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'--primary'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'#7F583F'&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;pre class="code javascript"&gt;&lt;code&gt;
+&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;style&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setProperty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'--primary'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'#7F583F'&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;style&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;setProperty&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'--secondary'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'#F7EFD2'&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;These changes are picked up by every element in the cascade that uses that variable. Your styles stay cleaner and you don&amp;#39;t have to go through the middleman of applying classes.&lt;/p&gt;
 &lt;h2 class='section-title' id=better-than-sass-media-queries&gt;&lt;a href='#better-than-sass-media-queries' class='section-inner'&gt;Better than Sass: media queries&lt;/a&gt;&lt;/h2&gt;
@@ -138,15 +152,18 @@
 &lt;p&gt;CSS variables have been in Firefox since 2014, in Chrome + Safari since March 2016, and just landed in Edge April 2017! 🎉 (Source:  &lt;a href="http://caniuse.com/#feat=css-variables"&gt;CanIUse&lt;/a&gt;.) So the good news is that they&amp;#39;re quite safe; the bad news is that you &lt;em&gt;will&lt;/em&gt; need fallbacks for Edge 14- and, naturally, all of IE.&lt;/p&gt;
 &lt;h2 class='section-title' id=providing-fallbacks&gt;&lt;a href='#providing-fallbacks' class='section-inner'&gt;Providing fallbacks&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Luckily, the way to provide these fallback styles is the way we have been doing it since time immemorial:&lt;/p&gt;
-&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;pre class="code css"&gt;&lt;code&gt;
+&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nl"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#7F583F&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="nl"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;--primary&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Declare your fallback first and your desired value second, and browsers that support your preferred property will use it. Browsers that don&amp;#39;t, such as IE 11, will still render something acceptable using your fallback value.&lt;/p&gt;
 &lt;h2 class='section-title' id=easier-fallbacks-with-sass&gt;&lt;a href='#easier-fallbacks-with-sass' class='section-inner'&gt;Easier fallbacks with Sass&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;If you&amp;#39;re using Sass, you can automate fallbacks through a Sass mixin. Create a map of your CSS variable names and their values, and then you can look up those values in a mixin that outputs the fallback style and the preferred one.&lt;/p&gt;
-&lt;pre class="code scss"&gt;&lt;code&gt;&lt;span class="nv"&gt;$vars&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+&lt;pre class="code scss"&gt;&lt;code&gt;
+&lt;span class="nv"&gt;$vars&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
   &lt;span class="n"&gt;primary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mh"&gt;#7F583F&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
 &lt;span class="p"&gt;);&lt;/span&gt;
 
@@ -158,17 +175,22 @@
   &lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="nv"&gt;$property&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="nd"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;map-get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;vars&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;varName&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="nv"&gt;$property&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="nd"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;var&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;--&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="nv"&gt;$varName&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;map-get&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;vars&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nt"&gt;varName&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The above mixin is used like so:&lt;/p&gt;
-&lt;pre class="code scss"&gt;&lt;code&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;pre class="code scss"&gt;&lt;code&gt;
+&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="k"&gt;@include&lt;/span&gt; &lt;span class="nd"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;primary&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;and outputs the following CSS:&lt;/p&gt;
-&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;pre class="code css"&gt;&lt;code&gt;
+&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nl"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;#7F583F&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
   &lt;span class="nl"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;--primary&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;#7F583F&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This way, if you change &lt;code&gt;--primary&lt;/code&gt; or its fallback, you only need to edit the &lt;code&gt;$vars&lt;/code&gt; map and your styles everywhere will update.&lt;/p&gt;
 
@@ -391,7 +413,7 @@
     <link rel="alternate" href="https://vgpena.github.io/partials-are-magic/"/>
     <id>https://vgpena.github.io/partials-are-magic/</id>
     <published>2017-03-21T10:32:00-07:00</published>
-    <updated>2017-04-01T07:49:25-07:00</updated>
+    <updated>2017-05-12T16:09:17-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -414,7 +436,8 @@
 &lt;p&gt;Markdown, unfortunately, doesn&amp;#39;t provide a way to mark up &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; elements. It allows raw HTML, such as &lt;span style="color:red; font-weight: bold;"&gt;this red text&lt;/span&gt;, but that wouldn&amp;#39;t have been a sustainable workaround. If the &lt;code&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; spec changed, I would have to go around and update every post that used it.&lt;/p&gt;
 &lt;h2 class='section-title' id=creating-a-partial&gt;&lt;a href='#creating-a-partial' class='section-inner'&gt;Creating a partial&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The solution was to create a partial template that could render media in different contexts. The file itself looks like this:&lt;/p&gt;
-&lt;pre class="code erb"&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:caption&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;pre class="code erb"&gt;&lt;code&gt;
+&lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:caption&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;lt;figure&lt;/span&gt; &lt;span class="na"&gt;role=&lt;/span&gt;&lt;span class="s"&gt;"img"&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"image-wrap image-&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:size&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"image-wrap image-&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;locals&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:size&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
@@ -428,6 +451,7 @@
 &lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;span class="cp"&gt;&amp;lt;%&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The partial checks the &lt;code&gt;locals&lt;/code&gt; I pass in for a caption and renders a different element accordingly. &lt;code&gt;locals&lt;/code&gt; values also provide the path and other attributes of the image, and determine what styling the element will receive.&lt;/p&gt;
 
@@ -436,7 +460,8 @@
 &lt;p&gt;&lt;div class="image-wrap image-secondary"&gt;
     &lt;img src="/images/ponies.png" alt="The main characters of &amp;quot;My Little Pony: Friendship is Magic&amp;quot; crowd the camera." title="The main characters from &amp;quot;My Little Pony: Friendship is Magic&amp;quot;" width="900px" height="809px" /&gt;
   &lt;/div&gt;&lt;/p&gt;
-&lt;pre class="code erb"&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:media&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:locals&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;pre class="code erb"&gt;&lt;code&gt;
+&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;partial&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:media&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:locals&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="ss"&gt;:src&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'ponies.png'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
   &lt;span class="ss"&gt;:title&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'The main characters from "My Little Pony: Friendship is Magic"'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
   &lt;span class="ss"&gt;:alt&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'The main characters of "My Little Pony: Friendship is Magic" crowd the camera.'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -444,6 +469,7 @@
   &lt;span class="ss"&gt;:width&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'900px'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
   &lt;span class="ss"&gt;:height&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;'809px'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This ERB tells Middleman to find the &amp;quot;media&amp;quot; partial and pass in the &lt;code&gt;locals&lt;/code&gt; specified. Partials are located relative to &lt;code&gt;/source&lt;/code&gt;, so this particular partial is found at &lt;code&gt;/source/media.erb&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 class='section-title' id=using-a-partial&gt;&lt;a href='#using-a-partial' class='section-inner'&gt;Using a partial&lt;/a&gt;&lt;/h2&gt;
@@ -454,10 +480,14 @@
 &lt;p&gt;These extensions tell Middleman to make one pass of the file and render any ERB that it finds. It then makes a second pass and renders any Markdown found; the file is now entirely converted to HTML.&lt;/p&gt;
 
 &lt;p&gt;Give all new blog posts these extensions by changing this line in your &lt;code&gt;config.rb&lt;/code&gt;:&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# blog.default_extension = ".markdown"&lt;/span&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;
+&lt;span class="c1"&gt;# blog.default_extension = ".markdown"&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;to something like&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;default_extension&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;".markdown.erb"&lt;/span&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;
+&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;default_extension&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;".markdown.erb"&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This means that all new blog posts created via &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt; will have that extension and be ready to accept partials.&lt;/p&gt;
 
@@ -473,7 +503,7 @@
     <link rel="alternate" href="https://vgpena.github.io/blogging-with-middleman/"/>
     <id>https://vgpena.github.io/blogging-with-middleman/</id>
     <published>2017-03-08T06:29:00-08:00</published>
-    <updated>2017-04-01T07:47:07-07:00</updated>
+    <updated>2017-05-12T16:09:17-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -499,24 +529,29 @@
 &lt;p&gt;(Also, if you hold off on setting your time zone and you only do it after you&amp;#39;ve written some articles, you will get cryptic errors about dates in frontmatter &amp;quot;not matching&amp;quot; and you will have to switch any articles with UTC timestamps in their frontmatter to bear your local timestamp. I will talk more about frontmatter later.)&lt;/p&gt;
 
 &lt;p&gt;You already have &lt;code&gt;tzinfo-data&lt;/code&gt; installed (you can see it listed in your &lt;code&gt;Gemfile&lt;/code&gt;), so go straight into your &lt;code&gt;config.rb&lt;/code&gt; and add the lines:&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'tzinfo'&lt;/span&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'tzinfo'&lt;/span&gt;
 &lt;span class="no"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;zone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'US/Pacific'&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And this time zone will now be used whenever you create a new article. You can find your time zone on &lt;a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"&gt;this list&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 class='section-title' id=customizing-yaml-frontmatter&gt;&lt;a href='#customizing-yaml-frontmatter' class='section-inner'&gt;Customizing YAML frontmatter&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Now you can safely create your first article (!!) from the command line (!!) with &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt;. A file called &lt;code&gt;articleName.html.md&lt;/code&gt; will be created in your &lt;code&gt;source&lt;/code&gt; dir, looking something like&lt;/p&gt;
-&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;pre class="code yaml"&gt;&lt;code&gt;
+&lt;span class="nn"&gt;---&lt;/span&gt;
 &lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;foo&lt;/span&gt;
 &lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;2017-02-20 10:42 PST&lt;/span&gt;
 &lt;span class="na"&gt;tags&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
 &lt;span class="nn"&gt;---&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This is &lt;a href="https://en.wikipedia.org/wiki/YAML"&gt;YAML&lt;/a&gt; frontmatter, which provides per-article metadata.&lt;/p&gt;
 
 &lt;p&gt;You may not want this exact frontmatter. For example, I wasn&amp;#39;t interested in tags, but I &lt;em&gt;did&lt;/em&gt; want my articles to have subtitles. In this case, you can write your own article template.&lt;/p&gt;
 
 &lt;p&gt;Find the place in your &lt;code&gt;config.rb&lt;/code&gt; that looks like this (I will be calling it the &amp;quot;blog block&amp;quot;):&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:blog&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;
+&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:blog&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
   &lt;span class="c1"&gt;# This will add a prefix to all links, template references and source paths&lt;/span&gt;
   &lt;span class="c1"&gt;# blog.prefix = "blog"&lt;/span&gt;
 
@@ -540,23 +575,30 @@
   &lt;span class="c1"&gt;# blog.per_page = 10&lt;/span&gt;
   &lt;span class="c1"&gt;# blog.page_link = "page/{num}"&lt;/span&gt;
 &lt;span class="k"&gt;end&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;and somewhere in there, put the line&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new_article_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;expand_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'../source/template.yml'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;__FILE__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;
+&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new_article_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;expand_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'../source/template.yml'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;__FILE__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;and create a file in &lt;code&gt;/source&lt;/code&gt; called &lt;code&gt;template.yml&lt;/code&gt; with the contents:&lt;/p&gt;
-&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;pre class="code yaml"&gt;&lt;code&gt;
+&lt;span class="nn"&gt;---&lt;/span&gt;
 &lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;%= @title %&amp;gt;&lt;/span&gt;
 &lt;span class="na"&gt;subtitle&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
 &lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;%= @date.strftime('%F %R %Z') %&amp;gt;&lt;/span&gt;
 &lt;span class="nn"&gt;---&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now if you run &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt; again, your generated file will have contents like this:&lt;/p&gt;
-&lt;pre class="code yaml"&gt;&lt;code&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;pre class="code yaml"&gt;&lt;code&gt;
+&lt;span class="nn"&gt;---&lt;/span&gt;
 &lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;foo&lt;/span&gt;
 &lt;span class="na"&gt;subtitle&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
 &lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;2017-02-20 11:08 PST&lt;/span&gt;
 &lt;span class="nn"&gt;---&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;title&lt;/code&gt;, &lt;code&gt;subtitle&lt;/code&gt;, and &lt;code&gt;date&lt;/code&gt; will be available as variables to use in blog structuring and templating.&lt;/p&gt;
 
@@ -572,17 +614,23 @@
 &lt;p&gt;Click into any of your articles and you will see that your URL ends in &lt;code&gt;.html&lt;/code&gt;. Extensions in URLs is &lt;em&gt;not&lt;/em&gt; best-practice web development, as it makes the URL harder to understand and means that changing frameworks (like, for whatever reason, switching from Middleman to .NET) could result in broken links. Pretty URLs give your users more stable, memorable addresses and help keep the inner workings of your site under the hood.&lt;/p&gt;
 
 &lt;p&gt;Middleman, like most devtools, ships with a way to implement pretty URLs. In the blog block, add the line:&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:directory_indexes&lt;/span&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;
+&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:directory_indexes&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;and you&amp;#39;re set! From your index page, click through to an article, and you will see that the URL now ends in a &lt;code&gt;/&lt;/code&gt; instead of &lt;code&gt;.html&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;If there are any pages that you &lt;em&gt;don&amp;#39;t&lt;/em&gt; want this done to, register that page in your config, in the &amp;quot;Per-page layout changes&amp;quot; section, like so:&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="s1"&gt;'/&amp;lt;page&amp;gt;.html'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:directory_index&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;
+&lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="s1"&gt;'/&amp;lt;page&amp;gt;.html'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:directory_index&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;For example, I did this to &lt;a href="/404.html"&gt;my 404 page&lt;/a&gt; so that &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; would pick it up correctly (I will talk about GH Pages more in an upcoming post).&lt;/p&gt;
 &lt;h2 class='section-title' id=writing-and-using-scss&gt;&lt;a href='#writing-and-using-scss' class='section-inner'&gt;Writing and using SCSS&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Luckily for me, Middleman comes equipped to transpile &lt;a href="http://sass-lang.com/"&gt;SCSS&lt;/a&gt;. By default, CSS-related files are looked for in the &lt;code&gt;/stylesheets&lt;/code&gt; folder. If you want to customize this directory, you can do so by adding this line to your &lt;code&gt;config.rb&lt;/code&gt;:&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;  &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:css_dir&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'styles'&lt;/span&gt;
+&lt;pre class="code ruby"&gt;&lt;code&gt;
+&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:css_dir&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'styles'&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;You can now refer to files in that dir from your templates (in my case, &lt;code&gt;.erb&lt;/code&gt; files) using the &lt;code&gt;stylesheet_link_tag&lt;/code&gt; variable.&lt;/p&gt;
 
@@ -591,12 +639,16 @@
 &lt;p&gt;Multiple extensions may seem mysterious, but that&amp;#39;s actually the crux of Middleman&amp;#39;s power. Middleman lets you mix and match any parsers you want, and parses a file right-to-left according to its extensions. So &lt;code&gt;file.css.scss&lt;/code&gt; means &amp;quot;this file will end up as CSS, but parse it as SCSS first&amp;quot;. In the above section about generating articles, I mentioned that I changed the blog entry extension from the default &lt;code&gt;.html.markdown&lt;/code&gt; to &lt;code&gt;.html.md.erb&lt;/code&gt;. This tells Middleman to parse entries first as ERB (which lets me include fancy partials), then as Markdown, and that the end result is HTML.&lt;/p&gt;
 
 &lt;p&gt;Put some basic SCSS in your &lt;code&gt;main.css.scss&lt;/code&gt; file:&lt;/p&gt;
-&lt;pre class="code scss"&gt;&lt;code&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;pre class="code scss"&gt;&lt;code&gt;
+&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
   &lt;span class="nl"&gt;font-family&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;and add this line to inside the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; tag of &lt;code&gt;source/layout.erb&lt;/code&gt;:&lt;/p&gt;
-&lt;pre class="code erb"&gt;&lt;code&gt;    &lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;stylesheet_link_tag&lt;/span&gt; &lt;span class="ss"&gt;:main&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:media&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"screen"&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+&lt;pre class="code erb"&gt;&lt;code&gt;
+&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;stylesheet_link_tag&lt;/span&gt; &lt;span class="ss"&gt;:main&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:media&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"screen"&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;And now your site should look about 20 percent cooler.&lt;/p&gt;
 

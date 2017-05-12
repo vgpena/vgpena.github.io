@@ -3,10 +3,14 @@ pre {
   color: $light;
   word-wrap: break-word;
   white-space: pre-wrap;
-  margin: $space $space $space * 2 $space;
-  max-width: $max-content-width - $space * 3;
   box-sizing: border-box;
   position: relative;
+  margin: $space 0 $space * 2 0;
+
+  @include at-least($code-block-break) {
+    margin: $space $space $space * 2 $space;
+    max-width: $max-content-width - $space * 3;
+  }
 
   --bottom: #{ $rich };
   --top: #{ $bright };
@@ -28,11 +32,20 @@ pre {
     content: "";
     position: absolute;
     z-index: 0;
-    top: 1em;
-    left: 1em;
-    right: -1em;
     bottom: -1em;
-    background: linear-gradient(65deg, var(--bottom), var(--top));
+    height: 1em;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, var(--bottom), var(--top) 60%);
+
+    @include at-least($code-block-break) {
+      height: initial;
+      top: 1em;
+      left: 1em;
+      right: -1em;
+      bottom: -1em;
+      background: linear-gradient(65deg, var(--bottom), var(--top));
+    }
   }
 
   code {
