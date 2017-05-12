@@ -40,16 +40,16 @@ pre {
     line-height: 2em;
     background-color: $dark;
     z-index: 1;
-    padding: $space * 2;
+    padding: $space $space * 2;
     position: relative;
     display: block;
   }
 
-  .c1 {
+  .c1, .c {
     opacity: 0.5;
   }
 
-  .kr, .kd, .k + .nx, .n, .nl, {
+  .kr, .kd, .k + .nx, .n, .nl, .py {
     color: $pale;
   }
 
@@ -61,7 +61,7 @@ pre {
     opacity: 0.5;
   }
 
-  .mi, .nb, .s1, .ss, .nv {
+  .mi, .nb, .s1, .ss, .nv, .mi + .n {
     color: lighten($rich, 25%);
   }
 
@@ -86,6 +86,13 @@ pre {
 .css, .scss {
   .nt {
     color: lighten($rich, 35%);
+    &:first-child + .o + .nt {
+      color: $pale;
+    }
+  }
+
+  .nl + .p + .n + .p + .n {
+    color: lighten($rich, 25%);
   }
 }
 
