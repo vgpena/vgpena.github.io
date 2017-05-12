@@ -40,9 +40,17 @@ handleResize() {
 }
 ```
 
-```jsx
-<aside className={ css(styles.default, this.props.borderColor && modifiedStyles.default) } ref={(node: any) => this.item = node}>
-  <h3 className={ css(styles.header, this.props.color && modifiedStyles.fonts) }>
+```react
+
+<aside
+  className={ css(
+    styles.default,
+    this.props.borderColor && modifiedStyles.default) }
+  ref={(node: any) => this.item = node}>
+  <h3 className={ css(
+      styles.header,
+      this.props.color && modifiedStyles.fonts
+    ) }>
     <span className={ css(styles.eyebrow, this.props.color && modifiedStyles.fonts) }>
       { this.props.eyebrow || 'By the way' }
     </span>

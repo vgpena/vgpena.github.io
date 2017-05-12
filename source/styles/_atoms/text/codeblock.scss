@@ -49,19 +49,19 @@ pre {
     opacity: 0.5;
   }
 
-  .kr, .kd, .k + .nx {
+  .kr, .kd, .k + .nx, .n{
     color: $pale;
   }
 
-  .k, .p, .s2, .o, .err, .si, .err + .nx {
+  .k, .p, .s2, .o, .err, .si, .err + .nx, .nt, .cp {
     color: $bright;
   }
 
-  .p, .s2, .o, .err, .si {
+  .p, .s2, .o, .err, .si, .nt, .cp {
     opacity: 0.5;
   }
 
-  .mi, .nb {
+  .mi, .nb, .s1, .ss{
     color: lighten($rich, 20%);
   }
 
