@@ -44,4 +44,24 @@ pre {
     position: relative;
     display: block;
   }
+
+  .c1 {
+    opacity: 0.5;
+  }
+
+  .kr, .kd {
+    color: $pale;
+  }
+
+  .k, .p, .s2, .o, .err, .si, .err + .nx {
+    color: $bright;
+  }
+
+  .p, .s2, .o, .err, .si {
+    opacity: 0.5;
+  }
+
+  .mi {
+    color: lighten($rich, 20%);
+  }
 }
