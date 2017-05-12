@@ -1,0 +1,210 @@
+---
+title: code snippet test
+subtitle:
+summary:
+hero:
+date: 2017-05-12 13:15 PDT
+published: false
+---
+
+
+<%= lorem.sentences 5 %>
+
+```javascript
+const config = require(`${ __dirname }/config.json`);
+const bots = config.bots;
+const bot = process.argv[2];
+
+function createProbabilities(data) {
+  let probs = {};
+  for (let i = 0; i < data.length; i++) {
+    if (!probs[data[i].word]) {
+      probs[data[i].word] = {
+        totalFrequency: 0,
+        nextWords: {},
+      }
+    }
+    probs[data[i].word].nextWords[data[i].nextword] = Number(data[i].c);
+  }
+  return probs;
+}
+
+@autobind
+@debounce(200)
+handleResize() {
+  setTimeout(() => {
+    this.handleScroll();
+  }, 0);
+}
+```
+
+```jsx
+<aside className={ css(styles.default, this.props.borderColor && modifiedStyles.default) } ref={(node: any) => this.item = node}>
+  <h3 className={ css(styles.header, this.props.color && modifiedStyles.fonts) }>
+    <span className={ css(styles.eyebrow, this.props.color && modifiedStyles.fonts) }>
+      { this.props.eyebrow || 'By the way' }
+    </span>
+    <span className={ css(styles.title, this.props.color && modifiedStyles.fonts) }>
+      { this.props.title }
+    </span>
+  </h3>
+  <p className={ css(styles.copy, this.props.color && modifiedStyles.fonts) }>
+    { this.props.copy }
+  </p>
+</aside>
+```
+
+```erb
+<%% if locals[:caption] %>
+  <figure role="img" class="image-wrap image-<%%= locals[:size] %>">
+<%% else %>
+  <div class="image-wrap image-<%%= locals[:size] %>">
+<%% end %>
+    <%%= image_tag locals[:src], { alt: locals[:alt], title: locals[:title], width: locals[:width] , height: locals[:height] } %>
+<%% if locals[:caption] %>
+  <figcaption>
+    <p><%%= locals[:caption] %></p>
+  </figcaption>
+</figure>
+<%% else %>
+  </div>
+<%% end %>
+```
+
+<%= lorem.sentences 2 %>
+
+```css
+.theme-1 {
+  a {
+    color: #7F583F;
+    text-decoration-color: #F7EFD2;
+  }
+}
+
+.theme-2 {
+  a {
+    color: #D51522;
+    text-decoration-color: #F4F6D8;
+  }
+}
+```
+
+<%= lorem.sentences 8 %>
+
+```scss
+
+$primary: #7F583F;
+$secondary: #F7EFD2;
+
+a {
+  color: $primary;
+  text-decoration-color: $secondary;
+
+  @media screen and (min-width: 768px) {
+    $primary: #F7EFD2;
+    $secondary: #7F583F;
+  }
+}
+
+body {
+  --primary: map-get($vars, primary);
+}
+
+@mixin var($property, $varName) {
+  #{$property}: map-get($vars, $varName);
+  #{$property}: var(--#{$varName}, map-get($vars, $varName));
+}
+
+```
+
+<%= lorem.sentences 4 %>
+
+```yaml
+---
+title: <%%= @title %>
+subtitle:
+date: <%%= @date.strftime('%F %R %Z') %>
+---
+```
+
+<%= lorem.sentences 3 %>
+
+```ruby
+# Custom MD parser
+class ExtraSpecialParser < Redcarpet::Render::HTML
+  def header(text, header_level)
+    if header_level == 2
+      slug = text.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+      "<h2 class='section-title' id=#{ slug }><a href='##{slug}' class='section-inner'>#{ text }</a></h2>"
+    else
+      "<h#{ header_level } tabIndex=0>#{ text }</h#{ header_level }>"
+    end
+  end
+
+  def block_code(code, language)
+    Middleman::Syntax::Highlighter.highlight(code, language, css_class: 'code', line_numbers: false)
+  end
+end
+```
+
+```json
+{
+  "name": "arthack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "2.1.2",
+    "ndjson": "1.5.0",
+    "socket.io": "1.7.3"
+  }
+}
+```
+
+```typescript
+item: HTMLElement;
+itemTop: number;
+
+export interface IAnnotationProps {
+  eyebrow?: string;
+  title: string;
+  copy: string;
+  borderColor?: string;
+  color?: string;
+};
+```
+
+```sql
+SELECT word, nextword, COUNT(*) c
+FROM (
+  SELECT
+    pos,
+    word,
+    LEAD(word) OVER(ORDER BY pos) nextword
+  FROM (
+    SELECT
+      word,
+      pos
+    FROM
+      FLATTEN( (
+        SELECT
+          word,
+          POSITION(word) pos
+        FROM (
+          SELECT
+            SPLIT(REGEXP_REPLACE(LOWER(body), r'(\n)', r' '), ' ') word
+          FROM
+            [fh-bigquery:reddit_comments.2017_02], [fh-bigquery:reddit_comments.2017_01], [fh-bigquery:reddit_comments.2016_12] WHERE subreddit = 'dankmemes' LIMIT 10000
+         ) ), word) ))
+         WHERE length(word) >= 1 and length(nextword) >= 1 and word != nextword
+GROUP BY
+  1, 2
+  ORDER BY
+  c DESC
+```

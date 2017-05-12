@@ -1,10 +1,47 @@
 pre {
   font-family: $mono;
-  font-size: 0.6rem;
-  background: linear-gradient(to right, $pale, $light);
+  font-size: 0.7rem;
+  line-height: 2em;
+  color: $light;
   word-wrap: break-word;
   white-space: pre-wrap;
-  padding: $space * 2 $space;
-  max-width: $max-content-width - $space * 2;
+  margin: $space $space $space * 2 $space;
+  max-width: $max-content-width - $space * 3;
   box-sizing: border-box;
+  position: relative;
+
+  --bottom: $rich;
+  --top: $bright;
+
+  &.css, &.scss, &.sass {
+    --top: $pale;
+  }
+
+  &.json, &.yaml, &.md {
+    --bottom: $light;
+  }
+
+  &.erb, &.ruby{
+    --top: $pale;
+    --bottom: $bright;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 1em;
+    left: 1em;
+    right: -1em;
+    bottom: -1em;
+    background: linear-gradient(65deg, var(--bottom), var(--top));
+  }
+
+  code {
+    background-color: $dark;
+    z-index: 1;
+    padding: $space * 2;
+    position: relative;
+    display: block;
+  }
 }
