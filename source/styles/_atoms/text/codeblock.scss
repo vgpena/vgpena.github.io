@@ -49,7 +49,7 @@ pre {
     opacity: 0.5;
   }
 
-  .kr, .kd {
+  .kr, .kd, .k + .nx {
     color: $pale;
   }
 
@@ -61,7 +61,11 @@ pre {
     opacity: 0.5;
   }
 
-  .mi {
+  .mi, .nb {
     color: lighten($rich, 20%);
+  }
+
+  .na {
+    opacity: 0.8;
   }
 }
