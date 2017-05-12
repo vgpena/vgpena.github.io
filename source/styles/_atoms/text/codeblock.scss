@@ -116,3 +116,20 @@ pre {
     color: lighten($rich, 25%);
   }
 }
+
+.erb {
+  .s1 {
+    color: $light;
+  }
+}
+
+.ruby {
+  .s1 {
+    color: $pale;
+  }
+
+  .s2 {
+    color: $light;
+    opacity: initial;
+  }
+}

@@ -34,8 +34,10 @@ Before writing any articles, manually set your publishing time zone. `middleman-
 You already have `tzinfo-data` installed (you can see it listed in your `Gemfile`), so go straight into your `config.rb` and add the lines:
 
 ```ruby
+
 require 'tzinfo'
 Time.zone = 'US/Pacific'
+
 ```
 And this time zone will now be used whenever you create a new article. You can find your time zone on [this list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
@@ -44,11 +46,13 @@ And this time zone will now be used whenever you create a new article. You can f
 Now you can safely create your first article (!!) from the command line (!!) with `middleman article <articleName>`. A file called `articleName.html.md` will be created in your `source` dir, looking something like
 
 ```yaml
+
 ---
 title: foo
 date: 2017-02-20 10:42 PST
 tags:
 ---
+
 ```
 This is [YAML](https://en.wikipedia.org/wiki/YAML) frontmatter, which provides per-article metadata.
 
@@ -57,6 +61,7 @@ You may not want this exact frontmatter. For example, I wasn't interested in tag
 Find the place in your `config.rb` that looks like this (I will be calling it the "blog block"):
 
 ```ruby
+
 activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "blog"
@@ -81,30 +86,38 @@ activate :blog do |blog|
   # blog.per_page = 10
   # blog.page_link = "page/{num}"
 end
+
 ```
 and somewhere in there, put the line
 
 ```ruby
-  blog.new_article_template = File.expand_path('../source/template.yml', __FILE__)
+
+blog.new_article_template = File.expand_path('../source/template.yml', __FILE__)
+
 ```
 and create a file in `/source` called `template.yml` with the contents:
 
 ```yaml
+
 ---
 title: <%%= @title %>
 subtitle:
 date: <%%= @date.strftime('%F %R %Z') %>
 ---
+
 ```
 Now if you run `middleman article <articleName>` again, your generated file will have contents like this:
 
 ```yaml
+
 ---
 title: foo
 subtitle:
 date: 2017-02-20 11:08 PST
 ---
+
 ```
+
 `title`, `subtitle`, and `date` will be available as variables to use in blog structuring and templating.
 
 ----------------
@@ -125,14 +138,18 @@ Click into any of your articles and you will see that your URL ends in `.html`. 
 Middleman, like most devtools, ships with a way to implement pretty URLs. In the blog block, add the line:
 
 ```ruby
-  activate :directory_indexes
+
+activate :directory_indexes
+
 ```
 and you're set! From your index page, click through to an article, and you will see that the URL now ends in a `/` instead of `.html`.
 
 If there are any pages that you *don't* want this done to, register that page in your config, in the "Per-page layout changes" section, like so:
 
 ```ruby
+
 page '/<page>.html', :directory_index => false
+
 ```
 For example, I did this to [my 404 page](/404.html) so that [Github Pages](https://pages.github.com/) would pick it up correctly (I will talk about GH Pages more in an upcoming post).
 
@@ -141,7 +158,9 @@ For example, I did this to [my 404 page](/404.html) so that [Github Pages](https
 Luckily for me, Middleman comes equipped to transpile [SCSS](http://sass-lang.com/). By default, CSS-related files are looked for in the `/stylesheets` folder. If you want to customize this directory, you can do so by adding this line to your `config.rb`:
 
 ```ruby
-  config[:css_dir] = 'styles'
+
+config[:css_dir] = 'styles'
+
 ```
 You can now refer to files in that dir from your templates (in my case, `.erb` files) using the `stylesheet_link_tag` variable.
 
@@ -152,14 +171,18 @@ Multiple extensions may seem mysterious, but that's actually the crux of Middlem
 Put some basic SCSS in your `main.css.scss` file:
 
 ```scss
+
 body {
   font-family: sans-serif;
 }
+
 ```
 and add this line to inside the `<head>` tag of `source/layout.erb`:
 
 ```erb
-    <%%= stylesheet_link_tag :main, :media => "screen" %>
+
+<%%= stylesheet_link_tag :main, :media => "screen" %>
+
 ```
 And now your site should look about 20 percent cooler.
 

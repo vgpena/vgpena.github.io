@@ -33,6 +33,7 @@ Markdown, unfortunately, doesn't provide a way to mark up `<figure>` elements. I
 The solution was to create a partial template that could render media in different contexts. The file itself looks like this:
 
 ```erb
+
 <%% if locals[:caption] %>
   <figure role="img" class="image-wrap image-<%%= locals[:size] %>">
 <%% else %>
@@ -47,6 +48,7 @@ The solution was to create a partial template that could render media in differe
 <%% else %>
   </div>
 <%% end %>
+
 ```
 
 The partial checks the `locals` I pass in for a caption and renders a different element accordingly. `locals` values also provide the path and other attributes of the image, and determine what styling the element will receive.
@@ -63,6 +65,7 @@ I include this partial by writing the following straight in my Markdown:
 })%>
 
 ```erb
+
 <%%= partial(:media, :locals => {
   :src => 'ponies.png',
   :title => 'The main characters from "My Little Pony: Friendship is Magic"',
@@ -71,6 +74,7 @@ I include this partial by writing the following straight in my Markdown:
   :width => '900px',
   :height => '809px',
 })%>
+
 ```
 
 This ERB tells Middleman to find the "media" partial and pass in the `locals` specified. Partials are located relative to `/source`, so this particular partial is found at `/source/media.erb`.
@@ -87,13 +91,17 @@ These extensions tell Middleman to make one pass of the file and render any ERB 
 Give all new blog posts these extensions by changing this line in your `config.rb`:
 
 ```ruby
+
 # blog.default_extension = ".markdown"
+
 ```
 
 to something like
 
 ```ruby
+
 blog.default_extension = ".markdown.erb"
+
 ```
 
 This means that all new blog posts created via `middleman article <articleName>` will have that extension and be ready to accept partials.
