@@ -49,23 +49,42 @@ pre {
     opacity: 0.5;
   }
 
-  .kr, .kd, .k + .nx, .n{
+  .kr, .kd, .k + .nx, .n, .nl, {
     color: $pale;
   }
 
-  .k, .p, .s2, .o, .err, .si, .err + .nx, .nt, .cp {
+  .k, .p, .s2, .o, .err, .si, .err + .nx, .nt, .cp, .nc, .nf, .si + .nd {
     color: $bright;
   }
 
-  .p, .s2, .o, .err, .si, .nt, .cp {
+  .p, .s2, .o, .err, .si, .cp, .si + .nd {
     opacity: 0.5;
   }
 
-  .mi, .nb, .s1, .ss{
-    color: lighten($rich, 20%);
+  .mi, .nb, .s1, .ss, .nv {
+    color: lighten($rich, 25%);
   }
 
   .na {
     opacity: 0.8;
+  }
+}
+
+.css {
+  .nb {
+    color: $light;
+  }
+}
+
+.scss {
+  .na {
+    opacity: initial;
+    color: $pale;
+  }
+}
+
+.css, .scss {
+  .nt {
+    color: lighten($rich, 35%);
   }
 }
