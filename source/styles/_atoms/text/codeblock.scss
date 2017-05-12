@@ -53,11 +53,11 @@ pre {
     color: $pale;
   }
 
-  .k, .p, .s2, .o, .err, .si, .err + .nx, .nt, .cp, .nc, .nf, .si + .nd {
+  .k, .p, .s2, .o, .err, .si, .err + .nx, .nt, .cp, .nc, .nf, .si + .nd, .nn {
     color: $bright;
   }
 
-  .p, .s2, .o, .err, .si, .cp, .si + .nd {
+  .p, .s2, .o, .err, .si, .cp, .si + .nd, .nn {
     opacity: 0.5;
   }
 
