@@ -8,20 +8,20 @@ pre {
   box-sizing: border-box;
   position: relative;
 
-  --bottom: $rich;
-  --top: $bright;
+  --bottom: #{ $rich };
+  --top: #{ $bright };
 
   &.css, &.scss, &.sass {
-    --top: $pale;
+    --top: #{ $pale };
   }
 
   &.json, &.yaml, &.md {
-    --bottom: $light;
+    --bottom: #{ $light };
   }
 
   &.erb, &.ruby{
-    --top: $pale;
-    --bottom: $bright;
+    --top: #{ $pale };
+    --bottom: #{ $bright };
   }
 
   &::after {
