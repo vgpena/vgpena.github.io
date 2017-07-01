@@ -5,10 +5,63 @@
   <id>https://vgpena.github.io/</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2017-04-30T14:30:00-07:00</updated>
+  <updated>2017-07-01T14:06:00-07:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>I went to We RISE</title>
+    <link rel="alternate" href="https://vgpena.github.io/we-rise-2017/"/>
+    <id>https://vgpena.github.io/we-rise-2017/</id>
+    <published>2017-07-01T14:06:00-07:00</published>
+    <updated>2017-07-01T16:00:36-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">I gave my first tech talk at We RISE's inaugural conference on June 23-24, 2017. Here are my main takeaways from and thoughts on the conference.</summary>
+    <content type="html">&lt;p&gt;Last week, I &lt;a href="https://docs.google.com/presentation/d/1t2-ebDUL6r09tO1s18UXWvALtZg-cQebSZpEmikYUNE/edit?usp=sharing"&gt;spoke&lt;/a&gt; at &lt;a href="https://werise.tech/"&gt;We RISE conf&lt;/a&gt; in Atlanta, GA. I&amp;#39;ll write a post on that speaking experience, but first I&amp;#39;d like to talk about the conference itself.&lt;/p&gt;
+
+&lt;p&gt;We RISE is a Women In Tech conference put together by &lt;a href="https://www.womenwhocode.com/atl"&gt;Women Who Code ATL&lt;/a&gt;. This year was its debut year and it &lt;strong&gt;kicked ass&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;ve been to talks and conferences with pretty strong social undertones, but this was the first time I&amp;#39;d been to a major event overtly aimed at social issues and progress in tech. The sessions were pretty evenly split between more &amp;quot;typical&amp;quot; tech talks (e.g, intro to Rust) and more socially-oriented ones (e.g., creating an allyship program at your company). No matter the speaker or the subject matter, there was always an undercurrent: let&amp;#39;s get more women into and excelling in tech.&lt;/p&gt;
+
+&lt;p&gt;We RISE was excellent, for many reasons, and I&amp;#39;ll try to break them down a bit.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;To start off with something banal and probably obvious, there were a lot of women there. Women must have made up 95 percent of attendees. I didn&amp;#39;t think I would notice, but I did, and it was amazing.&lt;/p&gt;
+
+&lt;p&gt;I won&amp;#39;t dive deeply into this right now, but as a developer who&amp;#39;s a woman, I&amp;#39;m used to being in a minority. I&amp;#39;ve had the good fortune (or maybe instinct) to end up working with respectful, smart, helpful, supportive, amazing people. They just happen to be mostly men.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;ve never had a boss who wasn&amp;#39;t a man. For five years, I worked directly alongside zero women. That spell ended last month, for which I am grateful.&lt;/p&gt;
+
+&lt;p&gt;With this as my norm, it was subtly mind-blowing to spend two days answering to and speaking with almost exclusively women. My paper was accepted by a woman; I got speaker updates from women; women answered my questions about scheduling. I went to talks given by women and my talk, in turn, was mostly attended by women. I answered womens&amp;#39; questions about WebSockets, read womens&amp;#39; slide decks, and chatted with women about programming, Atlanta, and our careers and ambitions.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;The talks specifically about social issues were valuable and necessary. It was the tech sessions, however, which got me really excited. A talk can focus completely on tech and yet be an instrument of social progress when it is given in the right context.&lt;/p&gt;
+
+&lt;p&gt;This was the case at We RISE. Looking around the room at almost exclusively other women, I felt pride to realize that it would be &lt;em&gt;us&lt;/em&gt; going back to work on Monday energized, full of connections and ideas, ready to share and talk and create change. There would be a wave of women suggesting techniques, sharing links to new tools, and rounding up parners to work on side projects.&lt;/p&gt;
+
+&lt;p&gt;(As a sidenote, I realized that the flipside of this is also true -- every time a conference is unwelcoming, exclusive, etc., women and other marginalized groups are taking two hits: not only are they not going to the conference itself but they also are less likely to be showing up at work with new ideas to present, discuss, and implement.)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;I also met people from all kinds of backgrounds who got into tech for all kinds of reasons. My world mostly consists of under-40s who have worked in tech for many years. They mostly don&amp;#39;t have comp sci degrees but they have finished college, are childless, and have had generally stable lives.&lt;/p&gt;
+
+&lt;p&gt;At We RISE, I met record numbers of people who didn&amp;#39;t fit this profile. There were droves of code school students, people entering tech in their 40s, people with children. Their concerns and goals were totally different from mine and those of most of my colleagues. They chose coding bootcamps that worked with their schedules of full-time work and childcare. They applied for jobs not that promised glory or stock options but healthcare and regular hours.&lt;/p&gt;
+
+&lt;p&gt;Tech from the west coast and NYC tends to be splashy and dramatic. Tech from Atlanta stays out of the headlines and, honestly, it keeps such a low profile that I was surprised that there was a tech conference happening there at all.&lt;/p&gt;
+
+&lt;p&gt;We RISE reminded me that these people are my compatriots. They&amp;#39;re my extended family. And I&amp;#39;m going to work harder to connect with and support all elements of our community.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;&lt;strong&gt;Anyway&lt;/strong&gt;: We RISE was the best and it&amp;#39;s doing some really important things for women and tech and women in tech. If you went, well done! If you didn&amp;#39;t, go next year! I had an incredible time and I am so thankful that I had the opportunity to meet rad people, give my first ever talk, and spread some inspiration and knowledge.&lt;/p&gt;
+
+&lt;p&gt;Stay tuned, lovely people, for a post on my talk itself and lessons learned by a first-time speaker 😘&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Winning with CSS Variables</title>
     <link rel="alternate" href="https://vgpena.github.io/winning-with-css-variables/"/>
@@ -657,35 +710,6 @@
 &lt;p&gt;I hope this gave you a good jumping-off point to blogging with Middleman! Stay tuned for a post about partials, syntax highlighting, and customizing your Markdown parser.&lt;/p&gt;
 
 &lt;p&gt;This is the second post in a series about creating this blog. Read the first post &lt;a href="/creating-once"&gt;here&lt;/a&gt;.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Creating Once</title>
-    <link rel="alternate" href="https://vgpena.github.io/creating-once/"/>
-    <id>https://vgpena.github.io/creating-once/</id>
-    <published>2017-02-16T06:33:00-08:00</published>
-    <updated>2017-04-29T17:02:59-07:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <summary type="html">The internet is designed to be an accessible, egalitarian platform for publishers and participants. Though I love working with installations, my passion for the open web is never going away. I talk about Create Once, Publish Everywhere and why I started this blog.</summary>
-    <content type="html">&lt;p&gt;Over the past two years, of the twelve or so projects I&amp;#39;ve worked on, exactly one has been a website. The rest have been interactive installations, kiosks, and artworks. While I love this kind of work, I sometimes miss what attracted me to web development in the first place.&lt;/p&gt;
-
-&lt;p&gt;Web development draws its immense power from being part of a flexible, widely-available content distribution system. When you create something for the web, and create it well, that thing is instantly available to billions of people. They can use that creation on devices they already own, via a browser they already own, anywhere on the globe that they can find an internet connection.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href="https://www.programmableweb.com/news/cope-create-once-publish-everywhere/2009/10/13"&gt;Create Once, Publish Everywhere&lt;/a&gt; paradigm has been inspiring and empowering to me through my time as a web developer. Taking content and making it available to anyone, in any form, is a beautiful goal, and it&amp;#39;s easily in our power to do so. This involves using our tools not just towards democratic aims, but also in a democratic manner. Prizing accessibility, responsiveness, and small payloads helps us create things that can be used to maximum effect by the maximum number of people.&lt;/p&gt;
-
-&lt;p&gt;Installations work towards solving different problems -- instead of dealing with a wide-ranging audience, they are focused on a small, specific one. They don&amp;#39;t need to deal with asset downloads over LTE; they &lt;em&gt;do&lt;/em&gt; need to deal with the position of the sun. They don&amp;#39;t deal with different screen sizes, but with milking maximum power out of a specific machine. They have to worry about decals, traffic flow, and whether the floor is level.&lt;/p&gt;
-
-&lt;p&gt;While I love working with installations, they don&amp;#39;t scratch that democratic itch that drew me into web development. When I found out about the &lt;a href="https://a-k-apart.com/"&gt;10k Apart&lt;/a&gt; -- a challenge to make a site with an under-10k payload -- I saw it as an opportunity to return to my roots and put together a beautiful, lightweight, future-facing website.&lt;/p&gt;
-
-&lt;p&gt;I took up and put down this project a couple of times, and I didn&amp;#39;t end up submitting it to 10k Apart. Lately, however, I have more and more often wanted to write about specific things, only to find I didn&amp;#39;t have a platform on which to write. I had to get this project out the door, if only to make way for future writings.&lt;/p&gt;
-
-&lt;p&gt;As a warm-up, I&amp;#39;ll be writing a short series of posts on what went into making this blog. I hope that anyone blogging with &lt;a href="https://middlemanapp.com/"&gt;Middleman&lt;/a&gt;, learning about &lt;a href="http://webaim.org/"&gt;accessibility&lt;/a&gt;, wondering about &lt;a href="http://bradfrost.com/blog/post/atomic-web-design/"&gt;Atomic Design&lt;/a&gt;, or looking to publish with &lt;a href="https://pages.github.com/"&gt;github pages&lt;/a&gt; will find them helpful.&lt;/p&gt;
-
-&lt;p&gt;I still have some items on my to-do list (&lt;code&gt;&amp;lt;picture&amp;gt;&lt;/code&gt; elements, lazy-loading images, styling tweaks, etc.), but it was important to me to get a v1 of this blog out in the world. In the meantime, check out my payload! ~5k, as long as we&amp;#39;re not counting font files 💥&lt;/p&gt;
-
-&lt;p&gt;Happy reading!&lt;/p&gt;
 </content>
   </entry>
 </feed>
