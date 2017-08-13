@@ -5,10 +5,67 @@
   <id>https://vgpena.github.io/</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2017-07-01T14:06:00-07:00</updated>
+  <updated>2017-08-13T15:23:00-07:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>The Art of Gitting Gud</title>
+    <link rel="alternate" href="https://vgpena.github.io/the-art-of-gitting-gud/"/>
+    <id>https://vgpena.github.io/the-art-of-gitting-gud/</id>
+    <published>2017-08-13T15:23:00-07:00</published>
+    <updated>2017-08-13T16:06:08-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">I have always liked to write, so I thought that blogging would come naturally to me. Time and focus, though, have proven far more important than a way with words. It's time to face this reality and git gud.</summary>
+    <content type="html">&lt;p&gt;It&amp;#39;s been a while since I posted something here. This has not been for lack of exciting things in my life — I wrote Arduino for the first time, trained my first neural net, and polished off a six-month-long React project.&lt;/p&gt;
+
+&lt;p&gt;So why, then, no reports on these interesting and possibly trendy adventures? More difficult than debugging &lt;code&gt;char *&lt;/code&gt; Arrays, more daunting than teaching a machine to classify speech, is sitting down and actually writing about all of it.&lt;/p&gt;
+
+&lt;p&gt;One main reason that I created this blog was to get better at writing. I love to write, and I&amp;#39;ve practiced it in one form or another since elementary school. Since writing is filed under &amp;quot;things I enjoy&amp;quot;, I figured that once I made a blog, posts would flow to fill its shape.&lt;/p&gt;
+
+&lt;p&gt;I had forgotten, however, how vital it is not just to like a thing but to &lt;em&gt;allow&lt;/em&gt; yourself to like that thing. I assumed that as I did interesting things, prose would generate itself almost as a side effect, fully-formed and ready to publish.&lt;/p&gt;
+
+&lt;p&gt;Reality has not borne this out.&lt;/p&gt;
+
+&lt;p&gt;My writing ability — that is, my aptitude for stringing words together; for forming a narrative — will always and forever need improving, but it&amp;#39;s acceptable. (I&amp;#39;ve heard that the worst code ever written is the code that you yourself wrote six months ago. I hope that my writing follows this pattern.)&lt;/p&gt;
+
+&lt;p&gt;But there&amp;#39;s another component of writing ability, and this is where I fall flat. This component has nothing to do with mastery of language; it&amp;#39;s concerned with letting myself &lt;em&gt;at&lt;/em&gt; language in the first place. What kind of time, what kind of space do I give myself to write? Do I allow myself to focus for long enough to even jot down an outline?&lt;/p&gt;
+
+&lt;p&gt;It was late in freshman year of college that I realized how effortless it was to be purely a consumer and not a creator. I remember that thought (in an uncommon way) slipping small and crystalized into my mind, a pressure against my skull. I&amp;#39;ve tried to stay aware of that fact, and to keep myself in check. &lt;em&gt;Create; make something; remember&lt;/em&gt; how &lt;em&gt;to make something.&lt;/em&gt; What if I lose practice? What if I forget how to create?&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;I began to understand the effort that goes into creation, but I hadn&amp;#39;t yet been tested for my own willingness to expend that effort. Again, I was in college. I no longer had time for art projects, but I &lt;em&gt;was&lt;/em&gt; ordered to spend a month comparing editions of the &lt;em&gt;Quijote&lt;/em&gt;; I was told to write translations and program translators and dissect the differences between turn-of-the-century European authors. I began to learn how to create my own time, my own focus, but I did not achieve proficiency in it. Outside of my mandated, protected time, I dove into the internet, read books aimlessly, and, after a breakup, binge-watched all of &lt;em&gt;Avatar: the Last Airbender&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;When all was said and done, I was very good at writing when someone else made me do it. Did I have my own passions; did I find things interesting? Absolutely. But I wasn&amp;#39;t lifting a finger to express or magnify those pursuits.&lt;/p&gt;
+
+&lt;p&gt;Years later, I began to understand what adults were getting at when they acted impressed that so-and-so was in a community choir, or taking a German class, or sowing a garden. They weren&amp;#39;t necessarily blown away by someone&amp;#39;s vocal prowess, but they deeply understood the power of inertia. It&amp;#39;s infinitely harder to do anything than it is to do nothing.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;When I created this blog, I initially &lt;em&gt;did&lt;/em&gt; allow myself to write. I recorded post ideas as they occurred to me; I drafted outlines during downtime at work; I blocked out time on alternating weekends to do the actual writing. &lt;em&gt;This&lt;/em&gt;, a voice whispered, &lt;em&gt;is temporary. Soon you&amp;#39;ll be so good at writing that it&amp;#39;ll just happen.&lt;/em&gt; I imagined that, with some practice, I&amp;#39;d be able to be struck by an idea, transmute it into words, edit a bit, and send it off into the internet vastness.&lt;/p&gt;
+
+&lt;p&gt;I may be able to do this someday, but not yet. I made the mistake of thinking that I was almost there — &lt;em&gt;this week&lt;/em&gt; I could go away for the weekend, make no allowance for writing, and figure something out in an hour or two on Monday evening. Never mind that previous blog posts had required working four hours a day for two, three days in a row. Never mind that Monday evening would find me on the couch watching a show &lt;em&gt;to unwind&lt;/em&gt; because I was &lt;em&gt;so done with work&lt;/em&gt; after getting home from my job and prepping dinner and doing all the miscellaneous things that life requires. I would do it Tuesday? Or the next weekend? Tomorrow Me would definitely feel peppier, more inspired.&lt;/p&gt;
+
+&lt;p&gt;This post took me days to write. Those days were not spent drafting and editing;  those days lived in the space between when this urgent, personal idea occured to me and when I put pen to paper and actually sat down and wrote the damn thing.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;And finally, I circle back around to the title of this post: &lt;em&gt;The art of gitting gud&lt;/em&gt;. I don&amp;#39;t mean Scrooge; it&amp;#39;s not about having a change of heart. I mean getting good like &lt;em&gt;Dark Souls&lt;/em&gt; like a note I have taped to my fridge, GIT GUD.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class="image-wrap image-secondary"&gt;
+    &lt;img src="/images/gitgud-tumblr.png" alt="A screenshot of a tumblr update. Text says: 'I'm afraid he's been infected with the casual. He's just going to have to...to--'. Image below text is of a doctor wearing a knight's helmet, pointing to a clipboard that has 'git gud' written on it" title="A common variant of git gud" width="600px" height="408px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;quot;git gud&amp;quot; entered my consciousness when the notoriously difficult videogame &lt;em&gt;Dark Souls&lt;/em&gt; was released; it was advice frequently offered to players seeking help. While on the surface, it&amp;#39;s unhelpful and possibly adversarial, it communicates an important truth: sometimes there are no shortcuts to getting what you want. The only way forward is to practice, to sink in the hours and the effort until, someday, you git gud.&lt;/p&gt;
+
+&lt;p&gt;Writing is something that I will improve only through practice. I need to respect it more, acknowledge its difficulty, and invest the focus and the time into working on it.&lt;/p&gt;
+
+&lt;p&gt;I don&amp;#39;t know how long it will be for me to feel like I&amp;#39;ve improved; I don&amp;#39;t know how long until I&amp;#39;ve &lt;em&gt;actually&lt;/em&gt; improved. But for me, this is difficult. And the only way to make it easier is to git gud.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>We RISE 2017: yes please</title>
     <link rel="alternate" href="https://vgpena.github.io/we-rise-2017/"/>
@@ -549,167 +606,6 @@
 &lt;p&gt;I hope you are ~&lt;strong&gt;fully&lt;/strong&gt;~ convinced of the power of partials. I may revisit them again when I change my media partials from using &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; to &lt;code&gt;&amp;lt;picture&amp;gt;&lt;/code&gt;, which will be a journey in its own right.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Coming next: custom Markdown rendering and syntax highlighting in code blocks. Read my first Middleman post &lt;a href="/blogging-with-middleman/"&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Blogging with Middleman, Pt. 1</title>
-    <link rel="alternate" href="https://vgpena.github.io/blogging-with-middleman/"/>
-    <id>https://vgpena.github.io/blogging-with-middleman/</id>
-    <published>2017-03-08T06:29:00-08:00</published>
-    <updated>2017-05-12T16:09:17-07:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <summary type="html">Getting started can be the hardest part of a project. Here are some steps to get you started blogging with Middleman, a Ruby-based static site generator.</summary>
-    <content type="html">&lt;p&gt;Side projects are a chance for me to experiment with tools that fall out of the scope of my (amazing) day job. This blog represents my first foray into using &lt;a href="https://middlemanapp.com"&gt;Middleman&lt;/a&gt; for blogging. Here are the first steps you should take when setting up a Middleman blog of your own.&lt;/p&gt;
-
-&lt;p&gt;To begin with, why am I using Middleman? I knew I wanted a static site. I started off with no clear deploy strategy in mind, and I wanted something so simple that I could just SFTP it to my Linode server and forget about it. &lt;a href="http://jxnblk.com/writing/posts/static-site-generation-with-react-and-webpack/"&gt;Static React&lt;/a&gt; was out; as much as I like React and as cool as this setup sounds, I missed writing &lt;a href="/creating-once"&gt;publication-style, semantic markup&lt;/a&gt;. Once I&amp;#39;d figured out that was what I wanted, it was a choice between Middleman and &lt;a href="https://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;. I&amp;#39;ve used both before and had good experiences with each. I went with Middleman because even though I&amp;#39;d used it before, I hadn&amp;#39;t experimented with its blogging functionality.&lt;/p&gt;
-
-&lt;p&gt;As I dug deeper into Middleman, I discovered cool aspects of it that hadn&amp;#39;t been immediately obvious. I&amp;#39;m having a lot of fun with it and completely recommend it to anyone else looking to start up a blog.&lt;/p&gt;
-&lt;h2 class='section-title' id=setting-the-stage-rvm&gt;&lt;a href='#setting-the-stage-rvm' class='section-inner'&gt;Setting the stage: rvm&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Middleman is Ruby-based, so one of the first things I did was install &lt;a href="https://rvm.io/"&gt;Ruby Version Manager&lt;/a&gt;, or rvm, which lets you install and switch between multiple versions of Ruby. This means that a project doesn&amp;#39;t necessarily depend on what you&amp;#39;ve got installed anywhere else -- an upgrade to your system Ruby, or to Project A, won&amp;#39;t affect Project B. Keeping dependencies local and specific has done wonders for my stress levels.&lt;/p&gt;
-
-&lt;p&gt;Once you&amp;#39;ve got rvm installed (I used the cURL command from the above link), you can install new versions with &lt;code&gt;rvm install &amp;lt;versionNumber&amp;gt;&lt;/code&gt;. &lt;code&gt;rvm list&lt;/code&gt; shows you what you&amp;#39;ve already got installed, and switching Ruby versions is &lt;code&gt;rvm use &amp;lt;versionNumber&amp;gt;&lt;/code&gt;. As of writing, the minimum version of Ruby required for up-to-date Middleman is 2.2.2.&lt;/p&gt;
-&lt;h2 class='section-title' id=creating-a-blog&gt;&lt;a href='#creating-a-blog' class='section-inner'&gt;Creating a blog&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;To create a blog, follow the first instruction in &lt;a href="https://middlemanapp.com/basics/install/"&gt;the MM docs&lt;/a&gt;, and run &lt;code&gt;gem install middleman&lt;/code&gt;. The next step -- actually setting up the project -- should be blog-specific. Instead of just &lt;code&gt;middleman init&lt;/code&gt;, run &lt;code&gt;middleman init --template=blog&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;At this point, you have the framework of a basic Middleman blog in place. Run &lt;code&gt;middleman server&lt;/code&gt; and then go to &lt;code&gt;localhost:4567&lt;/code&gt; to see what&amp;#39;s been generated.&lt;/p&gt;
-
-&lt;p&gt;This stubbed-out blog is a great start, but you probably want to do some customization before you get publishing. Following are some of the first things I recommend doing, in the recommended order.&lt;/p&gt;
-&lt;h2 class='section-title' id=setting-your-time-zone&gt;&lt;a href='#setting-your-time-zone' class='section-inner'&gt;Setting your time zone&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Before writing any articles, manually set your publishing time zone. &lt;code&gt;middleman-blog&lt;/code&gt; ships with a nifty RSS feed generator, but publication times default to UTC, which probably isn&amp;#39;t your local time. So let&amp;#39;s take a sec right now and make sure your hordes of subscribers get accurate readings of when you publish.&lt;/p&gt;
-
-&lt;p&gt;(Also, if you hold off on setting your time zone and you only do it after you&amp;#39;ve written some articles, you will get cryptic errors about dates in frontmatter &amp;quot;not matching&amp;quot; and you will have to switch any articles with UTC timestamps in their frontmatter to bear your local timestamp. I will talk more about frontmatter later.)&lt;/p&gt;
-
-&lt;p&gt;You already have &lt;code&gt;tzinfo-data&lt;/code&gt; installed (you can see it listed in your &lt;code&gt;Gemfile&lt;/code&gt;), so go straight into your &lt;code&gt;config.rb&lt;/code&gt; and add the lines:&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;
-&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'tzinfo'&lt;/span&gt;
-&lt;span class="no"&gt;Time&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;zone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'US/Pacific'&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And this time zone will now be used whenever you create a new article. You can find your time zone on &lt;a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"&gt;this list&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 class='section-title' id=customizing-yaml-frontmatter&gt;&lt;a href='#customizing-yaml-frontmatter' class='section-inner'&gt;Customizing YAML frontmatter&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Now you can safely create your first article (!!) from the command line (!!) with &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt;. A file called &lt;code&gt;articleName.html.md&lt;/code&gt; will be created in your &lt;code&gt;source&lt;/code&gt; dir, looking something like&lt;/p&gt;
-&lt;pre class="code yaml"&gt;&lt;code&gt;
-&lt;span class="nn"&gt;---&lt;/span&gt;
-&lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;foo&lt;/span&gt;
-&lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;2017-02-20 10:42 PST&lt;/span&gt;
-&lt;span class="na"&gt;tags&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
-&lt;span class="nn"&gt;---&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This is &lt;a href="https://en.wikipedia.org/wiki/YAML"&gt;YAML&lt;/a&gt; frontmatter, which provides per-article metadata.&lt;/p&gt;
-
-&lt;p&gt;You may not want this exact frontmatter. For example, I wasn&amp;#39;t interested in tags, but I &lt;em&gt;did&lt;/em&gt; want my articles to have subtitles. In this case, you can write your own article template.&lt;/p&gt;
-
-&lt;p&gt;Find the place in your &lt;code&gt;config.rb&lt;/code&gt; that looks like this (I will be calling it the &amp;quot;blog block&amp;quot;):&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;
-&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:blog&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
-  &lt;span class="c1"&gt;# This will add a prefix to all links, template references and source paths&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.prefix = "blog"&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# blog.permalink = "{year}/{month}/{day}/{title}.html"&lt;/span&gt;
-  &lt;span class="c1"&gt;# Matcher for blog source files&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.sources = "{year}-{month}-{day}-{title}.html"&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.taglink = "tags/{tag}.html"&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.layout = "layout"&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.summary_separator = /()/&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.summary_length = 250&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.year_link = "{year}.html"&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.month_link = "{year}/{month}.html"&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.day_link = "{year}/{month}/{day}.html"&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.default_extension = ".markdown"&lt;/span&gt;
-
-  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;tag_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"tag.html"&lt;/span&gt;
-  &lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;calendar_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"calendar.html"&lt;/span&gt;
-
-  &lt;span class="c1"&gt;# Enable pagination&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.paginate = true&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.per_page = 10&lt;/span&gt;
-  &lt;span class="c1"&gt;# blog.page_link = "page/{num}"&lt;/span&gt;
-&lt;span class="k"&gt;end&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and somewhere in there, put the line&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;
-&lt;span class="n"&gt;blog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new_article_template&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;expand_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'../source/template.yml'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kp"&gt;__FILE__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and create a file in &lt;code&gt;/source&lt;/code&gt; called &lt;code&gt;template.yml&lt;/code&gt; with the contents:&lt;/p&gt;
-&lt;pre class="code yaml"&gt;&lt;code&gt;
-&lt;span class="nn"&gt;---&lt;/span&gt;
-&lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;%= @title %&amp;gt;&lt;/span&gt;
-&lt;span class="na"&gt;subtitle&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
-&lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;%= @date.strftime('%F %R %Z') %&amp;gt;&lt;/span&gt;
-&lt;span class="nn"&gt;---&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Now if you run &lt;code&gt;middleman article &amp;lt;articleName&amp;gt;&lt;/code&gt; again, your generated file will have contents like this:&lt;/p&gt;
-&lt;pre class="code yaml"&gt;&lt;code&gt;
-&lt;span class="nn"&gt;---&lt;/span&gt;
-&lt;span class="na"&gt;title&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;foo&lt;/span&gt;
-&lt;span class="na"&gt;subtitle&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt;
-&lt;span class="na"&gt;date&lt;/span&gt;&lt;span class="pi"&gt;:&lt;/span&gt; &lt;span class="s"&gt;2017-02-20 11:08 PST&lt;/span&gt;
-&lt;span class="nn"&gt;---&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;code&gt;title&lt;/code&gt;, &lt;code&gt;subtitle&lt;/code&gt;, and &lt;code&gt;date&lt;/code&gt; will be available as variables to use in blog structuring and templating.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;The last thing I recommend in this step is editing (or at least being aware of) this line in the blog block of your config file:&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# blog.default_extension = ".markdown"&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Any files generated via &lt;code&gt;middleman article&lt;/code&gt; will have this extension. You can change it to the equivalent but less verbose &lt;code&gt;&amp;quot;.md&amp;quot;&lt;/code&gt;, or to something else entirely (I&amp;#39;m using &lt;code&gt;&amp;quot;.md.erb&amp;quot;&lt;/code&gt;, for reasons I will cover later).&lt;/p&gt;
-
-&lt;p&gt;Remember to comment this line in to see changes ✌🏻&lt;/p&gt;
-&lt;h2 class='section-title' id=pretty-urls-please&gt;&lt;a href='#pretty-urls-please' class='section-inner'&gt;Pretty URLs, please!&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Click into any of your articles and you will see that your URL ends in &lt;code&gt;.html&lt;/code&gt;. Extensions in URLs is &lt;em&gt;not&lt;/em&gt; best-practice web development, as it makes the URL harder to understand and means that changing frameworks (like, for whatever reason, switching from Middleman to .NET) could result in broken links. Pretty URLs give your users more stable, memorable addresses and help keep the inner workings of your site under the hood.&lt;/p&gt;
-
-&lt;p&gt;Middleman, like most devtools, ships with a way to implement pretty URLs. In the blog block, add the line:&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;
-&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:directory_indexes&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and you&amp;#39;re set! From your index page, click through to an article, and you will see that the URL now ends in a &lt;code&gt;/&lt;/code&gt; instead of &lt;code&gt;.html&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;If there are any pages that you &lt;em&gt;don&amp;#39;t&lt;/em&gt; want this done to, register that page in your config, in the &amp;quot;Per-page layout changes&amp;quot; section, like so:&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;
-&lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="s1"&gt;'/&amp;lt;page&amp;gt;.html'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:directory_index&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kp"&gt;false&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;For example, I did this to &lt;a href="/404.html"&gt;my 404 page&lt;/a&gt; so that &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; would pick it up correctly (I will talk about GH Pages more in an upcoming post).&lt;/p&gt;
-&lt;h2 class='section-title' id=writing-and-using-scss&gt;&lt;a href='#writing-and-using-scss' class='section-inner'&gt;Writing and using SCSS&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Luckily for me, Middleman comes equipped to transpile &lt;a href="http://sass-lang.com/"&gt;SCSS&lt;/a&gt;. By default, CSS-related files are looked for in the &lt;code&gt;/stylesheets&lt;/code&gt; folder. If you want to customize this directory, you can do so by adding this line to your &lt;code&gt;config.rb&lt;/code&gt;:&lt;/p&gt;
-&lt;pre class="code ruby"&gt;&lt;code&gt;
-&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:css_dir&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'styles'&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You can now refer to files in that dir from your templates (in my case, &lt;code&gt;.erb&lt;/code&gt; files) using the &lt;code&gt;stylesheet_link_tag&lt;/code&gt; variable.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;#39;s start off by creating &lt;code&gt;/sources/styles/main.css.scss&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Multiple extensions may seem mysterious, but that&amp;#39;s actually the crux of Middleman&amp;#39;s power. Middleman lets you mix and match any parsers you want, and parses a file right-to-left according to its extensions. So &lt;code&gt;file.css.scss&lt;/code&gt; means &amp;quot;this file will end up as CSS, but parse it as SCSS first&amp;quot;. In the above section about generating articles, I mentioned that I changed the blog entry extension from the default &lt;code&gt;.html.markdown&lt;/code&gt; to &lt;code&gt;.html.md.erb&lt;/code&gt;. This tells Middleman to parse entries first as ERB (which lets me include fancy partials), then as Markdown, and that the end result is HTML.&lt;/p&gt;
-
-&lt;p&gt;Put some basic SCSS in your &lt;code&gt;main.css.scss&lt;/code&gt; file:&lt;/p&gt;
-&lt;pre class="code scss"&gt;&lt;code&gt;
-&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="nl"&gt;font-family&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;sans-serif&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and add this line to inside the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; tag of &lt;code&gt;source/layout.erb&lt;/code&gt;:&lt;/p&gt;
-&lt;pre class="code erb"&gt;&lt;code&gt;
-&lt;span class="cp"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="n"&gt;stylesheet_link_tag&lt;/span&gt; &lt;span class="ss"&gt;:main&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;:media&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"screen"&lt;/span&gt; &lt;span class="cp"&gt;%&amp;gt;&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And now your site should look about 20 percent cooler.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;I hope this gave you a good jumping-off point to blogging with Middleman! Stay tuned for a post about partials, syntax highlighting, and customizing your Markdown parser.&lt;/p&gt;
-
-&lt;p&gt;This is the second post in a series about creating this blog. Read the first post &lt;a href="/creating-once"&gt;here&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
 </feed>
