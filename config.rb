@@ -11,6 +11,10 @@ class ExtraSpecialParser < Redcarpet::Render::HTML
   #   text
   # end
 
+  def table(head, body)
+    "<div class='table-wrap'><table>#{ head }#{ body }</table></div>"
+  end
+
   # def paragraph(text)
   #   "<p>
   #     #{ text.gsub('--', '&mdash;') }
@@ -115,6 +119,7 @@ activate :blog do |blog|
     :disable_indented_code_blocks => true,
     :strikethrough => true,
     :highlight => true,
+    :tables => true,
     :renderer => ExtraSpecialParser.new(with_toc_data: true)
   )
   activate :minify_html

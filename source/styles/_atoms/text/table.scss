@@ -1,0 +1,23 @@
+.table-wrap {
+  overflow: auto;
+}
+
+table {
+  font-family: $mono;
+  font-size: 0.66rem;
+  border-collapse: collapse;
+  @include at-least($table-break) {
+    box-shadow: $rich 1em 1em 0;
+    margin: 0 1rem 1rem 1rem;
+  }
+}
+
+th, td {
+  text-align: center;
+  padding: 1em;
+  border: solid 5px $rich;
+}
+
+td {
+  background-color: $pale;
+}
