@@ -1,48 +1,55 @@
 @font-face {
   font-family: 'Overpass Mono';
-  src: url('/fonts/OverpassMono-Light.ttf') format('truetype');
+  src: url('/fonts/OverpassMono-Light.woff2') format('woff2');
+  src: url('/fonts/OverpassMono-Light.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Overpass Mono';
-  src: url('/fonts/OverpassMono-Bold.ttf') format('truetype');
+  src: url('/fonts/OverpassMono-Bold.woff2') format('woff2');
+  src: url('/fonts/OverpassMono-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Pitch Display';
-  src: url('/fonts/Pitch-Display.ttf') format('truetype');
+  src: url('/fonts/Pitch-Display.woff2') format('woff2');
+  src: url('/fonts/Pitch-Display.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Karla';
-  src: url('/fonts/Karla-Regular.ttf') format('truetype');
+  src: url('/fonts/Karla-Regular.woff2') format('woff2');
+  src: url('/fonts/Karla-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Karla';
-  src: url('/fonts/Karla-Bold.ttf') format('truetype');
+  src: url('/fonts/Karla-Bold.woff2') format('woff2');
+  src: url('/fonts/Karla-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Karla';
-  src: url('/fonts/Karla-Italic.ttf') format('truetype');
+  src: url('/fonts/Karla-Italic.woff2') format('woff2');
+  src: url('/fonts/Karla-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Karla';
-  src: url('/fonts/Karla-BoldItalic.ttf') format('truetype');
+  src: url('/fonts/Karla-BoldItalic.woff2') format('woff2');
+  src: url('/fonts/Karla-BoldItalic.woff') format('woff');
   font-weight: bold;
   font-style: italic;
 }
