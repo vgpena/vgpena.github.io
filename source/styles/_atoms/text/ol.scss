@@ -15,13 +15,14 @@
       color: $rich;
       display: inline-block;
       font-size: scale(2em);
-      background: linear-gradient(to right, $bright, $light);
+      background: linear-gradient(to right, $bright, $light 50%);
       padding: 0 $space;
-      float: left;
       min-width: 0.5em;
       text-align: center;
       margin-left: -4rem;
+      margin-right: 0.5rem;
       line-height: scale(1em);
+      vertical-align: middle;
     }
   }
 }

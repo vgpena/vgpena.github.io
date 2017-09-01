@@ -8,16 +8,19 @@
     overflow: hidden;
     margin-bottom: $space;
     padding-left: 4rem;
+    position: relative;
+    line-height: scale(1.1rem);
 
     &::before {
       content: "";
-      display: inline-block;
+      display: block;
+      position: absolute;
       width: scale(1rem);
       height: scale(1rem);
       border-radius: 100%;
       background: linear-gradient(to bottom, $bright, $pale 67%);
-      vertical-align: middle;
-      transform: translateX(-3rem);
+      top: 50%;
+      transform: translateX(-3rem) translateY(-50%);
       margin-right: scale(-1em);
     }
   }
