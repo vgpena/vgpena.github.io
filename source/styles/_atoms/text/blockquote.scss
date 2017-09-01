@@ -4,6 +4,7 @@
   background: linear-gradient(to right, $bright, $light);
   max-width: $max-content-width - $space * 2;
   box-sizing: border-box;
+  font-size: 1.2rem;
 
   > p {
     max-width: 24em;
@@ -14,6 +15,6 @@ cite {
   display: block;
   margin-top: $space;
   font-family: $mono;
-  font-size: 0.6em;
+  font-size: 0.6rem;
   font-style: normal;
 }
