@@ -1,4 +1,4 @@
-.content p a {
+.content p a, .content li a {
   text-decoration: none;
   color: $dark;
   background-image: linear-gradient(to bottom, $pale 33%, $bright 67%);
