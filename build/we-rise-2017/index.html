@@ -1,4 +1,77 @@
 <!doctype html> <html lang=en-us> <head> <meta charset=utf-8> <link rel=alternate type="application/atom+xml" href="https://vgpena.github.io/feed.xml" title="Like, subscribe, &amp; download my mixtape"/> <meta property="og:type" content=website> <meta property="og:url" content="https://vgpena.github.io/we-rise-2017/"> <meta property="og:title" content="We RISE 2017: yes please"> <meta property="og:description" content="I gave my first tech talk at We RISE's inaugural conference on June 23-24, 2017. Here are my main takeaways from and thoughts on the conference."> <meta property="og:image" content="https://vgpena.github.io/images/werise.jpg"> <meta name="twitter:domain" value="vgpena.github.io"> <meta property="twitter:title" content="We RISE 2017: yes please"> <meta property="twitter:description" ontent="I gave my first tech talk at We RISE's inaugural conference on June 23-24, 2017. Here are my main takeaways from and thoughts on the conference."> <meta property="twitter:url" content="https://vgpena.github.io/we-rise-2017/"> <meta property="twitter:image" content="https://vgpena.github.io/images/werise.jpg"> <meta name=author content="Violet Peña"> <meta name=description content="I gave my first tech talk at We RISE's inaugural conference on June 23-24, 2017. Here are my main takeaways from and thoughts on the conference."> <meta name=viewport content="width=device-width, initial-scale=1"> <script>
+  if ('FontFace' in window) {
+    const fonts = [
+      {
+        name: 'Overpass Mono',
+        files: [
+          {
+            fileName: 'OverpassMono-Light',
+            weight: 'normal',
+            style: 'normal',
+          },
+          {
+            fileName: 'OverpassMono-Bold',
+            weight: 'bold',
+            style: 'normal',
+          }
+        ]
+      },
+      {
+        name: 'Pitch Display',
+        files: [
+          {
+            fileName: 'Pitch-Display',
+            weight: 'normal',
+            style: 'normal',
+          }
+        ]
+      },
+      {
+        name: 'Karla',
+        files: [
+          {
+            fileName: 'Karla-Regular',
+            weight: 'normal',
+            style: 'normal',
+          },
+          {
+            fileName: 'Karla-Bold',
+            weight: 'bold',
+            style: 'normal',
+          },
+          {
+            fileName: 'Karla-Italic',
+            weight: 'normal',
+            style: 'italic',
+          },
+          {
+            fileName: 'Karla-BoldItalic',
+            weight: 'bold',
+            style: 'italic',
+          },
+        ]
+      },
+    ];
+
+    fonts.forEach((font) => {
+      font.files.forEach((file) => {
+        console.log(file.fileName);
+        const currFont = new FontFace(
+          font.name,
+          `url(/fonts/${ file.fileName }.woff2), url(/fonts/${ file.fileName }.woff)`,
+          {
+            weight: file.weight,
+            style: file.style,
+          }
+        );
+
+        currFont.load().then(() => {
+          document.fonts.add(currFont);
+        });
+      });
+    });
+  }
+</script> <script>
       window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
       ga('create', 'UA-92096829-1', 'auto');
       ga('send', 'pageview');
