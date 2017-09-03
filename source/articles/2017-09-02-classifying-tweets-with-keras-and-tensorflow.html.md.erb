@@ -1,30 +1,61 @@
 ---
 title: Classifying Tweets with Keras and TensorFlow
 subtitle: In case you can't tell when people are upset on the internet
-summary:
-hero:
-date: 2017-08-28 19:05 PDT
+summary: "I had a week to make my first neural network. I dove into TensorFlow and Keras, and came out with a deep neural network, trained on tweets, that can classify text sentiment. Here's an introduction to neural networks and machine learning, and step-by-step instructions of how to do it yourself."
+hero: "keras/noice.gif"
+date: 2017-09-02 19:05 PDT
 published: false
 ---
-The dog days of summer. The air is humid and smoky. You’re between projects at work. What do you do with these few empty days?
+Summer is drawing to a close. The air is humid and still. You’re between projects at work. What do you do with these few empty days?
 
-If you’re like me, you train a neural net. It had been on my “To Do” list for about a year now, and while I had done some reading and some tutorials, I hadn’t yet made my own.
+If you’re like me, you train a neural net. It had been on my “To Do” list for about a year now, and while I had done some reading and tutorials, I hadn’t yet made my own from the ground up.
 
-After a few days, I had chased a few dead-ish ends, done even more tutorials, and built a custom neural net that could classify text as positive or negative with ~78% accuracy.
+I spent a few days chasing dead-ish ends, doing even more tutorials, and tinkering. I emerged with a custom neural net that could classify text as positive or negative with 79.3% accuracy.
 
 Here’s how to create your own neural net using Python, TensorFlow, and Keras! Happy learnings ✨
 
-
 ## So what do neural nets do?
 
-Neural net(works) are collections of nodes that apply transformations to data. Their core behavior is: given an input, generate an output.
+Neural net[work]s are collections of nodes that apply transformations to data. Their core behavior is: given an input, generate an output.
 
-The cool (and powerful) part of neural nets is that we don’t tell them *how* to generate that output. Rather, we set them up to “learn” how to generate outputs based on massive amounts of training data. Training data consists of an input and an output, usually labelled by humans. The neural net intakes a piece training data, generates an output, compares that output to the actual result, and adjusts the weights on its nodes — that is, how likely an individual node is to return a certain intermediate value. Modifying these weights leads a net to return one value or another given an input, and is how the net refines its accuracy as it trains.
+The intriguing aspect of neural nets is that we don’t tell them *how* to generate that output. Rather, we set them up to “learn” how to generate outputs based on massive amounts of training data. Training data consists of an input and an output, usually labelled by humans. The neural net intakes a piece of training data, generates an output, compares that output to the actual result, and adjusts the weights on its nodes — that is, how likely an individual node is to return a certain intermediate value. Modifying these weights leads a net to return one value or another given an input, and is how the net refines its accuracy as it trains.
+
+<%= partial(:media, :locals => {
+  :src => 'keras/nnet.png',
+  :title => 'A sample neural network.',
+  :caption => 'A neural network with two hidden layers. [Source](http://neuralnetworksanddeeplearning.com/chap1.html)',
+  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :size => 'secondary',
+  :width => '597px',
+  :height => '324px',
+})%>
 
 Nodes are arranged in layers within the neural net. All neural nets have an input layer and an output layer; within, they have at least one additional “hidden” layer. “Deep” neural nets have more than one hidden layer. This is also the difference, name-wise, between “machine” and “deep” learning.
 Once you train a neural net, it contains a fairly accurate self-adjusted system for creating outputs. Ideally, you can feed novel data into the net and end up with a meaningful output.
 
-Neural nets can either *classify* extant data or *predict* new data. [Identifying musical genre](https://www.technologyreview.com/s/419223/using-neural-networks-to-classify-music/) is an example of the former; [fusing visual styles](http://cs.stanford.edu/people/karpathy/convnetjs/demo/image_regression.html), of the latter. [Deep Dream](https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html) does both.
+Neural nets can either *classify* extant data or *predict* new data. [Identifying musical genre](https://www.technologyreview.com/s/419223/using-neural-networks-to-classify-music/) is an example of the former; [fusing visual styles](http://cs.stanford.edu/people/karpathy/convnetjs/demo/image_regression.html), of the latter. Kristen Stewart -- yes, the lead from *Twilight* -- used this to give her film *Come Swim* (2016) an impressionist look. She even [co-authored a paper](https://arxiv.org/pdf/1701.04928v1.pdf) about the technique 🔥🔥🔥
+
+<%= partial(:media, :locals => {
+  :src => 'keras/come-swim.png',
+  :title => 'Details from "Come Swim"',
+  :caption => 'Fine-tuning the visual treatment for *Come Swim*. [Source](https://arxiv.org/pdf/1701.04928v1.pdf)',
+  :alt => 'Four squares illustrating different degrees of visual treatment for "Come Swim". All depict a man in water, but each has been modified to have its own visual style.',
+  :size => 'primary',
+  :width => '1404px',
+  :height => '797px',
+})%>
+
+[Deep Dream](https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html), a project out of Google, both classifies and predicts. It uses classifications to suggest predictions, which in turn amplify the certainty of classifications. It turns landscapes and portraits into fields of roiling curves often resembling human eyes.
+
+<%= partial(:media, :locals => {
+  :src => 'keras/deep-dream.jpg',
+  :title => 'A sample Deep Dream project',
+  :caption => "A sample of what Deep Dream can do when applied to Edvard Munch's *The Scream*. [Source](https://photos.google.com/share/AF1QipPX0SCl7OzWilt9LnuQliattX4OUCj_8EP65_cTVnBmS1jnYgsGQAieQUc1VQWdgQ/photo/AF1QipPAcXwHkI3k8Sqnq-3WJUfXCZR68rZYTiR2b3te?key=aVBxWjhwSzg2RjJWLWRuVFBBZEN1d205bUdEMnhB)",
+  :alt => '"The Scream" by Edvard Munch, but all the fields of color have been subdivided into roiling curls resembling nested eyes, cars, and dogs.',
+  :size => 'secondary',
+  :width => '767px',
+  :height => '965px',
+})%>
 
 ----------
 
@@ -44,16 +75,28 @@ If you want to dig into TensorFlow on its own for a bit, [their “For Beginners
 
 For me, there are few joys on par with working with natural language. In machine learning, we have two ways of representing language language: vector embeddings or one-hot matrices.
 Vector embeddings are spatial mappings of words or phrases. Relative locations of words indicate similarity and suggest semantic relationships — for instance, [vector embeddings can be used to generate analogies](http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf).
+
+<%= partial(:media, :locals => {
+  :src => 'keras/vectors.png',
+  :title => 'A sample neural network.',
+  :caption => 'Sample vector embeddings that demonstrate analogous relationships between words. [Source](http://neuralnetworksanddeeplearning.com/chap1.html)',
+  :alt => 'Graphs depict vector embeddings -- circles with lines drawn between them to convey analogous relationships between the words represented by the circles.',
+  :size => 'secondary',
+  :width => '1576px',
+  :height => '772px',
+})%>
+
 One-hot matrices, on the other hand, contain no linguistic information. (If you’re taking all the recommended detours, you’ll remember one-hot matrices from the [TensorFlow MNIST digit classification tutorial](https://www.tensorflow.org/get_started/mnist/beginners).) They’re naïve; they indicate what data they contain but suggest nothing *about* that data, or its relationship to other information.
 I decided to use one-hot matrices so that I could focus on other aspects of the other project. So let’s talk about them for a bit.
 
 ## Enter the (one-hot) matrix
 
 One-hot matrices are called “one-hot” because they each embody one dimension of difference from each other; each matrix has one distinguishing (“hot”) characteristic. We can take all the data in our system and represent them using this flattened system.
-As an example, let’s take a lovely line from [PEP 20](https://www.python.org/dev/peps/pep-0020/):
+As an example, let’s take a couple of lines from [PEP 20](https://www.python.org/dev/peps/pep-0020/):
 
 ```text
 Complex is better than complicated.
+Flat is better than nested.
 ```
 
 How do we represent that in a one-hot matrix?
@@ -61,7 +104,7 @@ How do we represent that in a one-hot matrix?
 We begin by tokenizing the utterance; that is, breaking it into words. We end up with
 
 ```python
-['complex', 'is', 'better', 'than', 'complicated'].
+['complex', 'is', 'better', 'than', 'complicated', 'flat', 'is', 'better', 'than', 'nested']
 ```
 
 Now we can create a lookup dictionary of all  the unique words. We now have:
@@ -72,15 +115,6 @@ Now we can create a lookup dictionary of all  the unique words. We now have:
   'is': 1,
   'better': 2,
   'than': 3,
-  'complicated': 4,
-}
-```
-
-Let’s expand our data to include the next tenet of PEP 20 (“Flat is better than nested”); our dictionary now looks like:
-
-```python
-{
-  ...,
   'complicated': 4,
   'flat': 5,
   'nested': 6,
@@ -101,13 +135,19 @@ Now to create the matrices: each token needs to be transformed from a string int
 ```
 
 Now we can deal with the tokens in a uniform way, since they’re all represented by isomorphic data structures, and once we’re done we can look up their values using the dictionary we made earlier.
+
 One-hot matrices get large quickly. In my example, I’m “only” using the top 3000 most-commonly occurring words in the training corpus. This means that each word becomes represented by an array 3000 items long 😬 Whether using one-hot matrices or not, we’re reckoning with a ton of data, but one-hot matrices are ideally used for a small or finite dataset. In MNIST, for example, a one-hot matrix is used to encode information about whether an image represents a digit from 0 to 9. All the arrays are kept nice and small to a length of 10.
 
 
 ## Let’s get cooking
 
 Enough preamble; time to get started actually building our neural net! Our work will be based on [the Reuters example](https://github.com/fchollet/keras/blob/master/examples/reuters_mlp.py) in the Keras github repo, but we’ll use our own data set and make a couple more tweaks on the way.
-Neural nets can take anywhere from a few moments to days to train, depending on your hardware and on how large and/or complex your dataset is. This net took me ~40 minutes to train on a late 2014 MacBook Pro (and it got NOISY 😅 ). My point is, you probably won’t want to have to train the net every single time you want to use it. The last step of our training script will also save the net so that we can “boot it up” quickly from another script when we actually want to consult it.
+
+I will be going over all the code in detail, but [I have published it in full in a gist](https://gist.github.com/vgpena/b1c088f3c8b8c2c65dd8edbe0eae7023). It doesn't have a ton of backstory but it does have all the code in one nice place for you.
+
+----------
+
+Neural nets can take anywhere from a few moments to days to train, depending on your hardware and on how large and/or complex your dataset is. This net took me ~60 minutes to train on a mid-2015 MacBook Pro (and it got NOISY 😅 ). My point is, you probably won’t want to have to train the net every single time you want to use it. The last step of our training script will also save the net so that we can “boot it up” quickly from another script when we actually want to consult it.
 
 Let’s worry about the training script first. We’ll need to:
 
@@ -190,28 +230,29 @@ allWordIndices = np.asarray(allWordIndices)
 # create one-hot matrices out of the indexed tweets
 train_x = tokenizer.sequences_to_matrix(allWordIndices, mode='binary')
 # treat the labels as categories
-train_y = keras.utils.to_categorical(train_y, num_classes)
+train_y = keras.utils.to_categorical(train_y, 2)
 ```
 
-✨ Cooooooooooooool. ✨ Now you have a `train_x` and `train_y` that you’ll be able to pipe right into your neural net.
+✨ Cooooooooooooool. ✨ Now you have training data and labels that you’ll be able to pipe right into your neural net.
 
 
 ## Making a model
 
-Keras was built to make building neural nets as simple as possible, to the point where you can add a layer to the network by adding another short line of code. Here’s how I build my net:
+Keras makes building neural nets as simple as possible, to the point where you can add a layer to the network in short line of code. Here’s how I built my net:
 
+```python
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation
 
-    from keras.models import Sequential
-    from keras.layers import Dense, Dropout, Activation
+model = Sequential()
+model.add(Dense(512, input_shape=(max_words,), activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(256, activation='sigmoid'))
+model.add(Dropout(0.5))
+model.add(Dense(2, activation='softmax'))
+```
 
-    model = Sequential()
-    model.add(Dense(512, input_shape=(max_words,), activation='relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(256), activation='sigmoid')
-    model.add(Dropout(0.5))
-    model.add(Dense(2), activation='softmax')
-
-What does it mean?? 🌈🌈
+Looks simple enough. What does it mean?? 🌈🌈
 
 Keras’ `Sequential()` is a simple type of neural net that consists of a “stack” of layers executed in order.
 
@@ -219,35 +260,48 @@ If we wanted to, we could make a stack of only two layers (input and output) to 
 
 The input and output layers are the most important, since they determine the overall shape of the neural net. You need to know what kind of input to expect, and what kind of output you want.
 
+<%= partial(:media, :locals => {
+  :src => 'keras/nnet2.png',
+  :title => 'A page from the Perspectiva Corporum Regularium',
+  :caption => 'A representation of a neural net for identifying digits using the MNIST dataset. [Source](http://neuralnetworksanddeeplearning.com/chap1.html)',
+  :alt => 'A diagram of a neural net used to identify digits using MNIST data.',
+  :size => 'secondary',
+  :width => '537px',
+  :height => '447px',
+})%>
+
 Out network will mostly consist of `Dense` layers — the “standard”, linear neural net layer of inputs, weights, and outputs.
 
-In our case, we’re inputting a sentence that will be converted to a one-hot matrix of length `max_words` — here, 3000. We put this on line 5, along with how many outputs we want to come out of that layer (512, for funsies) and what kind of maximization (or “activation”) function to use. Activation functions are used when training the network; they tell the network how to judge when a weight for a particular node has created a good fit. On line 5, I use `relu` (also for funsies). Activation functions differ, mostly in speed, but all the ones available in Keras and TensorFlow are viable; feel free to play around with them. If you don’t explicitly add an activation function, that layer will use a linear one.
+In our case, we’re inputting a sentence that will be converted to a one-hot matrix of length `max_words` — here, 3000. We also include how many outputs we want to come out of that layer (512, for funsies) and what kind of maximization (or “activation”) function to use.
 
-Our output layer consists of two possible outputs, since that’s how many categories our data could get sorted into. If you use a neural to predict rather than classify, you’re actually creating a neural net with one possible output — the prediction.
+Activation functions are used when training the network; they tell the network how to judge when a weight for a particular node has created a good fit. In the first layer, I use `relu` (also for funsies). Activation functions differ, mostly in speed, but all the ones available in Keras and TensorFlow are viable; feel free to play around with them. If you don’t explicitly add an activation function, that layer will use a linear one.
 
-In between the input and output layers, we have one more `Dense` layer and two `Dropout` layers. Dropouts are used to randomly remove data, which can help avoid overfitting. You can end up overfitting if you keep training on the same or overly-similar data — as you train, your accuracy will hold steady or drop instead of rising.
+Our output layer consists of two possible outputs, since that’s how many categories our data could get sorted into. If you use a neural net to predict rather than classify, you’re actually creating a neural net with one possible output — the prediction.
+
+In between the input and output layers, we have one more `Dense` layer and two `Dropout` layers. Dropouts are used to randomly remove data, which can help avoid overfitting. Overfitting can happen when you keep training on the same or overly-similar data — as you train, your accuracy will hold steady or drop instead of rising.
 
 As the last step before training, we need to compile the network:
 
+```python
+model.compile(loss='categorical_crossentropy',
+  optimizer='adam',
+  metrics=['accuracy'])
+```
 
-    model.compile(loss='categorical_crossentropy',
-      optimizer='adam',
-      metrics=['accuracy'])
-
-`loss` and `optimizer` are some technical options you’re free to play around with. We almost certainly want to collect the `accuracy` metric as we train the model.
-
+Specifying that we want to collect the `accuracy` metric will give us really helpful live output as we train our model.
 
 ## How to train your network
 
 This is some tiny code that will take a while to run:
 
-
-    model.fit(train_x, train_y,
-      batch_size=32,
-      epochs=5,
-      verbose=1,
-      validation_split=0.1,
-      shuffle=True)
+```python
+model.fit(train_x, train_y,
+  batch_size=32,
+  epochs=5,
+  verbose=1,
+  validation_split=0.1,
+  shuffle=True)
+```
 
 We’re fitting (training) our model off of inputs `train_x` and categories `train_y`. We evaluate data in groups of `batch_size`, checking the network’s accuracy, tweaking node weights, and then running through another batch. Small batches let you train networks much more quickly than if you tried to use a batch the size of your entire training dataset.
 
@@ -257,9 +311,44 @@ We’re fitting (training) our model off of inputs `train_x` and categories `tra
 
 Now go get coffee, or maybe a meal. And if you’re on a laptop, make sure it’s plugged in — training can be a real battery killer ☠️
 
-You’ll get running stats on what epoch you’re in, how much time is left in that epoch of training, and current accuracy. Your accuracy should start out low per epoch and rise throughout the epoch; it should get at least a little across epochs. If your accuracy starts decreasing, you’re overfitting.
+<%= partial(:media, :locals => {
+  :src => 'keras/perspectiva.jpg',
+  :title => 'A page from the Perspectiva Corporum Regularium',
+  :caption => 'If you need something to lose yourself in for about an hour, I suggest the *[Perspectiva Corporum Regularium](http://digital.slub-dresden.de/werkansicht/dlf/12830/)*.',
+  :alt => 'An etching of a fractured geometric figure propped up on a platform surrounded by quare pyramids and a crucifix.',
+  :size => 'secondary',
+  :width => '1191px',
+  :height => '800px',
+})%>
 
-I was able to get my network to 78% accuracy using this code.
+As you train the neural net, Keras will output running stats on what epoch you’re in, how much time is left in that epoch of training, and current accuracy. The value to watch is not `acc` but `val_acc`, or Validation Accuracy. This is your neural net's score when predicting values for data in your validation split.
+
+Your accuracy should start out low per epoch and rise throughout the epoch; it should increase at least a little across epochs. If your accuracy starts decreasing, you’re overfitting.
+
+This is some sample output from training using this code over five epochs:
+
+```python
+1420764/1420764 [==============================] - 780s - loss: 0.4947 - acc: 0.7610 - val_loss: 0.4500 - val_acc: 0.7884
+Epoch 2/5
+1420764/1420764 [==============================] - 850s - loss: 0.4737 - acc: 0.7760 - val_loss: 0.4481 - val_acc: 0.7902
+Epoch 3/5
+1420764/1420764 [==============================] - 788s - loss: 0.4662 - acc: 0.7817 - val_loss: 0.4446 - val_acc: 0.7921
+Epoch 4/5
+1420764/1420764 [==============================] - 819s - loss: 0.4607 - acc: 0.7859 - val_loss: 0.4471 - val_acc: 0.7921
+Epoch 5/5
+1420764/1420764 [==============================] - 829s - loss: 0.4569 - acc: 0.7887 - val_loss: 0.4439 - val_acc: 0.7927
+```
+
+Our accuracy increases from 78.8% accurate by the end of Epoch 1 to 79.3% at the end of Epoch 5.
+
+<%= partial(:media, :locals => {
+  :src => 'keras/noice.gif',
+  :title => 'NOICE!!',
+  :alt => 'NOICE!',
+  :size => 'primary',
+  :width => '500px',
+  :height => '201px',
+})%>
 
 ## Saving your model
 
@@ -278,9 +367,9 @@ model.save_weights('model.h5')
 And that’s it!
 
 
-## Time to party
+## Party time
 
-Fiiiiiiinally, you can open your neural net and ask it to classify text! In a new file, you’ll open the model, weights, and dictionary, and then use those to judge things. We’re going to go over the whole file at once because I’m excited to actually use this:
+Finally you can use your neural net! In a new file, you’ll open the model, its weights, and your dictionary, and then put those together to classify text. We’re going to go over the whole file at once because I’m excited to actually use it:
 
 ```python
 import json
@@ -337,13 +426,13 @@ while 1:
     print("%s sentiment; %f%% confidence" % (labels[np.argmax(pred)], pred[0][np.argmax(pred)] * 100))
 ```
 
-If you run this file, you create a new model using the saved structure, and then you get a little command prompt for a new input to classify.
+If you run this file, you create a new model using the saved structure, and then you get a little command prompt for input to classify.
 
 `model.predict()` takes what you give it, runs it through the trained neural net, and gives you a reading of how confident it is that that input belongs in each output bucket. In our case, we have two outputs, so we have two confidence estimations that range from 0 to 1; whichever one is higher is the network’s ultimate classification of that data.
 
 ```text
-Input a sentence to be evaluated: Complex is better than complicated.
-positive sentiment; 72.334176% confidence
+Input a sentence to be evaluated, or Enter to quit: It's alive! :D
+positive sentiment; 80.760884% confidence
 ```
 
 👌🏻
@@ -353,16 +442,25 @@ positive sentiment; 72.334176% confidence
 You’ve trained your first neural net that evaluates text as expressing positive or negative sentiment. And it works well(ish):
 
 ```text
-Input a sentence to be evaluated: Omg best day ever!
-positive sentiment; 71.334523% confidence
+Input a sentence to be evaluated, or Enter to quit: That went better than expected
+positive sentiment; 56.355631% confidence
 ```
 
 ```text
-Input a sentence to be evaluated: idk how that exam went
-negative sentiment; 76.247883% confidence
+Input a sentence to be evaluated, or Enter to quit: That did not go as expected
+negative sentiment; 86.936867% confidence
 ```
 
 ## Next steps
+
+<%= partial(:media, :locals => {
+  :src => 'keras/party.gif',
+  :title => 'Thanks for sticking with me through all of that.',
+  :alt => '',
+  :size => 'secondary',
+  :width => '480px',
+  :height => '360px',
+})%>
 
 This is a really basic neural net, and there’s a lot more I’d like to investigate. Among other things:
 
@@ -370,20 +468,22 @@ This is a really basic neural net, and there’s a lot more I’d like to invest
 - I chose the option of less-powerful word indexing by using one-hot matrices instead of vector embeddings. What accuracy could I get if I started using the latter?
 - Classification is great but I’d really love to work on text _generation_, guessing at the next most-likely word in the sequence.
 
+All of the code in this post, plus the requirements file, is up [in a Github gist](https://gist.github.com/vgpena/b1c088f3c8b8c2c65dd8edbe0eae7023).
+
 Happy coding! And thanks for following me on this journey 🌟
 
 ## Coda: How well does it work? And more on data
 
-I’m super proud of this neural net but 78% accuracy means that it’s wrong 22% of the time.
+I’m super proud of this neural net but 79% accuracy means that it’s wrong 21% of the time.
 
 ```text
-Input a sentence to be evaluated: I wish I could show you when you are lonely or in darkness the astonishing light of your own being
-negative sentiment; 76.039219% confidence
+Input a sentence to be evaluated, or Enter to quit: I wish I could show you when you are lonely or in darkness the astonishing light of your own being
+negative sentiment; 87.021768% confidence
 ```
 
 ```text
-Input a sentence to be evaluated: foo bar
-positive sentiment; 57.314777% confidence
+Input a sentence to be evaluated, or Enter to quit: foo bar
+positive sentiment; 62.751633% confidence
 ```
 
 🤔 🤔 Those don’t look quite right.
@@ -402,7 +502,8 @@ This doesn’t mean that any and all data are inherently biased and therefore un
 
 ML is powerful and we can make amazing things with it. Let’s use it to create a more equitable future.
 
-```text
-Input a sentence to be evaluated, or Enter to quit: ML is powerful and we can make amazing things with it. Let’s use it to create a more equitable future.
-positive sentiment; 92.469627% confidence
-```
+
+## Downloads
+
+- [code](https://gist.github.com/vgpena/b1c088f3c8b8c2c65dd8edbe0eae7023)
+- [dataset](http://thinknook.com/twitter-sentiment-analysis-training-corpus-dataset-2012-09-22/)
