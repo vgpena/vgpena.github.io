@@ -14,7 +14,7 @@
     <link rel="alternate" href="https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/"/>
     <id>https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/</id>
     <published>2017-09-02T19:05:00-07:00</published>
-    <updated>2017-09-02T20:46:44-07:00</updated>
+    <updated>2017-09-04T20:01:53-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -41,7 +41,7 @@
 &lt;p&gt;Nodes are arranged in layers within the neural net. All neural nets have an input layer and an output layer; within, they have at least one additional “hidden” layer. “Deep” neural nets have more than one hidden layer. This is also the difference, name-wise, between “machine” and “deep” learning.
 Once you train a neural net, it contains a fairly accurate self-adjusted system for creating outputs. Ideally, you can feed novel data into the net and end up with a meaningful output.&lt;/p&gt;
 
-&lt;p&gt;Neural nets can either &lt;em&gt;classify&lt;/em&gt; extant data or &lt;em&gt;predict&lt;/em&gt; new data. &lt;a href="https://www.technologyreview.com/s/419223/using-neural-networks-to-classify-music/"&gt;Identifying musical genre&lt;/a&gt; is an example of the former; &lt;a href="http://cs.stanford.edu/people/karpathy/convnetjs/demo/image_regression.html"&gt;fusing visual styles&lt;/a&gt;, of the latter. Kristen Stewart -- yes, the lead from &lt;em&gt;Twilight&lt;/em&gt; -- used this to give her film &lt;em&gt;Come Swim&lt;/em&gt; (2016) an impressionist look. She even &lt;a href="https://arxiv.org/pdf/1701.04928v1.pdf"&gt;co-authored a paper&lt;/a&gt; about the technique 🔥🔥🔥&lt;/p&gt;
+&lt;p&gt;Neural nets can either &lt;em&gt;classify&lt;/em&gt; extant data or &lt;em&gt;predict&lt;/em&gt; new data. &lt;a href="https://www.technologyreview.com/s/419223/using-neural-networks-to-classify-music/"&gt;Identifying musical genre&lt;/a&gt; is an example of the former; &lt;a href="http://cs.stanford.edu/people/karpathy/convnetjs/demo/image_regression.html"&gt;fusing visual styles&lt;/a&gt;, of the latter. Kristen Stewart -- yes, the lead from &lt;em&gt;Twilight&lt;/em&gt; -- used this to give her film &lt;em&gt;Come Swim&lt;/em&gt; (2017) an impressionist look. She even &lt;a href="https://arxiv.org/pdf/1701.04928v1.pdf"&gt;co-authored a paper&lt;/a&gt; about the technique 🔥🔥🔥&lt;/p&gt;
 
 &lt;p&gt;&lt;figure role="img" class="image-wrap image-primary"&gt;
     &lt;img src="/images/keras/come-swim.png" alt="Four squares illustrating different degrees of visual treatment for &amp;quot;Come Swim&amp;quot;. All depict a man in water, but each has been modified to have its own visual style." title="Details from &amp;quot;Come Swim&amp;quot;" width="1404px" height="797px" /&gt;
