@@ -1,0 +1,125 @@
+---
+title: Winning with the Chrome debugger
+subtitle: JS has never been this easy
+summary:
+hero:
+date: 2017-09-24 15:36 PDT
+---
+I love making things easy. One huge step up in my ability in terms of understanding and time spent was learning how to use the built-in Chrome debugger.
+
+Learning how to use the debugger was like finally being able to shift gears on my bike, instead of having to pedal everywhere in first. This was such useful knowledge that I assumed that most other developers had already gotten the memo and that I was arriving late. As I talked to more colleagues, though, I realized that many of us had no idea that Chrome *had* a debugger, much less how to use it.
+
+So I hope I can reach a few more fellow developers today and make your lives that much easier!
+
+## Three options (and the first two don’t count)
+
+Web developers have three built-in options for logging and debugging. I’ll run through all three of them for some context for when we dive into debugging:
+
+## Bad: alert
+
+`alert(value);` pops up a browser-level modal containing `value`. It’s often the first debugging method taught to JS newbies; it’s short, easy to understand, and provides immediate feedback. Unfortunately, it’s a terrible debugging utility and you shouldn’t use it.
+
+[ code snippet ]
+[ image ]
+
+Here are some reasons to stop using `alert()`:
+
+
+1. *It doesn’t support our debugging needs*. `alert()` isn’t content-agnostic and it can only output certain data types. For example, if you try to print an `Object`, the alert will show the monumentally unhelpful `Object object`. You can print out the actual contents of the Object by converting it to a String first, but this is a clear indication that `alerts` aren’t prepared to offer what we need from them.
+2. *It doesn’t include contextual information.* `alert`s don’t by default include the line number or file name of where that `alert`  was created. This puts the onus on you to manually include identifying information in your alert messages if you’re using `alert` in multiple places.
+3. *Any alerts left in production code will derail the experience.* Before launch, you need to add in the extra step of making absolutely sure that you have removed all alerts from your code.
+4. *Alerts can cause unintended side effects.* Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how you implemented). You need service workers to get around this threading issue, which could 100% be used to solve much cooler problems.
+
+## Bad: console
+
+You also have the much more helpful option of printing information to the console available in Chrome’s DevTools using `console.log(value)`. Console fills in a lot of the gaps that `alert` lacks, such as line numbers and filenames. You can log Objects directly without having to coerce them into Strings, and you can drill down into Objects and Arrays to inspect their contents. You can even indicate importance with different log levels, such as `console.warn()` and `console.error()`. Fancy~ 💅
+
+[code]
+[screenshot]
+
+Console messages should also be removed in production, but they will only be visible to visitors with the console open. Unlike alerts, they don’t jump out at all users. Also unlike alerts, they will completely break your site for IE9 users. IE9 and below have a console that only exists while DevTools is open, so any errant `console`s left in production will nuke those users’ JS.
+
+As you get into complex situations, however, console becomes less useful. There are abundant StackOverflow questions, [such as this one](https://stackoverflow.com/questions/30150469/why-console-log-displays-incorrect-objects-values), stemming from difficulties getting Console to accurately report values that change many times. (The answers are always to stringify your Objects/Arrays, possibly with the final step of converting them back to JSON. While this creates the functionality desired, it also suggests that `console` is not the right tool for this operation.)
+
+Console can also get confusing if you’re trying to dig into a large object or set of objects due to the sheer amount of output that you receive. It can be overwhelming to use console to monitor an animation on `requestAnimationFrame` or track down a value change in a mobx store.
+
+Console is an essential tool for frontend developers, and it’s a huge step up from Alert, but it’s not the answer to everything. To supercharge your debugging powers, let’s turn to…
+
+## Amazing: interactive debugging
+
+Interactive debugging is a vastly different tool than Console or Alert, and it helps you identify problems much more efficiently. While Console and Alert are limited to printing out specific values, interactive debugging lets you roam around your code while accessing all values currently in scope.
+
+Sounds pretty good! Let’s get started.
+
+## Getting your code ready for its close-up
+
+Chrome’s interactive debugging tools work on any JS, but they’re best used on code that:
+
+1. has not been obfuscated, uglified, or minified;
+2. has not been concatenated (or source mapping has been turned on).
+
+These are project-by-project (or file-by-file) configurations, so I’ll let you figure out how to make this happen on your own. You may have to make development vs. production webpack configs; you may have to do nothing.
+
+## Meet the Sources tab
+
+All your debugging tools live in Chrome’s Sources tab. Open this via the menu options `View > Developer > Developer Tools` or pressing `Cmd+Option+I`. The panel that opens should look something like this:
+
+[screengrab]
+
+While focused inside the Sources tab, you can open a specific file by pressing `Cmd + P` to open the fuzzy finder. Start typing with this open to target a specific JS file that you want to poke around in.
+
+## Setting breakpoints
+
+All your power in the debugger comes from setting up **breakpoints** in your code. These are little flags that you drop down to pause execution of JavaScript. You make a breakpoint by clicking in the left margin next to a line of code; you can remove breakpoints in the same way. Notice that breakpoints appear in a master list in the lower half of the debugger.
+
+[screengrab]
+
+So if you drop a breakpoint in some code that executes when the document is ready and then refresh, that breakpoint gets hit, your code stops, and a scrim drops over your viewport. Doesn’t sound too exciting, but trust me, it gets pretty amazing…
+
+## Inspecting values
+
+While you’re halted at a breakpoint, your debugger has access to **all variables currently in scope**. You can inspect these values in two ways:
+
+1. hover over that variable and a tooltip will show up;
+  [screenshot]
+2. type that variable name in your console and hit `Enter`.
+  [screenshot]
+
+If hovering over a variable doesn’t do anything, it probably isn’t in scope right now. Drop a breakpoint in somewhere else that looks more viable, reload, and try again.
+
+## Moving around
+
+You aren’t limited, however, to inspecting one scope per page load. The last major part of interactive debugging is this row of buttons:
+
+[screenshot]
+
+These buttons let you walk around across functions and files while keeping your inspector powers. Being able to do this is invaluable, but it can feel confusing or overwhelming, especially if you’re dealing with a lot of third-party code. Here’s what each of the buttons mean, and when you might want to use them:
+
+1. **Play/pause**: Start or stop script execution. This is how you start executing script again from inside a breakpoint.
+2. **Step over:** Execute the current line of code and pause on the next line. This is great for when you need to track what’s happening inside of a specific function, or what happens to a value on a line-by-line basis.
+3. **Step in:** Dive into the body of the current function call and pause on the first line of that function. This lets you inspect the inner workings of a function, as opposed to **step over,** which will execute the entire function without pausing.
+4. **Step out:** Finish executing the current function body and pause on the line that called it. This is the opposite of **step in** and is useful when you want to see where your current function was called from or you don’t want to have to **step over** every line of the function in order to see where it is applied.
+
+You can use these movement options to track values across files, investigate individual values every time a function is called, etc. They’re incredibly useful and my best advice/non-advice is to play around with them until you develop a sense of how they behave and when to use them.
+
+Next to these buttons is a button to **disable all breakpoints;** this button lets you “mute” all current breakpoints without actually deleting (and potentially having to re-add) them.
+
+## Keep your debugs to yourself
+
+Apart from being absurdly useful, one advantage of using the debugger as your sole logging/debugging tool is that all the stuff you’re adding only exists for you. Chrome breakpoints aren’t part of your code and won’t impact anyone else’s experience of the project. They won’t even impact *your* experience if you don’t have your debugger open 🕵🏻‍♀️
+
+That said, you also have the option of inserting a breakpoint into your actual code. Put a line in your JS that says `debugger;` and when the browser reaches that line, it’ll pause and then you can poke around and inspect values as described.
+
+**Don’t do this.** I’m talking about it for completeness’ sake, but it’s not a good idea. (Full disclosure: before I knew that the debugger had a fuzzy finder, I used this a. lot.) Manually putting debuggers in your code introduces a bunch of the problems inherent to Alert and Console, with the added downside of looking a lot more terrifying to users if it ends up in production code.
+
+Debugging is better when a) it’s local; and b) it doesn’t require writing any code. If for some reason you need to code in `debuggers` (or `console`s or `alert`s 😬), look into making production vs. development configurations for your build tools, and have your tools refuse to build if they find those debugging statements in an attempted production build.
+
+## Coda: try this now
+
+If you need a tl;dr or your eyes glossed over halfway through that and you need to refocus:
+
+1. **Interactive debugging will help you identify bugs faster.** I’ve lost way too much time including a typo in my `console.log`s, or straight up logging something incorrect or unhelpful. The Chrome debugger lets you inspect code arbitrarily, which means less guessing, coding, refreshing, and waiting.
+2. **Interactive debugging will help you understand your code.** Having the power to dive into your work on a line-by-line basis helps you understand not only what happens to specific values but how your entire project fits together.
+3. **Interactive debugging will prepare you for other programming environments.** My intro to interactive debugging didn’t involve Chrome but Xcode, during that strange year that I was a web/iOS developer. I love that tools for frontend development to be lightweight (Sublime Text as opposed to Eclipse), but when and if you dabble in other subfields of programming, you’ll probably end up in a more hands-on IDE, and using that IDE’s interactive debugger will instantly make you way more effective at whatever you’re doing.
+
+Getting comfortable with the Chrome debugger made me a much happier developer, and I really don’t know how I survived without it 😭 Start playing around with it ASAP — it may be overwhelming at first, but keep with it and it’ll swiftly become your preferred way to work.
