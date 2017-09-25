@@ -4,6 +4,7 @@
   position: relative;
   z-index: 1;
   max-width: 9em;
+  font-family: $fancy;
 
   &::before {
     content: counter(counter);

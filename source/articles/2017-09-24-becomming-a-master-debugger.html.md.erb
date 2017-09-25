@@ -4,6 +4,7 @@ subtitle: JS has never been this easy
 summary:
 hero:
 date: 2017-09-24 15:36 PDT
+published: false
 ---
 I love making things easy. One huge step up in my ability in terms of understanding and time spent was learning how to use the built-in Chrome debugger.
 
@@ -15,7 +16,7 @@ So I hope I can reach a few more fellow developers today and make your lives tha
 
 Web developers have three built-in options for logging and debugging. I’ll run through all three of them for some context for when we dive into debugging:
 
-## Bad: alert
+### Egregious: alert
 
 `alert(value);` pops up a browser-level modal containing `value`. It’s often the first debugging method taught to JS newbies; it’s short, easy to understand, and provides immediate feedback. Unfortunately, it’s a terrible debugging utility and you shouldn’t use it.
 
@@ -30,7 +31,7 @@ Here are some reasons to stop using `alert()`:
 3. *Any alerts left in production code will derail the experience.* Before launch, you need to add in the extra step of making absolutely sure that you have removed all alerts from your code.
 4. *Alerts can cause unintended side effects.* Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how you implemented). You need service workers to get around this threading issue, which could 100% be used to solve much cooler problems.
 
-## Bad: console
+### Bad: console
 
 You also have the much more helpful option of printing information to the console available in Chrome’s DevTools using `console.log(value)`. Console fills in a lot of the gaps that `alert` lacks, such as line numbers and filenames. You can log Objects directly without having to coerce them into Strings, and you can drill down into Objects and Arrays to inspect their contents. You can even indicate importance with different log levels, such as `console.warn()` and `console.error()`. Fancy~ 💅
 
@@ -45,7 +46,7 @@ Console can also get confusing if you’re trying to dig into a large object or 
 
 Console is an essential tool for frontend developers, and it’s a huge step up from Alert, but it’s not the answer to everything. To supercharge your debugging powers, let’s turn to…
 
-## Amazing: interactive debugging
+### Amazing: interactive debugging
 
 Interactive debugging is a vastly different tool than Console or Alert, and it helps you identify problems much more efficiently. While Console and Alert are limited to printing out specific values, interactive debugging lets you roam around your code while accessing all values currently in scope.
 
