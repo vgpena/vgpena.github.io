@@ -3,7 +3,11 @@
   font-weight: bold;
   font-size: 2rem;
   padding: 1em 0.25em 0.1em $space;
+  display: inline-block;
   &:first-letter {
     border-bottom: solid 2px $bright;
+  }
+  &:focus {
+    outline: solid 4px $bright;
   }
 }

@@ -16,29 +16,39 @@ So I hope I can reach a few more fellow developers today and make your lives tha
 
 Web developers have three built-in options for logging and debugging. I’ll run through all three of them for some context for when we dive into debugging:
 
-### Egregious: alert
+### omg don't do this: alert
 
 `alert(value);` pops up a browser-level modal containing `value`. It’s often the first debugging method taught to JS newbies; it’s short, easy to understand, and provides immediate feedback. Unfortunately, it’s a terrible debugging utility and you shouldn’t use it.
 
-[ code snippet ]
+```javascript
+
+const foo = 'bar';
+alert(foo);
+
+```
 [ image ]
 
 Here are some reasons to stop using `alert()`:
 
 
-1. *It doesn’t support our debugging needs*. `alert()` isn’t content-agnostic and it can only output certain data types. For example, if you try to print an `Object`, the alert will show the monumentally unhelpful `Object object`. You can print out the actual contents of the Object by converting it to a String first, but this is a clear indication that `alerts` aren’t prepared to offer what we need from them.
-2. *It doesn’t include contextual information.* `alert`s don’t by default include the line number or file name of where that `alert`  was created. This puts the onus on you to manually include identifying information in your alert messages if you’re using `alert` in multiple places.
-3. *Any alerts left in production code will derail the experience.* Before launch, you need to add in the extra step of making absolutely sure that you have removed all alerts from your code.
-4. *Alerts can cause unintended side effects.* Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how you implemented). You need service workers to get around this threading issue, which could 100% be used to solve much cooler problems.
+1. **It doesn’t support our debugging needs**. `alert()` isn’t content-agnostic and it can only output certain data types. For example, if you try to print an `Object`, the alert will show the monumentally unhelpful `Object object`. You can print out the actual contents of the Object by converting it to a String first, but this is a clear indication that `alerts` aren’t prepared to offer what we need from them.
+2. **It doesn’t include contextual information.** `alert`s don’t by default include the line number or file name of where that `alert`  was created. This puts the onus on you to manually include identifying information in your alert messages if you’re using `alert` in multiple places.
+3. **Any alerts left in production code will derail the experience.** Before launch, you need to add in the extra step of making absolutely sure that you have removed all alerts from your code.
+4. **Alerts can cause unintended side effects.** Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how you implemented). You need service workers to get around this threading issue, which could 100% be used to solve much cooler problems.
 
-### Bad: console
+### meh: console
 
-You also have the much more helpful option of printing information to the console available in Chrome’s DevTools using `console.log(value)`. Console fills in a lot of the gaps that `alert` lacks, such as line numbers and filenames. You can log Objects directly without having to coerce them into Strings, and you can drill down into Objects and Arrays to inspect their contents. You can even indicate importance with different log levels, such as `console.warn()` and `console.error()`. Fancy~ 💅
+You also have the much more helpful option of printing information to the console available in Chrome’s DevTools using `console.log(value)`. Console fills in a lot of the gaps that `alert` lacks, such as line numbers and filenames. You can log Objects directly without having to coerce them into Strings, and you can drill down into Objects and Arrays to inspect their contents. You can even indicate importance with different log levels, such as `console.warn()` and `console.error()` 💅
 
-[code]
+```javascript
+
+const foo = 'bar';
+console.log(foo);
+
+```
 [screenshot]
 
-Console messages should also be removed in production, but they will only be visible to visitors with the console open. Unlike alerts, they don’t jump out at all users. Also unlike alerts, they will completely break your site for IE9 users. IE9 and below have a console that only exists while DevTools is open, so any errant `console`s left in production will nuke those users’ JS.
+Console messages should also be removed in production, but they will only be visible to visitors with the console open. Unlike alerts, they don’t jump out at all users. Also unlike alerts, *they will completely break your site for IE9 users*. IE9 and below have a console that only exists while DevTools is open, so any errant `console`s left in production will nuke those users’ JS.
 
 As you get into complex situations, however, console becomes less useful. There are abundant StackOverflow questions, [such as this one](https://stackoverflow.com/questions/30150469/why-console-log-displays-incorrect-objects-values), stemming from difficulties getting Console to accurately report values that change many times. (The answers are always to stringify your Objects/Arrays, possibly with the final step of converting them back to JSON. While this creates the functionality desired, it also suggests that `console` is not the right tool for this operation.)
 
@@ -46,7 +56,7 @@ Console can also get confusing if you’re trying to dig into a large object or 
 
 Console is an essential tool for frontend developers, and it’s a huge step up from Alert, but it’s not the answer to everything. To supercharge your debugging powers, let’s turn to…
 
-### Amazing: interactive debugging
+### do this forever: interactive debugging
 
 Interactive debugging is a vastly different tool than Console or Alert, and it helps you identify problems much more efficiently. While Console and Alert are limited to printing out specific values, interactive debugging lets you roam around your code while accessing all values currently in scope.
 

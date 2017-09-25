@@ -21,15 +21,15 @@
   }
 
   .section-inner {
+    color: $rich;
     text-decoration: none;
     font-weight: bold;
-    display: block;
+    display: inline-block;
     position: relative;
     padding: 0.25em 0.25em 0.1em $space;
     text-shadow: -2px 2px 0px $pale, -4px 4px 0px $light;
     &:focus {
-      text-shadow: -4px 4px 0px $bright;
-      outline: none;
+      outline: solid 4px $rich;
     }
   }
 }
