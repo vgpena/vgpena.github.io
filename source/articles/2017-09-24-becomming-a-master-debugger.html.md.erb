@@ -61,7 +61,7 @@ Chrome’s interactive debugging tools work on any JS, but they’re best used o
 
 These are project-by-project (or file-by-file) configurations, so I’ll let you figure out how to make this happen on your own. You may have to make development vs. production webpack configs; you may have to do nothing.
 
-## Meet the Sources tab
+### Meet the Sources tab
 
 All your debugging tools live in Chrome’s Sources tab. Open this via the menu options `View > Developer > Developer Tools` or pressing `Cmd+Option+I`. The panel that opens should look something like this:
 
@@ -69,7 +69,7 @@ All your debugging tools live in Chrome’s Sources tab. Open this via the menu 
 
 While focused inside the Sources tab, you can open a specific file by pressing `Cmd + P` to open the fuzzy finder. Start typing with this open to target a specific JS file that you want to poke around in.
 
-## Setting breakpoints
+### Setting breakpoints
 
 All your power in the debugger comes from setting up **breakpoints** in your code. These are little flags that you drop down to pause execution of JavaScript. You make a breakpoint by clicking in the left margin next to a line of code; you can remove breakpoints in the same way. Notice that breakpoints appear in a master list in the lower half of the debugger.
 
@@ -77,7 +77,7 @@ All your power in the debugger comes from setting up **breakpoints** in your cod
 
 So if you drop a breakpoint in some code that executes when the document is ready and then refresh, that breakpoint gets hit, your code stops, and a scrim drops over your viewport. Doesn’t sound too exciting, but trust me, it gets pretty amazing…
 
-## Inspecting values
+### Inspecting values
 
 While you’re halted at a breakpoint, your debugger has access to **all variables currently in scope**. You can inspect these values in two ways:
 
@@ -88,7 +88,7 @@ While you’re halted at a breakpoint, your debugger has access to **all variabl
 
 If hovering over a variable doesn’t do anything, it probably isn’t in scope right now. Drop a breakpoint in somewhere else that looks more viable, reload, and try again.
 
-## Moving around
+### Moving around
 
 You aren’t limited, however, to inspecting one scope per page load. The last major part of interactive debugging is this row of buttons:
 
@@ -105,7 +105,7 @@ You can use these movement options to track values across files, investigate ind
 
 Next to these buttons is a button to **disable all breakpoints;** this button lets you “mute” all current breakpoints without actually deleting (and potentially having to re-add) them.
 
-## Keep your debugs to yourself
+### Keep your debugs to yourself
 
 Apart from being absurdly useful, one advantage of using the debugger as your sole logging/debugging tool is that all the stuff you’re adding only exists for you. Chrome breakpoints aren’t part of your code and won’t impact anyone else’s experience of the project. They won’t even impact *your* experience if you don’t have your debugger open 🕵🏻‍♀️
 

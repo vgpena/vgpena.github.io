@@ -7,22 +7,25 @@
     display: block;
     margin-bottom: 1em;
     overflow: hidden;
-    padding-left: 4rem;
+    margin-left: $space;
+    padding-left: 3rem;
+    padding-top: 0.5em;
     &::before {
       content: counter(counter);
       counter-increment: counter;
-      font-family: $fancy;
-      color: $rich;
+      font-family: $mono;
       display: inline-block;
-      font-size: scale(2em);
-      background: linear-gradient(to right, $bright, $light 50%);
-      padding: 0 $space;
-      min-width: 0.5em;
+      font-size: 2em;
+      width: 1em;
+      height: 1em;
       text-align: center;
-      margin-left: -4rem;
-      margin-right: 0.5rem;
-      line-height: scale(1em);
-      vertical-align: middle;
+      color: $dark;
+      line-height: 1em;
+      font-weight: bold;
+      border-radius: 50%;
+      background: linear-gradient(to bottom right, $bright, $light 60%);
+      float: left;
+      margin-left: -3rem;
     }
   }
 }
