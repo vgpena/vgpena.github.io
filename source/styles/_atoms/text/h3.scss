@@ -1,0 +1,9 @@
+.content h3 {
+  color: $rich;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 1em 0.25em 0.1em $space;
+  &:first-letter {
+    border-bottom: solid 2px $bright;
+  }
+}
