@@ -14,7 +14,7 @@
     <link rel="alternate" href="https://vgpena.github.io/debugging-bliss/"/>
     <id>https://vgpena.github.io/debugging-bliss/</id>
     <published>2017-09-27T16:01:00-07:00</published>
-    <updated>2017-09-27T16:02:11-07:00</updated>
+    <updated>2017-09-27T16:23:16-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -55,20 +55,16 @@
 &lt;p&gt;Here are some reasons to stop using &lt;code&gt;alert()&lt;/code&gt;:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;It doesn’t support our debugging needs&lt;/strong&gt;. &lt;code&gt;alert()&lt;/code&gt; isn’t content-agnostic and it can only output certain data types. For example, if you try to print an &lt;code&gt;Object&lt;/code&gt;, the alert will show the monumentally unhelpful &lt;code&gt;object Object&lt;/code&gt;. You can print out the actual contents of the Object by converting it to a String first, but this is a clear indication that &lt;code&gt;alerts&lt;/code&gt; aren’t prepared to offer what we need from them.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;figure role="img" class=" image-secondary"&gt;
-    &lt;img src="/images/debugging/object-object.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1178px" height="552px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;IT BURNS US PRECIOUS&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;It doesn’t include contextual information.&lt;/strong&gt; &lt;code&gt;alert&lt;/code&gt;s don’t by default include the line number or file name of where that &lt;code&gt;alert&lt;/code&gt;  was created. This puts the onus on &lt;em&gt;you&lt;/em&gt; to manually include identifying information in your alert messages if you’re using &lt;code&gt;alert&lt;/code&gt; in multiple places.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Any alerts left in production code will create visible, disruptive popups for all users.&lt;/strong&gt; Enough said.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Alerts can cause unintended side effects.&lt;/strong&gt; Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how they&amp;#39;re implemented). You need service workers to get around this threading issue, and those service workers could be used to solve much cooler problems.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;It doesn’t support our debugging needs&lt;/strong&gt;. &lt;code&gt;alert()&lt;/code&gt; isn’t content-agnostic and it can only output certain data types. For example, if you try to print an &lt;code&gt;Object&lt;/code&gt;, the alert will show the monumentally unhelpful &lt;code&gt;object Object&lt;/code&gt;. You can print out the actual contents of the Object by converting it to a String first, but this is a clear indication that &lt;code&gt;alerts&lt;/code&gt; aren’t prepared to offer what we need from them.
+&lt;figure role="img" class=" image-primary"&gt;
+&lt;img src="/images/debugging/object-object.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1178px" height="552px" /&gt;
+&lt;figcaption&gt;
+&lt;p&gt;IT BURNS US PRECIOUS&lt;/p&gt;
+&lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;It doesn’t include contextual information.&lt;/strong&gt; &lt;code&gt;alert&lt;/code&gt;s don’t by default include the line number or file name of where that &lt;code&gt;alert&lt;/code&gt;  was created. This puts the onus on &lt;em&gt;you&lt;/em&gt; to manually include identifying information in your alert messages if you’re using &lt;code&gt;alert&lt;/code&gt; in multiple places.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Any alerts left in production code will create visible, disruptive popups for all users.&lt;/strong&gt; Enough said.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Alerts can cause unintended side effects.&lt;/strong&gt; Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how they&amp;#39;re implemented). You need service workers to get around this threading issue, and those service workers could be used to solve much cooler problems.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 tabIndex=0&gt;console.log(): you could do better&lt;/h3&gt;
 &lt;p&gt;You also have the much more helpful (but not amazing! keep reading) option of printing information to the console available in Chrome’s DevTools using &lt;code&gt;console.log(value)&lt;/code&gt;.&lt;/p&gt;
@@ -141,7 +137,7 @@
 &lt;p&gt;While you’re halted at a breakpoint, your debugger has access to &lt;strong&gt;all variables currently in scope&lt;/strong&gt;. You can inspect these values in three ways:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;hover over that variable and a tooltip will show up;
+&lt;li&gt;&lt;p&gt;hover over that variable and a tooltip will show up:
 &lt;div class=" image-primary"&gt;
 &lt;img src="/images/debugging/tooltips.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="990px" height="499px" /&gt;
 &lt;/div&gt;&lt;/p&gt;
