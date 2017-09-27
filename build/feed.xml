@@ -5,10 +5,219 @@
   <id>https://vgpena.github.io/</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2017-09-02T19:05:00-07:00</updated>
+  <updated>2017-09-27T16:01:00-07:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>Finding JavaScript bliss with the Chrome debugger</title>
+    <link rel="alternate" href="https://vgpena.github.io/debugging-bliss/"/>
+    <id>https://vgpena.github.io/debugging-bliss/</id>
+    <published>2017-09-27T16:01:00-07:00</published>
+    <updated>2017-09-27T16:02:11-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">Google Chrome's built-in debugger is the best option out there for writing, debugging, and understanding JavaScript. Here's how to get started using it today.</summary>
+    <content type="html">&lt;p&gt;I&amp;#39;m always on the lookout for ways to make my job easier. How can I build out functionality more quickly? How can I understand my code better? How can I debug more reliably?&lt;/p&gt;
+
+&lt;p&gt;The best tool for doing all of this has been &lt;strong&gt;Google Chrome&amp;#39;s built-in debugger&lt;/strong&gt;. Yep, I was surprised, too -- I didn&amp;#39;t even realize it existed for years. Since then, it&amp;#39;s been my go-to aide for everything JavaScript.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
+    &lt;img src="/images/debugging/sombra.jpg" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1600px" height="1066px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;Actual photo of someone using the Chrome debugger.&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;Learning how to use the Chrome debugger helps me write and debug more quickly, but more than just that, I actually &lt;em&gt;understand&lt;/em&gt; code better. I can isolate behavior, test out ideas, and feel my way around the codebase more quickly and reliably than ever before.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#39;s high time to pay this forward, so here&amp;#39;s a primer on the Chrome debugger. Hope it&amp;#39;ll make your lives easier! 💖&lt;/p&gt;
+&lt;h2 class='section-title' id=the-debugging-landscape&gt;&lt;a href='#the-debugging-landscape' class='section-inner'&gt;The debugging landscape&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;So if I just found about the debugger, how have I been debugging code until now?&lt;/p&gt;
+
+&lt;p&gt;There are three major options for debugging frontend JavaScript. I&amp;#39;ll run over what they are and why two of them fall short. 😈&lt;/p&gt;
+
+&lt;p&gt;PS, you can 100% use the Chrome debugger on backend JS as well -- check out the very end of this post. 😈😈&lt;/p&gt;
+
+&lt;p&gt;PPS, Safari &lt;em&gt;also&lt;/em&gt; has a built-in debugger with a really similar feature set. I don&amp;#39;t use Safari much, though, so I&amp;#39;ll let someone else write that blog post 😈😈😈&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;alert(): not even once&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;alert(value);&lt;/code&gt; pops up a browser-level modal containing &lt;code&gt;value&lt;/code&gt;. It’s often the first debugging method taught to JS newbies; it’s concise, easy to understand, and provides immediate feedback. Unfortunately, &lt;strong&gt;it’s a terrible debugging utility and you shouldn’t use it&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-secondary"&gt;
+    &lt;img src="/images/debugging/alert.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1134px" height="652px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+&lt;pre class="code javascript"&gt;&lt;code&gt;
+&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;foo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here are some reasons to stop using &lt;code&gt;alert()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;It doesn’t support our debugging needs&lt;/strong&gt;. &lt;code&gt;alert()&lt;/code&gt; isn’t content-agnostic and it can only output certain data types. For example, if you try to print an &lt;code&gt;Object&lt;/code&gt;, the alert will show the monumentally unhelpful &lt;code&gt;object Object&lt;/code&gt;. You can print out the actual contents of the Object by converting it to a String first, but this is a clear indication that &lt;code&gt;alerts&lt;/code&gt; aren’t prepared to offer what we need from them.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;figure role="img" class=" image-secondary"&gt;
+    &lt;img src="/images/debugging/object-object.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1178px" height="552px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;IT BURNS US PRECIOUS&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;It doesn’t include contextual information.&lt;/strong&gt; &lt;code&gt;alert&lt;/code&gt;s don’t by default include the line number or file name of where that &lt;code&gt;alert&lt;/code&gt;  was created. This puts the onus on &lt;em&gt;you&lt;/em&gt; to manually include identifying information in your alert messages if you’re using &lt;code&gt;alert&lt;/code&gt; in multiple places.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Any alerts left in production code will create visible, disruptive popups for all users.&lt;/strong&gt; Enough said.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Alerts can cause unintended side effects.&lt;/strong&gt; Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how they&amp;#39;re implemented). You need service workers to get around this threading issue, and those service workers could be used to solve much cooler problems.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 tabIndex=0&gt;console.log(): you could do better&lt;/h3&gt;
+&lt;p&gt;You also have the much more helpful (but not amazing! keep reading) option of printing information to the console available in Chrome’s DevTools using &lt;code&gt;console.log(value)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Console fills in a lot of the gaps that &lt;code&gt;alert&lt;/code&gt; lacks, such as line numbers and filenames. It&amp;#39;s also much more robust: you can log Objects directly without having to coerce them into Strings, and you can drill down into Objects and Arrays to inspect their contents. You can even get fancy and indicate importance with different log levels, such as &lt;code&gt;console.warn()&lt;/code&gt; and &lt;code&gt;console.error()&lt;/code&gt; 💅&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-secondary"&gt;
+    &lt;img src="/images/debugging/console.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1134px" height="652px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+&lt;pre class="code javascript"&gt;&lt;code&gt;
+&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;foo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="nx"&gt;console&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;log&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;foo&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Console messages should also be removed in production, but at least they will only be visible to visitors who have their consoles open; i.e., other nerds. Also unlike alerts, &lt;em&gt;they will completely break your site for IE9 users&lt;/em&gt;. &lt;a href="https://stackoverflow.com/a/7742862"&gt;IE9 and below have a console that only exists while DevTools is open&lt;/a&gt;, so any errant &lt;code&gt;console&lt;/code&gt;s left in production will nuke those users’ JS.&lt;/p&gt;
+
+&lt;p&gt;Console is way more helpful than &lt;code&gt;alert&lt;/code&gt;, but it still falls short in complex situations. There are abundant StackOverflow questions, &lt;a href="https://stackoverflow.com/questions/30150469/why-console-log-displays-incorrect-objects-values"&gt;such as this one&lt;/a&gt;, stemming from difficulties getting Console to accurately report changing values. Similar to how &lt;code&gt;[object Object]&lt;/code&gt; shows that &lt;code&gt;alert()&lt;/code&gt; isn&amp;#39;t built to address certain needs, this issue with the console suggests that &lt;code&gt;console&lt;/code&gt; isn&amp;#39;t enough for us, either.&lt;/p&gt;
+
+&lt;p&gt;Console can also get confusing if you’re trying to dig into a large object or set of objects due to the sheer amount of output that you receive. It can be overwhelming to use console to monitor an animation on &lt;code&gt;requestAnimationFrame&lt;/code&gt; or track down a value change in a mobx store.&lt;/p&gt;
+
+&lt;p&gt;Console is an essential tool for frontend developers, and it’s a huge step up from Alert, but it’s not the answer to everything. To supercharge your debugging powers, let’s turn to…&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Interactive debugging: happily ever after&lt;/h3&gt;
+&lt;p&gt;Interactive debugging using Chrome&amp;#39;s debugger is a vastly different tool than Console or Alert. While the latter two are limited to printing out specific values, interactive debugging lets you roam around your code while accessing all the values in scope at that point in time.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
+    &lt;img src="/images/debugging/neo.webp" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="490" height="275px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;Another actual photo of someone using the Chrome debugger.&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;You don&amp;#39;t even have to write any code for this one. All you need is to open Chrome&amp;#39;s DevTools via &lt;code&gt;Cmd+Option+I&lt;/code&gt; or &lt;code&gt;View &amp;gt; Developer &amp;gt; Developer Tools&lt;/code&gt; and then click on the Sources tab.&lt;/p&gt;
+
+&lt;p&gt;Okay, ready?&lt;/p&gt;
+&lt;h2 class='section-title' id=let39s-get-debugging&gt;&lt;a href='#let39s-get-debugging' class='section-inner'&gt;Let&amp;#39;s get debugging&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Chrome’s interactive debugging tools work on any JavaScript, but they’re most helpful if your code has not been &lt;strong&gt;uglified, minified, concatenated, or obfuscated&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;These are project-by-project (maybe even file-by-file) configurations. You may have to make development vs. production webpack configs; you may already be good to go.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Meet the Sources tab&lt;/h3&gt;
+&lt;p&gt;All your debugging tools live in Chrome’s Sources tab. Open this via the menu options &lt;code&gt;View &amp;gt; Developer &amp;gt; Developer Tools&lt;/code&gt; or pressing &lt;code&gt;Cmd+Option+I&lt;/code&gt; and then clicking to view the Sources section. The panel that opens should look something like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/debugging/sources.png" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1108px" height="652px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Yep, that&amp;#39;s kind of a lot at once. I don&amp;#39;t even use everything in here. But it&amp;#39;s really easy to use once you know what to look for.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Fuzzy finder activate!&lt;/h3&gt;
+&lt;p&gt;While focused inside the Sources tab, you can open a specific file by pressing &lt;code&gt;Cmd + P&lt;/code&gt; to open the fuzzy finder. Start typing with this open to target a specific JS file that you want to poke around in.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/debugging/fuzzy-finder.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="990px" height="437px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Setting breakpoints&lt;/h3&gt;
+&lt;p&gt;All your power in the debugger comes from setting up &lt;strong&gt;breakpoints&lt;/strong&gt; in your code. These are little flags that you drop down to pause execution of JavaScript.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;You make a breakpoint&lt;/strong&gt; by clicking in the left margin next to a line of code; you can remove breakpoints in the same way. Notice that breakpoints appear in a master list as well as being marked in their home file.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/debugging/breakpoints.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="990px" height="499px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;So if you drop a breakpoint in some code that executes when the document is ready and then refresh, that breakpoint gets hit, your code stops, and a scrim drops over your viewport.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/debugging/hit-breakpoint.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="2856px" height="1276px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Doesn’t sound too exciting, but trust me, it gets pretty amazing…&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Inspecting values&lt;/h3&gt;
+&lt;p&gt;While you’re halted at a breakpoint, your debugger has access to &lt;strong&gt;all variables currently in scope&lt;/strong&gt;. You can inspect these values in three ways:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;hover over that variable and a tooltip will show up;
+&lt;div class=" image-primary"&gt;
+&lt;img src="/images/debugging/tooltips.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="990px" height="499px" /&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a super lightweight, immediate way to view variables on the fly.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;type that variable name in your console and hit &lt;code&gt;Enter&lt;/code&gt;.
+&lt;div class=" image-primary"&gt;
+&lt;img src="/images/debugging/console-inspection.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="990px" height="870px" /&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;This will feel the most familiar for fans of &lt;code&gt;console.log()&lt;/code&gt;, but in this case you don&amp;#39;t have to wait for your code to recompile 🥂&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;find that variable in the &lt;code&gt;Scope&lt;/code&gt; pane of the Sources panel.
+&lt;div class=" image-primary"&gt;
+&lt;img src="/images/debugging/scope-inspect.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1594px" height="636px" /&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;This pane can feel buried under the &lt;code&gt;Call Stack&lt;/code&gt; pane, but it&amp;#39;s the most comprehensive option of the three. It shows you all variables currently in scope, including global values that you might not even remember setting.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 tabIndex=0&gt;Moving around&lt;/h3&gt;
+&lt;p&gt;You aren’t limited, however, to inspecting exactly around the breakpoints you set. The last major part of interactive debugging is this row of buttons:&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/debugging/buttons.png" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1108px" height="989px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;These buttons let you walk around across functions and files while keeping your inspector powers. Being able to do this is invaluable, but it can feel confusing or overwhelming, especially if you’re dealing with a lot of third-party code. Here’s what each of the buttons mean, and when you might want to use them:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Play/pause&lt;/strong&gt;: Start or stop script execution. This is how you start executing script again from inside a breakpoint.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Step over:&lt;/strong&gt; Execute the current line of code and pause on the next line. This is great for when you need to track what’s happening inside of a specific function, or what happens to a value on a line-by-line basis.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Step in:&lt;/strong&gt; Dive into the body of the current function call and pause on the first line of that function. This lets you inspect the inner workings of a function, as opposed to &lt;strong&gt;step over,&lt;/strong&gt; which will execute the entire function without pausing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Step out:&lt;/strong&gt; Finish executing the current function body and pause on the line that called it. This is the opposite of &lt;strong&gt;step in&lt;/strong&gt; and is useful when you want to see where your current function was called from or you don’t want to have to &lt;strong&gt;step over&lt;/strong&gt; every line of the function in order to see where it is applied.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You can use these movement options to track values across files, investigate individual values every time a function is called, etc. They’re incredibly useful and my best advice/non-advice is to play around with them until you develop a sense of how they behave and when to use them.&lt;/p&gt;
+
+&lt;p&gt;Next to these buttons is a button to &lt;strong&gt;disable all breakpoints;&lt;/strong&gt; this button lets you “mute” all current breakpoints without actually deleting (and potentially having to re-add) them.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Debugging best practices&lt;/h3&gt;
+&lt;p&gt;Apart from being absurdly useful, one advantage of using the debugger as your sole logging/debugging tool is that all the stuff you’re adding &lt;strong&gt;only exists for you&lt;/strong&gt;. Debugging hooks shouldn&amp;#39;t be a part of production code and the Chrome debugger makes it very easy to make sure this happens.&lt;/p&gt;
+
+&lt;p&gt;That said, you also have the option of inserting a breakpoint into your actual code. Put a line in your JS that says &lt;code&gt;debugger;&lt;/code&gt; and when the browser reaches that line, it’ll pause and then you can poke around and inspect values as described.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Don’t do this.&lt;/strong&gt; I’m talking about it for completeness’ sake, but it’s not a good idea. (Full disclosure: before I knew that the debugger had a fuzzy finder, I used this a. lot.) Manually putting debuggers in your code introduces a bunch of the problems inherent to Alert and Console, and while breakpoints aren&amp;#39;t visible to users who don&amp;#39;t have DevTools open, a full-window takeover looks way more terrifying than a line of console text.&lt;/p&gt;
+
+&lt;p&gt;Debugging is better when a) it’s local; and b) it doesn’t require writing any code. If for some reason you need to actually code in &lt;code&gt;debuggers&lt;/code&gt; (or &lt;code&gt;console&lt;/code&gt;s or &lt;code&gt;alert&lt;/code&gt;s 😬), look into making production vs. development configurations for your linter, and have it refuse to build if it finds any of that in an attempted production build.&lt;/p&gt;
+&lt;h2 class='section-title' id=tldr&gt;&lt;a href='#tldr' class='section-inner'&gt;tl;dr&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;You should start using the Chrome debugger today because:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Interactive debugging will help you work faster.&lt;/strong&gt; I’ve lost way too much time including a typo in my &lt;code&gt;console.log&lt;/code&gt;s, or straight up logging something incorrect or unhelpful. The Chrome debugger lets you inspect code arbitrarily, which means less guessing, coding, refreshing, and waiting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Interactive debugging will help you understand your code.&lt;/strong&gt; Having the power to dive into your work on a line-by-line basis helps you understand not only what happens to specific values but how your entire project fits together.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Interactive debugging will prepare you for other programming environments.&lt;/strong&gt; My intro to interactive debugging didn’t involve Chrome but Xcode, during that strange year that I was a web/iOS developer. If you&amp;#39;re a frontend developer and might potentially want to do any other kind of programming, being familiar with interactive debugging will be massively helpful.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Getting comfortable with the Chrome debugger made me a much happier developer, and I really don’t know how I survived without it 😭 Start playing around with it ASAP — it may be overwhelming at first, but keep with it and it’ll swiftly become your preferred way to work.&lt;/p&gt;
+&lt;h2 class='section-title' id=parting-thoughts&gt;&lt;a href='#parting-thoughts' class='section-inner'&gt;Parting thoughts&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I have a few more thoughts on the Chrome debugger that didn&amp;#39;t fit in the main narrative of this post, so enjoy:&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;The learning curve&lt;/h3&gt;
+&lt;p&gt;There is absolutely a learning curve to using the Chrome debugger. You&amp;#39;ll have to do a lot of playing around with setting breakpoints and inspecting code, but as you work, keep asking yourself:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;is this line of code actually executed by the browser?&lt;/li&gt;
+&lt;li&gt;is this variable in scope right now?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You may have trouble if the answer to either of these questions is &amp;quot;no&amp;quot;.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Going deeper&lt;/h3&gt;
+&lt;p&gt;I didn&amp;#39;t cover everything that you can do with the debugger. You should take your time to read more on it and play around with it. One fab thing, which you may have already guessed is possible, is that you can actually &lt;strong&gt;change the value of local variables&lt;/strong&gt; while on a breakpoint with that variable in scope. Set its value to whatever you want in the console.&lt;/p&gt;
+
+&lt;p&gt;My point is, the debugger is amazing. Keep poking around and you&amp;#39;ll find even more cool stuff!&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Backend JS debugging&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/nodejs/node/pull/6792"&gt;As of May 2016&lt;/a&gt;, you can freakin debug your Node.js code in Chrome. Paul Irish did &lt;a href="https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27"&gt;a lovely writeup&lt;/a&gt; on how to get this going. 🚀&lt;/p&gt;
+
+&lt;p&gt;Okay okay I&amp;#39;m done now. Happy coding!&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Classifying Tweets with Keras and TensorFlow</title>
     <link rel="alternate" href="https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/"/>
@@ -768,180 +977,6 @@ positive sentiment; 62.751633% confidence
 &lt;p&gt;Since then, our CircleCI builds have been stable. Tests take about 46 seconds to run on our CI box now, compared to 9 seconds locally, where we don&amp;#39;t need to limit workers.&lt;/p&gt;
 
 &lt;p&gt;Thanks for reading this far! Now go out there, write tests, and integrate without fear.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Turning Subreddits Into Chatbots</title>
-    <link rel="alternate" href="https://vgpena.github.io/chatbots/"/>
-    <id>https://vgpena.github.io/chatbots/</id>
-    <published>2017-04-02T22:26:00-07:00</published>
-    <updated>2017-04-03T07:36:39-07:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <summary type="html">We were given two days and the theme of 'echo chamber'. We used subreddits to create chatbots and had them converse.</summary>
-    <content type="html">&lt;p&gt;This past weekend, I attended &lt;a href="http://www.arthackday.net/events/echo-chamber"&gt;Art Hack Day: Echo Chamber&lt;/a&gt;. On Friday evening, the participants introduced ourselves and shared ideas; by Sunday evening, I had, as part of a group, created and exhibited Reddit-powered chatbots. It was an amazing, exhilarating weekend and I came out of it tired but more inspired than I thought possible.&lt;/p&gt;
-&lt;h2 class='section-title' id=art-hack-the-planet&gt;&lt;a href='#art-hack-the-planet' class='section-inner'&gt;(Art) Hack the Planet&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/ahd/pnca.jpg" alt="A photo of a blocky, light grey building. The letters &amp;quot;PNCA&amp;quot; run up its side." title="The PNCA building in downtown Portland" width="500px" height="667px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;PNCA -- my home for the weekend. &lt;a href="http://gabesimagination.com/"&gt;credit&lt;/a&gt;&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://www.arthackday.net/"&gt;Art Hack Day&lt;/a&gt; (AHD) is a series of events that brings together tecchies and artists. Participants divide into ad hoc groups, work on art projects for a day and a half, and then the weekend culminates in an art show. This time around, we were in the uber-beautiful &lt;a href="http://pnca.edu/"&gt;PNCA&lt;/a&gt; and sponsored in part by their interdisciplinary &lt;a href="http://pnca.edu/makethinkcode"&gt;Make+Think+Code&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Part of what&amp;#39;s lovely about AHD is that, as the name implies, they go out of their way to create a balance between art and tech. This isn&amp;#39;t a hack day to make an app or redesign a website; it&amp;#39;s a time to collaborate with people of different skill sets, push your boundaries, and create something interesting but not necessarily useful.&lt;/p&gt;
-&lt;h2 class='section-title' id=do-you-want-to-build-a-chatbot&gt;&lt;a href='#do-you-want-to-build-a-chatbot' class='section-inner'&gt;Do You Want to Build a Chatbot?&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The theme of this AHD was &amp;quot;Echo Chamber&amp;quot;, particularly with an eye towards the internet and social media, which easily become echo chambers that do little more than affirm our already-held beliefs. This creative prompt got me thinking about chatbots, which I&amp;#39;ve been into since I was introduced to &lt;a href="https://en.wikipedia.org/wiki/SmarterChild"&gt;SmarterChild&lt;/a&gt; in middle school.&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/ahd/smarterchild.jpg" alt="A screengrab of an old AIM conversation with SmarterChild." title="A screengrab of a typically awful conversation with SmarterChild" width="242px" height="386px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;A typical interaction with SmarterChild. &lt;a href="http://yaleherald.com/bullblog/aim-bots-where-are-they-now/"&gt;source&lt;/a&gt;&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;On Friday evening, as we went around the room and introduced ourselves, a couple others indicated an interest in chatbots -- &lt;a href="https://twitter.com/ginkko"&gt;Alec Arme&lt;/a&gt; and &lt;a href="http://www.poinyent.com/"&gt;Steve August&lt;/a&gt;. We got together and started brainstorming ideas, which ranged from assigning points to bots&amp;#39; arguments and picking a winner, to creating bots that represented different Greek gods. When we left for the night, we knew that:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;we wanted to make several bots, not just one;&lt;/li&gt;
-&lt;li&gt;those bots would be trained or given personalities based on different data sources; and&lt;/li&gt;
-&lt;li&gt;we wanted those bots to somehow talk to each other.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;At this point, I should mention that none of us had experience with chatbots, and that none of us had worked together before. We have very different skill sets -- Alec works mostly with VR, Steve specializes in psychology and using tech to create calm, and I do web development and browser-based installations. Whatever our end product would be, we knew it wouldn&amp;#39;t be typical.&lt;/p&gt;
-&lt;h2 class='section-title' id=enter-bigquery&gt;&lt;a href='#enter-bigquery' class='section-inner'&gt;Enter BigQuery&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Any bot needs source material, and we had decided that our bots would be trained on internet communities that could be construed as echo chambers. Even before we were sure what the exact training material would be, we knew that we would have to process a &lt;strong&gt;lot&lt;/strong&gt; of data in order to accurately reflect those communities.&lt;/p&gt;
-
-&lt;p&gt;When I think &amp;quot;big data&amp;quot;, I think of &lt;a href="https://cloud.google.com/bigquery/"&gt;Google BigQuery&lt;/a&gt;. I hadn&amp;#39;t worked with it before, but I &lt;strong&gt;had&lt;/strong&gt; had the pleasure of working alongside a team creating &lt;a href="http://www.instrument.com/work/google-next-cloud-platform"&gt;a BigQuery-powered trivia game&lt;/a&gt;, so I was already familiar with BigQuery as a service and knew the basics of how to use it.&lt;/p&gt;
-
-&lt;p&gt;Essentially, BigQuery is a pay-as-you-go service that lets you run SQL queries over humongous data sets in disgustingly little time. It opens the door to people like me, who want to crunch dozens of gigabytes of data, but don&amp;#39;t have access to powerful machines.&lt;/p&gt;
-
-&lt;p&gt;As if this weren&amp;#39;t enough, BigQuery hosts &lt;a href="https://www.reddit.com/r/bigquery/wiki/datasets"&gt;tons of publically available datasets&lt;/a&gt;, so we didn&amp;#39;t have to manually write scrapes of comment sections or format those results to be BigQuery-compatible. (My favorite dataset is this 452GB one of &lt;a href="https://github.com/odota/core/issues/924"&gt;DotA gameplay data&lt;/a&gt;).&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;The dataset that spoke to us the most was the one of &lt;a href="https://bigquery.cloud.google.com/dataset/fh-bigquery:reddit_comments"&gt;all Reddit comments since 2005&lt;/a&gt;. &lt;a href="https://www.reddit.com/"&gt;Reddit&lt;/a&gt;, &amp;quot;the front page of the internet&amp;quot;, is divided into subreddits dedicated to specific hobbies or interests. As such, they can easily become echo chambers where all participants agree with each other and validate each others&amp;#39; beliefs.&lt;/p&gt;
-
-&lt;p&gt;We decided to base our bots off of specific subreddits&amp;#39; comments from December 2016 to February 2017 -- a cool 52.9GB of data in all. But how would we turn this data source into usable material for chatbots?&lt;/p&gt;
-&lt;h2 class='section-title' id=creating-a-training-corpus&gt;&lt;a href='#creating-a-training-corpus' class='section-inner'&gt;Creating a Training Corpus&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;When I want to generate language, I immediately think of &lt;a href="https://en.wikipedia.org/wiki/Markov_chain"&gt;Markov chains&lt;/a&gt;. Also known as Markov models, these are processes that let us use statistics collected about an input to probabilistically generate an output.&lt;/p&gt;
-
-&lt;p&gt;You can create a Markov chain by going through a body of text (&amp;quot;training corpus&amp;quot;) and counting how many times each word occurs, and for each word, what words follow it and how often. You create a profile of the text: how often can you expect a particular word to come up, and what other words you expect to follow it? You end up with a formula for creating utterances &amp;quot;in the style&amp;quot; of your training corpus.&lt;/p&gt;
-
-&lt;p&gt;To use subreddits as a training corpus, we ran the following SQL query in BigQuery against the aforementioned Reddit comment tables:&lt;/p&gt;
-&lt;pre class="code sql"&gt;&lt;code&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nextword&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;c&lt;/span&gt;
-&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-  &lt;span class="k"&gt;SELECT&lt;/span&gt;
-    &lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;LEAD&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;OVER&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;nextword&lt;/span&gt;
-  &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="k"&gt;SELECT&lt;/span&gt;
-      &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-      &lt;span class="n"&gt;pos&lt;/span&gt;
-    &lt;span class="k"&gt;FROM&lt;/span&gt;
-      &lt;span class="n"&gt;FLATTEN&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="k"&gt;SELECT&lt;/span&gt;
-          &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-          &lt;span class="k"&gt;POSITION&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;pos&lt;/span&gt;
-        &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-          &lt;span class="k"&gt;SELECT&lt;/span&gt;
-            &lt;span class="n"&gt;SPLIT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;REGEXP_REPLACE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;LOWER&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;'(&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;)'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="s1"&gt;' '&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s1"&gt;' '&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;
-          &lt;span class="k"&gt;FROM&lt;/span&gt;
-            &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;fh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bigquery&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;reddit_comments&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="n"&gt;_02&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;fh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bigquery&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;reddit_comments&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="n"&gt;_01&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;fh&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bigquery&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;reddit_comments&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2016&lt;/span&gt;&lt;span class="n"&gt;_12&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;subreddit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'dankmemes'&lt;/span&gt; &lt;span class="k"&gt;LIMIT&lt;/span&gt; &lt;span class="mi"&gt;10000&lt;/span&gt;
-         &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;))&lt;/span&gt;
-         &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="k"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="k"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nextword&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="o"&gt;!=&lt;/span&gt; &lt;span class="n"&gt;nextword&lt;/span&gt;
-&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt;
-  &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
-  &lt;span class="k"&gt;ORDER&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt;
-  &lt;span class="k"&gt;c&lt;/span&gt; &lt;span class="k"&gt;DESC&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This is a modified version of the code provided by &lt;a href="https://twitter.com/felipehoffa"&gt;Felipe Hoffa&lt;/a&gt; on &lt;a href="http://blog.gdeltproject.org/making-ngrams-bigquery-scale/"&gt;the GDELT blog&lt;/a&gt;. It reads in the specified tables (&lt;code&gt;[fh-bigquery:reddit_comments.2017_02]&lt;/code&gt;, etc.) and creates a new table of words, &amp;#39;nextword&amp;#39;s, and the count (&amp;#39;c&amp;#39;) of that combination.&lt;/p&gt;
-
-&lt;p&gt;Training corpora were created by swapping out the subreddit we looked for -- &lt;code&gt;WHERE subreddit = &amp;#39;dankmemes&amp;#39;&lt;/code&gt; makes our query only count words in comments that had &lt;code&gt;dankmemes&lt;/code&gt; listed as a subreddit. We cleaned up the data a bit to make processing easier -- words were all lowercased so we wouldn&amp;#39;t have to deal with capitalization, and we stripped out line breaks.&lt;/p&gt;
-
-&lt;p&gt;We created nine training corpora this way, based on output tables ranging in size from 513KB to 7.16MB. Tolstoy&amp;#39;s 864-page &lt;em&gt;Anna Karenina&lt;/em&gt;, for comparison, takes up about 1.9MB. We had plenty of data; we were ready to make some bots.&lt;/p&gt;
-&lt;h2 class='section-title' id=back-to-the-frontend&gt;&lt;a href='#back-to-the-frontend' class='section-inner'&gt;Back to the Frontend&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;While I was getting the data and reworking it into a usable form, Alec and Steve were putting together our project&amp;#39;s frontend. We had decided that we wanted to make something that looked like a chat app, and have our bots appear to text each other as they conversed.&lt;/p&gt;
-
-&lt;p&gt;Since the bulk of my work has been web-based, even my installations have leaned heavily on Google Chrome as a frontend. Alec, however, is most experienced developing with &lt;a href="https://unity3d.com/"&gt;Unity&lt;/a&gt;, a game engine used widely for 3D games and Virtual Reality experiences. I associate Unity so tightly with those types of projects that I was astounded when Alec volunteered to make our 2D frontend in Unity. It turns out that Unity can also be a powerful way to make UIs and other 2D products, and that Alec knew a Unity plugin that would let us create a connection between his Unity frontend and my &lt;a href="https://nodejs.org/"&gt;Node.js&lt;/a&gt; backend with WebSockets.&lt;/p&gt;
-
-&lt;p&gt;Alec and Steve teamed up on creating a frontend that mimicked an Android texting UI, complete with user avatars pulled from the subreddits&amp;#39; header images. We would randomly choose two bots and have them &amp;quot;converse&amp;quot; with each other. The conversation would go on for around twenty utterances per bot; then we would choose two new bots and start again.&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/ahd/test1.jpg" alt="A photo of a laptop screen showing our project. A mocked Android texting UI shows language generated by our bots." title="One of our first tests." width="800px" height="1067px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;It&amp;#39;s alive! One of our first tests.&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;The frontend sent, via WebSockets, an event to the backend requesting an utterance from a specific bot. The backend would generate an utterance on the spot and send that text back. The frontend controlled the conversation flow; it would wait to request a new utterance based on how long the previous utterance would take to read.&lt;/p&gt;
-
-&lt;p&gt;We set up a router to let our laptops talk to each other via local IPs (the building&amp;#39;s WiFi wasn&amp;#39;t cooperating), and voil&amp;agrave; -- we were able to run our first tests. The actual installation would have the server and frontend on the same computer; we wouldn&amp;#39;t even need an internet connection.&lt;/p&gt;
-&lt;h2 class='section-title' id=making-bots-chat&gt;&lt;a href='#making-bots-chat' class='section-inner'&gt;Making Bots Chat&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The last stage of the project was cleanup -- on the frontend, finessing assets and behavior; on the backend, stripping out badly-encoded characters (which appeared as &amp;#65533;) and trying to get the bots to talk to each other.&lt;/p&gt;
-
-&lt;p&gt;So far we had been generating utterances apropos of nothing, probabilistically picking a starting word from a bot&amp;#39;s corpus and building the rest of the utterance from there. Our goal, though, was to make the bots&amp;#39; texting feel like a conversation, which meant relating their utterances somehow. One way to do this is to relate utterances to predetermined &amp;quot;topics&amp;quot; and pick appropriate responses filed under that same topic. Steve had looked into achieving this with &lt;a href="http://www.alicebot.org/aiml.html"&gt;AIML&lt;/a&gt;, a markup language for chatbots, earlier on in the weekend. That approach, however, required a smaller, more manually-determined set of utterances than what we had on hand.&lt;/p&gt;
-
-&lt;p&gt;We decided it would be enough to get the bots to use the same word across utterances, even if we couldn&amp;#39;t guarantee a match between their utterances&amp;#39; actual themes.&lt;/p&gt;
-
-&lt;p&gt;We started tracking every utterance in the conversation, ranking the words in an utterance from least- to most-used, assuming that the most common words (&amp;quot;a&amp;quot;, &amp;quot;the&amp;quot;, &amp;quot;I&amp;quot;) are the least important to establishing a theme and that more unique words (&amp;quot;Iraq&amp;quot;, &amp;quot;congress&amp;quot;, &amp;quot;emails&amp;quot;) are more indicative of an utterance&amp;#39;s theme. When generating a new utterance, we would pick its starting word by trying to find one of the more &amp;quot;interesting&amp;quot; words from the previous utterance in the current bot&amp;#39;s corpus. Some words were only known by certain bots, but more often than not, the desired word was known by both bots, albeit with different connotations.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;#39;s a sample exchange between two bots that demonstrates &amp;quot;staying on topic&amp;quot;:&lt;/p&gt;
-
-      &lt;blockquote&gt;
-        &lt;p&gt;&lt;strong&gt;dankmemes&lt;/strong&gt;: rights die.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The_Donald&lt;/strong&gt;: die.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;dankmemes&lt;/strong&gt;: what yeah, dank [deleted] dank great?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The_Donald&lt;/strong&gt;: yeah, oh the third was woman drones. is officials.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;dankmemes&lt;/strong&gt;: yeah, you bot, eating questions re-submit harder being ^^/r/ayylmao2dongerbot thrusting regret a the in actually methinks. basking that get brethren, this more to words.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The_Donald&lt;/strong&gt;: yeah, oh so.. don&amp;#39;t hate what that wtf!!!&lt;/p&gt;
-
-        &lt;cite&gt;
-          
-        &lt;/cite&gt;
-      &lt;/blockquote&gt;
-    &lt;h2 class='section-title' id=opening-night&gt;&lt;a href='#opening-night' class='section-inner'&gt;Opening Night&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;AHD culminated in an art show taking over the ground floor and mezzanine of PNCA. Every group installed its project and set it up to be on display for several hours that night.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class="image-wrap image-primary"&gt;
-    &lt;img src="/images/ahd/show1.jpg" alt="A photo taken from overhead showing groups of people clustered around various artworks displayed on small white tables." title="The AHD exhibition at PNCA." width="800px" height="600px" /&gt;
-  &lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;The diversity of skills brought into AHD meant that a huge variety of projects came out of it. There were Kinect and HoloLens projects; there was 16mm film and a dating app for animated monsters; there was a DDR dance pad that made emoji rain across a VR scene.&lt;/p&gt;
-
-&lt;p&gt;Our project was surprisingly easy to set up and ran beautifully all evening. We ran an exported Unity app on a Mac Mini and projected it into a fake smartphone cut out of foamcore.&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-primary"&gt;
-    &lt;img src="/images/ahd/group.jpg" alt="A photo of three people, two men and a woman. They stand next to a projector, in front of a false wall onto which is projected a mimicked texting exchange." title="My group poses with our chatbots." width="800px" height="600px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;Live at PNCA! From left to right: Steve, Alec, and me.&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;Visitors ebbed and flowed through the gallery. Since our project wasn&amp;#39;t interactive, I had been afraid that people might not feel interested or engaged, but we ended up with a piece that still drew visitors in and held their attention. Part of the interest, I think, came from being able to see a very topical, polemic bot (like &lt;code&gt;/r/The_Donald&lt;/code&gt;), or to see bots of opposing views (&lt;code&gt;/r/Feminism&lt;/code&gt; and &lt;code&gt;/r/TheRedPill&lt;/code&gt;, for example) matched against each other.&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-primary"&gt;
-    &lt;img src="/images/ahd/show2.jpg" alt="A photo taken from overhead shows groups of people looking at art. One group is clustered around a projector; one person points at the projection." title="Our art at the opening show." width="800px" height="600px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;people ❤️ looking ❤️ at ❤️ our ❤️ art&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;I loved working on this project and am looking for ways to keep working with it. Maybe as a foray into machine learning?&lt;/p&gt;
-
-&lt;p&gt;Thanks to Alec and Steve for being amazing teammates and setting us all up for success on a super fun, challenging project. I look forward to lots more art-hacking in the future.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;&lt;em&gt;This was my first blog post that wasn&amp;#39;t about making this blog! Stay tuned for a post about Markov chains.&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>
