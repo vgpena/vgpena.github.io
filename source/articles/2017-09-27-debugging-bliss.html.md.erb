@@ -57,19 +57,18 @@ alert(foo);
 
 Here are some reasons to stop using `alert()`:
 
-
 1. **It doesn’t support our debugging needs**. `alert()` isn’t content-agnostic and it can only output certain data types. For example, if you try to print an `Object`, the alert will show the monumentally unhelpful `object Object`. You can print out the actual contents of the Object by converting it to a String first, but this is a clear indication that `alerts` aren’t prepared to offer what we need from them.
+  <%= partial(:media, :locals => {
+    :src => 'debugging/object-object.gif',
+    :title => 'A sample neural network.',
+    :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+    :caption => 'IT BURNS US PRECIOUS',
+    :size => 'primary',
+    :width => '1178px',
+    :height => '552px',
+    :plain => true,
+  })%>
 
-<%= partial(:media, :locals => {
-  :src => 'debugging/object-object.gif',
-  :title => 'A sample neural network.',
-  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
-  :caption => 'IT BURNS US PRECIOUS',
-  :size => 'secondary',
-  :width => '1178px',
-  :height => '552px',
-  :plain => true,
-})%>
 2. **It doesn’t include contextual information.** `alert`s don’t by default include the line number or file name of where that `alert`  was created. This puts the onus on *you* to manually include identifying information in your alert messages if you’re using `alert` in multiple places.
 3. **Any alerts left in production code will create visible, disruptive popups for all users.** Enough said.
 4. **Alerts can cause unintended side effects.** Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how they're implemented). You need service workers to get around this threading issue, and those service workers could be used to solve much cooler problems.
@@ -193,7 +192,7 @@ Doesn’t sound too exciting, but trust me, it gets pretty amazing…
 
 While you’re halted at a breakpoint, your debugger has access to **all variables currently in scope**. You can inspect these values in three ways:
 
-1. hover over that variable and a tooltip will show up;
+1. hover over that variable and a tooltip will show up:
   <%= partial(:media, :locals => {
     :src => 'debugging/tooltips.gif',
     :title => 'A sample neural network.',
