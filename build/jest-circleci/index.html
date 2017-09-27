@@ -55,7 +55,6 @@
 
     fonts.forEach((font) => {
       font.files.forEach((file) => {
-        console.log(file.fileName);
         const currFont = new FontFace(
           font.name,
           `url(/fonts/${ file.fileName }.woff2), url(/fonts/${ file.fileName }.woff)`,
