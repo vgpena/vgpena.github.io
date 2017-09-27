@@ -190,7 +190,7 @@ Doesn’t sound too exciting, but trust me, it gets pretty amazing…
 
 ### Inspecting values
 
-While you’re halted at a breakpoint, your debugger has access to **all variables currently in scope**. You can inspect these values in two ways:
+While you’re halted at a breakpoint, your debugger has access to **all variables currently in scope**. You can inspect these values in three ways:
 
 1. hover over that variable and a tooltip will show up;
   <%= partial(:media, :locals => {
@@ -202,6 +202,8 @@ While you’re halted at a breakpoint, your debugger has access to **all variabl
     :height => '499px',
     :plain => true,
   })%>
+    This is a super lightweight, immediate way to view variables on the fly.
+
 2. type that variable name in your console and hit `Enter`.
   <%= partial(:media, :locals => {
     :src => 'debugging/console-inspection.gif',
@@ -212,8 +214,19 @@ While you’re halted at a breakpoint, your debugger has access to **all variabl
     :height => '870px',
     :plain => true,
   })%>
+    This will feel the most familiar for fans of `console.log()`, but in this case you don't have to wait for your code to recompile 🥂
 
-In short, you get all the benefits of `console`, plus the freedom to drill down into things on the fly, minus having to wait for your code to transpile. It's a pretty good deal all around ✨
+3. find that variable in the `Scope` pane of the Sources panel.
+  <%= partial(:media, :locals => {
+    :src => 'debugging/scope-inspect.gif',
+    :title => 'A sample neural network.',
+    :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+    :size => 'primary',
+    :width => '1594px',
+    :height => '636px',
+    :plain => true,
+  })%>
+    This pane can feel buried under the `Call Stack` pane, but it's the most comprehensive option of the three. It shows you all variables currently in scope, including global values that you might not even remember setting.
 
 ### Moving around
 
