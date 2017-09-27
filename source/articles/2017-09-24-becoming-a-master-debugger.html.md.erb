@@ -1,35 +1,41 @@
 ---
-title: Winning with the Chrome debugger
-subtitle: JS has never been this easy
-summary:
-hero:
+title: Finding JavaScript bliss with the Chrome debugger
+subtitle: Sometimes the best tools are right under our noses
+summary: "Google Chrome's built-in debugger is the best option out there for writing, debugging, and understanding JavaScript. Here's how to get started using it today."
+hero: 'debugging/sombra.jpg'
 date: 2017-09-24 15:36 PDT
 published: false
 ---
 
-I love making things easy. One huge step up in my ability in terms of understanding and time spent was learning how to use the built-in Chrome debugger.
+I'm always on the lookout for ways to make my job easier. How can I build out functionality more quickly? How can I understand my code better? How can I debug more reliably?
+
+The best tool for doing all of this has been **Google Chrome's built-in debugger**. Yep, I was surprised, too -- I didn't even realize it existed for years. Since then, it's been my go-to aide for everything JavaScript.
 
 <%= partial(:media, :locals => {
   :src => 'debugging/sombra.jpg',
   :title => 'A sample neural network.',
   :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
   :size => 'secondary',
-  :caption => 'You\'ll feel like a freakin cyborg hacker genius.',
+  :caption => 'Actual photo of someone using the Chrome debugger.',
   :width => '1600px',
   :height => '1066px',
 })%>
 
-Learning how to use the debugger was like finally being able to shift gears on my bike, instead of having to pedal everywhere in first. This was such useful knowledge that I assumed that most other developers had already gotten the memo and that I was arriving late. As I talked to more colleagues, though, I realized that many of us had no idea that Chrome *had* a debugger, much less how to use it.
+Learning how to use the Chrome debugger helps me write and debug more quickly, but more than just that, I actually *understand* code better. I can isolate behavior, test out ideas, and feel my way around the codebase more quickly and reliably than ever before.
 
-So I hope I can reach a few more fellow developers today and make your lives that much easier!
+It's high time to pay this forward, so here's a primer on the Chrome debugger. Hope it'll make your lives easier! 💖
 
-## Three options (and the first two don’t count)
+## The debugging landscape
 
-Web developers have three built-in options for logging and debugging. I’ll run through all three of them for some context for when we dive into debugging:
+So if I just found about the debugger, how have I been debugging code until now?
 
-### omg don't do this: alert
+There are three major options for debugging frontend JavaScript. I'll run over what they are and why two of them fall short. 😈
 
-`alert(value);` pops up a browser-level modal containing `value`. It’s often the first debugging method taught to JS newbies; it’s short, easy to understand, and provides immediate feedback. Unfortunately, it’s a terrible debugging utility and you shouldn’t use it.
+PS, you can 100% use the Chrome debugger on backend JS as well -- check out the very end of this post. 😈😈
+
+### alert(): not even once
+
+`alert(value);` pops up a browser-level modal containing `value`. It’s often the first debugging method taught to JS newbies; it’s concise, easy to understand, and provides immediate feedback. Unfortunately, **it’s a terrible debugging utility and you shouldn’t use it**.
 
 <%= partial(:media, :locals => {
   :src => 'debugging/alert.gif',
@@ -57,19 +63,21 @@ Here are some reasons to stop using `alert()`:
   :src => 'debugging/object-object.gif',
   :title => 'A sample neural network.',
   :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
-  :caption => 'THE PAIN IT BURNS US',
+  :caption => 'IT BURNS US PRECIOUS',
   :size => 'secondary',
   :width => '1178px',
   :height => '552px',
   :plain => true,
 })%>
-2. **It doesn’t include contextual information.** `alert`s don’t by default include the line number or file name of where that `alert`  was created. This puts the onus on you to manually include identifying information in your alert messages if you’re using `alert` in multiple places.
-3. **Any alerts left in production code will derail the experience.** Before launch, you need to add in the extra step of making absolutely sure that you have removed all alerts from your code.
+2. **It doesn’t include contextual information.** `alert`s don’t by default include the line number or file name of where that `alert`  was created. This puts the onus on *you* to manually include identifying information in your alert messages if you’re using `alert` in multiple places.
+3. **Any alerts left in production code will create visible, disruptive popups for all users.** Enough said.
 4. **Alerts can cause unintended side effects.** Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how you implemented). You need service workers to get around this threading issue, which could 100% be used to solve much cooler problems.
 
-### meh: console
+### console.log(): you could do better
 
-You also have the much more helpful option of printing information to the console available in Chrome’s DevTools using `console.log(value)`. Console fills in a lot of the gaps that `alert` lacks, such as line numbers and filenames. You can log Objects directly without having to coerce them into Strings, and you can drill down into Objects and Arrays to inspect their contents. You can even indicate importance with different log levels, such as `console.warn()` and `console.error()` 💅
+You also have the much more helpful (but not amazing! keep reading) option of printing information to the console available in Chrome’s DevTools using `console.log(value)`.
+
+Console fills in a lot of the gaps that `alert` lacks, such as line numbers and filenames. It's also much more robust: you can log Objects directly without having to coerce them into Strings, and you can drill down into Objects and Arrays to inspect their contents. You can even get fancy and indicate importance with different log levels, such as `console.warn()` and `console.error()` 💅
 
 <%= partial(:media, :locals => {
   :src => 'debugging/console.gif',
@@ -88,28 +96,37 @@ console.log(foo);
 
 ```
 
-Console messages should also be removed in production, but they will only be visible to visitors with the console open. Unlike alerts, they don’t jump out at all users. Also unlike alerts, *they will completely break your site for IE9 users*. IE9 and below have a console that only exists while DevTools is open, so any errant `console`s left in production will nuke those users’ JS.
+Console messages should also be removed in production, but at least they will only be visible to visitors who have their consoles open; i.e., other nerds. Also unlike alerts, *they will completely break your site for IE9 users*. [IE9 and below have a console that only exists while DevTools is open](https://stackoverflow.com/a/7742862), so any errant `console`s left in production will nuke those users’ JS.
 
-As you get into complex situations, however, console becomes less useful. There are abundant StackOverflow questions, [such as this one](https://stackoverflow.com/questions/30150469/why-console-log-displays-incorrect-objects-values), stemming from difficulties getting Console to accurately report values that change many times. (The answers are always to stringify your Objects/Arrays, possibly with the final step of converting them back to JSON. While this creates the functionality desired, it also suggests that `console` is not the right tool for this operation.)
+Console is way more helpful than `alert`, but it still falls short in complex situations. There are abundant StackOverflow questions, [such as this one](https://stackoverflow.com/questions/30150469/why-console-log-displays-incorrect-objects-values), stemming from difficulties getting Console to accurately report changing values. Similar to how `[object Object]` shows that `alert()` isn't built to address certain needs, this issue with the console suggests that `console()` isn't enough for us, either.
 
 Console can also get confusing if you’re trying to dig into a large object or set of objects due to the sheer amount of output that you receive. It can be overwhelming to use console to monitor an animation on `requestAnimationFrame` or track down a value change in a mobx store.
 
 Console is an essential tool for frontend developers, and it’s a huge step up from Alert, but it’s not the answer to everything. To supercharge your debugging powers, let’s turn to…
 
-### do this forever: interactive debugging
+### Interactive debugging: happily ever after
 
-Interactive debugging is a vastly different tool than Console or Alert, and it helps you identify problems much more efficiently. While Console and Alert are limited to printing out specific values, interactive debugging lets you roam around your code while accessing all values currently in scope.
+Interactive debugging using Chrome's debugger is a vastly different tool than Console or Alert. While the latter two are limited to printing out specific values, interactive debugging lets you roam around your code while accessing all the values in scope at that point in time.
+
+<%= partial(:media, :locals => {
+  :src => 'debugging/neo.webp',
+  :title => 'A sample neural network.',
+  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :caption => 'Another actual photo of someone using the Chrome debugger.',
+  :size => 'secondary',
+  :width => '490',
+  :height => '275px',
+})%>
 
 Sounds pretty good! Let’s get started.
 
-## Getting your code ready for its close-up
+## Let's get debugging
 
-Chrome’s interactive debugging tools work on any JS, but they’re best used on code that:
+Chrome’s interactive debugging tools work on any JavaScript, but they’re most helpful if your code has not been **uglified, minified, concatenated, or obfuscated**.
 
-1. has not been obfuscated, uglified, or minified;
-2. has not been concatenated (or source mapping has been turned on).
+These are project-by-project (maybe even file-by-file) configurations. You may have to make development vs. production webpack configs; you may already be good to go.
 
-These are project-by-project (or file-by-file) configurations, so I’ll let you figure out how to make this happen on your own. You may have to make development vs. production webpack configs; you may have to do nothing.
+Okay, ready?
 
 ### Meet the Sources tab
 
@@ -125,14 +142,17 @@ All your debugging tools live in Chrome’s Sources tab. Open this via the menu 
   :plain => true,
 })%>
 
+Yep, that's kind of a lot at once. I don't even use everything in here. But it's really easy to use once you know what to look for.
+
+### Fuzzy finder activate!
+
 While focused inside the Sources tab, you can open a specific file by pressing `Cmd + P` to open the fuzzy finder. Start typing with this open to target a specific JS file that you want to poke around in.
 
 <%= partial(:media, :locals => {
   :src => 'debugging/fuzzy-finder.gif',
   :title => 'A sample neural network.',
   :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
-  :caption => 'Fuzzy finder activate!',
-  :size => 'secondary',
+  :size => 'primary',
   :width => '990px',
   :height => '437px',
   :plain => true,
@@ -140,7 +160,9 @@ While focused inside the Sources tab, you can open a specific file by pressing `
 
 ### Setting breakpoints
 
-All your power in the debugger comes from setting up **breakpoints** in your code. These are little flags that you drop down to pause execution of JavaScript. You make a breakpoint by clicking in the left margin next to a line of code; you can remove breakpoints in the same way. Notice that breakpoints appear in a master list as well as being marked in their home file.
+All your power in the debugger comes from setting up **breakpoints** in your code. These are little flags that you drop down to pause execution of JavaScript.
+
+**You make a breakpoint** by clicking in the left margin next to a line of code; you can remove breakpoints in the same way. Notice that breakpoints appear in a master list as well as being marked in their home file.
 
 <%= partial(:media, :locals => {
   :src => 'debugging/breakpoints.gif',
@@ -152,7 +174,19 @@ All your power in the debugger comes from setting up **breakpoints** in your cod
   :plain => true,
 })%>
 
-So if you drop a breakpoint in some code that executes when the document is ready and then refresh, that breakpoint gets hit, your code stops, and a scrim drops over your viewport. Doesn’t sound too exciting, but trust me, it gets pretty amazing…
+So if you drop a breakpoint in some code that executes when the document is ready and then refresh, that breakpoint gets hit, your code stops, and a scrim drops over your viewport.
+
+<%= partial(:media, :locals => {
+  :src => 'debugging/hit-breakpoint.gif',
+  :title => 'A sample neural network.',
+  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :size => 'primary',
+  :width => '2856px',
+  :height => '1276px',
+  :plain => true,
+})%>
+
+Doesn’t sound too exciting, but trust me, it gets pretty amazing…
 
 ### Inspecting values
 
@@ -179,21 +213,21 @@ While you’re halted at a breakpoint, your debugger has access to **all variabl
     :plain => true,
   })%>
 
-If hovering over a variable doesn’t do anything, it probably isn’t in scope right now. Drop a breakpoint in somewhere else that looks more viable, reload, and try again.
+In short, you get all the benefits of `console`, plus the freedom to drill down into things on the fly, minus having to wait for your code to transpile. It's a pretty good deal all around ✨
 
 ### Moving around
 
-You aren’t limited, however, to inspecting one scope per page load. The last major part of interactive debugging is this row of buttons:
+You aren’t limited, however, to inspecting exactly around the breakpoints you set. The last major part of interactive debugging is this row of buttons:
 
-  <%= partial(:media, :locals => {
-    :src => 'debugging/buttons.png',
-    :title => 'A sample neural network.',
-    :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
-    :size => 'primary',
-    :width => '1108px',
-    :height => '989px',
-    :plain => true,
-  })%>
+<%= partial(:media, :locals => {
+  :src => 'debugging/buttons.png',
+  :title => 'A sample neural network.',
+  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :size => 'primary',
+  :width => '1108px',
+  :height => '989px',
+  :plain => true,
+})%>
 
 These buttons let you walk around across functions and files while keeping your inspector powers. Being able to do this is invaluable, but it can feel confusing or overwhelming, especially if you’re dealing with a lot of third-party code. Here’s what each of the buttons mean, and when you might want to use them:
 
@@ -206,22 +240,47 @@ You can use these movement options to track values across files, investigate ind
 
 Next to these buttons is a button to **disable all breakpoints;** this button lets you “mute” all current breakpoints without actually deleting (and potentially having to re-add) them.
 
-### Keep your debugs to yourself
+### Debugging best practices
 
-Apart from being absurdly useful, one advantage of using the debugger as your sole logging/debugging tool is that all the stuff you’re adding only exists for you. Chrome breakpoints aren’t part of your code and won’t impact anyone else’s experience of the project. They won’t even impact *your* experience if you don’t have your debugger open 🕵🏻‍♀️
+Apart from being absurdly useful, one advantage of using the debugger as your sole logging/debugging tool is that all the stuff you’re adding **only exists for you**. Debugging hooks shouldn't be a part of production code and the Chrome debugger makes it very easy to make sure this happens.
 
 That said, you also have the option of inserting a breakpoint into your actual code. Put a line in your JS that says `debugger;` and when the browser reaches that line, it’ll pause and then you can poke around and inspect values as described.
 
-**Don’t do this.** I’m talking about it for completeness’ sake, but it’s not a good idea. (Full disclosure: before I knew that the debugger had a fuzzy finder, I used this a. lot.) Manually putting debuggers in your code introduces a bunch of the problems inherent to Alert and Console, with the added downside of looking a lot more terrifying to users if it ends up in production code.
+**Don’t do this.** I’m talking about it for completeness’ sake, but it’s not a good idea. (Full disclosure: before I knew that the debugger had a fuzzy finder, I used this a. lot.) Manually putting debuggers in your code introduces a bunch of the problems inherent to Alert and Console, and while breakpoints aren't visible to users who don't have DevTools open, a full-window takeover looks way more terrifying than a line of console text.
 
-Debugging is better when a) it’s local; and b) it doesn’t require writing any code. If for some reason you need to code in `debuggers` (or `console`s or `alert`s 😬), look into making production vs. development configurations for your build tools, and have your tools refuse to build if they find those debugging statements in an attempted production build.
+Debugging is better when a) it’s local; and b) it doesn’t require writing any code. If for some reason you need to actually code in `debuggers` (or `console`s or `alert`s 😬), look into making production vs. development configurations for your linter, and have it refuse to build if it finds any of that in an attempted production build.
 
-## Coda: try this now
+## tl;dr
 
-If you need a tl;dr or your eyes glossed over halfway through that and you need to refocus:
+You should start using the Chrome debugger today because:
 
-1. **Interactive debugging will help you identify bugs faster.** I’ve lost way too much time including a typo in my `console.log`s, or straight up logging something incorrect or unhelpful. The Chrome debugger lets you inspect code arbitrarily, which means less guessing, coding, refreshing, and waiting.
+1. **Interactive debugging will help you work faster.** I’ve lost way too much time including a typo in my `console.log`s, or straight up logging something incorrect or unhelpful. The Chrome debugger lets you inspect code arbitrarily, which means less guessing, coding, refreshing, and waiting.
 2. **Interactive debugging will help you understand your code.** Having the power to dive into your work on a line-by-line basis helps you understand not only what happens to specific values but how your entire project fits together.
-3. **Interactive debugging will prepare you for other programming environments.** My intro to interactive debugging didn’t involve Chrome but Xcode, during that strange year that I was a web/iOS developer. I love that tools for frontend development to be lightweight (Sublime Text as opposed to Eclipse), but when and if you dabble in other subfields of programming, you’ll probably end up in a more hands-on IDE, and using that IDE’s interactive debugger will instantly make you way more effective at whatever you’re doing.
+3. **Interactive debugging will prepare you for other programming environments.** My intro to interactive debugging didn’t involve Chrome but Xcode, during that strange year that I was a web/iOS developer. If you're a frontend developer and might potentially want to do any other kind of programming, being familiar with interactive debugging will be massively helpful.
 
 Getting comfortable with the Chrome debugger made me a much happier developer, and I really don’t know how I survived without it 😭 Start playing around with it ASAP — it may be overwhelming at first, but keep with it and it’ll swiftly become your preferred way to work.
+
+## Parting thoughts
+
+I have a few more thoughts on the Chrome debugger that didn't fit in the main narrative of this post, so enjoy:
+
+### The learning curve
+
+There is absolutely a learning curve to using the Chrome debugger. You'll have to do a lot of playing around with setting breakpoints and inspecting code, but as you work, keep asking yourself:
+
+- is this line of code actually executed by the browser?
+- is this variable in scope right now?
+
+You may have trouble if the answer to either of these questions is "no".
+
+### Going deeper
+
+I didn't cover everything that you can do with the debugger. You should take your time to read more on it and play around with it. One fab thing, which you may have already guessed is possible, is that you can actually **change the value of local variables** while on a breakpoint with that variable in scope. Set its value to whatever you want in the console.
+
+My point is, the debugger is amazing. Keep poking around and you'll find even more cool stuff!
+
+### Backend JS debugging
+
+[As of May 2016](https://github.com/nodejs/node/pull/6792), you can freakin debug your Node.js code in Chrome. Paul Irish did [a lovely writeup](https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27) on how to get this going. 🚀
+
+Okay okay I'm done now. Happy coding!
