@@ -6,7 +6,18 @@ hero:
 date: 2017-09-24 15:36 PDT
 published: false
 ---
+
 I love making things easy. One huge step up in my ability in terms of understanding and time spent was learning how to use the built-in Chrome debugger.
+
+<%= partial(:media, :locals => {
+  :src => 'debugging/sombra.jpg',
+  :title => 'A sample neural network.',
+  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :size => 'secondary',
+  :caption => 'You\'ll feel like a freakin cyborg hacker genius.',
+  :width => '1600px',
+  :height => '1066px',
+})%>
 
 Learning how to use the debugger was like finally being able to shift gears on my bike, instead of having to pedal everywhere in first. This was such useful knowledge that I assumed that most other developers had already gotten the memo and that I was arriving late. As I talked to more colleagues, though, I realized that many of us had no idea that Chrome *had* a debugger, much less how to use it.
 
@@ -20,18 +31,38 @@ Web developers have three built-in options for logging and debugging. I’ll run
 
 `alert(value);` pops up a browser-level modal containing `value`. It’s often the first debugging method taught to JS newbies; it’s short, easy to understand, and provides immediate feedback. Unfortunately, it’s a terrible debugging utility and you shouldn’t use it.
 
+<%= partial(:media, :locals => {
+  :src => 'debugging/alert.gif',
+  :title => 'A sample neural network.',
+  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :size => 'secondary',
+  :width => '1134px',
+  :height => '652px',
+  :plain => true,
+})%>
+
 ```javascript
 
 const foo = 'bar';
 alert(foo);
 
 ```
-[ image ]
 
 Here are some reasons to stop using `alert()`:
 
 
-1. **It doesn’t support our debugging needs**. `alert()` isn’t content-agnostic and it can only output certain data types. For example, if you try to print an `Object`, the alert will show the monumentally unhelpful `Object object`. You can print out the actual contents of the Object by converting it to a String first, but this is a clear indication that `alerts` aren’t prepared to offer what we need from them.
+1. **It doesn’t support our debugging needs**. `alert()` isn’t content-agnostic and it can only output certain data types. For example, if you try to print an `Object`, the alert will show the monumentally unhelpful `object Object`. You can print out the actual contents of the Object by converting it to a String first, but this is a clear indication that `alerts` aren’t prepared to offer what we need from them.
+
+<%= partial(:media, :locals => {
+  :src => 'debugging/object-object.gif',
+  :title => 'A sample neural network.',
+  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :caption => 'THE PAIN IT BURNS US',
+  :size => 'secondary',
+  :width => '1178px',
+  :height => '552px',
+  :plain => true,
+})%>
 2. **It doesn’t include contextual information.** `alert`s don’t by default include the line number or file name of where that `alert`  was created. This puts the onus on you to manually include identifying information in your alert messages if you’re using `alert` in multiple places.
 3. **Any alerts left in production code will derail the experience.** Before launch, you need to add in the extra step of making absolutely sure that you have removed all alerts from your code.
 4. **Alerts can cause unintended side effects.** Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how you implemented). You need service workers to get around this threading issue, which could 100% be used to solve much cooler problems.
@@ -40,13 +71,22 @@ Here are some reasons to stop using `alert()`:
 
 You also have the much more helpful option of printing information to the console available in Chrome’s DevTools using `console.log(value)`. Console fills in a lot of the gaps that `alert` lacks, such as line numbers and filenames. You can log Objects directly without having to coerce them into Strings, and you can drill down into Objects and Arrays to inspect their contents. You can even indicate importance with different log levels, such as `console.warn()` and `console.error()` 💅
 
+<%= partial(:media, :locals => {
+  :src => 'debugging/console.gif',
+  :title => 'A sample neural network.',
+  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :size => 'secondary',
+  :width => '1134px',
+  :height => '652px',
+  :plain => true,
+})%>
+
 ```javascript
 
 const foo = 'bar';
 console.log(foo);
 
 ```
-[screenshot]
 
 Console messages should also be removed in production, but they will only be visible to visitors with the console open. Unlike alerts, they don’t jump out at all users. Also unlike alerts, *they will completely break your site for IE9 users*. IE9 and below have a console that only exists while DevTools is open, so any errant `console`s left in production will nuke those users’ JS.
 
@@ -73,17 +113,44 @@ These are project-by-project (or file-by-file) configurations, so I’ll let you
 
 ### Meet the Sources tab
 
-All your debugging tools live in Chrome’s Sources tab. Open this via the menu options `View > Developer > Developer Tools` or pressing `Cmd+Option+I`. The panel that opens should look something like this:
+All your debugging tools live in Chrome’s Sources tab. Open this via the menu options `View > Developer > Developer Tools` or pressing `Cmd+Option+I` and then clicking to view the Sources pane. The panel that opens should look something like this:
 
-[screengrab]
+<%= partial(:media, :locals => {
+  :src => 'debugging/sources.png',
+  :title => 'A sample neural network.',
+  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :size => 'primary',
+  :width => '1108px',
+  :height => '652px',
+  :plain => true,
+})%>
 
 While focused inside the Sources tab, you can open a specific file by pressing `Cmd + P` to open the fuzzy finder. Start typing with this open to target a specific JS file that you want to poke around in.
 
+<%= partial(:media, :locals => {
+  :src => 'debugging/fuzzy-finder.gif',
+  :title => 'A sample neural network.',
+  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :caption => 'Fuzzy finder activate!',
+  :size => 'secondary',
+  :width => '990px',
+  :height => '437px',
+  :plain => true,
+})%>
+
 ### Setting breakpoints
 
-All your power in the debugger comes from setting up **breakpoints** in your code. These are little flags that you drop down to pause execution of JavaScript. You make a breakpoint by clicking in the left margin next to a line of code; you can remove breakpoints in the same way. Notice that breakpoints appear in a master list in the lower half of the debugger.
+All your power in the debugger comes from setting up **breakpoints** in your code. These are little flags that you drop down to pause execution of JavaScript. You make a breakpoint by clicking in the left margin next to a line of code; you can remove breakpoints in the same way. Notice that breakpoints appear in a master list as well as being marked in their home file.
 
-[screengrab]
+<%= partial(:media, :locals => {
+  :src => 'debugging/breakpoints.gif',
+  :title => 'A sample neural network.',
+  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :size => 'primary',
+  :width => '990px',
+  :height => '499px',
+  :plain => true,
+})%>
 
 So if you drop a breakpoint in some code that executes when the document is ready and then refresh, that breakpoint gets hit, your code stops, and a scrim drops over your viewport. Doesn’t sound too exciting, but trust me, it gets pretty amazing…
 
@@ -92,9 +159,25 @@ So if you drop a breakpoint in some code that executes when the document is read
 While you’re halted at a breakpoint, your debugger has access to **all variables currently in scope**. You can inspect these values in two ways:
 
 1. hover over that variable and a tooltip will show up;
-  [screenshot]
+  <%= partial(:media, :locals => {
+    :src => 'debugging/tooltips.gif',
+    :title => 'A sample neural network.',
+    :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+    :size => 'primary',
+    :width => '990px',
+    :height => '499px',
+    :plain => true,
+  })%>
 2. type that variable name in your console and hit `Enter`.
-  [screenshot]
+  <%= partial(:media, :locals => {
+    :src => 'debugging/console-inspection.gif',
+    :title => 'A sample neural network.',
+    :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+    :size => 'primary',
+    :width => '990px',
+    :height => '870px',
+    :plain => true,
+  })%>
 
 If hovering over a variable doesn’t do anything, it probably isn’t in scope right now. Drop a breakpoint in somewhere else that looks more viable, reload, and try again.
 
@@ -102,7 +185,15 @@ If hovering over a variable doesn’t do anything, it probably isn’t in scope 
 
 You aren’t limited, however, to inspecting one scope per page load. The last major part of interactive debugging is this row of buttons:
 
-[screenshot]
+  <%= partial(:media, :locals => {
+    :src => 'debugging/buttons.png',
+    :title => 'A sample neural network.',
+    :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+    :size => 'primary',
+    :width => '1108px',
+    :height => '989px',
+    :plain => true,
+  })%>
 
 These buttons let you walk around across functions and files while keeping your inspector powers. Being able to do this is invaluable, but it can feel confusing or overwhelming, especially if you’re dealing with a lot of third-party code. Here’s what each of the buttons mean, and when you might want to use them:
 
