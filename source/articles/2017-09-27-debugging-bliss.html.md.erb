@@ -3,7 +3,7 @@ title: Finding JavaScript bliss with the Chrome debugger
 subtitle: Sometimes the best tools are right under our noses
 summary: "Google Chrome's built-in debugger is the best option out there for writing, debugging, and understanding JavaScript. Here's how to get started using it today."
 hero: 'debugging/sombra.jpg'
-date: 2017-09-24 15:36 PDT
+date: 2017-09-27 11:36 PDT
 published: false
 ---
 
@@ -32,6 +32,8 @@ So if I just found about the debugger, how have I been debugging code until now?
 There are three major options for debugging frontend JavaScript. I'll run over what they are and why two of them fall short. 😈
 
 PS, you can 100% use the Chrome debugger on backend JS as well -- check out the very end of this post. 😈😈
+
+PPS, Safari *also* has a built-in debugger with a really similar feature set. I don't use Safari much, though, so I'll let someone else write that blog post 😈😈😈
 
 ### alert(): not even once
 
@@ -71,7 +73,7 @@ Here are some reasons to stop using `alert()`:
 })%>
 2. **It doesn’t include contextual information.** `alert`s don’t by default include the line number or file name of where that `alert`  was created. This puts the onus on *you* to manually include identifying information in your alert messages if you’re using `alert` in multiple places.
 3. **Any alerts left in production code will create visible, disruptive popups for all users.** Enough said.
-4. **Alerts can cause unintended side effects.** Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how you implemented). You need service workers to get around this threading issue, which could 100% be used to solve much cooler problems.
+4. **Alerts can cause unintended side effects.** Alerts are thread-blocking, so nothing else will happen while one is open. Your page will halt loading; animations will pause (but may jump ahead upon closing an alert, depending on how they're implemented). You need service workers to get around this threading issue, and those service workers could be used to solve much cooler problems.
 
 ### console.log(): you could do better
 
@@ -98,7 +100,7 @@ console.log(foo);
 
 Console messages should also be removed in production, but at least they will only be visible to visitors who have their consoles open; i.e., other nerds. Also unlike alerts, *they will completely break your site for IE9 users*. [IE9 and below have a console that only exists while DevTools is open](https://stackoverflow.com/a/7742862), so any errant `console`s left in production will nuke those users’ JS.
 
-Console is way more helpful than `alert`, but it still falls short in complex situations. There are abundant StackOverflow questions, [such as this one](https://stackoverflow.com/questions/30150469/why-console-log-displays-incorrect-objects-values), stemming from difficulties getting Console to accurately report changing values. Similar to how `[object Object]` shows that `alert()` isn't built to address certain needs, this issue with the console suggests that `console()` isn't enough for us, either.
+Console is way more helpful than `alert`, but it still falls short in complex situations. There are abundant StackOverflow questions, [such as this one](https://stackoverflow.com/questions/30150469/why-console-log-displays-incorrect-objects-values), stemming from difficulties getting Console to accurately report changing values. Similar to how `[object Object]` shows that `alert()` isn't built to address certain needs, this issue with the console suggests that `console` isn't enough for us, either.
 
 Console can also get confusing if you’re trying to dig into a large object or set of objects due to the sheer amount of output that you receive. It can be overwhelming to use console to monitor an animation on `requestAnimationFrame` or track down a value change in a mobx store.
 
@@ -118,7 +120,9 @@ Interactive debugging using Chrome's debugger is a vastly different tool than Co
   :height => '275px',
 })%>
 
-Sounds pretty good! Let’s get started.
+You don't even have to write any code for this one. All you need is to open Chrome's DevTools via `Cmd+Option+I` or `View > Developer > Developer Tools` and then click on the Sources tab.
+
+Okay, ready?
 
 ## Let's get debugging
 
@@ -126,11 +130,9 @@ Chrome’s interactive debugging tools work on any JavaScript, but they’re mos
 
 These are project-by-project (maybe even file-by-file) configurations. You may have to make development vs. production webpack configs; you may already be good to go.
 
-Okay, ready?
-
 ### Meet the Sources tab
 
-All your debugging tools live in Chrome’s Sources tab. Open this via the menu options `View > Developer > Developer Tools` or pressing `Cmd+Option+I` and then clicking to view the Sources pane. The panel that opens should look something like this:
+All your debugging tools live in Chrome’s Sources tab. Open this via the menu options `View > Developer > Developer Tools` or pressing `Cmd+Option+I` and then clicking to view the Sources section. The panel that opens should look something like this:
 
 <%= partial(:media, :locals => {
   :src => 'debugging/sources.png',

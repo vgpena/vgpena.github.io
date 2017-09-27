@@ -6,25 +6,29 @@
   li {
     display: block;
     margin-bottom: 1em;
+    line-height: scale(1em);
     overflow: hidden;
     margin-left: $space;
     padding-left: 3rem;
     padding-top: 0.5em;
+    > p:first-child {
+      margin-top: 0;
+    }
     &::before {
       content: counter(counter);
       counter-increment: counter;
       font-family: $mono;
-      display: inline-block;
+      display: block;
+      float: left;
       font-size: 2em;
       width: 1em;
       height: 1em;
+      line-height: 1em;
       text-align: center;
       color: $dark;
-      line-height: 1em;
       font-weight: bold;
       border-radius: 50%;
       background: linear-gradient(to bottom right, $bright, $light 60%);
-      float: left;
       margin-left: -3rem;
     }
   }
