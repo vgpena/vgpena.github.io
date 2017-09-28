@@ -14,7 +14,7 @@
     <link rel="alternate" href="https://vgpena.github.io/debugging-bliss/"/>
     <id>https://vgpena.github.io/debugging-bliss/</id>
     <published>2017-09-27T16:01:00-07:00</published>
-    <updated>2017-09-27T16:23:16-07:00</updated>
+    <updated>2017-09-28T12:29:45-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -24,7 +24,7 @@
 &lt;p&gt;The best tool for doing all of this has been &lt;strong&gt;Google Chrome&amp;#39;s built-in debugger&lt;/strong&gt;. Yep, I was surprised, too -- I didn&amp;#39;t even realize it existed for years. Since then, it&amp;#39;s been my go-to aide for everything JavaScript.&lt;/p&gt;
 
 &lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/debugging/sombra.jpg" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1600px" height="1066px" /&gt;
+    &lt;img src="/images/debugging/sombra.jpg" alt="" title="Sombra from Overwatch doing hacker things." width="1600px" height="1066px" /&gt;
   &lt;figcaption&gt;
     &lt;p&gt;Actual photo of someone using the Chrome debugger.&lt;/p&gt;
   &lt;/figcaption&gt;
@@ -45,7 +45,7 @@
 &lt;p&gt;&lt;code&gt;alert(value);&lt;/code&gt; pops up a browser-level modal containing &lt;code&gt;value&lt;/code&gt;. It’s often the first debugging method taught to JS newbies; it’s concise, easy to understand, and provides immediate feedback. Unfortunately, &lt;strong&gt;it’s a terrible debugging utility and you shouldn’t use it&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=" image-secondary"&gt;
-    &lt;img src="/images/debugging/alert.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1134px" height="652px" /&gt;
+    &lt;img src="/images/debugging/alert.gif" alt="" title="An alert popup." width="1134px" height="652px" /&gt;
   &lt;/div&gt;&lt;/p&gt;
 &lt;pre class="code javascript"&gt;&lt;code&gt;
 &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;foo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -57,7 +57,7 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;It doesn’t support our debugging needs&lt;/strong&gt;. &lt;code&gt;alert()&lt;/code&gt; isn’t content-agnostic and it can only output certain data types. For example, if you try to print an &lt;code&gt;Object&lt;/code&gt;, the alert will show the monumentally unhelpful &lt;code&gt;object Object&lt;/code&gt;. You can print out the actual contents of the Object by converting it to a String first, but this is a clear indication that &lt;code&gt;alerts&lt;/code&gt; aren’t prepared to offer what we need from them.
 &lt;figure role="img" class=" image-primary"&gt;
-&lt;img src="/images/debugging/object-object.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1178px" height="552px" /&gt;
+&lt;img src="/images/debugging/object-object.gif" alt="" title="An alert popup being unhelpful." width="1178px" height="552px" /&gt;
 &lt;figcaption&gt;
 &lt;p&gt;IT BURNS US PRECIOUS&lt;/p&gt;
 &lt;/figcaption&gt;
@@ -72,7 +72,7 @@
 &lt;p&gt;Console fills in a lot of the gaps that &lt;code&gt;alert&lt;/code&gt; lacks, such as line numbers and filenames. It&amp;#39;s also much more robust: you can log Objects directly without having to coerce them into Strings, and you can drill down into Objects and Arrays to inspect their contents. You can even get fancy and indicate importance with different log levels, such as &lt;code&gt;console.warn()&lt;/code&gt; and &lt;code&gt;console.error()&lt;/code&gt; 💅&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=" image-secondary"&gt;
-    &lt;img src="/images/debugging/console.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1134px" height="652px" /&gt;
+    &lt;img src="/images/debugging/console.gif" alt="" title="The console outputting a message." width="1134px" height="652px" /&gt;
   &lt;/div&gt;&lt;/p&gt;
 &lt;pre class="code javascript"&gt;&lt;code&gt;
 &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;foo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'bar'&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -90,7 +90,7 @@
 &lt;p&gt;Interactive debugging using Chrome&amp;#39;s debugger is a vastly different tool than Console or Alert. While the latter two are limited to printing out specific values, interactive debugging lets you roam around your code while accessing all the values in scope at that point in time.&lt;/p&gt;
 
 &lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/debugging/neo.webp" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="490" height="275px" /&gt;
+    &lt;img src="/images/debugging/neo.webp" alt="" title="Neo dodges bullets, like you dodge unneeded console messages." width="490" height="275px" /&gt;
   &lt;figcaption&gt;
     &lt;p&gt;Another actual photo of someone using the Chrome debugger.&lt;/p&gt;
   &lt;/figcaption&gt;
@@ -107,7 +107,7 @@
 &lt;p&gt;All your debugging tools live in Chrome’s Sources tab. Open this via the menu options &lt;code&gt;View &amp;gt; Developer &amp;gt; Developer Tools&lt;/code&gt; or pressing &lt;code&gt;Cmd+Option+I&lt;/code&gt; and then clicking to view the Sources section. The panel that opens should look something like this:&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=" image-primary"&gt;
-    &lt;img src="/images/debugging/sources.png" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1108px" height="652px" /&gt;
+    &lt;img src="/images/debugging/sources.png" alt="A screenshot of the Sources tab in Chrome DevTools. There are several panels full of different debug tools; the main panel is reserved for viewing code." title="The Sources tab of Chrome DevTools." width="1108px" height="652px" /&gt;
   &lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;Yep, that&amp;#39;s kind of a lot at once. I don&amp;#39;t even use everything in here. But it&amp;#39;s really easy to use once you know what to look for.&lt;/p&gt;
@@ -115,7 +115,7 @@
 &lt;p&gt;While focused inside the Sources tab, you can open a specific file by pressing &lt;code&gt;Cmd + P&lt;/code&gt; to open the fuzzy finder. Start typing with this open to target a specific JS file that you want to poke around in.&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=" image-primary"&gt;
-    &lt;img src="/images/debugging/fuzzy-finder.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="990px" height="437px" /&gt;
+    &lt;img src="/images/debugging/fuzzy-finder.gif" alt="" title="Chrome's fuzzy finder." width="990px" height="437px" /&gt;
   &lt;/div&gt;&lt;/p&gt;
 &lt;h3 tabIndex=0&gt;Setting breakpoints&lt;/h3&gt;
 &lt;p&gt;All your power in the debugger comes from setting up &lt;strong&gt;breakpoints&lt;/strong&gt; in your code. These are little flags that you drop down to pause execution of JavaScript.&lt;/p&gt;
@@ -123,13 +123,13 @@
 &lt;p&gt;&lt;strong&gt;You make a breakpoint&lt;/strong&gt; by clicking in the left margin next to a line of code; you can remove breakpoints in the same way. Notice that breakpoints appear in a master list as well as being marked in their home file.&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=" image-primary"&gt;
-    &lt;img src="/images/debugging/breakpoints.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="990px" height="499px" /&gt;
+    &lt;img src="/images/debugging/breakpoints.gif" alt="" title="Setting breakpoints in Chrome." width="990px" height="499px" /&gt;
   &lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;So if you drop a breakpoint in some code that executes when the document is ready and then refresh, that breakpoint gets hit, your code stops, and a scrim drops over your viewport.&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=" image-primary"&gt;
-    &lt;img src="/images/debugging/hit-breakpoint.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="2856px" height="1276px" /&gt;
+    &lt;img src="/images/debugging/hit-breakpoint.gif" alt="" title="What hitting a breakpoint looks like." width="2856px" height="1276px" /&gt;
   &lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;Doesn’t sound too exciting, but trust me, it gets pretty amazing…&lt;/p&gt;
@@ -139,19 +139,19 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;hover over that variable and a tooltip will show up:
 &lt;div class=" image-primary"&gt;
-&lt;img src="/images/debugging/tooltips.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="990px" height="499px" /&gt;
+&lt;img src="/images/debugging/tooltips.gif" alt="" title="Hovering to show tooltips" width="990px" height="499px" /&gt;
 &lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;This is a super lightweight, immediate way to view variables on the fly.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;type that variable name in your console and hit &lt;code&gt;Enter&lt;/code&gt;.
 &lt;div class=" image-primary"&gt;
-&lt;img src="/images/debugging/console-inspection.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="990px" height="870px" /&gt;
+&lt;img src="/images/debugging/console-inspection.gif" alt="" title="Logging variable values" width="990px" height="870px" /&gt;
 &lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;This will feel the most familiar for fans of &lt;code&gt;console.log()&lt;/code&gt;, but in this case you don&amp;#39;t have to wait for your code to recompile 🥂&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;find that variable in the &lt;code&gt;Scope&lt;/code&gt; pane of the Sources panel.
 &lt;div class=" image-primary"&gt;
-&lt;img src="/images/debugging/scope-inspect.gif" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1594px" height="636px" /&gt;
+&lt;img src="/images/debugging/scope-inspect.gif" alt="" title="Using the Scope pane to inspect variable values." width="1594px" height="636px" /&gt;
 &lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;This pane can feel buried under the &lt;code&gt;Call Stack&lt;/code&gt; pane, but it&amp;#39;s the most comprehensive option of the three. It shows you all variables currently in scope, including global values that you might not even remember setting.&lt;/p&gt;&lt;/li&gt;
@@ -160,7 +160,7 @@
 &lt;p&gt;You aren’t limited, however, to inspecting exactly around the breakpoints you set. The last major part of interactive debugging is this row of buttons:&lt;/p&gt;
 
 &lt;p&gt;&lt;div class=" image-primary"&gt;
-    &lt;img src="/images/debugging/buttons.png" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="1108px" height="989px" /&gt;
+    &lt;img src="/images/debugging/buttons.png" alt="Buttons are: play/pause, step over, step in, step out, and mute all breakpoints." title="Your movement buttons." width="1108px" height="989px" /&gt;
   &lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;These buttons let you walk around across functions and files while keeping your inspector powers. Being able to do this is invaluable, but it can feel confusing or overwhelming, especially if you’re dealing with a lot of third-party code. Here’s what each of the buttons mean, and when you might want to use them:&lt;/p&gt;
