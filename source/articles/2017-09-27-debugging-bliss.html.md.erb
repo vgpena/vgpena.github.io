@@ -12,9 +12,9 @@ The best tool for doing all of this has been **Google Chrome's built-in debugger
 
 <%= partial(:media, :locals => {
   :src => 'debugging/sombra.jpg',
-  :title => 'A sample neural network.',
-  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :title => 'Sombra from Overwatch doing hacker things.',
   :size => 'secondary',
+  :alt => '',
   :caption => 'Actual photo of someone using the Chrome debugger.',
   :width => '1600px',
   :height => '1066px',
@@ -40,8 +40,8 @@ PPS, Safari *also* has a built-in debugger with a really similar feature set. I 
 
 <%= partial(:media, :locals => {
   :src => 'debugging/alert.gif',
-  :title => 'A sample neural network.',
-  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :title => 'An alert popup.',
+  :alt => '',
   :size => 'secondary',
   :width => '1134px',
   :height => '652px',
@@ -60,8 +60,8 @@ Here are some reasons to stop using `alert()`:
 1. **It doesn’t support our debugging needs**. `alert()` isn’t content-agnostic and it can only output certain data types. For example, if you try to print an `Object`, the alert will show the monumentally unhelpful `object Object`. You can print out the actual contents of the Object by converting it to a String first, but this is a clear indication that `alerts` aren’t prepared to offer what we need from them.
   <%= partial(:media, :locals => {
     :src => 'debugging/object-object.gif',
-    :title => 'A sample neural network.',
-    :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+    :title => 'An alert popup being unhelpful.',
+    :alt => '',
     :caption => 'IT BURNS US PRECIOUS',
     :size => 'primary',
     :width => '1178px',
@@ -81,8 +81,8 @@ Console fills in a lot of the gaps that `alert` lacks, such as line numbers and 
 
 <%= partial(:media, :locals => {
   :src => 'debugging/console.gif',
-  :title => 'A sample neural network.',
-  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :title => 'The console outputting a message.',
+  :alt => '',
   :size => 'secondary',
   :width => '1134px',
   :height => '652px',
@@ -110,8 +110,8 @@ Interactive debugging using Chrome's debugger is a vastly different tool than Co
 
 <%= partial(:media, :locals => {
   :src => 'debugging/neo.webp',
-  :title => 'A sample neural network.',
-  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :title => 'Neo dodges bullets, like you dodge unneeded console messages.',
+  :alt => '',
   :caption => 'Another actual photo of someone using the Chrome debugger.',
   :size => 'secondary',
   :width => '490',
@@ -134,8 +134,8 @@ All your debugging tools live in Chrome’s Sources tab. Open this via the menu 
 
 <%= partial(:media, :locals => {
   :src => 'debugging/sources.png',
-  :title => 'A sample neural network.',
-  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :title => 'The Sources tab of Chrome DevTools.',
+  :alt => 'A screenshot of the Sources tab in Chrome DevTools. There are several panels full of different debug tools; the main panel is reserved for viewing code.',
   :size => 'primary',
   :width => '1108px',
   :height => '652px',
@@ -150,8 +150,8 @@ While focused inside the Sources tab, you can open a specific file by pressing `
 
 <%= partial(:media, :locals => {
   :src => 'debugging/fuzzy-finder.gif',
-  :title => 'A sample neural network.',
-  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :title => 'Chrome\'s fuzzy finder.',
+  :alt => '',
   :size => 'primary',
   :width => '990px',
   :height => '437px',
@@ -166,8 +166,8 @@ All your power in the debugger comes from setting up **breakpoints** in your cod
 
 <%= partial(:media, :locals => {
   :src => 'debugging/breakpoints.gif',
-  :title => 'A sample neural network.',
-  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :title => 'Setting breakpoints in Chrome.',
+  :alt => '',
   :size => 'primary',
   :width => '990px',
   :height => '499px',
@@ -178,8 +178,8 @@ So if you drop a breakpoint in some code that executes when the document is read
 
 <%= partial(:media, :locals => {
   :src => 'debugging/hit-breakpoint.gif',
-  :title => 'A sample neural network.',
-  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :title => 'What hitting a breakpoint looks like.',
+  :alt => '',
   :size => 'primary',
   :width => '2856px',
   :height => '1276px',
@@ -195,8 +195,8 @@ While you’re halted at a breakpoint, your debugger has access to **all variabl
 1. hover over that variable and a tooltip will show up:
   <%= partial(:media, :locals => {
     :src => 'debugging/tooltips.gif',
-    :title => 'A sample neural network.',
-    :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+    :title => 'Hovering to show tooltips',
+    :alt => '',
     :size => 'primary',
     :width => '990px',
     :height => '499px',
@@ -207,8 +207,8 @@ While you’re halted at a breakpoint, your debugger has access to **all variabl
 2. type that variable name in your console and hit `Enter`.
   <%= partial(:media, :locals => {
     :src => 'debugging/console-inspection.gif',
-    :title => 'A sample neural network.',
-    :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+    :title => 'Logging variable values',
+    :alt => '',
     :size => 'primary',
     :width => '990px',
     :height => '870px',
@@ -219,8 +219,8 @@ While you’re halted at a breakpoint, your debugger has access to **all variabl
 3. find that variable in the `Scope` pane of the Sources panel.
   <%= partial(:media, :locals => {
     :src => 'debugging/scope-inspect.gif',
-    :title => 'A sample neural network.',
-    :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+    :title => 'Using the Scope pane to inspect variable values.',
+    :alt => '',
     :size => 'primary',
     :width => '1594px',
     :height => '636px',
@@ -234,8 +234,8 @@ You aren’t limited, however, to inspecting exactly around the breakpoints you 
 
 <%= partial(:media, :locals => {
   :src => 'debugging/buttons.png',
-  :title => 'A sample neural network.',
-  :alt => 'A diagram of a neural network with two hidden layers in addition to input and output layers.',
+  :title => 'Your movement buttons.',
+  :alt => 'Buttons are: play/pause, step over, step in, step out, and mute all breakpoints.',
   :size => 'primary',
   :width => '1108px',
   :height => '989px',
