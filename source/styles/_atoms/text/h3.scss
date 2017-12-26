@@ -4,6 +4,8 @@
   font-size: 2rem;
   padding: 1em 0.25em 0.1em $space;
   display: inline-block;
+  max-width: $max-content-width;
+  line-height: 1.5em;  
   &:first-letter {
     border-bottom: solid 2px $bright;
   }
