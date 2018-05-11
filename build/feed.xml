@@ -5,16 +5,94 @@
   <id>https://vgpena.github.io/</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2017-09-27T16:01:00-07:00</updated>
+  <updated>2017-12-27T11:42:00-08:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>Good is better than perfect</title>
+    <link rel="alternate" href="https://vgpena.github.io/good-is-better-than-perfect/"/>
+    <id>https://vgpena.github.io/good-is-better-than-perfect/</id>
+    <published>2017-12-27T11:42:00-08:00</published>
+    <updated>2018-05-10T18:24:14-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">Creation can be really hard because of the standards we set for ourselves. Here's how I stop worrying about perfection so that I can actually get things done.</summary>
+    <content type="html">&lt;p&gt;I don’t like my blog.&lt;/p&gt;
+
+&lt;p&gt;To clarify: as of writing, I’m lukewarm on how article titles look. I don’t have per-post tags; I haven’t added pagination to the index. I could go on.&lt;/p&gt;
+
+&lt;p&gt;When I launched, about ten months ago, my list of complaints was even longer. I didn’t love my body font; I &lt;em&gt;really&lt;/em&gt; didn’t love my &lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;s. I hadn’t written styles for section headers, tables, or asides.&lt;/p&gt;
+
+&lt;p&gt;But I had made something.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;This is actually the third iteration of my blog; the first two lived only on my local server, each &lt;code&gt;rm -r&lt;/code&gt;&amp;#39;d when I realized that something about them wasn’t, and could never be, perfect.&lt;/p&gt;
+
+&lt;p&gt;As I laid the groundwork for my third version, I promised myself that &lt;em&gt;this&lt;/em&gt;, no matter what, would be what I launched. I was done spinning my wheels on mechanical problems; I needed to move past that and start actually writing.&lt;/p&gt;
+
+&lt;p&gt;Because, naturally, my quest for perfection wasn’t just because I wanted to make a good-looking site. It was also a bid to avoid ever writing a single post. After all, if my site wasn&amp;#39;t done, how could I publish things on it?&lt;/p&gt;
+
+&lt;p&gt;It’s so much easier to write CSS for myself than it is to write English for other people.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;But here I am, ten months later, with a still-flawed &lt;em&gt;but productive&lt;/em&gt; site, a site which lets me express myself, spread knowledge, and hone my writing skills. It&amp;#39;s not perfect. But, perfections included, it&amp;#39;s exactly right for me.&lt;/p&gt;
+&lt;h2 class='section-title' id=how-to-create-something-imperfect&gt;&lt;a href='#how-to-create-something-imperfect' class='section-inner'&gt;How to create something imperfect&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Most people I&amp;#39;ve talked to who self-host a blog get bogged down, as I did, in the creation step.&lt;/strong&gt; This is a reliable pattern because webdev is hard &lt;em&gt;and writing is even harder&lt;/em&gt;. This is fine. You&amp;#39;re fine. Make something good, make something that supports what you immediately need it to support, and get it out. the. door.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#39;s a few things that helped me:&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Create content, then develop to that spec&lt;/h3&gt;
+&lt;p&gt;Since you can&amp;#39;t control another separate human&amp;#39;s actions, client work usually involves some kind of attempt &lt;a href="https://en.wikipedia.org/wiki/Three-body_problem"&gt;to anticipate every single possible thing they might want to do&lt;/a&gt;, which is a) super obnoxious and b) super fun.&lt;/p&gt;
+
+&lt;p&gt;How should we crop and position images if the client tries to upload something 800px by 80px? How should we space out the title if they only make it one word long? What if they create an article and then leave the body completely blank? Et cetera.&lt;/p&gt;
+
+&lt;p&gt;When you&amp;#39;re your own client, you don&amp;#39;t have to build what you don&amp;#39;t need.&lt;/p&gt;
+
+&lt;p&gt;In my case, I drafted a couple of articles so that I wouldn&amp;#39;t deploy an empty blog (SO EMBARASSING RITE???). As soon as they were vaguely done, I switched over to use those, not Lorem Ipsum, as dummy content. I was able to build to my own exact needs, so I made a blog that worked perfectly &lt;em&gt;even though&lt;/em&gt; I hadn&amp;#39;t written styles for tables or even section headings.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#39;m not advising to make bespoke one-offs, or to work without considering stability/extensibility. Make a system, but accept that that system won&amp;#39;t be all-encompassing. Make a system that you intend to improve. Make the system &lt;em&gt;that you need&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Remember that you don&amp;#39;t work in print&lt;/h3&gt;
+&lt;p&gt;Logically, this isn&amp;#39;t difficult, but something about it is emotionally hard for me.&lt;/p&gt;
+
+&lt;p&gt;If you think your site is ugly but you push ahead and publish a couple of posts, you can deploy better styles later and everything will now be pretty, &lt;em&gt;even the posts that were originally ugly&lt;/em&gt;. Hooray for the internet!&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
+    &lt;img src="/images/first-try.gif" alt="" title="Animation from The Lego Movie: Batman throws Batarangs at a button until he hits it." width="358px" height="231px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;IT&amp;#39;LL BE FINE.&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Know that you&amp;#39;re not famous&lt;/h3&gt;
+&lt;p&gt;(I assume.)&lt;/p&gt;
+
+&lt;p&gt;Anyway, a lot is made of splashy launches and Sticking The Landing, but whoever your idol is &lt;em&gt;is definitely not reading your blog right now&lt;/em&gt;. You have plenty of time to find your voice, fix your wonky line-heights, etc. before it&amp;#39;s read by Oprah or Dan Abramov or whoever. This time is a rehearsal, and it&amp;#39;s valuable.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Don&amp;#39;t mistake labor for progress&lt;/h3&gt;
+&lt;p&gt;Is your goal to make a good website, or is it to become a better writer?&lt;/p&gt;
+
+&lt;p&gt;I don&amp;#39;t know how long it takes to get comfortable writing, to find your voice, to carve out a good schedule, to pick  topics that you reliably want to write about. But my blog has been live for ten months and I can tell you that I&amp;#39;m not there yet.&lt;/p&gt;
+
+&lt;p&gt;So let&amp;#39;s say that it takes two or three years of low-intensity blogging before you develop proficiency.&lt;/p&gt;
+
+&lt;p&gt;That timer doesn&amp;#39;t start until you&amp;#39;re actually publishing posts. You can toil away for a year and a half on an amazing perfect 👌🏻🔥💯 website; this will have zero effect on your writing prowess.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Make something that advances you towards your goal&lt;/strong&gt;, or at least be honest about what you&amp;#39;re working on and whether it&amp;#39;s part of that specific journey. I&amp;#39;ve taken detours and they&amp;#39;ve been helpful and lovely but I&amp;#39;m not going to pretend that revamping my font-loading made me a better writer.&lt;/p&gt;
+&lt;h2 class='section-title' id=the-journey&gt;&lt;a href='#the-journey' class='section-inner'&gt;The journey&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Over the past ten months, I&amp;#39;ve held tight to these maxims -- they&amp;#39;ve been invaluable not only while creating the blog, but since then, as I continue to write and publish.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;#39;ve been looking for a sign to start a blog or launch a project, let this be it. You&amp;#39;ll love your imperfect, real creations a thousand times more than something flawless that&amp;#39;s never seen the light of day.&lt;/p&gt;
+
+&lt;p&gt;Excited for what you make in 2018! 💃🏻&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Finding JavaScript bliss with the Chrome debugger</title>
     <link rel="alternate" href="https://vgpena.github.io/debugging-bliss/"/>
     <id>https://vgpena.github.io/debugging-bliss/</id>
     <published>2017-09-27T16:01:00-07:00</published>
-    <updated>2017-09-28T12:29:45-07:00</updated>
+    <updated>2018-05-10T18:24:14-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -219,7 +297,7 @@
     <link rel="alternate" href="https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/"/>
     <id>https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/</id>
     <published>2017-09-02T19:05:00-07:00</published>
-    <updated>2017-09-04T20:01:53-07:00</updated>
+    <updated>2018-05-10T18:24:14-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -645,7 +723,7 @@ positive sentiment; 62.751633% confidence
     <link rel="alternate" href="https://vgpena.github.io/the-art-of-gitting-gud/"/>
     <id>https://vgpena.github.io/the-art-of-gitting-gud/</id>
     <published>2017-08-13T15:23:00-07:00</published>
-    <updated>2017-08-13T16:06:08-07:00</updated>
+    <updated>2018-05-10T18:24:14-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -702,7 +780,7 @@ positive sentiment; 62.751633% confidence
     <link rel="alternate" href="https://vgpena.github.io/we-rise-2017/"/>
     <id>https://vgpena.github.io/we-rise-2017/</id>
     <published>2017-07-01T14:06:00-07:00</published>
-    <updated>2017-07-01T16:13:02-07:00</updated>
+    <updated>2018-05-10T18:24:14-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -755,7 +833,7 @@ positive sentiment; 62.751633% confidence
     <link rel="alternate" href="https://vgpena.github.io/winning-with-css-variables/"/>
     <id>https://vgpena.github.io/winning-with-css-variables/</id>
     <published>2017-04-30T14:30:00-07:00</published>
-    <updated>2017-05-12T16:09:17-07:00</updated>
+    <updated>2018-05-10T18:45:29-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -909,7 +987,7 @@ positive sentiment; 62.751633% confidence
 &lt;span class="p"&gt;);&lt;/span&gt;
 
 &lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="na"&gt;--primary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;map-get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$vars&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;primary&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="na"&gt;--primary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="nf"&gt;map-get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$vars&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;primary&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="k"&gt;@mixin&lt;/span&gt; &lt;span class="nf"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$property&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nv"&gt;$varName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -936,43 +1014,28 @@ positive sentiment; 62.751633% confidence
 &lt;p&gt;This way, if you change &lt;code&gt;--primary&lt;/code&gt; or its fallback, you only need to edit the &lt;code&gt;$vars&lt;/code&gt; map and your styles everywhere will update.&lt;/p&gt;
 
 &lt;p&gt;Please note that you still need to declare your CSS variables somewhere. If you want all of your variables to be available everywhere, you can use more cool Sass to automatically add all the ones in your map to &lt;code&gt;body&lt;/code&gt; or &lt;code&gt;html&lt;/code&gt; ✨&lt;/p&gt;
-
-&lt;hr&gt;
-
+&lt;h2 class='section-title' id=coda&gt;&lt;a href='#coda' class='section-inner'&gt;Coda&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;If you want to see CSS variables in action, head on over to &lt;a href="http://violet.is/"&gt;my personal site&lt;/a&gt;. I had an amazing time on this small project and I&amp;#39;m looking forward to using them on something much larger 🥂&lt;/p&gt;
 
 &lt;p&gt;If you still haven&amp;#39;t had enough of CSS variables, check out &lt;a href="https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care"&gt;this Google Developers blog post&lt;/a&gt;. They do a great job of sticking to the &amp;quot;CSS variables are custom properties&amp;quot; paradigm.&lt;/p&gt;
 
 &lt;p&gt;Now go forth and style!&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Fixing Jest Memory Usage on CircleCI</title>
-    <link rel="alternate" href="https://vgpena.github.io/jest-circleci/"/>
-    <id>https://vgpena.github.io/jest-circleci/</id>
-    <published>2017-04-18T20:14:00-07:00</published>
-    <updated>2017-04-18T20:15:48-07:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <summary type="html">Our CircleCI builds stopped working; the fix was to limit the number of workers Jest could use.</summary>
-    <content type="html">&lt;p&gt;If you&amp;#39;re running out of memory or your tests are hanging when you run Jest tests on CircleCI, try running &lt;code&gt;jest --maxWorkers=2&lt;/code&gt; instead of just &lt;code&gt;jest&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 class='section-title' id=why&gt;&lt;a href='#why' class='section-inner'&gt;Why?&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;On my current project, we&amp;#39;re using &lt;a href="https://facebook.github.io/jest/"&gt;Jest&lt;/a&gt; and &lt;a href="https://github.com/airbnb/enzyme"&gt;Enzyme&lt;/a&gt; to create unit tests which we run as a step in our &lt;a href="https://circleci.com/"&gt;CircleCI&lt;/a&gt; build process. Every time a PR is opened on &lt;a href="https://github.com"&gt;GitHub&lt;/a&gt;, CircleCI rebuilds the project, runs the tests, and lets us know if that PR&amp;#39;s code is stable.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Update: Syntax Change&lt;/h3&gt;
+&lt;p&gt;The original version of this post was tested using Sass 3.4; starting with Sass 3.6, you need to add string interpolation if you want to add Sassy behavior to any CSS variables.&lt;/p&gt;
 
-&lt;p&gt;About 400 tests in, however, an issue emerged -- all tests would pass locally, but the CircleCI build would fail. The CircleCI logs made it clear, though, that no tests were explicitly failing. Something was making the build hang at the test step, it would time out, and the box would consider that build failed.&lt;/p&gt;
+&lt;p&gt;So this (my original) code will not work:&lt;/p&gt;
+&lt;pre class="code scss"&gt;&lt;code&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="na"&gt;--primary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;map-get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$vars&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;primary&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;but this (freshly updated) code does:&lt;/p&gt;
+&lt;pre class="code scss"&gt;&lt;code&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="na"&gt;--primary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="nf"&gt;map-get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$vars&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;primary&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;CSS variables themselves are unchanged and this only applies to Sass users.&lt;/p&gt;
 
-&lt;p&gt;We realized that the issue might lie with how Jest spawns child processes. Although test output appears linear, the tests by default run in parallel, using up to as many workers as there are cores on the machine. Maybe Jest was spinning off the wrong number of workers and this was causing memory problems on our CI box.&lt;/p&gt;
-
-&lt;p&gt;The first thing I tried was running &lt;code&gt;jest --runInBand&lt;/code&gt;, which makes Jest run all tests in the same process (&lt;a href="https://facebook.github.io/jest/docs/cli.html"&gt;more info on Jest CLI options&lt;/a&gt;). This turned out not to play well with things that need a headless DOM rendered via &lt;a href="https://github.com/tmpvar/jsdom"&gt;JSDOM&lt;/a&gt;. We use &lt;a href="https://github.com/Khan/aphrodite/"&gt;Aphrodite&lt;/a&gt; for styling, and &lt;code&gt;runInBand&lt;/code&gt; seemed to prevent this DOM from being rendered, which meant Aphrodite couldn&amp;#39;t find any elements to attach itself to.&lt;/p&gt;
-
-&lt;p&gt;Next, I tried &lt;code&gt;jest --maxWorkers=1&lt;/code&gt;, but this seems to do the same thing as &lt;code&gt;runInBand&lt;/code&gt;, and I got the same result. &lt;code&gt;--maxWorkers=2&lt;/code&gt;, however, let the JSDOM render &lt;em&gt;and&lt;/em&gt; all the tests run. I put this change in our &lt;a href="https://circleci.com/docs/1.0/configuration/"&gt;Circle config file&lt;/a&gt; and the subsequent PR was the first one that built properly in over a week.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;Since then, our CircleCI builds have been stable. Tests take about 46 seconds to run on our CI box now, compared to 9 seconds locally, where we don&amp;#39;t need to limit workers.&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading this far! Now go out there, write tests, and integrate without fear.&lt;/p&gt;
+&lt;p&gt;Thanks a million to Tobias Schächtelin (&lt;a href="https://twitter.com/tschach"&gt;@tschach&lt;/a&gt;) for finding this out in your own experimentation and contacting me 🎉&lt;/p&gt;
 </content>
   </entry>
 </feed>
