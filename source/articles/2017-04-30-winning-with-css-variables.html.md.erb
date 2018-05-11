@@ -202,7 +202,7 @@ $vars: (
 );
 
 body {
-  --primary: map-get($vars, primary);
+  --primary: #{map-get($vars, primary)};
 }
 
 @mixin var($property, $varName) {
@@ -237,10 +237,35 @@ This way, if you change `--primary` or its fallback, you only need to edit the `
 
 Please note that you still need to declare your CSS variables somewhere. If you want all of your variables to be available everywhere, you can use more cool Sass to automatically add all the ones in your map to `body` or `html` ✨
 
--------------
+
+## Coda
 
 If you want to see CSS variables in action, head on over to [my personal site](http://violet.is/). I had an amazing time on this small project and I'm looking forward to using them on something much larger 🥂
 
 If you still haven't had enough of CSS variables, check out [this Google Developers blog post](https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care). They do a great job of sticking to the "CSS variables are custom properties" paradigm.
 
 Now go forth and style!
+
+### Update: Syntax Change
+
+The original version of this post was tested using Sass 3.4; starting with Sass 3.6, you need to add string interpolation if you want to add Sassy behavior to any CSS variables.
+
+So this (my original) code will not work:
+
+```scss
+body {
+  --primary: map-get($vars, primary);
+}
+```
+
+but this (freshly updated) code does:
+
+```scss
+body {
+  --primary: #{map-get($vars, primary)};
+}
+```
+
+CSS variables themselves are unchanged and this only applies to Sass users.
+
+Thanks a million to Tobias Schächtelin ([@tschach](https://twitter.com/tschach)) for finding this out in your own experimentation and contacting me 🎉
