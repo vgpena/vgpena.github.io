@@ -1,0 +1,185 @@
+---
+title: True Parallax with Pure CSS
+subtitle: Sometimes you just need some perspective
+summary: 
+hero: 
+date: 2018-07-22 14:42 PDT
+---
+
+I know what you’re thinking: *A blog post about parallax? In 2018?* Yep, I’m cutting-edge like that. While experimenting with the [prefers-reduced-motion media query](https://css-tricks.com/introduction-reduced-motion-media-query/), I stumbled upon a super fun way to create parallax with only CSS. So I figured it was time for a roundup of what parallax is and how it’s used in web design (spoiler: generally improperly). Once we've covered that ground, I'll delve into pure-CSS parallax.
+
+## So what is parallax, anyway?
+
+Parallax is a visual effect created by an object moving relative to an observer. The closer you are to a moving object, the more that object will appear to move. Its change in position will occupy a larger percentage of your field of view.
+
+<%= partial(:media, :locals => {
+  :src => 'parallax/lady-bird.gif',
+  :title => 'Lady Bird jumps out of her mother\'s car',
+  :size => 'primary',
+  :alt => '',
+  :caption => 'The grass right outside the car whips by, while further-off trees seem stationary.',
+  :width => '480px',
+  :height => '240px',
+  :plain => 'True'
+})%>
+
+More than a visual curiosity, parallax is a great way of calculating distance, especially to things that can’t be (easily) reached. Astronomers have been using it to calculate the distance to heavenly bodies [since the good ol’ BCs](https://www.space.com/30417-parallax.html).
+
+<%= partial(:media, :locals => {
+  :src => 'parallax/parallax.gif',
+  :title => 'Lady Bird jumps out of her mother\'s car',
+  :size => 'primary',
+  :alt => '',
+  :caption => 'Calculating the distance to stars based on Earth’s perspective at opposing points in its orbit.',
+  :width => '546px',
+  :height => '381px',
+  :plain => 'True'
+})%>
+
+
+### Virtual Parallax
+
+<%= partial(:media, :locals => {
+  :src => 'parallax/mario3d.gif',
+  :title => 'Lady Bird jumps out of her mother\'s car',
+  :size => 'secondary',
+  :alt => '',
+  :caption => 'The bridge is "actually" closer than the skyscrapers beyond.',
+  :width => '600px',
+  :height => '337px',
+  :plain => 'True'
+})%>
+
+The above examples are IRL parallax, but you can also have parallax in a virtual world, as long as that virtual world uses a three-dimensional engine. If the engine calculates depth and knows how far different models are from the camera, you end up with parallax as an artefact of that relative distance.
+
+### Parallax to suggest three dimensions
+
+You can also use a 2D engine, plus some math, to simulate parallax.
+
+<%= partial(:media, :locals => {
+  :src => 'parallax/mario2d.gif',
+  :title => 'Lady Bird jumps out of her mother\'s car',
+  :size => 'secondary',
+  :alt => '',
+  :width => '256px',
+  :height => '224px',
+  :plain => 'True'
+})%>
+
+In *Mario*, which has a 2D engine, we see a parallax effect in that nearby bushes move quickly and distant clouds crawl by. This isn’t because the game knows that clouds are farther off; while the engine has a stacking order, it doesn’t have depth (i.e., actual distances from the camera). The parallax effect is created via a modifier on clouds' positioning calculations that make them reposition on the screen in smaller increments than the foreground bushes.
+
+## Parallax in web design
+
+<%= partial(:media, :locals => {
+  :src => 'parallax/princess-bride.gif',
+  :title => 'Lady Bird jumps out of her mother\'s car',
+  :size => 'secondary',
+  :alt => '',
+  :width => '256px',
+  :height => '224px'
+})%>
+
+Now that you have a primer on parallax and how to simulate it, let's circle back to web development. “Parallax” as a web design technique has by now been introduced, peaked, and ebbed. While the frontend community dubs many sites or effects "parallax", *they generally have nothing to do with actual parallax effects.* Most uses of “parallax” in web design fit into one of two categories:
+
+### Scroll-based animations
+
+While it’s filed in an Awwwards [list of best parallax sites](https://www.awwwards.com/20-best-websites-with-parallax-scrolling-of-2013.html), [Scroll For Your Health](https://web.archive.org/web/20180123071554/http://tomerlerner.com/web/scroll/index.html) uses parallax-esque effects sparingly. The bulk of its animations are triggered by scroll or by being at a certain point on the page, but have nothing to do with the visitor’s motion or position. In real life, walking past an apple wouldn’t cause it to assemble itself (????!!)
+
+This type of animation isn’t inherently bad (Scroll For Your Health is creative and delightful), but it’s not parallax. For example, while I found [ScrollMagic](https://github.com/janpaepke/ScrollMagic) through a list of "Parallax Libraries", it accurately describes itself as a “scroll interaction library”. It enables animations based on the user’s position, but doesn't have anything to do relative motion.
+
+### Parallax-inspired animations
+
+Most other “parallax” animations involve relative movement, but stop short of representing an actual parallax effect. For example, [Mélanie F.](https://web.archive.org/web/20171231223137/http://melanie-f.com/en/) uses animations that are parallax-like in that they modify an object’s vertical position relative to user scroll.
+
+This animation is parallax-inspired, but it’s there to add visual sparkle, not to create a sense of three-dimensional space. In fact, this site contains motion that would never be seen amongst stationary objects in 3D space (e.g., a color wash is stacked behind a photo but moving more quickly). The final effect is that everything is floating in space and moving independently; it’s playful, but definitely not there to simulate physical parallax effects.
+
+### True parallax in frontend dev
+
+One outlier library that creates parallax as a side effect of three-dimensionality is [parallax.js](http://matthew.wagerfield.com/parallax/). Many parallax libraries involve giving elements speeds at which to move; in parallax.js, on the other hand, you give them relative depths, and then they move based on this value and their starting position.
+
+### Sidenote
+
+You should think hard about using any parallax, parallax-inspired, pseudo-parallax, or scroll-based animations. Please see the “When Should I Use This” section below for details.
+
+## Pure CSS, True Parallax
+
+One thing you’ll notice about most parallax libraries is they bring their own positioning engine. You wrap elements in a specific class and the library’s JS does math to figure out an element’s positioning and updates its style, usually via `transform`.
+
+Wouldn’t it be cool, though, if your browser *itself* could do the math?
+
+Enter your new favorite CSS property you’ve never heard of, `perspective`. It’s a standard part of 3D support, which means it’s [widely supported](https://caniuse.com/#feat=transforms3d). And it lets you simply and tidily create a spatially correct parallax.
+
+### The technique
+
+I didn’t invent this technique; all credit goes to [Keith Clark](https://keithclark.co.uk/) and I’ll continue to let [his blog post](https://keithclark.co.uk/articles/pure-css-parallax-websites/) stand on its own as step-by-step instructions.
+
+The gist of this technique is that you create a wrapper element within which you want depth. This wrapper gets a [perspective property](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective), which gives “Z” positioning values a specific distance from the viewer. For our purposes, `perspective` creates a relative unit of depth.
+
+```html
+    <div class="wrapper" style="perspective: 1px;">
+    </div>
+```
+
+Now, everything with within that wrapper that has a  `translateZ`  value will actually be moved forward or backward relative to that standard.
+
+```html
+    <div class="wrapper" style="perspective: 1px;">
+      <div class="foreground" style="transform: translateZ(0);">
+        I'm the foreground!
+      </div>
+      <div class="middleground" style="transform: translateZ(-1px);">
+        I'm the middleground!
+      </div>
+      <div class="background" style="transform: translateZ(-2px);">
+        I'm the background!
+      </div>
+    </div>
+```
+
+When you do this, you’ll notice that not only have your layers’ relative motions changed, but their sizes have as well. This is because you’ve created a 3D space in your browser and have moved your `middleground` and `background` layers away from the camera.
+
+### The demo
+
+<%= partial(:media, :locals => {
+  :src => 'parallax/clouds.gif',
+  :title => 'Lady Bird jumps out of her mother\'s car',
+  :size => 'secondary',
+  :alt => '',
+  :width => '1276px',
+  :height => '776px',
+  :plain => 'True'
+})%>
+
+
+I used Keith’s technique to create a [retro-game-inspired parallax demo](https://cloud-scroller.netlify.com/). Farther-away clouds move more slowly. As a bonus, open the Web Inspector to see that all the clouds are the same size, and only become smaller due to the `transformZ` applied to their parent element; i.e., they’re farther away.
+
+Keith’s demo includes a way to rescale transformed layers so that they parallax but don’t appear smaller. I’ve left this out of my demo because I really love the three-dimensionality created and I wanted to leave the middleground and background clouds at their natural sizes.
+
+### Why is this cool?
+
+I love this technique for a few reasons:
+
+
+1. It’s fun to get to use the browser’s 3D abilities! I didn’t even know about the `perspective` property until I started this demo.
+2. Having witnessed a glut of “parallax” sites and animations, it’s refreshing to create *true* parallax that arises as an artefact of three-dimensional space.
+3. Relying only on CSS makes it easy to mix in [reduced motion](https://css-tricks.com/introduction-reduced-motion-media-query/) for those who prefer it via a media query.
+
+### When should I use this?
+
+You should use this to make fun things! While this post was about parallax, you should take full advantage of your browser’s 3D features. I’d love to make a platformer that relies on CSS for many-layered backgrounds, or a solar system you explore via scroll 🤓
+
+But what if you’re making a content- or functionality-focused site, not a game or experiment? In this case, I have #complicated #feelings about parallax and other in-your-face animation. I want to create remarkable experiences, I want to change normal modes of engagement and usage, but I also want to make things that are usage and accessible. And this usually means leaving out complex motion such as parallax effects.
+
+As noted on the [WCAG Wiki](https://www.w3.org/WAI/GL/wiki/Animation_caused_by_user_interaction#Description), “if scrolling a page causes elements to move (other than the normal movement associated with scrolling) it can trigger vestibular disorders, causing nausea and headaches”. To comply with the WCAG level A (most-permissive) recommendation, [the user needs a way to turn off those animations](https://www.w3.org/TR/WCAG20/#time-limits-pause). While the `prefers-reduced-motion` media query serves this purpose, it is available to a tiny subset of internet users.
+
+Rule of thumb: don’t use parallax effects outside of an experimental or gaming context. But when you do, have *all* the fun with them. And pure CSS + 3D is far and away the most fun. 😎 
+
+## So...
+
+Now you're an expert on Real Parallax, Internet Parallax, and Real Parallax On The Internet. Go make something fun! We have wonderful tools at our fingertips, just waiting for us to get creative.
+
+## Resources
+- [Pure CSS Parallax Websites](https://keithclark.co.uk/articles/pure-css-parallax-websites/)
+- [Make8BitArt.com](https://make8bitart.com/)
+- [An Introduction to the Reduced Motion Media Query](https://css-tricks.com/introduction-reduced-motion-media-query/)
+- [Designing Safer Web Animation For Motion Sensitivity](https://alistapart.com/article/designing-safer-web-animation-for-motion-sensitivity)
