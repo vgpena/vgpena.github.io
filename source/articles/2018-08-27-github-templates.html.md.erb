@@ -1,0 +1,94 @@
+---
+title: Github Templates in Ten Minutes
+subtitle: Give Your Team The Gift of Helpful Issues and Pull Requests
+summary: 
+hero: 
+date: 2018-08-27 07:55 PDT
+---
+
+The better your team communicates, the more time you can spend building fun things and solving hard problems. Github is an amazing resource for improving communication with only a little effort. Lately, they’ve rolled out two features that should be incorporated into any project: Pull Request templates and Issue templates. In this post, I’ll walk through these tools and how to leverage them on your next — or current — project.
+
+For sample code, and a cloneable project template (hint hint), see my [gh-docs-boilerplate repo](https://github.com/vgpena/gh-docs-boilerplate). 💅🏻
+
+## Pull Request Templates
+
+We’ve all been there: a pull request rolls in, titled “Updates”, with no description and 22 files changed.
+
+![👍🏻 LGTM](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535221627295_Screen+Shot+2018-08-25+at+11.24.16+AM.png)
+
+
+We’re not sure what it does, which tickets it closes, or how to test it. Until the person who opened the PR is given a chance to explain themself, project managers and fellow engineers can’t track on what work has been done. Over time, this lack of context and consistency slows work down and leads to misunderstandings.
+
+Enter Pull Request templates. These are simple Markdown files that prepopulate pull request description fields. You can put this template in your repository root, a `/docs` folded, or a `/.github` folder. Once it exists on your default branch (usually `master` or `dev`), its content will flow into all newly opened PRs.
+
+![A fresh PR when you have a PR template in your repo.](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535230407107_Screen+Shot+2018-08-25+at+1.52.19+PM.png)
+
+
+[Here’s my starter template](https://github.com/vgpena/gh-docs-boilerplate/blob/master/.github/pull_request_template.md); I like to list out headings for any information I want from a contributor. You almost certainly want these questions answered:
+
+
+- What changes does this branch contain?
+- What issues/tickets does this branch close?
+- How can I test this code?
+
+Depending on your project and workflow, you may want to include places for contributors to upload screenshots, link to prototypes, or (my favorite) embed GIFs that reflect their feelings towards that PR.
+
+![Sample GIF included for your inspiration.](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535222307342_68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f544f576547723730563252314b2f67697068792e676966.gif)
+
+## Issue Templates
+
+Communication and documentation can also be skimped on when opening issues. We’ve all been guilty of creating issues with vague titles and no context.
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535228215296_Screen+Shot+2018-08-25+at+1.15.38+PM.png)
+
+
+If I didn’t personally open this ticket, I don’t know what needs to be done or what success looks like. I can’t prioritize it or estimate its complexity.
+
+Issue templates, like PR templates, are Markdown files that provide default content for Issues opened via Github. They go in the `/.github/ISSUE_TEMPLATE` folder. Like PR templates, they only kick in when on your default branch.
+
+Issue templates go one step farther than PR templates by letting you create multiple issue types, which are all available in a choose-your-own-adventure issue picker.
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535228801763_Screen+Shot+2018-08-25+at+1.26.26+PM.png)
+
+
+Selecting an issue type will flow that specific template into your new issue.
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535230474978_Screen+Shot+2018-08-25+at+1.52.41+PM.png)
+
+
+You can define as many issue formats as you want and tailor them to your project. For example, a recent project of mine had five total template types. The Backend template had a prompt to list out any tests that should be written; the Frontend template asked for embedded design comps.
+
+I recommend having at least three issue templates:
+
+
+- New Feature
+- Change Request
+- Bug Report
+
+These buckets encompass almost all changes made to a project. They help team members include the right information (no more bug reports without browser/OS), and they also help define the task in the first place. Knowing, and making explicit, whether something is a bugfix or an update, a change or a new feature, helps clarify its implications and priority.
+
+I have three issue templates set up [here](https://github.com/vgpena/gh-docs-boilerplate/tree/master/.github/ISSUE_TEMPLATE). I recommend writing your own set of templates to reflect your ticketing flow and project needs.
+
+## In the Wild
+
+Congrats, you added PR and Issue templates to your project! 🎉 As your project evolves, revisit them every so often to make sure they still meet your needs. It only takes a few minutes to add and remove fields, swap out or edit templates. Give any changes about a week to sink in; if they still don’t feel right, group up with your team and figure out something better. It’ll be a quick meeting, and you’ll get to learn about what each other do and need.
+
+## But Wait, There’s More!
+
+Github offers other low-effort ways to improve communication:
+
+### The Readme
+
+This is a low bar to clear, but I’m regularly shocked by how many projects don’t have a proper Readme. A brief write-up on what the project does and how to install it is invaluable. Even if your project is a fork or clone of *another* project, update your Readme — surely something about *your* project is different from the source material.
+
+### Code of Conduct
+
+Adding a [Code of Conduct](https://help.github.com/articles/adding-a-code-of-conduct-to-your-project/) to your project is easy, and it’s a powerful way to manage community on open-source projects. If you add one to your repo, it will be linked to in the issue creation flow.
+
+### Contribution Guidelines
+
+Like a CoC, [Contribution Guidelines](https://help.github.com/articles/setting-guidelines-for-repository-contributors/) clarify community standards and keep discussion productive. This will also be linked to when issues are opened. Contribution guidelines and CoCs are most applicable to open-source software, but it’s never *bad* to codify expectations, even within a closed team.
+
+## TL;DR
+
+Better communication = more time building fun things. Github can help you. Use [my boilerplate](https://github.com/vgpena/gh-docs-boilerplate) to make Pull Request and Issue templates, sit back, and enjoy the clarity 😎
