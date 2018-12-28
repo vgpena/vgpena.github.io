@@ -5,16 +5,119 @@
   <id>https://vgpena.github.io/</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2018-07-04T14:10:00-07:00</updated>
+  <updated>2018-08-27T07:55:00-07:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>Github Templates in Ten Minutes</title>
+    <link rel="alternate" href="https://vgpena.github.io/github-templates/"/>
+    <id>https://vgpena.github.io/github-templates/</id>
+    <published>2018-08-27T07:55:00-07:00</published>
+    <updated>2018-08-27T13:24:20-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">Github templates are an amazing project management tool. Pull Request and Issue templates help your team communicate and boost documentation. They're easy to write and completely customizable. Here's how to get started with Github templates and lead the charge for top-notch communication on your project team.</summary>
+    <content type="html">&lt;p&gt;The better your team communicates, the more time you can spend on the fun stuff -- building interesting things and solving hard problems. When you&amp;#39;re looking for ways to improve communication, take a look at Github. They’ve rolled out two features that should be incorporated into any project: Pull Request templates and Issue templates. In this post, I’ll walk through these tools and how to leverage them on your next (or current) project.&lt;/p&gt;
+
+&lt;p&gt;For sample code, and a cloneable project template (hint hint), see my &lt;a href="https://github.com/vgpena/gh-docs-boilerplate"&gt;gh-docs-boilerplate repo&lt;/a&gt;. 💅🏻&lt;/p&gt;
+&lt;h2 class='section-title' id=pull-request-templates&gt;&lt;a href='#pull-request-templates' class='section-inner'&gt;Pull Request Templates&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We’ve all been there: a pull request rolls in, titled “Updates”, with no description and 22 files changed.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class=" image-primary"&gt;
+    &lt;img src="/images/github-templates/bad-pr.png" alt="" title="A PR with very little information or context." width="1592px" height="468px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;👍🏻 LGTM&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;We’re not sure what it does, which tickets it closes, or how to test it. Until the person who opened the PR is given a chance to explain themself, project managers and fellow engineers can’t track on what work has been done. Over time, this lack of context and consistency slows work down and leads to misunderstandings.&lt;/p&gt;
+
+&lt;p&gt;Enter Pull Request templates. These are simple Markdown files that prepopulate pull request description fields. You can put this template in your repository root, a &lt;code&gt;/docs&lt;/code&gt; folded, or a &lt;code&gt;/.github&lt;/code&gt; folder. Once it exists on your default branch (usually &lt;code&gt;master&lt;/code&gt; or &lt;code&gt;dev&lt;/code&gt;), its content will flow into all newly opened PRs.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class=" image-primary"&gt;
+    &lt;img src="/images/github-templates/good-pr.png" alt="" title="When you create a PR template, its contents populate new PRs." width="1578px" height="1410px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;One click and you&amp;#39;re halfway there.&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/vgpena/gh-docs-boilerplate/blob/master/.github/pull_request_template.md"&gt;Here’s my starter template&lt;/a&gt;; I like to list out headings for any information I want from a contributor. You almost certainly want these questions answered:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What changes does this branch contain?&lt;/li&gt;
+&lt;li&gt;What issues/tickets does this branch close?&lt;/li&gt;
+&lt;li&gt;How can I test this code?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Depending on your project and workflow, you may want to include places for contributors to upload screenshots, link to prototypes, or (my favorite) embed GIFs that reflect their feelings towards that PR.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class=" image-primary"&gt;
+    &lt;img src="/images/github-templates/mainframe.gif" alt="" title="A glitch art + muppets GIF." width="400px" height="225px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;Sample GIF included for your inspiration.&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 class='section-title' id=issue-templates&gt;&lt;a href='#issue-templates' class='section-inner'&gt;Issue Templates&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Communication and documentation can also be skimped on when opening issues. We’ve all been guilty of creating issues with vague titles and no context.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class=" image-primary"&gt;
+    &lt;img src="/images/github-templates/bad-issue.png" alt="" title="" width="1592px" height="468px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;Time for some detective work!&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;If I didn’t personally open this ticket, I don’t know what needs to be done or what success looks like. I can’t prioritize it or estimate its complexity.&lt;/p&gt;
+
+&lt;p&gt;Issue templates, like PR templates, are Markdown files that provide default content for Issues opened via Github. They go in the &lt;code&gt;/.github/ISSUE_TEMPLATE&lt;/code&gt; folder. Like PR templates, they only kick in when on your default branch.&lt;/p&gt;
+
+&lt;p&gt;Issue templates go one step farther than PR templates by letting you create multiple issue types, which are all available in a choose-your-own-adventure issue picker.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/github-templates/issue-picker.png" alt="" title="Define multiple Issue templates, and you get a cool Issue picker on Github." width="1586px" height="580px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Selecting an issue type will flow that specific template into your new issue.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/github-templates/good-issue.png" alt="" title="Once you pick an issue template, its text prepopulates a new issue." width="1558px" height="1152px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;You can define as many issue formats as you want and tailor them to your project. For example, a recent project of mine had five total template types. The Backend template had a prompt to list out any tests that should be written; the Frontend template asked for embedded design comps.&lt;/p&gt;
+
+&lt;p&gt;I recommend having at least three issue templates:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;New Feature&lt;/li&gt;
+&lt;li&gt;Change Request&lt;/li&gt;
+&lt;li&gt;Bug Report&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;These buckets encompass almost all changes made to a project. They help team members include the right information (no more bug reports without browser/OS), and they also help define the task in the first place. Knowing, and making explicit, whether something is a bugfix or an update, a change or a new feature, helps clarify its implications and priority.&lt;/p&gt;
+
+&lt;p&gt;I have three issue templates set up &lt;a href="https://github.com/vgpena/gh-docs-boilerplate/tree/master/.github/ISSUE_TEMPLATE"&gt;here&lt;/a&gt;. I recommend writing your own set of templates to reflect your ticketing flow and project needs.&lt;/p&gt;
+&lt;h2 class='section-title' id=in-the-wild&gt;&lt;a href='#in-the-wild' class='section-inner'&gt;In the Wild&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Congrats, you added PR and Issue templates to your project! 🎉 As your project evolves, revisit them every so often to make sure they still meet your needs. It only takes a few minutes to add and remove fields, swap out or edit templates. Give any changes about a week to sink in; if they still don’t feel right, group up with your team and figure out something better. It’ll be a quick meeting, and you’ll get to learn about what each other do and need.&lt;/p&gt;
+&lt;h2 class='section-title' id=but-wait-theres-more&gt;&lt;a href='#but-wait-theres-more' class='section-inner'&gt;But Wait, There’s More!&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Github offers other low-effort ways to improve communication:&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;The Readme&lt;/h3&gt;
+&lt;p&gt;This is a low bar to clear, but I’m regularly shocked by how many projects don’t have a proper Readme. A brief write-up on what the project does and how to install it is invaluable. Even if your project is a fork or clone of &lt;em&gt;another&lt;/em&gt; project, update your Readme — surely something about &lt;em&gt;your&lt;/em&gt; project is different from the source material.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Code of Conduct&lt;/h3&gt;
+&lt;p&gt;Adding a &lt;a href="https://help.github.com/articles/adding-a-code-of-conduct-to-your-project/"&gt;Code of Conduct&lt;/a&gt; to your project is easy, and it’s a powerful way to manage community on open-source projects. If you add one to your repo, it will be linked to in the issue creation flow.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Contribution Guidelines&lt;/h3&gt;
+&lt;p&gt;Like a CoC, &lt;a href="https://help.github.com/articles/setting-guidelines-for-repository-contributors/"&gt;Contribution Guidelines&lt;/a&gt; clarify community standards and keep discussion productive. This will also be linked to when issues are opened. Contribution guidelines and CoCs are most applicable to open-source software, but it’s never &lt;em&gt;bad&lt;/em&gt; to codify expectations, even within a closed team.&lt;/p&gt;
+&lt;h2 class='section-title' id=tldr&gt;&lt;a href='#tldr' class='section-inner'&gt;TL;DR&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Better communication = more time building fun things. Github can help you. Use &lt;a href="https://github.com/vgpena/gh-docs-boilerplate"&gt;my boilerplate&lt;/a&gt; to make Pull Request and Issue templates, sit back, and enjoy the clarity 😎&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Hard Reset</title>
     <link rel="alternate" href="https://vgpena.github.io/hard-reset/"/>
     <id>https://vgpena.github.io/hard-reset/</id>
     <published>2018-07-04T14:10:00-07:00</published>
-    <updated>2018-07-04T14:32:33-07:00</updated>
+    <updated>2018-08-27T13:24:20-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -128,7 +231,7 @@
     <link rel="alternate" href="https://vgpena.github.io/good-is-better-than-perfect/"/>
     <id>https://vgpena.github.io/good-is-better-than-perfect/</id>
     <published>2017-12-27T11:42:00-08:00</published>
-    <updated>2018-07-03T11:21:36-07:00</updated>
+    <updated>2018-08-27T13:24:20-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -206,7 +309,7 @@
     <link rel="alternate" href="https://vgpena.github.io/debugging-bliss/"/>
     <id>https://vgpena.github.io/debugging-bliss/</id>
     <published>2017-09-27T16:01:00-07:00</published>
-    <updated>2018-07-03T11:21:36-07:00</updated>
+    <updated>2017-09-28T12:29:45-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -411,7 +514,7 @@
     <link rel="alternate" href="https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/"/>
     <id>https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/</id>
     <published>2017-09-02T19:05:00-07:00</published>
-    <updated>2018-07-03T11:21:36-07:00</updated>
+    <updated>2017-09-04T20:01:53-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -837,7 +940,7 @@ positive sentiment; 62.751633% confidence
     <link rel="alternate" href="https://vgpena.github.io/the-art-of-gitting-gud/"/>
     <id>https://vgpena.github.io/the-art-of-gitting-gud/</id>
     <published>2017-08-13T15:23:00-07:00</published>
-    <updated>2018-07-03T11:21:36-07:00</updated>
+    <updated>2017-08-13T16:06:08-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -887,59 +990,6 @@ positive sentiment; 62.751633% confidence
 &lt;p&gt;Writing is something that I will improve only through practice. I need to respect it more, acknowledge its difficulty, and invest the focus and the time into working on it.&lt;/p&gt;
 
 &lt;p&gt;I don&amp;#39;t know how long it will be for me to feel like I&amp;#39;ve improved; I don&amp;#39;t know how long until I&amp;#39;ve &lt;em&gt;actually&lt;/em&gt; improved. But for me, this is difficult. And the only way to make it easier is to git gud.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>We RISE 2017: yes please</title>
-    <link rel="alternate" href="https://vgpena.github.io/we-rise-2017/"/>
-    <id>https://vgpena.github.io/we-rise-2017/</id>
-    <published>2017-07-01T14:06:00-07:00</published>
-    <updated>2018-07-03T11:21:36-07:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <summary type="html">I gave my first tech talk at We RISE's inaugural conference on June 23-24, 2017. Here are my main takeaways from and thoughts on the conference.</summary>
-    <content type="html">&lt;p&gt;Last week, I &lt;a href="https://docs.google.com/presentation/d/1t2-ebDUL6r09tO1s18UXWvALtZg-cQebSZpEmikYUNE/edit?usp=sharing"&gt;spoke&lt;/a&gt; at &lt;a href="https://werise.tech/"&gt;We RISE conf&lt;/a&gt; in Atlanta, GA. I&amp;#39;ll write a post on that speaking experience, but first I&amp;#39;d like to talk about the conference itself.&lt;/p&gt;
-
-&lt;p&gt;We RISE is a Women In Tech conference put together by &lt;a href="https://www.womenwhocode.com/atl"&gt;Women Who Code ATL&lt;/a&gt;. This year was its debut year and it &lt;strong&gt;kicked ass&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;I&amp;#39;ve been to talks and conferences with pretty strong social undertones, but this was the first time I&amp;#39;d been to a major event overtly aimed at social issues and progress in tech. The sessions were pretty evenly split between more &amp;quot;typical&amp;quot; tech talks (e.g, intro to Rust) and more socially-oriented ones (e.g., creating an allyship program at your company). No matter the speaker or the subject matter, there was always an undercurrent: let&amp;#39;s get more women into and excelling in tech.&lt;/p&gt;
-
-&lt;p&gt;We RISE was excellent, for many reasons, and I&amp;#39;ll try to break them down a bit.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;To start off with something banal and probably obvious, there were a lot of women there. Women must have made up 95 percent of attendees. I didn&amp;#39;t think I would notice, but I did, and it was amazing.&lt;/p&gt;
-
-&lt;p&gt;I won&amp;#39;t dive deeply into this right now, but as a developer who&amp;#39;s a woman, I&amp;#39;m used to being in a minority. I&amp;#39;ve had the good fortune (or maybe instinct) to end up working with respectful, smart, helpful, supportive, amazing people. They just happen to be mostly men.&lt;/p&gt;
-
-&lt;p&gt;I&amp;#39;ve never had a boss who wasn&amp;#39;t a man. For five years, I worked directly alongside zero women. That spell ended last month, for which I am grateful.&lt;/p&gt;
-
-&lt;p&gt;With this as my norm, it was subtly mind-blowing to spend two days answering to and speaking with almost exclusively women. My paper was accepted by a woman; I got speaker updates from women; women answered my questions about scheduling. I went to talks given by women and my talk, in turn, was mostly attended by women. I answered womens&amp;#39; questions about WebSockets, read womens&amp;#39; slide decks, and chatted with women about programming, Atlanta, and our careers and ambitions.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;The talks specifically about social issues were valuable and necessary. It was the tech sessions, however, which got me really excited. A talk can focus completely on tech and yet be an instrument of social progress when it is given in the right context.&lt;/p&gt;
-
-&lt;p&gt;This was the case at We RISE. Looking around the room at almost exclusively other women, I felt pride to realize that it would be &lt;em&gt;us&lt;/em&gt; going back to work on Monday energized, full of connections and ideas, ready to share and talk and create change. There would be a wave of women suggesting techniques, sharing links to new tools, and rounding up parners to work on side projects.&lt;/p&gt;
-
-&lt;p&gt;(As a sidenote, I realized that the flipside of this is also true -- every time a conference is unwelcoming, exclusive, etc., women and other marginalized groups are taking two hits: not only are they not going to the conference itself but they also are less likely to be showing up at work with new ideas to present, discuss, and implement.)&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;I also met people from all kinds of backgrounds who got into tech for all kinds of reasons. My world mostly consists of under-40s who have worked in tech for many years. They mostly don&amp;#39;t have comp sci degrees but they have finished college, are childless, and have had generally stable lives.&lt;/p&gt;
-
-&lt;p&gt;At We RISE, I met record numbers of people who didn&amp;#39;t fit this profile. There were droves of code school students, people entering tech in their 40s, people with children. Their concerns and goals were totally different from mine and those of most of my colleagues. They chose coding bootcamps that worked with their schedules of full-time work and childcare. They applied for jobs not that promised glory or stock options but healthcare and regular hours.&lt;/p&gt;
-
-&lt;p&gt;Tech from the west coast and NYC tends to be splashy and dramatic. Tech from Atlanta stays out of the headlines and, honestly, it keeps such a low profile that I was surprised that there was a tech conference happening there at all.&lt;/p&gt;
-
-&lt;p&gt;We RISE reminded me that these people are my compatriots. They&amp;#39;re my extended family. And I&amp;#39;m going to work harder to connect with and support all elements of our community.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;&lt;strong&gt;Anyway&lt;/strong&gt;: We RISE was the best and it&amp;#39;s doing some really important things for women and tech and women in tech. If you went, well done! If you didn&amp;#39;t, go next year! I had an incredible time and I am so thankful that I had the opportunity to meet rad people, give my first ever talk, and spread some inspiration and knowledge.&lt;/p&gt;
-
-&lt;p&gt;Stay tuned, lovely people, for a post on my talk itself and lessons learned by a first-time speaker 😘&lt;/p&gt;
 </content>
   </entry>
 </feed>

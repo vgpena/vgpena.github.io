@@ -1,12 +1,12 @@
 ---
 title: Github Templates in Ten Minutes
-subtitle: Give Your Team The Gift of Helpful Issues and Pull Requests
-summary: 
-hero: 
+subtitle: Awesome issues and PRs are just a few files away
+summary: "Github templates are an amazing project management tool. Pull Request and Issue templates help your team communicate and boost documentation. They\'re easy to write and completely customizable. Here\'s how to get started with Github templates and lead the charge for top-notch communication on your project team."
+hero: 'github-templates/issue-picker.png'
 date: 2018-08-27 07:55 PDT
 ---
 
-The better your team communicates, the more time you can spend building fun things and solving hard problems. Github is an amazing resource for improving communication with only a little effort. Lately, they’ve rolled out two features that should be incorporated into any project: Pull Request templates and Issue templates. In this post, I’ll walk through these tools and how to leverage them on your next — or current — project.
+The better your team communicates, the more time you can spend on the fun stuff -- building interesting things and solving hard problems. When you're looking for ways to improve communication, take a look at Github. They’ve rolled out two features that should be incorporated into any project: Pull Request templates and Issue templates. In this post, I’ll walk through these tools and how to leverage them on your next (or current) project.
 
 For sample code, and a cloneable project template (hint hint), see my [gh-docs-boilerplate repo](https://github.com/vgpena/gh-docs-boilerplate). 💅🏻
 
@@ -14,15 +14,31 @@ For sample code, and a cloneable project template (hint hint), see my [gh-docs-b
 
 We’ve all been there: a pull request rolls in, titled “Updates”, with no description and 22 files changed.
 
-![👍🏻 LGTM](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535221627295_Screen+Shot+2018-08-25+at+11.24.16+AM.png)
-
+<%= partial(:media, :locals => {
+  :src => 'github-templates/bad-pr.png',
+  :title => 'A PR with very little information or context.',
+  :size => 'primary',
+  :alt => '',
+  :caption => '👍🏻 LGTM',
+  :width => '1592px',
+  :height => '468px',
+  :plain => 'True'
+})%>
 
 We’re not sure what it does, which tickets it closes, or how to test it. Until the person who opened the PR is given a chance to explain themself, project managers and fellow engineers can’t track on what work has been done. Over time, this lack of context and consistency slows work down and leads to misunderstandings.
 
 Enter Pull Request templates. These are simple Markdown files that prepopulate pull request description fields. You can put this template in your repository root, a `/docs` folded, or a `/.github` folder. Once it exists on your default branch (usually `master` or `dev`), its content will flow into all newly opened PRs.
 
-![A fresh PR when you have a PR template in your repo.](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535230407107_Screen+Shot+2018-08-25+at+1.52.19+PM.png)
-
+<%= partial(:media, :locals => {
+  :src => 'github-templates/good-pr.png',
+  :title => 'When you create a PR template, its contents populate new PRs.',
+  :size => 'primary',
+  :alt => '',
+  :caption => 'One click and you\'re halfway there.',
+  :width => '1578px',
+  :height => '1410px',
+  :plain => 'True'
+})%>
 
 [Here’s my starter template](https://github.com/vgpena/gh-docs-boilerplate/blob/master/.github/pull_request_template.md); I like to list out headings for any information I want from a contributor. You almost certainly want these questions answered:
 
@@ -33,14 +49,31 @@ Enter Pull Request templates. These are simple Markdown files that prepopulate p
 
 Depending on your project and workflow, you may want to include places for contributors to upload screenshots, link to prototypes, or (my favorite) embed GIFs that reflect their feelings towards that PR.
 
-![Sample GIF included for your inspiration.](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535222307342_68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f544f576547723730563252314b2f67697068792e676966.gif)
+<%= partial(:media, :locals => {
+  :src => 'github-templates/mainframe.gif',
+  :title => 'A glitch art + muppets GIF.',
+  :size => 'primary',
+  :alt => '',
+  :caption => 'Sample GIF included for your inspiration.',
+  :width => '400px',
+  :height => '225px',
+  :plain => 'True'
+})%>
 
 ## Issue Templates
 
 Communication and documentation can also be skimped on when opening issues. We’ve all been guilty of creating issues with vague titles and no context.
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535228215296_Screen+Shot+2018-08-25+at+1.15.38+PM.png)
-
+<%= partial(:media, :locals => {
+  :src => 'github-templates/bad-issue.png',
+  :title => '',
+  :size => 'primary',
+  :alt => '',
+  :caption => 'Time for some detective work!',
+  :width => '1592px',
+  :height => '468px',
+  :plain => 'True'
+})%>
 
 If I didn’t personally open this ticket, I don’t know what needs to be done or what success looks like. I can’t prioritize it or estimate its complexity.
 
@@ -48,22 +81,37 @@ Issue templates, like PR templates, are Markdown files that provide default cont
 
 Issue templates go one step farther than PR templates by letting you create multiple issue types, which are all available in a choose-your-own-adventure issue picker.
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535228801763_Screen+Shot+2018-08-25+at+1.26.26+PM.png)
+<%= partial(:media, :locals => {
+  :src => 'github-templates/issue-picker.png',
+  :title => 'Define multiple Issue templates, and you get a cool Issue picker on Github.',
+  :size => 'primary',
+  :alt => '',
+  :width => '1586px',
+  :height => '580px',
+  :plain => 'True'
+})%>
 
 
 Selecting an issue type will flow that specific template into your new issue.
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_72A347C4411507F8FB93A9E83688D3E6B8CDA2C9D27F500A11269970FE0A14C8_1535230474978_Screen+Shot+2018-08-25+at+1.52.41+PM.png)
-
+<%= partial(:media, :locals => {
+  :src => 'github-templates/good-issue.png',
+  :title => 'Once you pick an issue template, its text prepopulates a new issue.',
+  :size => 'primary',
+  :alt => '',
+  :width => '1558px',
+  :height => '1152px',
+  :plain => 'True'
+})%>
 
 You can define as many issue formats as you want and tailor them to your project. For example, a recent project of mine had five total template types. The Backend template had a prompt to list out any tests that should be written; the Frontend template asked for embedded design comps.
 
 I recommend having at least three issue templates:
 
 
-- New Feature
-- Change Request
-- Bug Report
+1. New Feature
+1. Change Request
+1. Bug Report
 
 These buckets encompass almost all changes made to a project. They help team members include the right information (no more bug reports without browser/OS), and they also help define the task in the first place. Knowing, and making explicit, whether something is a bugfix or an update, a change or a new feature, helps clarify its implications and priority.
 
