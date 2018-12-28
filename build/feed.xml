@@ -5,16 +5,88 @@
   <id>https://vgpena.github.io/</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2018-08-27T07:55:00-07:00</updated>
+  <updated>2018-12-28T15:05:00-08:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>Private vs. Restricted Node Packages: What's the Diff?</title>
+    <link rel="alternate" href="https://vgpena.github.io/private-vs-restricted-node-packages-what-s-the-diff/"/>
+    <id>https://vgpena.github.io/private-vs-restricted-node-packages-what-s-the-diff/</id>
+    <published>2018-12-28T15:05:00-08:00</published>
+    <updated>2018-12-28T15:52:19-08:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">'Private' and 'Restricted' may sound similar, but they're completely different when it comes to Node packages. Here's what they mean and how to use them.</summary>
+    <content type="html">&lt;p&gt;At &lt;a href="http://www.instrument.com/"&gt;work&lt;/a&gt;, my team is sharing React components with our client by packaging and publishing each component individually. Publishing Node packages is new territory for me, and the learning curve hasn’t always been gentle. I’ll take some time now to clarify a paradigm I initially found confusing: what’s the difference between making a Node package &lt;em&gt;private&lt;/em&gt; and &lt;em&gt;restricting access&lt;/em&gt; to it?&lt;/p&gt;
+&lt;h2 class='section-title' id=private-node-packages&gt;&lt;a href='#private-node-packages' class='section-inner'&gt;Private Node packages&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;A private package is not shared or distributed on its own, and cannot be published to a registry (such as &lt;a href="https://www.npmjs.com/"&gt;npmjs.com&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-secondary"&gt;
+    &lt;img src="/images/harriet.gif" alt="" title="Harriet the Spy shows us the cover of her journal, which reads PRIVATE." width="400px" height="232px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Marking a package as private ensures that its code will not be published, even accidentally. For instance, a one-off marketing site using React will contain a &lt;code&gt;package.json&lt;/code&gt; file. Unless this file specifies that the project is private, an errant contributor could publish the project code to a package registry, even if the code were proprietary or simply wouldn’t make sense to distribute on its own.&lt;/p&gt;
+
+&lt;p&gt;Here’s a sample &lt;code&gt;package.json&lt;/code&gt; for a non-distributable project:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code json"&gt;&lt;code&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"name"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"specific-website"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"version"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"0.0.1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"description"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"A bespoke website for &amp;lt;Client&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"main"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"index.js"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"private"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"scripts"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"dependencies"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"devDependencies"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Privacy only affects the ability to publish to a package registry — it won’t affect other ways of sharing code, such as pushing to a Github repo.&lt;/p&gt;
+
+&lt;p&gt;As a sidenote, private packages are generally ignored by packaging utilities. For example, &lt;a href="https://github.com/lerna/lerna"&gt;Lerna&lt;/a&gt; won’t include private packages in its &lt;code&gt;lerna list&lt;/code&gt; output unless you pass in the &lt;code&gt;--all&lt;/code&gt; flag.&lt;/p&gt;
+&lt;h2 class='section-title' id=restricted-node-packages&gt;&lt;a href='#restricted-node-packages' class='section-inner'&gt;Restricted Node packages&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In contrast to private packages, restricted packages &lt;em&gt;can&lt;/em&gt; be distributed via a package registry, but only to whitelisted individuals. To use a restricted package, you need an account with the specific registry to which it was published, and you must belong to the organization or team that has access to that package. Otherwise, the package’s URL will 404.&lt;/p&gt;
+
+&lt;p&gt;One use for restricted packages is for sharing proprietary code within a company. For example, a custom lazyloader that conforms to studio standards can be used on multiple projects either through copy-pasting the original code over and over (boo), or through publishing the code once to npmjs.com and including it as a dependency on subsequent projects (yay!).&lt;/p&gt;
+
+&lt;p&gt;Here’s a sample &lt;code&gt;package.json&lt;/code&gt; for a project with locked-down distribution permissions:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code json"&gt;&lt;code&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"name"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"@company/awesome-lazyloader"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"version"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"0.0.1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"description"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"A reusable lazyloader for use at &amp;lt;Company&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"main"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"index.js"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"license"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"UNLICENSED"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"publishConfig"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+        &lt;/span&gt;&lt;span class="s2"&gt;"access"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"restricted"&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="s2"&gt;"dependencies"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;  
+      &lt;/span&gt;&lt;span class="s2"&gt;"devDependencies"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+      &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you publish to npmjs.com, take note that the site UI diverges from actual Node packaging terminology: a restricted package’s UI will have a “Private” badge even though the package &lt;em&gt;isn’t&lt;/em&gt; private. (I can’t explain this; it’s just bad UX.)&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/npmjs-com-private.png" alt="" title="A screengrab of a restricted package on npmjs.com; the site UI includes a &amp;quot;Private&amp;quot; badge under the package name." width="2470px" height="966px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Licensing&lt;/h3&gt;
+&lt;p&gt;If you are publishing a restricted package, you probably want it to be unlicensed, which means that no one is inherently authorized to modify or redistribute it. You can set this either by removing the &lt;code&gt;license&lt;/code&gt; field from the project’s &lt;code&gt;package.json&lt;/code&gt; or by setting it to &lt;code&gt;license: &amp;quot;UNLICENSED&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 class='section-title' id=&gt;&lt;a href='#' class='section-inner'&gt;👋🏻&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Thanks for reading! I hope this saved you some time. May 2019 be full of writing and sharing great JavaScript. 🥂🥂&lt;/p&gt;
+
+&lt;p&gt;Many thanks to Daniel, Ginger, and Thomas for your time, energy, and expertise.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Github Templates in Ten Minutes</title>
     <link rel="alternate" href="https://vgpena.github.io/github-templates/"/>
     <id>https://vgpena.github.io/github-templates/</id>
     <published>2018-08-27T07:55:00-07:00</published>
-    <updated>2018-08-27T13:24:20-07:00</updated>
+    <updated>2018-12-28T15:54:36-08:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -117,7 +189,7 @@
     <link rel="alternate" href="https://vgpena.github.io/hard-reset/"/>
     <id>https://vgpena.github.io/hard-reset/</id>
     <published>2018-07-04T14:10:00-07:00</published>
-    <updated>2018-08-27T13:24:20-07:00</updated>
+    <updated>2018-07-04T14:32:33-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -231,7 +303,7 @@
     <link rel="alternate" href="https://vgpena.github.io/good-is-better-than-perfect/"/>
     <id>https://vgpena.github.io/good-is-better-than-perfect/</id>
     <published>2017-12-27T11:42:00-08:00</published>
-    <updated>2018-08-27T13:24:20-07:00</updated>
+    <updated>2018-07-03T11:21:36-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -309,7 +381,7 @@
     <link rel="alternate" href="https://vgpena.github.io/debugging-bliss/"/>
     <id>https://vgpena.github.io/debugging-bliss/</id>
     <published>2017-09-27T16:01:00-07:00</published>
-    <updated>2017-09-28T12:29:45-07:00</updated>
+    <updated>2018-07-03T11:21:36-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -514,7 +586,7 @@
     <link rel="alternate" href="https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/"/>
     <id>https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/</id>
     <published>2017-09-02T19:05:00-07:00</published>
-    <updated>2017-09-04T20:01:53-07:00</updated>
+    <updated>2018-07-03T11:21:36-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -933,63 +1005,6 @@ positive sentiment; 62.751633% confidence
 &lt;li&gt;&lt;a href="https://gist.github.com/vgpena/b1c088f3c8b8c2c65dd8edbe0eae7023"&gt;code&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://thinknook.com/twitter-sentiment-analysis-training-corpus-dataset-2012-09-22/"&gt;dataset&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-  </entry>
-  <entry>
-    <title>The Art of Gitting Gud</title>
-    <link rel="alternate" href="https://vgpena.github.io/the-art-of-gitting-gud/"/>
-    <id>https://vgpena.github.io/the-art-of-gitting-gud/</id>
-    <published>2017-08-13T15:23:00-07:00</published>
-    <updated>2017-08-13T16:06:08-07:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <summary type="html">I have always liked to write, so I thought that blogging would come naturally to me. Time and focus, though, have proven far more important than a way with words. It's time to face this reality and git gud.</summary>
-    <content type="html">&lt;p&gt;It&amp;#39;s been a while since I posted something here. This has not been for lack of exciting things in my life — I wrote Arduino for the first time, trained my first neural net, and polished off a six-month-long React project.&lt;/p&gt;
-
-&lt;p&gt;So why, then, no reports on these interesting and possibly trendy adventures? More difficult than debugging &lt;code&gt;char *&lt;/code&gt; Arrays, more daunting than teaching a machine to classify speech, is sitting down and actually writing about all of it.&lt;/p&gt;
-
-&lt;p&gt;One main reason that I created this blog was to get better at writing. I love to write, and I&amp;#39;ve practiced it in one form or another since elementary school. Since writing is filed under &amp;quot;things I enjoy&amp;quot;, I figured that once I made a blog, posts would flow to fill its shape.&lt;/p&gt;
-
-&lt;p&gt;I had forgotten, however, how vital it is not just to like a thing but to &lt;em&gt;allow&lt;/em&gt; yourself to like that thing. I assumed that as I did interesting things, prose would generate itself almost as a side effect, fully-formed and ready to publish.&lt;/p&gt;
-
-&lt;p&gt;Reality has not borne this out.&lt;/p&gt;
-
-&lt;p&gt;My writing ability — that is, my aptitude for stringing words together; for forming a narrative — will always and forever need improving, but it&amp;#39;s acceptable. (I&amp;#39;ve heard that the worst code ever written is the code that you yourself wrote six months ago. I hope that my writing follows this pattern.)&lt;/p&gt;
-
-&lt;p&gt;But there&amp;#39;s another component of writing ability, and this is where I fall flat. This component has nothing to do with mastery of language; it&amp;#39;s concerned with letting myself &lt;em&gt;at&lt;/em&gt; language in the first place. What kind of time, what kind of space do I give myself to write? Do I allow myself to focus for long enough to even jot down an outline?&lt;/p&gt;
-
-&lt;p&gt;It was late in freshman year of college that I realized how effortless it was to be purely a consumer and not a creator. I remember that thought (in an uncommon way) slipping small and crystalized into my mind, a pressure against my skull. I&amp;#39;ve tried to stay aware of that fact, and to keep myself in check. &lt;em&gt;Create; make something; remember&lt;/em&gt; how &lt;em&gt;to make something.&lt;/em&gt; What if I lose practice? What if I forget how to create?&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;I began to understand the effort that goes into creation, but I hadn&amp;#39;t yet been tested for my own willingness to expend that effort. Again, I was in college. I no longer had time for art projects, but I &lt;em&gt;was&lt;/em&gt; ordered to spend a month comparing editions of the &lt;em&gt;Quijote&lt;/em&gt;; I was told to write translations and program translators and dissect the differences between turn-of-the-century European authors. I began to learn how to create my own time, my own focus, but I did not achieve proficiency in it. Outside of my mandated, protected time, I dove into the internet, read books aimlessly, and, after a breakup, binge-watched all of &lt;em&gt;Avatar: the Last Airbender&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;When all was said and done, I was very good at writing when someone else made me do it. Did I have my own passions; did I find things interesting? Absolutely. But I wasn&amp;#39;t lifting a finger to express or magnify those pursuits.&lt;/p&gt;
-
-&lt;p&gt;Years later, I began to understand what adults were getting at when they acted impressed that so-and-so was in a community choir, or taking a German class, or sowing a garden. They weren&amp;#39;t necessarily blown away by someone&amp;#39;s vocal prowess, but they deeply understood the power of inertia. It&amp;#39;s infinitely harder to do anything than it is to do nothing.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;When I created this blog, I initially &lt;em&gt;did&lt;/em&gt; allow myself to write. I recorded post ideas as they occurred to me; I drafted outlines during downtime at work; I blocked out time on alternating weekends to do the actual writing. &lt;em&gt;This&lt;/em&gt;, a voice whispered, &lt;em&gt;is temporary. Soon you&amp;#39;ll be so good at writing that it&amp;#39;ll just happen.&lt;/em&gt; I imagined that, with some practice, I&amp;#39;d be able to be struck by an idea, transmute it into words, edit a bit, and send it off into the internet vastness.&lt;/p&gt;
-
-&lt;p&gt;I may be able to do this someday, but not yet. I made the mistake of thinking that I was almost there — &lt;em&gt;this week&lt;/em&gt; I could go away for the weekend, make no allowance for writing, and figure something out in an hour or two on Monday evening. Never mind that previous blog posts had required working four hours a day for two, three days in a row. Never mind that Monday evening would find me on the couch watching a show &lt;em&gt;to unwind&lt;/em&gt; because I was &lt;em&gt;so done with work&lt;/em&gt; after getting home from my job and prepping dinner and doing all the miscellaneous things that life requires. I would do it Tuesday? Or the next weekend? Tomorrow Me would definitely feel peppier, more inspired.&lt;/p&gt;
-
-&lt;p&gt;This post took me days to write. Those days were not spent drafting and editing;  those days lived in the space between when this urgent, personal idea occured to me and when I put pen to paper and actually sat down and wrote the damn thing.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;And finally, I circle back around to the title of this post: &lt;em&gt;The art of gitting gud&lt;/em&gt;. I don&amp;#39;t mean Scrooge; it&amp;#39;s not about having a change of heart. I mean getting good like &lt;em&gt;Dark Souls&lt;/em&gt; like a note I have taped to my fridge, GIT GUD.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/gitgud-tumblr.png" alt="A screenshot of a tumblr update. Text says: 'I'm afraid he's been infected with the casual. He's just going to have to...to--'. Image below text is of a doctor wearing a knight's helmet, pointing to a clipboard that has 'git gud' written on it" title="A common variant of git gud" width="600px" height="408px" /&gt;
-  &lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;&amp;quot;git gud&amp;quot; entered my consciousness when the notoriously difficult videogame &lt;em&gt;Dark Souls&lt;/em&gt; was released; it was advice frequently offered to players seeking help. While on the surface, it&amp;#39;s unhelpful and possibly adversarial, it communicates an important truth: sometimes there are no shortcuts to getting what you want. The only way forward is to practice, to sink in the hours and the effort until, someday, you git gud.&lt;/p&gt;
-
-&lt;p&gt;Writing is something that I will improve only through practice. I need to respect it more, acknowledge its difficulty, and invest the focus and the time into working on it.&lt;/p&gt;
-
-&lt;p&gt;I don&amp;#39;t know how long it will be for me to feel like I&amp;#39;ve improved; I don&amp;#39;t know how long until I&amp;#39;ve &lt;em&gt;actually&lt;/em&gt; improved. But for me, this is difficult. And the only way to make it easier is to git gud.&lt;/p&gt;
 </content>
   </entry>
 </feed>
