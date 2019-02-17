@@ -1,16 +1,16 @@
 ---
 title: Using CSS Grid the right way
 subtitle: Use names. Use frs. Don't use a grid system. Wait, what?
-summary: 
-hero: 
+summary: CSS Grid is fun to use but hard to learn. Here are three tips to help you understand and leverage the Grid spec.
+hero: 'gris.jpg'
 date: 2019-02-17 13:58 PST
 ---
 
-CSS Grid is flexible, robust, and a refreshing paradigm shift from other CSS layout systems. These same selling points make it a joy to use, but difficult to learn.
+CSS Grid is robust, flexible, and a refreshing paradigm shift from other CSS layout systems. While these are selling points for Grid, they also make it hard to learn.
 
-“Learning” CSS Grid requires developing working knowledge of many new properties that don’t just describe one aspect of appearance or behavior, but feed into a completely new layout system. This system includes [around 18](https://css-tricks.com/snippets/css/complete-guide-grid/) properties which often use paradigms and syntax rarely (or never) seen anywhere else in the CSS spec.
+“Learning” CSS Grid requires developing working knowledge of many new properties that don’t just describe *one* aspect of appearance or behavior, but feed into a completely new layout system. This system includes [around 18](https://css-tricks.com/snippets/css/complete-guide-grid/) properties which use paradigms and syntax rarely (or never) seen anywhere else in the CSS spec.
 
-This means that CSS Grid has a pretty high [skill floor](https://us.battle.net/forums/en/overwatch/topic/20759355930#post-2) — a developer needs to learn and internalize quite a bit of new information in order to be effective with it. Once you’re above that skill floor, Grid is an amazing ally in layout creation. Below that skill floor, Grid is an encumbrance. You wonder why you’re bothering to use it at all, since it seems to require lots of additional work for little reward.
+This means that CSS Grid has a pretty high [skill floor](https://us.battle.net/forums/en/overwatch/topic/20759355930#post-2) — a developer needs to learn and internalize lots of new information in order to be effective with it. Once you’re above that skill floor, Grid is an amazing ally in layout creation. Below that skill floor, Grid is an encumbrance. You wonder why you’re bothering to use it at all, since it seems to require lots of additional work for little reward.
 
 In this post, I want to help you overcome that skill floor by showing you the most effective ways to leverage the Grid spec. While I’m not covering the spec in its entirety — for something like that, see [this CSS Tricks post](https://css-tricks.com/snippets/css/complete-guide-grid/) — but what I cover here are, for me, the helpful aspects of this layout system.
 
@@ -42,16 +42,17 @@ Here’s the same CSS, adjusted to use names:
     grid-column: content;
 }
 ```
+Even in lightweight cases like this, it's to your advantage to name grid areas.
 
 ### Benefits
 
 Adding names to your grid brings a couple of major benefits.
 
-**Readability &mdash;** Right off the bat, your code is easier to read and understand. Line 3 now *describes* everything going on inside of the Grid container. You’re not just listing out columns; you’re outlining the *intent* of each column.
+**Readability &mdash;** Right off the bat, your code is easier to understand. Line 3 now *describes* everything going on inside of the Grid container. You’re not just listing out columns; you’re outlining the *intent* of each column.
 
-Likewise, line 7 has become more descriptive. Previously, we only knew that `.content` lived in the second column, which doesn’t mean much without more information — column 2 out of 3? 2 of 200? Assigning a column name, however, signals that this element has specifically been accounted for within the larger system. Naming also makes it easier to find the original column declaration, should we need to.
+Line 7 has also become more descriptive. Previously, we only knew that `.content` lived in the second column, which doesn’t mean much without more context — column 2 out of 3? 2 of 200? Assigning a column name, however, signals that this element has specifically been accounted for within the larger system. Naming also makes it easier to find the original column declaration, should we need to.
 
-**Future-proofing &mdash;** Adding names also makes your CSS more flexible. Specifically, you can iterate on `.container` without having to edit `.content`.
+**Future-proofing &mdash;** Adding names makes your CSS more flexible. Specifically, you can iterate on `.container` without having to edit `.content`.
 
 Want to swap the visual order of the content and the sidebar? Easy.
 
@@ -83,9 +84,9 @@ Without using named columns, you would have to update the column number in line 
 
 ## Use `fr` as your flexible unit
 
-CSS Grid introduces the `fr` unit, which tells an area to occupy some fraction of the total available space. While I lean on `auto` for grid row heights, `fr` is my go-to for grid column widths.
+CSS Grid introduces the `fr` unit, which tells an area to occupy some fraction of the total available space. While `fr` might seem like a sidenote within the Grid spec, it's actually indispensible.
 
-The `fr` unit is different from `%` or `vw` because, while the latter units describe portions of a 100-unit whole, `fr`s are defined by any space not already used by something else. `fr`s split up this space relative to each other.
+The `fr` unit is different from `%` or `vw` because while the latter units describe portions of a 100-unit whole, `fr`s are defined by the space not already used by something else. `fr`s split up this space relative to each other.
 
 Here, the `content` column is twice as wide as the `sidebar` column.
 
@@ -146,8 +147,15 @@ This contradictory-sounding recommendation extends beyond the CSS Grid spec and 
 
 Layouts are often understood as elements aligned along a grid system.
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_4517080ED8635982E654C433799AAC7636683684D320FB7419155F63BC444A99_1550359378685_grid-1.png)
-
+<%= partial(:media, :locals => {
+  :src => 'images/grid-1.png',
+  :title => 'A 14-column grid system.',
+  :size => 'primary',
+  :alt => '',
+  :width => '2147px',
+  :height => '1249px',
+  :plain => 'True'
+})%>
 
 Typically, development strives for exact parity with design. If designs are based on a 14-column grid, development will set up some kind of 14-column grid in code and write helper classes to make items span 1, 2, 3, 6, etc. columns. Most frontend frameworks, like [Bootstrap](https://getbootstrap.com/docs/4.3/layout/grid/), work this way.
 
@@ -219,8 +227,15 @@ Now instead of having fourteen columns, we only have four, but they still divide
 
 We can continue this paradigm throughout the layout. Say that within the `.content` element, we have a need for auxiliary information (an author bio, a blurb, etc.) next to the main article.
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_4517080ED8635982E654C433799AAC7636683684D320FB7419155F63BC444A99_1550363616369_grid-2.png)
-
+<%= partial(:media, :locals => {
+  :src => 'images/grid-2.png',
+  :title => 'A 14-column grid system with additional nested elements.',
+  :size => 'primary',
+  :alt => '',
+  :width => '2132x',
+  :height => '1248px',
+  :plain => 'True'
+})%>
 
 If we have adhered tightly to the 14-column grid, it appears that we need something like this:
 
