@@ -5,10 +5,288 @@
   <id>https://vgpena.github.io/</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2018-12-28T15:05:00-08:00</updated>
+  <updated>2019-02-17T13:58:00-08:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>Using CSS Grid the right way</title>
+    <link rel="alternate" href="https://vgpena.github.io/using-css-grid-the-right-way/"/>
+    <id>https://vgpena.github.io/using-css-grid-the-right-way/</id>
+    <published>2019-02-17T13:58:00-08:00</published>
+    <updated>2019-02-17T14:45:29-08:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">CSS Grid is fun to use but hard to learn. Here are three tips to help you understand and leverage the Grid spec.</summary>
+    <content type="html">&lt;p&gt;CSS Grid is robust, flexible, and a refreshing paradigm shift from other CSS layout systems. While these are selling points for Grid, they also make it hard to learn.&lt;/p&gt;
+
+&lt;p&gt;“Learning” CSS Grid requires developing working knowledge of many new properties that don’t just describe &lt;em&gt;one&lt;/em&gt; aspect of appearance or behavior, but feed into a completely new layout system. This system includes &lt;a href="https://css-tricks.com/snippets/css/complete-guide-grid/"&gt;around 18&lt;/a&gt; properties which use paradigms and syntax rarely (or never) seen anywhere else in the CSS spec.&lt;/p&gt;
+
+&lt;p&gt;This means that CSS Grid has a pretty high &lt;a href="https://us.battle.net/forums/en/overwatch/topic/20759355930#post-2"&gt;skill floor&lt;/a&gt; — a developer needs to learn and internalize lots of new information in order to be effective with it. Once you’re above that skill floor, Grid is an amazing ally in layout creation. Below that skill floor, Grid is an encumbrance. You wonder why you’re bothering to use it at all, since it seems to require lots of additional work for little reward.&lt;/p&gt;
+
+&lt;p&gt;In this post, I want to help you overcome that skill floor by showing you the most effective ways to leverage the Grid spec. While I’m not covering the spec in its entirety — for something like that, see &lt;a href="https://css-tricks.com/snippets/css/complete-guide-grid/"&gt;this CSS Tricks post&lt;/a&gt; — but what I cover here are, for me, the helpful aspects of this layout system.&lt;/p&gt;
+&lt;h2 class='section-title' id=use-names-not-numbers&gt;&lt;a href='#use-names-not-numbers' class='section-inner'&gt;Use names, not numbers&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Grid columns and rows, at their most basic, are referred to by number. For example, this CSS sets up a grid with two columns and puts the page’s main content into the second column:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This works, but it misses an amazing feature of Grid: you can give your rows and columns specific names. You should take advantage of this whenever possible.&lt;/p&gt;
+
+&lt;p&gt;Here’s the same CSS, adjusted to use names:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Even in lightweight cases like this, it&amp;#39;s to your advantage to name grid areas.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Benefits&lt;/h3&gt;
+&lt;p&gt;Adding names to your grid brings a couple of major benefits.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Readability &amp;mdash;&lt;/strong&gt; Right off the bat, your code is easier to understand. Line 3 now &lt;em&gt;describes&lt;/em&gt; everything going on inside of the Grid container. You’re not just listing out columns; you’re outlining the &lt;em&gt;intent&lt;/em&gt; of each column.&lt;/p&gt;
+
+&lt;p&gt;Line 7 has also become more descriptive. Previously, we only knew that &lt;code&gt;.content&lt;/code&gt; lived in the second column, which doesn’t mean much without more context — column 2 out of 3? 2 of 200? Assigning a column name, however, signals that this element has specifically been accounted for within the larger system. Naming also makes it easier to find the original column declaration, should we need to.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Future-proofing &amp;mdash;&lt;/strong&gt; Adding names makes your CSS more flexible. Specifically, you can iterate on &lt;code&gt;.container&lt;/code&gt; without having to edit &lt;code&gt;.content&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Want to swap the visual order of the content and the sidebar? Easy.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Want to add another column? No prob.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;related-posts&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Without using named columns, you would have to update the column number in line 7 to reflect the changes made in line 3. Named columns give &lt;code&gt;.content&lt;/code&gt; consistent behavior that’s independent of the column count or order.&lt;/p&gt;
+&lt;h2 class='section-title' id=use-codefrcode-as-your-flexible-unit&gt;&lt;a href='#use-codefrcode-as-your-flexible-unit' class='section-inner'&gt;Use &lt;code&gt;fr&lt;/code&gt; as your flexible unit&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;CSS Grid introduces the &lt;code&gt;fr&lt;/code&gt; unit, which tells an area to occupy some fraction of the total available space. While &lt;code&gt;fr&lt;/code&gt; might seem like a sidenote within the Grid spec, it&amp;#39;s actually indispensible.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;fr&lt;/code&gt; unit is different from &lt;code&gt;%&lt;/code&gt; or &lt;code&gt;vw&lt;/code&gt; because while the latter units describe portions of a 100-unit whole, &lt;code&gt;fr&lt;/code&gt;s are defined by the space not already used by something else. &lt;code&gt;fr&lt;/code&gt;s split up this space relative to each other.&lt;/p&gt;
+
+&lt;p&gt;Here, the &lt;code&gt;content&lt;/code&gt; column is twice as wide as the &lt;code&gt;sidebar&lt;/code&gt; column.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Since there are no non-&lt;code&gt;fr&lt;/code&gt; units and three &lt;code&gt;fr&lt;/code&gt;s in total, 1fr = ~33% of the width of the grid.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Benefits&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;fr&lt;/code&gt; unit offers a couple of things that other flexible units lack.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Readability and clearer intent &amp;mdash;&lt;/strong&gt; Using &lt;code&gt;fr&lt;/code&gt;s, unlike using percents, lets us stick with whole numbers that are sized relative to each other, not relative to a whole. This keeps the intended behavior clear. For example, line 3 is straightforward to translate into English: “The content is twice as wide as the sidebar”.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;fr&lt;/code&gt;s also let you divvy up space in ways that would be hard to calculate (and read) using percentages.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Less math &amp;mdash;&lt;/strong&gt; The biggest benefit of the &lt;code&gt;fr&lt;/code&gt; is that it takes the responsibility for doing exact arithmetic away from the developer and hands it off to the browser’s layout engine. For example, &lt;a href="https://codepen.io/vvviolet/pen/VgVExq"&gt;here’s a CodePen&lt;/a&gt; showing two ways to make the same layout using CSS Grid.&lt;/p&gt;
+
+&lt;p&gt;These lines are the crux of the demo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.percents&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nc"&gt;.frs&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-column-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;20px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.percents&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;repeat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;calc&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="m"&gt;100%&lt;/span&gt; &lt;span class="n"&gt;-&lt;/span&gt; &lt;span class="m"&gt;40px&lt;/span&gt;&lt;span class="p"&gt;)/&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.frs&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;repeat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The code on line 7 is hard to write, hard to read, and brittle. Any change to &lt;code&gt;grid-column-gap&lt;/code&gt; or to our column count will break the layout, unless we manually update the column width to match.&lt;/p&gt;
+
+&lt;p&gt;Line 11 can ignore the gap size and won’t require new math if we update the column count. It’s easy to read and future-proof.&lt;/p&gt;
+&lt;h2 class='section-title' id=dont-use-a-grid-system&gt;&lt;a href='#dont-use-a-grid-system' class='section-inner'&gt;Don’t use a grid system&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This contradictory-sounding recommendation extends beyond the CSS Grid spec and bleeds into how web design works and how developers interface with designers and their work.&lt;/p&gt;
+
+&lt;p&gt;Layouts are often understood as elements aligned along a grid system.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/grid-1.png" alt="" title="A 14-column grid system." width="2147px" height="1249px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Typically, development strives for exact parity with design. If designs are based on a 14-column grid, development will set up some kind of 14-column grid in code and write helper classes to make items span 1, 2, 3, 6, etc. columns. Most frontend frameworks, like &lt;a href="https://getbootstrap.com/docs/4.3/layout/grid/"&gt;Bootstrap&lt;/a&gt;, work this way.&lt;/p&gt;
+
+&lt;p&gt;In the above example, we have a 14-column grid, with these elements to place and size:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The header, which starts at column 2 and spans 12 columns&lt;/li&gt;
+&lt;li&gt;The sidebar, which starts at column 2 and spans 4 columns&lt;/li&gt;
+&lt;li&gt;The main content, which starts at column 6 and spans 8 columns&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In CSS Grid, it’s easy to set up a system that mimics the design:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.main&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-column-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2rem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-row-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1rem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-rows&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;100px&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nb"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;repeat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;14&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.header&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.sidebar&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But is this actually a good plan? Our attempt at 1:1 reproduction has two drawbacks.&lt;/p&gt;
+
+&lt;p&gt;First, it foils our plan to name columns. Additionally, out of our 14 columns, we are only “using” columns 2, 5, 6, and 13. This &lt;em&gt;technically&lt;/em&gt; works, but it suggests a bad signal-to-noise ratio.&lt;/p&gt;
+
+&lt;p&gt;Both of these problems are solved if we can take a couple of steps away from the original design:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.main&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-column-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2rem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-row-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1rem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-rows&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;100px&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nb"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;left-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;right-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.header&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sidebar&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;right-gutter&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.sidebar&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now instead of having fourteen columns, we only have four, but they still divide up the lateral space into fourteen parts. We have the exact same visual effect as in the first iteration, but our code is less noisy and directly reflects how it’s used.&lt;/p&gt;
+
+&lt;p&gt;We can continue this paradigm throughout the layout. Say that within the &lt;code&gt;.content&lt;/code&gt; element, we have a need for auxiliary information (an author bio, a blurb, etc.) next to the main article.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/grid-2.png" alt="" title="A 14-column grid system with additional nested elements." width="2132x" height="1248px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;If we have adhered tightly to the 14-column grid, it appears that we need something like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.article&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;7&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.info&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;11&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Which will be tricky, since CSS Grid has no concept of inheritance. &lt;code&gt;.info&lt;/code&gt; doesn’t know anything about the grid set up on &lt;code&gt;.main&lt;/code&gt;, its grandparent element.&lt;/p&gt;
+
+&lt;p&gt;If we have let go of the literal 14-column grid, however, we may notice that &lt;code&gt;.article&lt;/code&gt; and &lt;code&gt;.info&lt;/code&gt; don’t &lt;em&gt;need&lt;/em&gt; to know anything about the top-level grid — they’re part of a new grid inside of &lt;code&gt;.content&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;left-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;article&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;right-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-column-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2rem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.article&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;article&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.info&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using this setup, &lt;code&gt;.content&lt;/code&gt; is simple and internally consistent, but also aligns perfectly with our outer columns set up on &lt;code&gt;.main&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Benefits&lt;/h3&gt;
+&lt;p&gt;In addition to what I’ve already outlined, looser adherence to the original design system sets us up as developers to leverage our expertise and our tools — the browser — more effectively. Pixels and columns are less salient than relationships and proportional space.&lt;/p&gt;
+
+&lt;p&gt;It’s not significant that &lt;code&gt;.article&lt;/code&gt; starts at column 7 and &lt;code&gt;.info&lt;/code&gt; at column 11. It &lt;em&gt;is&lt;/em&gt; significant that &lt;code&gt;.article&lt;/code&gt; is twice as wide as &lt;code&gt;.info&lt;/code&gt;. Thinking about elements proportionally and questioning how they interact with each other helps us treat layouts as dynamic systems.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Sidenote: Nesting Markup&lt;/h3&gt;
+&lt;p&gt;One thing you may have noticed about the code samples in this section is the usage of &lt;code&gt;left-gutter&lt;/code&gt; and &lt;code&gt;right-gutter&lt;/code&gt; columns. This CSS assumes the most flat HTML possible.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"main"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"header"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"sidebar"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"content"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.main&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;left-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;right-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If we are willing to put a wrapper div into the markup, we can write more direct CSS with fewer columns per element.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"main"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"wrapper"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"header"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"sidebar"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"content"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.main&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;left-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;wrapper&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;right-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.wrapper&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;wrapper&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The second approach feels inherently better because the math is simpler — you get to stop worrying as soon as possible about numbers that add to 14 and just think about a 1:2 ratio. This feels true to the spirit of CSS Grid.&lt;/p&gt;
+
+&lt;p&gt;What doesn’t feel true to CSS Grid, though, is adding the &lt;code&gt;.wrapper&lt;/code&gt; div. Grid works hard to help us separate presentation from content — i.e., we don’t need to add extra elements to make the styling work or “behave nicely”. So, at least for today, I encourage you &lt;em&gt;not&lt;/em&gt; to add or change markup for the sole purpose of cleaner CSS Grid styling.&lt;/p&gt;
+&lt;h2 class='section-title' id=coda&gt;&lt;a href='#coda' class='section-inner'&gt;Coda&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Thanks for coming on this CSS Grid journey with me! I’ve been using and loving it over the past couple of months, and I hope this helps you understand and use it on your end 💐&lt;/p&gt;
+
+&lt;p&gt;To reiterate my points from the intro, CSS Grid is easy to use but difficult to learn. It’s a more intuitive paradigm than any other CSS layout technique, but it’s completely different from its predecessors.&lt;/p&gt;
+
+&lt;p&gt;All this to say: take Grid as slowly as you need to. Don’t try to understand it all just from reading the spec. Set up simple examples, pop open that web inspector (especially in Firefox!), and be kind to yourself.&lt;/p&gt;
+
+&lt;p&gt;It’ll be worth it.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Private vs. Restricted Node Packages: What's the Diff?</title>
     <link rel="alternate" href="https://vgpena.github.io/private-vs-restricted-node-packages-what-s-the-diff/"/>
@@ -579,432 +857,6 @@
 &lt;p&gt;&lt;a href="https://github.com/nodejs/node/pull/6792"&gt;As of May 2016&lt;/a&gt;, you can freakin debug your Node.js code in Chrome. Paul Irish did &lt;a href="https://medium.com/@paul_irish/debugging-node-js-nightlies-with-chrome-devtools-7c4a1b95ae27"&gt;a lovely writeup&lt;/a&gt; on how to get this going. 🚀&lt;/p&gt;
 
 &lt;p&gt;Okay okay I&amp;#39;m done now. Happy coding!&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Classifying Tweets with Keras and TensorFlow</title>
-    <link rel="alternate" href="https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/"/>
-    <id>https://vgpena.github.io/classifying-tweets-with-keras-and-tensorflow/</id>
-    <published>2017-09-02T19:05:00-07:00</published>
-    <updated>2018-07-03T11:21:36-07:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <summary type="html">I had a week to make my first neural network. I dove into TensorFlow and Keras, and came out with a deep neural network, trained on tweets, that can classify text sentiment. Here's an introduction to neural networks and machine learning, and step-by-step instructions of how to do it yourself.</summary>
-    <content type="html">&lt;p&gt;Summer is drawing to a close. The air is humid and still. You’re between projects at work. What do you do with these few empty days?&lt;/p&gt;
-
-&lt;p&gt;If you’re like me, you train a neural net. It had been on my “To Do” list for about a year now, and while I had done some reading and tutorials, I hadn’t yet made my own from the ground up.&lt;/p&gt;
-
-&lt;p&gt;I spent a few days chasing dead-ish ends, doing even more tutorials, and tinkering. I emerged with a custom neural net that could classify text as positive or negative with 79.3% accuracy.&lt;/p&gt;
-
-&lt;p&gt;Here’s how to create your own neural net using Python, TensorFlow, and Keras! Happy learnings ✨&lt;/p&gt;
-&lt;h2 class='section-title' id=so-what-do-neural-nets-do&gt;&lt;a href='#so-what-do-neural-nets-do' class='section-inner'&gt;So what do neural nets do?&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Neural net[work]s are collections of nodes that apply transformations to data. Their core behavior is: given an input, generate an output.&lt;/p&gt;
-
-&lt;p&gt;The intriguing aspect of neural nets is that we don’t tell them &lt;em&gt;how&lt;/em&gt; to generate that output. Rather, we set them up to “learn” how to generate outputs based on massive amounts of training data. Training data consists of an input and an output, usually labelled by humans. The neural net intakes a piece of training data, generates an output, compares that output to the actual result, and adjusts the weights on its nodes — that is, how likely an individual node is to return a certain intermediate value. Modifying these weights leads a net to return one value or another given an input, and is how the net refines its accuracy as it trains.&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/keras/nnet.png" alt="A diagram of a neural network with two hidden layers in addition to input and output layers." title="A sample neural network." width="597px" height="324px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;A neural network with two hidden layers. &lt;a href="http://neuralnetworksanddeeplearning.com/chap1.html"&gt;Source&lt;/a&gt;&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;Nodes are arranged in layers within the neural net. All neural nets have an input layer and an output layer; within, they have at least one additional “hidden” layer. “Deep” neural nets have more than one hidden layer. This is also the difference, name-wise, between “machine” and “deep” learning.
-Once you train a neural net, it contains a fairly accurate self-adjusted system for creating outputs. Ideally, you can feed novel data into the net and end up with a meaningful output.&lt;/p&gt;
-
-&lt;p&gt;Neural nets can either &lt;em&gt;classify&lt;/em&gt; extant data or &lt;em&gt;predict&lt;/em&gt; new data. &lt;a href="https://www.technologyreview.com/s/419223/using-neural-networks-to-classify-music/"&gt;Identifying musical genre&lt;/a&gt; is an example of the former; &lt;a href="http://cs.stanford.edu/people/karpathy/convnetjs/demo/image_regression.html"&gt;fusing visual styles&lt;/a&gt;, of the latter. Kristen Stewart -- yes, the lead from &lt;em&gt;Twilight&lt;/em&gt; -- used this to give her film &lt;em&gt;Come Swim&lt;/em&gt; (2017) an impressionist look. She even &lt;a href="https://arxiv.org/pdf/1701.04928v1.pdf"&gt;co-authored a paper&lt;/a&gt; about the technique 🔥🔥🔥&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-primary"&gt;
-    &lt;img src="/images/keras/come-swim.png" alt="Four squares illustrating different degrees of visual treatment for &amp;quot;Come Swim&amp;quot;. All depict a man in water, but each has been modified to have its own visual style." title="Details from &amp;quot;Come Swim&amp;quot;" width="1404px" height="797px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;Fine-tuning the visual treatment for &lt;em&gt;Come Swim&lt;/em&gt;. &lt;a href="https://arxiv.org/pdf/1701.04928v1.pdf"&gt;Source&lt;/a&gt;&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html"&gt;Deep Dream&lt;/a&gt;, a project out of Google, both classifies and predicts. It uses classifications to suggest predictions, which in turn amplify the certainty of classifications. It turns landscapes and portraits into fields of roiling curves often resembling human eyes.&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/keras/deep-dream.jpg" alt="&amp;quot;The Scream&amp;quot; by Edvard Munch, but all the fields of color have been subdivided into roiling curls resembling nested eyes, cars, and dogs." title="A sample Deep Dream project" width="767px" height="965px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;A sample of what Deep Dream can do when applied to Edvard Munch&amp;#39;s &lt;em&gt;The Scream&lt;/em&gt;. &lt;a href="https://photos.google.com/share/AF1QipPX0SCl7OzWilt9LnuQliattX4OUCj_8EP65_cTVnBmS1jnYgsGQAieQUc1VQWdgQ/photo/AF1QipPAcXwHkI3k8Sqnq-3WJUfXCZR68rZYTiR2b3te?key=aVBxWjhwSzg2RjJWLWRuVFBBZEN1d205bUdEMnhB"&gt;Source&lt;/a&gt;&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;I won’t get into the specifics of neural nets or training/adjustment mechanics here. I’ve done some reading but I have a long way to go before I am truly 1337. I highly recommend &lt;em&gt;&lt;a href="http://neuralnetworksanddeeplearning.com/"&gt;Neural Networks and Deep Learning&lt;/a&gt;&lt;/em&gt; if you’re looking for a great intro to the field.&lt;/p&gt;
-&lt;h2 class='section-title' id=whats-emourem-neural-net-going-to-do&gt;&lt;a href='#whats-emourem-neural-net-going-to-do' class='section-inner'&gt;What’s &lt;em&gt;our&lt;/em&gt; neural net going to do?&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;We’ll perform the relatively straightforward task of classifying text — specifically, we’ll predict whether text expresses a positive or a negative sentiment. As training data, we’re using the behemoth &lt;a href="http://thinknook.com/twitter-sentiment-analysis-training-corpus-dataset-2012-09-22/"&gt;Twitter Sentiment Analysis Dataset&lt;/a&gt; documented at ThinkNook.&lt;/p&gt;
-&lt;h2 class='section-title' id=getting-started-environment-and-tools&gt;&lt;a href='#getting-started-environment-and-tools' class='section-inner'&gt;Getting started: environment and tools&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Our neural net is Python 2 based, so make sure that’s what you’re working with on your own machine. I highly recommend &lt;a href="https://virtualenv.pypa.io/en/stable/"&gt;virtualenv&lt;/a&gt; for managing your package installs, and &lt;a href="https://ipython.org/"&gt;IPython&lt;/a&gt; as an interactive editor.
-The net itself will be built using &lt;a href="https://www.tensorflow.org/"&gt;TensorFlow&lt;/a&gt;, an open-source, Google-backed machine learning framework. We’re laying &lt;a href="https://keras.io/"&gt;Keras&lt;/a&gt; on top of TensorFlow to act as an API and simplify TensorFlow’s syntax.
-If you want to dig into TensorFlow on its own for a bit, &lt;a href="https://www.tensorflow.org/get_started/mnist/beginners"&gt;their “For Beginners” tutorial&lt;/a&gt; is informative and surprisingly painless.&lt;/p&gt;
-&lt;h2 class='section-title' id=language-and-machines&gt;&lt;a href='#language-and-machines' class='section-inner'&gt;Language and machines&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;For me, there are few joys on par with working with natural language. In machine learning, we have two ways of representing language language: vector embeddings or one-hot matrices.
-Vector embeddings are spatial mappings of words or phrases. Relative locations of words indicate similarity and suggest semantic relationships — for instance, &lt;a href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf"&gt;vector embeddings can be used to generate analogies&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/keras/vectors.png" alt="Graphs depict vector embeddings -- circles with lines drawn between them to convey analogous relationships between the words represented by the circles." title="A sample neural network." width="1576px" height="772px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;Sample vector embeddings that demonstrate analogous relationships between words. &lt;a href="http://neuralnetworksanddeeplearning.com/chap1.html"&gt;Source&lt;/a&gt;&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;One-hot matrices, on the other hand, contain no linguistic information. (If you’re taking all the recommended detours, you’ll remember one-hot matrices from the &lt;a href="https://www.tensorflow.org/get_started/mnist/beginners"&gt;TensorFlow MNIST digit classification tutorial&lt;/a&gt;.) They’re naïve; they indicate what data they contain but suggest nothing &lt;em&gt;about&lt;/em&gt; that data, or its relationship to other information.
-I decided to use one-hot matrices so that I could focus on other aspects of the other project. So let’s talk about them for a bit.&lt;/p&gt;
-&lt;h2 class='section-title' id=enter-the-one-hot-matrix&gt;&lt;a href='#enter-the-one-hot-matrix' class='section-inner'&gt;Enter the (one-hot) matrix&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;One-hot matrices are called “one-hot” because they each embody one dimension of difference from each other; each matrix has one distinguishing (“hot”) characteristic. We can take all the data in our system and represent them using this flattened system.
-As an example, let’s take a couple of lines from &lt;a href="https://www.python.org/dev/peps/pep-0020/"&gt;PEP 20&lt;/a&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code plaintext"&gt;&lt;code&gt;Complex is better than complicated.
-Flat is better than nested.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;How do we represent that in a one-hot matrix?&lt;/p&gt;
-
-&lt;p&gt;We begin by tokenizing the utterance; that is, breaking it into words. We end up with&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code python"&gt;&lt;code&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'complex'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'is'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'better'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'than'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'complicated'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'flat'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'is'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'better'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'than'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'nested'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now we can create a lookup dictionary of all  the unique words. We now have:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code python"&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="s"&gt;'complex'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s"&gt;'is'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s"&gt;'better'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s"&gt;'than'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s"&gt;'complicated'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s"&gt;'flat'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s"&gt;'nested'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Count doesn’t matter; order doesn’t matter. Each token just needs a unique identifier.
-Now to create the matrices: each token needs to be transformed from a string into an array. Each array is of the length of the dictionary, and each value in the dictionary that’s &lt;em&gt;not&lt;/em&gt; the value of the current token is represented by a 0. The value of the token is represented with a 1. “Complex is better than complicated” would look like:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code python"&gt;&lt;code&gt;&lt;span class="p"&gt;[&lt;/span&gt;
-  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="c"&gt;#complex&lt;/span&gt;
-  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="c"&gt;#is&lt;/span&gt;
-  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="c"&gt;#better&lt;/span&gt;
-  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="c"&gt;#than&lt;/span&gt;
-  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="c"&gt;#complicated&lt;/span&gt;
-&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Now we can deal with the tokens in a uniform way, since they’re all represented by isomorphic data structures, and once we’re done we can look up their values using the dictionary we made earlier.&lt;/p&gt;
-
-&lt;p&gt;One-hot matrices get large quickly. In my example, I’m “only” using the top 3000 most-commonly occurring words in the training corpus. This means that each word becomes represented by an array 3000 items long 😬 Whether using one-hot matrices or not, we’re reckoning with a ton of data, but one-hot matrices are ideally used for a small or finite dataset. In MNIST, for example, a one-hot matrix is used to encode information about whether an image represents a digit from 0 to 9. All the arrays are kept nice and small to a length of 10.&lt;/p&gt;
-&lt;h2 class='section-title' id=lets-get-cooking&gt;&lt;a href='#lets-get-cooking' class='section-inner'&gt;Let’s get cooking&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Enough preamble; time to get started actually building our neural net! Our work will be based on &lt;a href="https://github.com/fchollet/keras/blob/master/examples/reuters_mlp.py"&gt;the Reuters example&lt;/a&gt; in the Keras github repo, but we’ll use our own data set and make a couple more tweaks on the way.&lt;/p&gt;
-
-&lt;p&gt;I will be going over all the code in detail, but &lt;a href="https://gist.github.com/vgpena/b1c088f3c8b8c2c65dd8edbe0eae7023"&gt;I have published it in full in a gist&lt;/a&gt;. It doesn&amp;#39;t have a ton of backstory but it does have all the code in one nice place for you.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;Neural nets can take anywhere from a few moments to days to train, depending on your hardware and on how large and/or complex your dataset is. This net took me ~60 minutes to train on a mid-2015 MacBook Pro (and it got NOISY 😅 ). My point is, you probably won’t want to have to train the net every single time you want to use it. The last step of our training script will also save the net so that we can “boot it up” quickly from another script when we actually want to consult it.&lt;/p&gt;
-
-&lt;p&gt;Let’s worry about the training script first. We’ll need to:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Get our data into a usable format&lt;/li&gt;
-&lt;li&gt;Build our neural net&lt;/li&gt;
-&lt;li&gt;Train it with said data&lt;/li&gt;
-&lt;li&gt;Save the neural net for future use&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 class='section-title' id=organizing-our-data&gt;&lt;a href='#organizing-our-data' class='section-inner'&gt;Organizing our data&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;We’re using the &lt;a href="http://thinknook.com/twitter-sentiment-analysis-training-corpus-dataset-2012-09-22/"&gt;Twitter Sentiment Analysis Dataset&lt;/a&gt; available via ThinkNook. Be prepared; this dataset is &lt;em&gt;extremely large&lt;/em&gt; and may take forever-ish to open in Excel (I had more success with Numbers).&lt;/p&gt;
-
-&lt;p&gt;One you open it, you can see a massive table that starts with this:&lt;/p&gt;
-&lt;div class='table-wrap'&gt;&lt;table&gt;&lt;tr&gt;
-&lt;th&gt;&lt;strong&gt;ItemID&lt;/strong&gt;&lt;/th&gt;
-&lt;th&gt;&lt;strong&gt;Sentiment&lt;/strong&gt;&lt;/th&gt;
-&lt;th&gt;&lt;strong&gt;SentimentSource&lt;/strong&gt;&lt;/th&gt;
-&lt;th&gt;&lt;strong&gt;SentimentText&lt;/strong&gt;&lt;/th&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
-&lt;td&gt;Sentiment140&lt;/td&gt;
-&lt;td&gt;is so sad for my APL friend.............&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
-&lt;td&gt;Sentiment140&lt;/td&gt;
-&lt;td&gt;I missed the New Moon trailer...&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;Sentiment140&lt;/td&gt;
-&lt;td&gt;omg its already 7:30 :O&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;&lt;/div&gt;
-&lt;p&gt;The only columns we’re interested in here are 1 and 3 — we’ll be training our net on inputs of column &lt;code&gt;SentimentText&lt;/code&gt; with outputs of &lt;code&gt;Sentiment&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;We need to convert &lt;code&gt;SentimentText&lt;/code&gt; utterances to one-hot matrices, and create a dictionary of all the words we keep track of. Here, the &lt;code&gt;numpy&lt;/code&gt; library is your friend. I hadn’t used it much before this but it’s super powerful and has some really useful built-in utilities.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code python"&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;
-
-&lt;span class="c"&gt;# extract data from a csv&lt;/span&gt;
-&lt;span class="c"&gt;# notice the cool options to skip lines at the beginning&lt;/span&gt;
-&lt;span class="c"&gt;# and to only take data from certain columns&lt;/span&gt;
-&lt;span class="n"&gt;training&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;genfromtxt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'path/to/your/data.csv'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;','&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;skip_header&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;usecols&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;dtype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c"&gt;# create our training data from the tweets&lt;/span&gt;
-&lt;span class="n"&gt;train_x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;training&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="c"&gt;# index all the sentiment labels&lt;/span&gt;
-&lt;span class="n"&gt;train_y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;asarray&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;training&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Okay, we’ve indexed all of our data; time to use Keras to make it machine-friendly.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code python"&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;keras&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;keras.preprocessing.text&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;kpt&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;keras.preprocessing.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Tokenizer&lt;/span&gt;
-
-&lt;span class="c"&gt;# only work with the 3000 most popular words found in our dataset&lt;/span&gt;
-&lt;span class="n"&gt;max_words&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3000&lt;/span&gt;
-
-&lt;span class="c"&gt;# create a new Tokenizer&lt;/span&gt;
-&lt;span class="n"&gt;tokenizer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Tokenizer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_words&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;max_words&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c"&gt;# feed our tweets to the Tokenizer&lt;/span&gt;
-&lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit_on_texts&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;train_x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c"&gt;# Tokenizers come with a convenient list of words and IDs&lt;/span&gt;
-&lt;span class="n"&gt;dictionary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;word_index&lt;/span&gt;
-&lt;span class="c"&gt;# Let's save this out so we can use it later&lt;/span&gt;
-&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'dictionary.json'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'w'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;dictionary_file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dictionary_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;convert_text_to_index_array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="c"&gt;# one really important thing that `text_to_word_sequence` does&lt;/span&gt;
-    &lt;span class="c"&gt;# is make all texts the same length -- in this case, the length&lt;/span&gt;
-    &lt;span class="c"&gt;# of the longest text in the set.&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;kpt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text_to_word_sequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
-
-&lt;span class="n"&gt;allWordIndices&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
-&lt;span class="c"&gt;# for each tweet, change each token to its ID in the Tokenizer's word_index&lt;/span&gt;
-&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;train_x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;wordIndices&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;convert_text_to_index_array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;allWordIndices&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;wordIndices&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c"&gt;# now we have a list of all tweets converted to index arrays.&lt;/span&gt;
-&lt;span class="c"&gt;# cast as an array for future usage.&lt;/span&gt;
-&lt;span class="n"&gt;allWordIndices&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;asarray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;allWordIndices&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c"&gt;# create one-hot matrices out of the indexed tweets&lt;/span&gt;
-&lt;span class="n"&gt;train_x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sequences_to_matrix&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;allWordIndices&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'binary'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c"&gt;# treat the labels as categories&lt;/span&gt;
-&lt;span class="n"&gt;train_y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;keras&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;utils&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_categorical&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;train_y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;✨ Cooooooooooooool. ✨ Now you have training data and labels that you’ll be able to pipe right into your neural net.&lt;/p&gt;
-&lt;h2 class='section-title' id=making-a-model&gt;&lt;a href='#making-a-model' class='section-inner'&gt;Making a model&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Keras makes building neural nets as simple as possible, to the point where you can add a layer to the network in short line of code. Here’s how I built my net:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code python"&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;keras.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Sequential&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;keras.layers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Dropout&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Activation&lt;/span&gt;
-
-&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Sequential&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;512&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;input_shape&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_words&lt;/span&gt;&lt;span class="p"&gt;,),&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'relu'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dropout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'sigmoid'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dropout&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Dense&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;activation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'softmax'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Looks simple enough. What does it mean?? 🌈🌈&lt;/p&gt;
-
-&lt;p&gt;Keras’ &lt;code&gt;Sequential()&lt;/code&gt; is a simple type of neural net that consists of a “stack” of layers executed in order.&lt;/p&gt;
-
-&lt;p&gt;If we wanted to, we could make a stack of only two layers (input and output) to make a complete neural net — without hidden layers, it wouldn’t be considered a deep neural net.&lt;/p&gt;
-
-&lt;p&gt;The input and output layers are the most important, since they determine the overall shape of the neural net. You need to know what kind of input to expect, and what kind of output you want.&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/keras/nnet2.png" alt="A diagram of a neural net used to identify digits using MNIST data." title="A page from the Perspectiva Corporum Regularium" width="537px" height="447px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;A representation of a neural net for identifying digits using the MNIST dataset. &lt;a href="http://neuralnetworksanddeeplearning.com/chap1.html"&gt;Source&lt;/a&gt;&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;Out network will mostly consist of &lt;code&gt;Dense&lt;/code&gt; layers — the “standard”, linear neural net layer of inputs, weights, and outputs.&lt;/p&gt;
-
-&lt;p&gt;In our case, we’re inputting a sentence that will be converted to a one-hot matrix of length &lt;code&gt;max_words&lt;/code&gt; — here, 3000. We also include how many outputs we want to come out of that layer (512, for funsies) and what kind of maximization (or “activation”) function to use.&lt;/p&gt;
-
-&lt;p&gt;Activation functions are used when training the network; they tell the network how to judge when a weight for a particular node has created a good fit. In the first layer, I use &lt;code&gt;relu&lt;/code&gt; (also for funsies). Activation functions differ, mostly in speed, but all the ones available in Keras and TensorFlow are viable; feel free to play around with them. If you don’t explicitly add an activation function, that layer will use a linear one.&lt;/p&gt;
-
-&lt;p&gt;Our output layer consists of two possible outputs, since that’s how many categories our data could get sorted into. If you use a neural net to predict rather than classify, you’re actually creating a neural net with one possible output — the prediction.&lt;/p&gt;
-
-&lt;p&gt;In between the input and output layers, we have one more &lt;code&gt;Dense&lt;/code&gt; layer and two &lt;code&gt;Dropout&lt;/code&gt; layers. Dropouts are used to randomly remove data, which can help avoid overfitting. Overfitting can happen when you keep training on the same or overly-similar data — as you train, your accuracy will hold steady or drop instead of rising.&lt;/p&gt;
-
-&lt;p&gt;As the last step before training, we need to compile the network:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code python"&gt;&lt;code&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nb"&gt;compile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'categorical_crossentropy'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="n"&gt;optimizer&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'adam'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'accuracy'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Specifying that we want to collect the &lt;code&gt;accuracy&lt;/code&gt; metric will give us really helpful live output as we train our model.&lt;/p&gt;
-&lt;h2 class='section-title' id=how-to-train-your-network&gt;&lt;a href='#how-to-train-your-network' class='section-inner'&gt;How to train your network&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;This is some tiny code that will take a while to run:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code python"&gt;&lt;code&gt;&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;train_x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;train_y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="n"&gt;batch_size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="n"&gt;epochs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="n"&gt;verbose&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="n"&gt;validation_split&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;0.1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="n"&gt;shuffle&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;We’re fitting (training) our model off of inputs &lt;code&gt;train_x&lt;/code&gt; and categories &lt;code&gt;train_y&lt;/code&gt;. We evaluate data in groups of &lt;code&gt;batch_size&lt;/code&gt;, checking the network’s accuracy, tweaking node weights, and then running through another batch. Small batches let you train networks much more quickly than if you tried to use a batch the size of your entire training dataset.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;epochs&lt;/code&gt; is how many times you do this batch-by-batch splitting. I’ve found 5 to be good in this case; I tried 7, but ended up overfitting.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;validation_split&lt;/code&gt; says how much of your input you want to be reserved for testing data — essential for seeing how accurate your network is at that point. Recommended training-to-test ratios are 80:20 or 90:10. You don’t want to compromise the size of your training corpus, but you need enough test data to actually see how your net is doing.&lt;/p&gt;
-
-&lt;p&gt;Now go get coffee, or maybe a meal. And if you’re on a laptop, make sure it’s plugged in — training can be a real battery killer ☠️&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/keras/perspectiva.jpg" alt="An etching of a fractured geometric figure propped up on a platform surrounded by quare pyramids and a crucifix." title="A page from the Perspectiva Corporum Regularium" width="1191px" height="800px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;If you need something to lose yourself in for about an hour, I suggest the &lt;em&gt;&lt;a href="http://digital.slub-dresden.de/werkansicht/dlf/12830/"&gt;Perspectiva Corporum Regularium&lt;/a&gt;&lt;/em&gt;.&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;As you train the neural net, Keras will output running stats on what epoch you’re in, how much time is left in that epoch of training, and current accuracy. The value to watch is not &lt;code&gt;acc&lt;/code&gt; but &lt;code&gt;val_acc&lt;/code&gt;, or Validation Accuracy. This is your neural net&amp;#39;s score when predicting values for data in your validation split.&lt;/p&gt;
-
-&lt;p&gt;Your accuracy should start out low per epoch and rise throughout the epoch; it should increase at least a little across epochs. If your accuracy starts decreasing, you’re overfitting.&lt;/p&gt;
-
-&lt;p&gt;This is some sample output from training using this code over five epochs:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code python"&gt;&lt;code&gt;&lt;span class="mi"&gt;1420764&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;1420764&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;==============================&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;780&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.4947&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7610&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;val_loss&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.4500&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;val_acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7884&lt;/span&gt;
-&lt;span class="n"&gt;Epoch&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
-&lt;span class="mi"&gt;1420764&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;1420764&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;==============================&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;850&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.4737&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7760&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;val_loss&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.4481&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;val_acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7902&lt;/span&gt;
-&lt;span class="n"&gt;Epoch&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
-&lt;span class="mi"&gt;1420764&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;1420764&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;==============================&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;788&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.4662&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7817&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;val_loss&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.4446&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;val_acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7921&lt;/span&gt;
-&lt;span class="n"&gt;Epoch&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
-&lt;span class="mi"&gt;1420764&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;1420764&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;==============================&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;819&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.4607&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7859&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;val_loss&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.4471&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;val_acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7921&lt;/span&gt;
-&lt;span class="n"&gt;Epoch&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
-&lt;span class="mi"&gt;1420764&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;1420764&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;==============================&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;829&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.4569&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7887&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;val_loss&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.4439&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;val_acc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7927&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Our accuracy increases from 78.8% accurate by the end of Epoch 1 to 79.3% at the end of Epoch 5.&lt;/p&gt;
-
-&lt;p&gt;&lt;div class="image-wrap image-primary"&gt;
-    &lt;img src="/images/keras/noice.gif" alt="NOICE!" title="NOICE!!" width="500px" height="201px" /&gt;
-  &lt;/div&gt;&lt;/p&gt;
-&lt;h2 class='section-title' id=saving-your-model&gt;&lt;a href='#saving-your-model' class='section-inner'&gt;Saving your model&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Once you’re done training, it’s time to save your net so that you don’t have to keep repeating all of those steps.&lt;/p&gt;
-
-&lt;p&gt;Your model gets saved in two parts: One is the model’s structure itself; the other is the weights used in those model’s nodes.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code python"&gt;&lt;code&gt;&lt;span class="n"&gt;model_json&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_json&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'model.json'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'w'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;json_file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;json_file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;model_json&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save_weights&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'model.h5'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;And that’s it!&lt;/p&gt;
-&lt;h2 class='section-title' id=party-time&gt;&lt;a href='#party-time' class='section-inner'&gt;Party time&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Finally you can use your neural net! In a new file, you’ll open the model, its weights, and your dictionary, and then put those together to classify text. We’re going to go over the whole file at once because I’m excited to actually use it:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code python"&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;keras&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;keras.preprocessing.text&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;kpt&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;keras.preprocessing.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Tokenizer&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;keras.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;model_from_json&lt;/span&gt;
-
-&lt;span class="c"&gt;# we're still going to use a Tokenizer here, but we don't need to fit it&lt;/span&gt;
-&lt;span class="n"&gt;tokenizer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Tokenizer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_words&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c"&gt;# for human-friendly printing&lt;/span&gt;
-&lt;span class="n"&gt;labels&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'negative'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'positive'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-
-&lt;span class="c"&gt;# read in our saved dictionary&lt;/span&gt;
-&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'dictionary.json'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'r'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;dictionary_file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;dictionary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dictionary_file&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c"&gt;# this utility makes sure that all the words in your input&lt;/span&gt;
-&lt;span class="c"&gt;# are registered in the dictionary&lt;/span&gt;
-&lt;span class="c"&gt;# before trying to turn them into a matrix.&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;convert_text_to_index_array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;words&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;kpt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text_to_word_sequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;wordIndices&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="n"&gt;wordIndices&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dictionary&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"'&lt;/span&gt;&lt;span class="si"&gt;%&lt;/span&gt;&lt;span class="s"&gt;s' not in training corpus; ignoring."&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;wordIndices&lt;/span&gt;
-
-&lt;span class="c"&gt;# read in your saved model structure&lt;/span&gt;
-&lt;span class="n"&gt;json_file&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'model.json'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'r'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;loaded_model_json&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;json_file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;json_file&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="c"&gt;# and create a model from that&lt;/span&gt;
-&lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model_from_json&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;loaded_model_json&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c"&gt;# and weight your nodes with your saved values&lt;/span&gt;
-&lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load_weights&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'model.h5'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c"&gt;# okay here's the interactive part&lt;/span&gt;
-&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;evalSentence&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;raw_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'Input a sentence to be evaluated, or Enter to quit: '&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;evalSentence&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;break&lt;/span&gt;
-
-    &lt;span class="c"&gt;# format your input for the neural net&lt;/span&gt;
-    &lt;span class="n"&gt;testArr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;convert_text_to_index_array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;evalSentence&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="nb"&gt;input&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tokenizer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sequences_to_matrix&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;testArr&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;'binary'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="c"&gt;# predict which bucket your input belongs in&lt;/span&gt;
-    &lt;span class="n"&gt;pred&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="c"&gt;# and print it for the humons&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="si"&gt;%&lt;/span&gt;&lt;span class="s"&gt;s sentiment; &lt;/span&gt;&lt;span class="si"&gt;%&lt;/span&gt;&lt;span class="s"&gt;f&lt;/span&gt;&lt;span class="si"&gt;%% &lt;/span&gt;&lt;span class="s"&gt;confidence"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;labels&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argmax&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pred&lt;/span&gt;&lt;span class="p"&gt;)],&lt;/span&gt; &lt;span class="n"&gt;pred&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;][&lt;/span&gt;&lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argmax&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pred&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;If you run this file, you create a new model using the saved structure, and then you get a little command prompt for input to classify.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;model.predict()&lt;/code&gt; takes what you give it, runs it through the trained neural net, and gives you a reading of how confident it is that that input belongs in each output bucket. In our case, we have two outputs, so we have two confidence estimations that range from 0 to 1; whichever one is higher is the network’s ultimate classification of that data.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code plaintext"&gt;&lt;code&gt;Input a sentence to be evaluated, or Enter to quit: It's alive! :D
-positive sentiment; 80.760884% confidence
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;👌🏻&lt;/p&gt;
-&lt;h2 class='section-title' id=you-did-it&gt;&lt;a href='#you-did-it' class='section-inner'&gt;You did it!&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;You’ve trained your first neural net that evaluates text as expressing positive or negative sentiment. And it works well(ish):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code plaintext"&gt;&lt;code&gt;Input a sentence to be evaluated, or Enter to quit: That went better than expected
-positive sentiment; 56.355631% confidence
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="code plaintext"&gt;&lt;code&gt;Input a sentence to be evaluated, or Enter to quit: That did not go as expected
-negative sentiment; 86.936867% confidence
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 class='section-title' id=next-steps&gt;&lt;a href='#next-steps' class='section-inner'&gt;Next steps&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;div class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/keras/party.gif" alt="" title="Thanks for sticking with me through all of that." width="480px" height="360px" /&gt;
-  &lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;This is a really basic neural net, and there’s a lot more I’d like to investigate. Among other things:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;You can deploy machine learning models to the cloud using &lt;a href="https://cloud.google.com/ml-engine/"&gt;Google Cloud ML&lt;/a&gt; — what could I do if I ported my local machine to operate on Google Cloud Platform, or if I started building new models using that service?&lt;/li&gt;
-&lt;li&gt;I chose the option of less-powerful word indexing by using one-hot matrices instead of vector embeddings. What accuracy could I get if I started using the latter?&lt;/li&gt;
-&lt;li&gt;Classification is great but I’d really love to work on text &lt;em&gt;generation&lt;/em&gt;, guessing at the next most-likely word in the sequence.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;All of the code in this post, plus the requirements file, is up &lt;a href="https://gist.github.com/vgpena/b1c088f3c8b8c2c65dd8edbe0eae7023"&gt;in a Github gist&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Happy coding! And thanks for following me on this journey 🌟&lt;/p&gt;
-&lt;h2 class='section-title' id=coda-how-well-does-it-work-and-more-on-data&gt;&lt;a href='#coda-how-well-does-it-work-and-more-on-data' class='section-inner'&gt;Coda: How well does it work? And more on data&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;I’m super proud of this neural net but 79% accuracy means that it’s wrong 21% of the time.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code plaintext"&gt;&lt;code&gt;Input a sentence to be evaluated, or Enter to quit: I wish I could show you when you are lonely or in darkness the astonishing light of your own being
-negative sentiment; 87.021768% confidence
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="code plaintext"&gt;&lt;code&gt;Input a sentence to be evaluated, or Enter to quit: foo bar
-positive sentiment; 62.751633% confidence
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;🤔 🤔 Those don’t look quite right.&lt;/p&gt;
-
-&lt;p&gt;We can always build better models, but a lot of this is &lt;a href="https://en.wikipedia.org/wiki/Garbage_in,_garbage_out"&gt;Garbage In, Garbage Out&lt;/a&gt;. The dataset I used is incredibly large, but looking through it, there are classifications I don’t agree with, such as marking &lt;code&gt;... health class (what a joke!)&lt;/code&gt; as positive. Without bringing compensation algorithms into the mix, your neural net can only be as accurate as your training data.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;On that note, I encourage you to examine your training data closely. What biases or prejudices might have influenced that information? Those biases will also be present, explicitly or implicitly, in your output.&lt;/p&gt;
-
-      &lt;blockquote&gt;
-        &lt;p&gt;The past is a very racist place. And we only have data from the past to train Artificial Intelligence.
-        &lt;cite&gt;
-          Trevor Paglen&lt;/p&gt;
-
-        &lt;/cite&gt;
-      &lt;/blockquote&gt;
-    
-&lt;p&gt;This doesn’t mean that any and all data are inherently biased and therefore unusable — we just need to be aware of that bias and work to eradicate it. Researchers from Boston University and Microsoft have &lt;a href="https://arxiv.org/abs/1607.06520"&gt;created ways to work with appropriately gendered analogies without reinforcing gender stereotypes&lt;/a&gt;. &lt;a href="https://artificialintelligencenow.com/"&gt;AI Now&lt;/a&gt; is an entire research organization dedicated to teasing out the biases and impacts of artificial intelligence and machine learning.&lt;/p&gt;
-
-&lt;p&gt;ML is powerful and we can make amazing things with it. Let’s use it to create a more equitable future.&lt;/p&gt;
-&lt;h2 class='section-title' id=downloads&gt;&lt;a href='#downloads' class='section-inner'&gt;Downloads&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://gist.github.com/vgpena/b1c088f3c8b8c2c65dd8edbe0eae7023"&gt;code&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://thinknook.com/twitter-sentiment-analysis-training-corpus-dataset-2012-09-22/"&gt;dataset&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </content>
   </entry>
 </feed>

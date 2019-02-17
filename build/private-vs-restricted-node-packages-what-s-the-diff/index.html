@@ -1,140 +1,80 @@
-<!doctype html>
-<html lang=en-us>
+<!doctype html> <html lang=en-us> <head> <meta charset=utf-8> <link rel=alternate type="application/atom+xml" href="https://vgpena.github.io/feed.xml" title="Like, subscribe, &amp; download my mixtape"/> <meta property="og:type" content=website> <meta property="og:url" content="https://vgpena.github.io/private-vs-restricted-node-packages-what-s-the-diff/"> <meta property="og:site_name" content="hey it's violet"> <meta property="og:title" content="Private vs. Restricted Node Packages: What's the Diff?"> <meta property="og:description" content="'Private' and 'Restricted' may sound similar, but they're completely different when it comes to Node packages. Here's what they mean and how to use them."> <meta property="og:image" content="https://vgpena.github.io/images/harriet.gif"> <meta name="twitter:domain" value="vgpena.github.io"> <meta property="twitter:title" content="Private vs. Restricted Node Packages: What's the Diff?"> <meta property="twitter:description" ontent="'Private' and 'Restricted' may sound similar, but they're completely different when it comes to Node packages. Here's what they mean and how to use them."> <meta property="twitter:url" content="https://vgpena.github.io/private-vs-restricted-node-packages-what-s-the-diff/"> <meta property="twitter:image" content="https://vgpena.github.io/images/harriet.gif"> <meta name=author content="Violet Peña"> <meta name=description content="'Private' and 'Restricted' may sound similar, but they're completely different when it comes to Node packages. Here's what they mean and how to use them."> <meta name=viewport content="width=device-width, initial-scale=1"> <script>
+  if ('FontFace' in window) {
+    const fonts = [
+      {
+        name: 'Overpass Mono',
+        files: [
+          {
+            fileName: 'OverpassMono-Light',
+            weight: 'normal',
+            style: 'normal',
+          },
+          {
+            fileName: 'OverpassMono-Bold',
+            weight: 'bold',
+            style: 'normal',
+          }
+        ]
+      },
+      {
+        name: 'Pitch Display',
+        files: [
+          {
+            fileName: 'Pitch-Display',
+            weight: 'normal',
+            style: 'normal',
+          }
+        ]
+      },
+      {
+        name: 'Karla',
+        files: [
+          {
+            fileName: 'Karla-Regular',
+            weight: 'normal',
+            style: 'normal',
+          },
+          {
+            fileName: 'Karla-Bold',
+            weight: 'bold',
+            style: 'normal',
+          },
+          {
+            fileName: 'Karla-Italic',
+            weight: 'normal',
+            style: 'italic',
+          },
+          {
+            fileName: 'Karla-BoldItalic',
+            weight: 'bold',
+            style: 'italic',
+          },
+        ]
+      },
+    ];
 
-<head>
-  <meta charset=utf-8>
-  <link rel=alternate type="application/atom+xml" href="https://vgpena.github.io/feed.xml" title="Like, subscribe, &amp; download my mixtape" />
-  <meta property="og:type" content=website>
-  <meta property="og:url" content="https://vgpena.github.io/private-vs-restricted-node-packages-what-s-the-diff/">
-  <meta property="og:site_name" content="hey it's violet">
-  <meta property="og:title" content="Private vs. Restricted Node Packages: What's the Diff?">
-  <meta property="og:description" content="'Private' and 'Restricted' may sound similar, but they're completely different when it comes to Node packages. Here's what they mean and how to use them.">
-  <meta property="og:image" content="https://vgpena.github.io/images/harriet.gif">
-  <meta name="twitter:domain" value="vgpena.github.io">
-  <meta property="twitter:title" content="Private vs. Restricted Node Packages: What's the Diff?">
-  <meta property="twitter:description" ontent="'Private' and 'Restricted' may sound similar, but they're completely different when it comes to Node packages. Here's what they mean and how to use them.">
-  <meta property="twitter:url" content="https://vgpena.github.io/private-vs-restricted-node-packages-what-s-the-diff/">
-  <meta property="twitter:image" content="https://vgpena.github.io/images/harriet.gif">
-  <meta name=author content="Violet Peña">
-  <meta name=description content="'Private' and 'Restricted' may sound similar, but they're completely different when it comes to Node packages. Here's what they mean and how to use them.">
-  <meta name=viewport content="width=device-width, initial-scale=1">
-  <script>
-    if ('FontFace' in window) {
-      const fonts = [
-        {
-          name: 'Overpass Mono',
-          files: [
-            {
-              fileName: 'OverpassMono-Light',
-              weight: 'normal',
-              style: 'normal',
-            },
-            {
-              fileName: 'OverpassMono-Bold',
-              weight: 'bold',
-              style: 'normal',
-            }
-          ]
-        },
-        {
-          name: 'Pitch Display',
-          files: [
-            {
-              fileName: 'Pitch-Display',
-              weight: 'normal',
-              style: 'normal',
-            }
-          ]
-        },
-        {
-          name: 'Karla',
-          files: [
-            {
-              fileName: 'Karla-Regular',
-              weight: 'normal',
-              style: 'normal',
-            },
-            {
-              fileName: 'Karla-Bold',
-              weight: 'bold',
-              style: 'normal',
-            },
-            {
-              fileName: 'Karla-Italic',
-              weight: 'normal',
-              style: 'italic',
-            },
-            {
-              fileName: 'Karla-BoldItalic',
-              weight: 'bold',
-              style: 'italic',
-            },
-          ]
-        },
-      ];
+    fonts.forEach((font) => {
+      font.files.forEach((file) => {
+        const currFont = new FontFace(
+          font.name,
+          `url(/fonts/${ file.fileName }.woff2), url(/fonts/${ file.fileName }.woff)`,
+          {
+            weight: file.weight,
+            style: file.style,
+          }
+        );
 
-      fonts.forEach((font) => {
-        font.files.forEach((file) => {
-          const currFont = new FontFace(
-            font.name,
-            `url(/fonts/${file.fileName}.woff2), url(/fonts/${file.fileName}.woff)`,
-            {
-              weight: file.weight,
-              style: file.style,
-            }
-          );
-
-          currFont.load().then(() => {
-            document.fonts.add(currFont);
-          });
+        currFont.load().then(() => {
+          document.fonts.add(currFont);
         });
       });
-    }
-  </script>
-  <script>
-    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
-    ga('create', 'UA-92096829-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <script async src='https://www.google-analytics.com/analytics.js'></script>
-  <title>Private vs. Restricted Node Packages: What's the Diff? | hey it's violet</title>
-  <link href="/styles/styles.css" rel=stylesheet media=screen />
-</head>
-
-<body>
-  <header id=site-header role=banner aria-label="Hey it's Violet: a blog">
-    <h1 id=site-title> <a href="/" aria-label="Back to home">Hey it's Violet</a> </h1>
-  </header>
-  <main>
-    <article aria-labelledby=article-title>
-      <heading id=article-heading role=heading>
-        <h1 id=article-title> Private vs. Restricted Node Packages: What's the Diff? </h1>
-        <div id=article-info>
-          <h2 class=article-info-piece id=article-subtitle> THE PEOPLE NEED ANSWERS </h2>
-          <h2 class=article-info-piece id=article-date aria-label="Published December 28, 2018"> 12.28.2018 </h2>
-        </div>
-      </heading>
-      <div class=content>
-        <p>At <a href="http://www.instrument.com/">work</a>, my team is sharing React components with our client by
-          packaging and publishing each component individually. Publishing Node packages is new territory for me, and
-          the learning curve hasn’t always been gentle. I’ll take some time now to clarify a paradigm I initially found
-          confusing: what’s the difference between making a Node package <em>private</em> and <em>restricting access</em>
-          to it?</p>
-        <h2 class=section-title id=private-node-packages><a href='#private-node-packages' class=section-inner>Private
-            Node packages</a></h2>
-        <p>A private package is not shared or distributed on its own, and cannot be published to a registry (such as <a
-            href="https://www.npmjs.com/">npmjs.com</a>).</p>
-        <p>
-          <div class=" image-secondary"> <img src="/images/harriet.gif" alt="" title="Harriet the Spy shows us the cover of her journal, which reads PRIVATE."
-              width=400px height=232px /> </div>
-        </p>
-        <p>Marking a package as private ensures that its code will not be published, even accidentally. For instance, a
-          one-off marketing site using React will contain a <code>package.json</code> file. Unless this file specifies
-          that the project is private, an errant contributor could publish the project code to a package registry, even
-          if the code were proprietary or simply wouldn’t make sense to distribute on its own.</p>
-        <p>Here’s a sample <code>package.json</code> for a non-distributable project:</p>
-        <div class=highlight>
-          <pre class="code json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+    });
+  }
+</script> <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-92096829-1', 'auto');
+      ga('send', 'pageview');
+    </script> <script async src='https://www.google-analytics.com/analytics.js'></script> <title>Private vs. Restricted Node Packages: What's the Diff? | hey it's violet</title> <link href="/styles/styles.css" rel=stylesheet media=screen /> </head> <body> <header id=site-header role=banner aria-label="Hey it's Violet: a blog"> <h1 id=site-title> <a href="/" aria-label="Back to home">Hey it's Violet</a> </h1> </header> <main> <article aria-labelledby=article-title> <heading id=article-heading role=heading> <h1 id=article-title> Private vs. Restricted Node Packages: What's the Diff? </h1> <div id=article-info> <h2 class=article-info-piece id=article-subtitle> THE PEOPLE NEED ANSWERS </h2> <h2 class=article-info-piece id=article-date aria-label="Published December 28, 2018"> 12.28.2018 </h2> </div> </heading> <div class=content> <p>At <a href="http://www.instrument.com/">work</a>, my team is sharing React components with our client by packaging and publishing each component individually. Publishing Node packages is new territory for me, and the learning curve hasn’t always been gentle. I’ll take some time now to clarify a paradigm I initially found confusing: what’s the difference between making a Node package <em>private</em> and <em>restricting access</em> to it?</p> <h2 class=section-title id=private-node-packages><a href='#private-node-packages' class=section-inner>Private Node packages</a></h2> <p>A private package is not shared or distributed on its own, and cannot be published to a registry (such as <a href="https://www.npmjs.com/">npmjs.com</a>).</p> <p><div class=" image-secondary"> <img src="/images/harriet.gif" alt="" title="Harriet the Spy shows us the cover of her journal, which reads PRIVATE." width=400px height=232px /> </div></p> <p>Marking a package as private ensures that its code will not be published, even accidentally. For instance, a one-off marketing site using React will contain a <code>package.json</code> file. Unless this file specifies that the project is private, an errant contributor could publish the project code to a package registry, even if the code were proprietary or simply wouldn’t make sense to distribute on its own.</p> <p>Here’s a sample <code>package.json</code> for a non-distributable project:</p> <div class=highlight><pre class="code json"><code><span class="w">    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"specific-website"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A bespoke website for &lt;Client&gt;"</span><span class="p">,</span><span class="w">
@@ -147,26 +87,7 @@
       </span><span class="s2">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-</span></code></pre>
-        </div>
-        <p>Privacy only affects the ability to publish to a package registry — it won’t affect other ways of sharing
-          code, such as pushing to a Github repo.</p>
-        <p>As a sidenote, private packages are generally ignored by packaging utilities. For example, <a href="https://github.com/lerna/lerna">Lerna</a>
-          won’t include private packages in its <code>lerna list</code> output unless you pass in the <code>--all</code>
-          flag.</p>
-        <h2 class=section-title id=restricted-node-packages><a href='#restricted-node-packages' class=section-inner>Restricted
-            Node packages</a></h2>
-        <p>In contrast to private packages, restricted packages <em>can</em> be distributed via a package registry, but
-          only to whitelisted individuals. To use a restricted package, you need an account with the specific registry
-          to which it was published, and you must belong to the organization or team that has access to that package.
-          Otherwise, the package’s URL will 404.</p>
-        <p>One use for restricted packages is for sharing proprietary code within a company. For example, a custom
-          lazyloader that conforms to studio standards can be used on multiple projects either through copy-pasting the
-          original code over and over (boo), or through publishing the code once to npmjs.com and including it as a
-          dependency on subsequent projects (yay!).</p>
-        <p>Here’s a sample <code>package.json</code> for a project with locked-down distribution permissions:</p>
-        <div class=highlight>
-          <pre class="code json"><code><span class="w">    </span><span class="p">{</span><span class="w">
+</span></code></pre></div> <p>Privacy only affects the ability to publish to a package registry — it won’t affect other ways of sharing code, such as pushing to a Github repo.</p> <p>As a sidenote, private packages are generally ignored by packaging utilities. For example, <a href="https://github.com/lerna/lerna">Lerna</a> won’t include private packages in its <code>lerna list</code> output unless you pass in the <code>--all</code> flag.</p> <h2 class=section-title id=restricted-node-packages><a href='#restricted-node-packages' class=section-inner>Restricted Node packages</a></h2> <p>In contrast to private packages, restricted packages <em>can</em> be distributed via a package registry, but only to whitelisted individuals. To use a restricted package, you need an account with the specific registry to which it was published, and you must belong to the organization or team that has access to that package. Otherwise, the package’s URL will 404.</p> <p>One use for restricted packages is for sharing proprietary code within a company. For example, a custom lazyloader that conforms to studio standards can be used on multiple projects either through copy-pasting the original code over and over (boo), or through publishing the code once to npmjs.com and including it as a dependency on subsequent projects (yay!).</p> <p>Here’s a sample <code>package.json</code> for a project with locked-down distribution permissions:</p> <div class=highlight><pre class="code json"><code><span class="w">    </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@company/awesome-lazyloader"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0.1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A reusable lazyloader for use at &lt;Company&gt;"</span><span class="p">,</span><span class="w">
@@ -180,38 +101,4 @@
       </span><span class="s2">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-</span></code></pre>
-        </div>
-        <p>If you publish to npmjs.com, take note that the site UI diverges from actual Node packaging terminology: a
-          restricted package’s UI will have a “Private” badge even though the package <em>isn’t</em> private. (I can’t
-          explain this; it’s just bad UX.)</p>
-        <p>
-          <div class=" image-primary"> <img src="/images/npmjs-com-private.png" alt="" title="A screengrab of a restricted package on npmjs.com; the site UI includes a &quot;Private&quot; badge under the package name."
-              width=2470px height=966px /> </div>
-        </p>
-        <h3 tabIndex=0>Licensing</h3>
-        <p>If you are publishing a restricted package, you probably want it to be unlicensed, which means that no one
-          is inherently authorized to modify or redistribute it. You can set this either by removing the <code>license</code>
-          field from the project’s <code>package.json</code> or by setting it to <code>license: &quot;UNLICENSED&quot;</code>.</p>
-        <h2 class=section-title id=><a href='#' class=section-inner>👋🏻</a></h2>
-        <p>Thanks for reading! I hope this saved you some time. May 2019 be full of writing and sharing great
-          JavaScript. 🥂🥂</p>
-        <p>Many thanks to Daniel, Ginger, and Thomas for your time, energy, and expertise.</p>
-      </div>
-    </article>
-  </main>
-  <footer>
-    <nav id=footer-nav role=navigation aria-label="Navigate to Other Pages" class="footer-item noprint">
-      <ul id=footer-nav-links>
-        <li class=footer-nav-link> <a href="/" class=footer-unit>Index</a> </li>
-        <li class=footer-nav-link> <a href="/info" class=footer-unit>Info</a> </li>
-        <li class=footer-nav-link> <a href="#" class=footer-unit>Top</a> </li>
-      </ul>
-    </nav>
-    <div id=footer-colophon role=contentinfo aria-label="Made with love in 2018" class="footer-item footer-unit noprint">
-      &hearts; 2018 </div>
-    <div class="printonly aux"> http://violet.is || Violet Pe&ntilde;a || 2018 </div>
-  </footer>
-</body>
-
-</html>
+</span></code></pre></div> <p>If you publish to npmjs.com, take note that the site UI diverges from actual Node packaging terminology: a restricted package’s UI will have a “Private” badge even though the package <em>isn’t</em> private. (I can’t explain this; it’s just bad UX.)</p> <p><div class=" image-primary"> <img src="/images/npmjs-com-private.png" alt="" title="A screengrab of a restricted package on npmjs.com; the site UI includes a &quot;Private&quot; badge under the package name." width=2470px height=966px /> </div></p> <h3 tabIndex=0>Licensing</h3> <p>If you are publishing a restricted package, you probably want it to be unlicensed, which means that no one is inherently authorized to modify or redistribute it. You can set this either by removing the <code>license</code> field from the project’s <code>package.json</code> or by setting it to <code>license: &quot;UNLICENSED&quot;</code>.</p> <h2 class=section-title id=><a href='#' class=section-inner>👋🏻</a></h2> <p>Thanks for reading! I hope this saved you some time. May 2019 be full of writing and sharing great JavaScript. 🥂🥂</p> <p>Many thanks to Daniel, Ginger, and Thomas for your time, energy, and expertise.</p> </div> </article> </main> <footer> <nav id=footer-nav role=navigation aria-label="Navigate to Other Pages" class="footer-item noprint"> <ul id=footer-nav-links> <li class=footer-nav-link> <a href="/" class=footer-unit>Index</a> </li> <li class=footer-nav-link> <a href="/info" class=footer-unit>Info</a> </li> <li class=footer-nav-link> <a href="#" class=footer-unit>Top</a> </li> </ul> </nav> <div id=footer-colophon role=contentinfo aria-label="Made with love in 2019" class="footer-item footer-unit noprint"> &hearts; 2019 </div> <div class="printonly aux"> http://violet.is || Violet Pe&ntilde;a || 2019 </div> </footer> </body> </html>
