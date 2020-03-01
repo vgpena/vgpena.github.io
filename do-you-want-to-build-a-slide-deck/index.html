@@ -1,0 +1,77 @@
+<!doctype html> <html lang=en-us> <head> <meta charset=utf-8> <link rel=alternate type="application/atom+xml" href="https://vgpena.github.io/feed.xml" title="Like, subscribe, &amp; download my mixtape"/> <meta property="og:type" content=website> <meta property="og:url" content="https://vgpena.github.io/do-you-want-to-build-a-slide-deck/"> <meta property="og:site_name" content="hey it's violet"> <meta property="og:title" content="Do you want to build a slide deck?"> <meta property="og:description" content="Giving a presentation often means building a deck. Here's a comparison of my favorite deck-building tools, including times to use or avoid each of them."> <meta property="og:image" content="https://vgpena.github.io/images/olaf.gif"> <meta name="twitter:domain" value="vgpena.github.io"> <meta property="twitter:title" content="Do you want to build a slide deck?"> <meta property="twitter:description" ontent="Giving a presentation often means building a deck. Here's a comparison of my favorite  deck-building tools, including times to use or avoid each of them."> <meta property="twitter:url" content="https://vgpena.github.io/do-you-want-to-build-a-slide-deck/"> <meta property="twitter:image" content="https://vgpena.github.io/images/olaf.gif"> <meta name=author content="Violet Peña"> <meta name=description content="Giving a presentation often means building a deck. Here's a comparison of my favorite deck-building tools, including times to use or avoid each of them."> <meta name=viewport content="width=device-width, initial-scale=1"> <script>
+  if ('FontFace' in window) {
+    const fonts = [
+      {
+        name: 'Overpass Mono',
+        files: [
+          {
+            fileName: 'OverpassMono-Light',
+            weight: 'normal',
+            style: 'normal',
+          },
+          {
+            fileName: 'OverpassMono-Bold',
+            weight: 'bold',
+            style: 'normal',
+          }
+        ]
+      },
+      {
+        name: 'Pitch Display',
+        files: [
+          {
+            fileName: 'Pitch-Display',
+            weight: 'normal',
+            style: 'normal',
+          }
+        ]
+      },
+      {
+        name: 'Karla',
+        files: [
+          {
+            fileName: 'Karla-Regular',
+            weight: 'normal',
+            style: 'normal',
+          },
+          {
+            fileName: 'Karla-Bold',
+            weight: 'bold',
+            style: 'normal',
+          },
+          {
+            fileName: 'Karla-Italic',
+            weight: 'normal',
+            style: 'italic',
+          },
+          {
+            fileName: 'Karla-BoldItalic',
+            weight: 'bold',
+            style: 'italic',
+          },
+        ]
+      },
+    ];
+
+    fonts.forEach((font) => {
+      font.files.forEach((file) => {
+        const currFont = new FontFace(
+          font.name,
+          `url(/fonts/${ file.fileName }.woff2), url(/fonts/${ file.fileName }.woff)`,
+          {
+            weight: file.weight,
+            style: file.style,
+          }
+        );
+
+        currFont.load().then(() => {
+          document.fonts.add(currFont);
+        });
+      });
+    });
+  }
+</script> <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-92096829-1', 'auto');
+      ga('send', 'pageview');
+    </script> <script async src='https://www.google-analytics.com/analytics.js'></script> <title>Do you want to build a slide deck? | hey it's violet</title> <link href="/styles/styles.css" rel=stylesheet media=screen /> </head> <body> <header id=site-header role=banner aria-label="Hey it's Violet: a blog"> <h1 id=site-title> <a href="/" aria-label="Back to home">Hey it's Violet</a> </h1> </header> <main> <article aria-labelledby=article-title> <heading id=article-heading role=heading> <h1 id=article-title> Do you want to build a slide deck? </h1> <div id=article-info> <h2 class=article-info-piece id=article-subtitle> Speaker Notes, Vol. 1 </h2> <h2 class=article-info-piece id=article-date aria-label="Published February 29, 2020"> 2.29.2020 </h2> </div> </heading> <div class=content> <p>Over the past several years, I’ve given a few conference talks and many less-formal workplace presentations. This means I’ve spent a lot of time writing and editing slide decks. Along the way, I’ve grown to love three deck-building tools: Dropbox Paper, Google Slides, and Keynote. They each have their own strengths and flourish in different settings.</p> <p>Here’s a rundown of these presentation tools based on my preferences and experience.</p> <h2 class=section-title id=dropbox-paper><a href='#dropbox-paper' class=section-inner>Dropbox Paper</a></h2> <p><strong>The simple one.</strong> Technically, you don’t make decks in Paper, but it’s my go-to for for informal presentations.</p> <p><figure role=img class=" image-secondary"> <img src="/images/snowman.gif" alt="Ana from Disney's &quot;Frozen&quot; sings into a closed door. Subtitle reads: &quot;Do you want to build a snowman?&quot;" title="It doesn't have to be a snowman" width=281px height=252px /> <figcaption> <p>It doesn&#39;t have to be a slide deck 🎵</p> </figcaption> </figure></p> <p>If you hit the Present button on any Paper doc, you get a cleaned-up view of the doc with larger text, no toolbars, etc. The secret sauce here is that horizontal rules in the original doc create slide breaks in Presentation mode. This creates cleaner visuals and transforms a wall of text into something resembling a slide deck.</p> <p>Paper lacks the layout and formatting options of other presentation apps. For informal presentations, this tradeoff is worth it because it frees you up to focus on the writing instead of the visuals. This is great news when you need to work quickly 😅 or when you simply don’t want to sink effort into type, colors, and spacing.</p> <h3 tabIndex=0>Use Paper when…</h3> <ul> <li>The talk is fairly informal</li> <li>You’re on a <em>super</em> tight deadline</li> </ul> <h3 tabIndex=0>Avoid Paper when..</h3> <ul> <li>You need a distinctive visual style</li> <li>You need speaker notes</li> </ul> <h2 class=section-title id=google-slides><a href='#google-slides' class=section-inner>Google Slides</a></h2> <p><strong>The collaborative one.</strong> Google Slides is my most-used presentation app, and the absolute winner for group work. You can grant different permissions levels; for example, allow anyone at your company to comment but restrict editing to specific individuals. Slides gives you robust drawing and layout features, but is lighter and easier to learn than Keynote.</p> <p>Although Slides is web-based, it has an offline mode which is great for conference settings with unreliable internet. The caveat here is that offline presentations don’t play videos; the first frame shows as a poster image instead. In all situations, the Slides embedded video player feels unpolished as compared with Keynote.</p> <h3 tabIndex=0>Use Slides when…</h3> <ul> <li>You’re working in a group</li> </ul> <h3 tabIndex=0>Avoid Slides when…</h3> <ul> <li>You want attractive video embedding</li> </ul> <h2 class=section-title id=keynote><a href='#keynote' class=section-inner>Keynote</a></h2> <p><strong>The classy one.</strong> Keynote is for making an ultra-polished presentation with no compromises. Out of all these tools, Keynote gives you the most control over all aspects of your deck, and you get luxe features such as magic transitions 🤩 and beautiful video embedding. Keynote also includes helpful presenter tools, such as a Rehearsal Mode and a robust Presenter Display during the talk itself.</p> <p>All of this comes with a couple of tradeoffs. Firstly, the learning curve for Keynote is steeper than that of Slides, and even if you’re good with Slides, Keynote won’t necessarily feel familiar. Additionally, group work in Keynote is challenging as compared to Slides.</p> <h3 tabIndex=0>Use Keynote when…</h3> <ul> <li>You want the most beautiful deck possible</li> <li>You want great video embedding</li> </ul> <h3 tabIndex=0>Avoid Keynote when…</h3> <ul> <li>Working in a group</li> </ul> <h2 class=section-title id=in-conclusion><a href='#in-conclusion' class=section-inner>In Conclusion</a></h2> <p>Every presentation is different, and I haven’t found the One True Deck-Builder that I will use for every deck for the rest of my career. In the meantime, I rotate between Dropbox Paper, Google Slides, and Keynote depending on how quickly vs. collaboratively vs. polished I want to work.</p> <p>I hope this comparison has been helpful. Sending you good presentation vibes!</p> <hr> <p>PS - Thank you to Ginger for asking me the original question about presentation tools 🙂</p> <p>PPS - I haven’t used it professionally, so I can’t speak to it here, but I <em>love</em> Prezi. Maybe deserves an Honorable Mention?</p> <p>PPPS - That&#39;s right, I got a February 29th publish date in there! Goooo leap years 🥳</p> </div> </article> </main> <footer> <nav id=footer-nav role=navigation aria-label="Navigate to Other Pages" class="footer-item noprint"> <ul id=footer-nav-links> <li class=footer-nav-link> <a href="/" class=footer-unit>Index</a> </li> <li class=footer-nav-link> <a href="/info" class=footer-unit>Info</a> </li> <li class=footer-nav-link> <a href="#" class=footer-unit>Top</a> </li> </ul> </nav> <div id=footer-colophon role=contentinfo aria-label="Made with love in 2020" class="footer-item footer-unit noprint"> &hearts; 2020 </div> <div class="printonly aux"> http://violet.is || Violet Pe&ntilde;a || 2020 </div> </footer> </body> </html>
