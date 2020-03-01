@@ -10,15 +10,21 @@ footer {
   text-transform: lowercase;
   text-align: center;
 
+  @media (min-width: $footer-break) {
+    text-align: initial;
+  }
+
   #home & {
     background-image: linear-gradient(to bottom, $light 33%, $pale);
   }
 }
 
 .footer-item {
-  // display: inline-block;
-  // vertical-align: center;
   display: block;
+  @media (min-width: $footer-break) {
+    display: inline-block;
+    vertical-align: center;
+  }
 }
 
 .footer-unit {

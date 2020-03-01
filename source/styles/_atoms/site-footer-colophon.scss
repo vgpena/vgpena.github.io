@@ -1,3 +1,5 @@
 #footer-colophon {
-  // float: right;
+  @media (min-width: $footer-break) {
+    float: right;
+  }
 }
