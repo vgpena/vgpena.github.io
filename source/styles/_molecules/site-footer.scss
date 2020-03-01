@@ -8,6 +8,7 @@ footer {
   font-weight: bold;
   background-image: linear-gradient(to bottom, $pale 33%, $bright);
   text-transform: lowercase;
+  text-align: center;
 
   #home & {
     background-image: linear-gradient(to bottom, $light 33%, $pale);
@@ -15,8 +16,9 @@ footer {
 }
 
 .footer-item {
-  display: inline-block;
-  vertical-align: center;
+  // display: inline-block;
+  // vertical-align: center;
+  display: block;
 }
 
 .footer-unit {
