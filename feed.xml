@@ -89,7 +89,7 @@
     <link rel="alternate" href="https://vgpena.github.io/using-css-grid-the-right-way/"/>
     <id>https://vgpena.github.io/using-css-grid-the-right-way/</id>
     <published>2019-02-17T13:58:00-08:00</published>
-    <updated>2019-02-17T14:45:29-08:00</updated>
+    <updated>2020-03-01T10:30:10-08:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -291,7 +291,7 @@
 &lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="nc"&gt;.info&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;11&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;11&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Which will be tricky, since CSS Grid has no concept of inheritance. &lt;code&gt;.info&lt;/code&gt; doesn’t know anything about the grid set up on &lt;code&gt;.main&lt;/code&gt;, its grandparent element.&lt;/p&gt;
@@ -360,6 +360,10 @@
 &lt;p&gt;All this to say: take Grid as slowly as you need to. Don’t try to understand it all just from reading the spec. Set up simple examples, pop open that web inspector (especially in Firefox!), and be kind to yourself.&lt;/p&gt;
 
 &lt;p&gt;It’ll be worth it.&lt;/p&gt;
+&lt;h2 class='section-title' id=changelog&gt;&lt;a href='#changelog' class='section-inner'&gt;Changelog&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;3/1/2020: Fixed column typo (&lt;a href="https://github.com/vgpena/vgpena.github.io/issues/5"&gt;#5&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
 </content>
   </entry>
   <entry>
