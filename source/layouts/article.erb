@@ -1,6 +1,6 @@
 <% wrap_layout :layout do %>
   <article aria-labelledby="article-title">
-    <heading id="article-heading" role="heading">
+    <div id="article-heading" role="heading">
       <h1 id="article-title">
         <%= current_page.data.title %>
       </h1>
@@ -18,7 +18,7 @@
           <% end %>
         </div>
       <% end %>
-    </heading>
+    </div>
     <div class="content">
       <%= yield %>
     </div>
