@@ -1,0 +1,36 @@
+.aside {
+  border: solid 3px $rich;
+  border-radius: 1em;
+  margin: 0 $space;
+  max-width: $max-content-width - $space * 2;
+  box-shadow: 0 0 0 4px $pale;
+  @include at-least($secondary-media-break) {
+    width: calc(100% - #{$max-content-width} - #{$space});
+    max-width: $max-content-width / 3 * 2;
+    margin-right: $space;
+    float: right;
+  }
+  @include at-least($secondary-media-break-2) {
+    width: $max-content-width / 3 * 2;
+    margin-right: calc(
+      100% - #{$max-content-width} - #{$max-content-width / 3 * 2} - #{$space}
+    );
+  }
+  .aside-title {
+    font-family: $mono;
+    color: $rich;
+    border-bottom: dashed 3px $rich;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0.5em;
+    text-align: center;
+    display: block;
+    &::first-letter {
+      border-bottom: none;
+    }
+  }
+  .aside-body {
+    font-size: 0.8rem;
+  }
+}
