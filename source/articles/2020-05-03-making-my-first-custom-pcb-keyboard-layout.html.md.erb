@@ -60,3 +60,70 @@ qmk setup <your_github_username>/qmk_toolbox
 ```
 
 Finally, follow [QMK's customization instructions](https://docs.qmk.fm/#/newbs_getting_started?id=_5-configure-your-build-environment-optional) to save yourself a lot of typing.
+
+### Design the layout
+
+I did all of my layout editing in the online [QMK Configurator tool](https://config.qmk.fm/#/kbdfans/kbd67/rev2/LAYOUT_65_ansi). The drag-and-drop interface was simple to use, especially since I don't know much about the underlying processes. QMK has a good [video intro](https://www.youtube.com/watch?v=-imgglzDMdY) to the configurator; I'll deviate from it in that I used QMK from the command line, not from a GUI.
+
+#### Select the keyboard
+
+Choose your keyboard type from the dropdown at the top of the configurator.
+
+In my case, my keyboard (`kbdfans/kbd65`) isn’t actually in the list of available keyboards in the QMK Configurator, but it is supported under the name `kbdfans/kbd67`. This keyboard defaults to the `LAYOUT_65_ansi` layout which matched my keyboard perfectly.
+
+<%= partial(:aside, :locals => {
+:body => 'Once I had the firmware installed, I was able to find a readme stating that kbd67 is just another name for kbd65. Confusing messaging, but everything worked as expected using the kbd67 option.',
+})%>
+
+#### Design the layout map
+
+This is the fun part! Drag and drop keys to where you actually want them. I won't get into using multiple layers, or any actual C programming 😅 It's very 1337 but not what I needed my first time around.
+
+#### Download the layout
+
+Since you already have the keyboard firmware installed, once you have your map made in the QMK Configurator, you can hit the "Download Keymap.json" button without compiling the layout. From now on you’ll be working completely in the command line, but keep this browser window open for follow-up tweaks to the layout.
+
+### Flash the layout onto the keyboard
+
+<%= partial(:aside, :locals => {
+:title => 'Important',
+:body => "The following process assumes you have a second keyboard connected; e.g., a built-in laptop keyboard. If you don't have a second keyboard, you will probably need to activate speech-to-text or an onscreen mouse-accessible keyboard before following the next steps.",
+})%>
+
+Your keymap needs to be compiled in order to be flashed onto the keyboard. Locate the JSON file downloaded from the QMK configurator, and run:
+
+```sh
+qmk compile <path/to/downloaded/layout>.json
+```
+
+If successful, QMK will output a `.hex` file into its root directory. For me, this was at `Users/<my_username>/qmk_firmware`.
+
+Next, the keyboard needs to be put into DFU/Bootloader mode in order to be flashed. While in Bootloader mode, it will not send inputs to your computer like it normally does. If your keyboard underlight is on, the light will turn off when the board goes into Bootloader mode.
+
+Keyboard vary in how they can be sent into Bootloader mode. QMK has [instructions on different ways to do this](https://docs.qmk.fm/#/newbs_flashing?id=put-your-keyboard-into-dfu-bootloader-mode) — the first time I flashed my keyboard, the Spacebar+B strategy worked. Subsequent times, this didn’t work, but unplugging my keyboard and plugging it back in with the ESC key pressed did send it into Bootloader mode correctly.
+
+<%= partial(:aside, :locals => {
+:body => 'I moved my ESC key the first time I flashed my keyboard, and I expected to hit the "new" ESC key to send it into Bootloader mode. Not so. The "original" ESC key, remapped to a different keycode, is still what needs to be pressed here.',
+})%>
+
+With your keyboard in Bootloader mode, run `qmk flash` on the command line to send your layout onto the keyboard. Don't unplug the keyboard until you get a message that the flash has completed. Now your keyboard is using your custom layout! 🎉
+
+You can flash your keyboard as many times as you want to. I flashed mine about ten times during that session as I honed what I actually wanted my keyboard to do.
+
+## The result
+
+In the end, I have a keyboard that is completely tailored to what _I_ want. This means, at least for now, having dedicated play/pause and volume up/down buttons. The volume buttons also let me skip tracks when paired with a modifier key 💅🏻 And, of course, I have a couple of keys dedicated to toggling the keyboard underlight.
+
+<%= partial(:aside, :locals => {
+:body => "I had NO IDEA that my keyboard had an underlight until I took it out of bootloader mode for the first time. On top of that, it's a full-spectrum underlight! So of course my default setting is to cycle through the entire rainbow.",
+})%>
+
+All in all, the time and money I've invested in this keyboard has felt worth it -- because it _has_ truly felt like an investment. I love having tools that feel nice to use, that work well, that feel familiar to me. This keyboard is a little puff of wind in my sails whenever I sit down to work, and I look forward to many years with it.
+
+## Thank you
+
+First, thanks for reading this far, and I hope it's been helpful!
+
+Thanks to [Jordan Egstad](http://egstad.com/) for being an endless font of keyboard inspiration & knowledge. Also, thank you for letting me borrow your "starter keyboard" for 😅 **months** 😅 as I decided what I was actually going to buy.
+
+Thanks also to [Angela Riggs](https://angelariggs.github.io/) for additional keyboard intel, such as encouraging me to take my time setting up my dev environment.
