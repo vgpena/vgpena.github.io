@@ -4,15 +4,19 @@
   max-width: $max-content-width - $space * 2;
   background-color: $pale;
   @include at-least($secondary-media-break) {
-    width: calc(100% - #{$max-content-width} - #{$space});
+    width: calc(
+      100% - #{$max-content-width} - #{$space} - #{$space} - #{$space}
+    );
     max-width: $max-content-width / 3 * 2;
-    margin-right: $space;
+    // margin-right: $space;
+    margin-left: 0;
     float: right;
   }
   @include at-least($secondary-media-break-2) {
     width: $max-content-width / 3 * 2;
     margin-right: calc(
-      100% - #{$max-content-width} - #{$max-content-width / 3 * 2} - #{$space}
+      100% - #{$max-content-width} - #{$max-content-width / 3 * 2} - #{$space} -
+        #{$space}
     );
   }
   .aside-title {

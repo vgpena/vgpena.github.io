@@ -1,0 +1,62 @@
+---
+title: Making my first custom PCB keyboard layout
+subtitle: "Because I'm one of those people now :P"
+summary:
+hero:
+date: 2020-05-03 13:02 PDT
+---
+
+A few months ago, after a year of waffling, I bought my first custom keyboard. As I was setting the keyboard up, I felt like most of the tutorials I was finding were geared towards people knowledgeable about keyboards and less familiar with programming in general. I'm exactly the opposite of this -- over 10 years' cumulative experience programming, but zero knowledge of keyboards and their workings.
+
+Because of this, I kept notes as I customized my keyboard layout. Here's what I did, and I hope it helps you get started with your own custom setup 🤓
+
+## Why a Custom Keyboard?
+
+I became interested in custom keyboards for aesthetic reasons. I was used to toggling between a chunky dark grey keyboard (when using a PC) or a slim silver one (when on a Mac). Either way, the keyboard was anonymous and largely invisible. Learning that there was another path -- of personal investment, care, and customization -- was intriguing to me.
+
+Cost was my largest blocker to actually buying a keyboard. The first custom keyboards I was liked to ran about $400; the kit I actually bought totaled $340. This is a _lot_ of money, but I planned to use the keyboard for work. I rationalized that \$400 for a tool I would use 40+ hours per week was actually a reasonable expense when all was said and done.
+
+## The Kit
+
+On the advice of a coworker, I bought a [Tofu65 assembled keyboard](https://kbdfans.com/products/fully-assembled-tofu65-mechanical-keyboards) from [KBDFans.com](https://kbdfans.com/).
+
+<%= partial(:aside, :locals => {
+:title => 'Take note',
+:body => 'This keyboard is sometimes called a Tofu67 instead of a Tofu65.',
+})%>
+
+I chose [Cherry Silent Black](https://kbdfans.com/collections/cherry-switches/products/cherry-mx-silent-black) switches (to be considerate to officemates -- what innocent times those were). For keycaps, I found a [pink-and-white Maxkey set](https://kbdfans.com/products/bfcmmaxkey-pink-white-sa-profile-keycaps-set) that would be a joy for me to use every day.
+
+The keyboard took about two months to arrive; using it was as simple as plugging it into my computer's USB port. The shipment included a little wire tool for lifting keycaps off of the board, so physically rearranging keys was also trivial. The other side of this process -- configuring the keyboard firmware to send the correct signals to the computer -- would be more difficult.
+
+A coworker advised me that getting set up to customize keyboard firmware would take a while, but would be worth it. So I cleared my calendar one Saturday morning, poured myself a big cup of coffee, and got to work.
+
+## Creating the Custom Layout
+
+Here's the process I followed to create and load a custom keyboard layout. This is what was most useful to me, so some of these steps diverge from what you might find in other walkthroughs that assume more familiarity with keyboards in general.
+
+<%= partial(:aside, :locals => {
+:title => 'False start',
+:body => 'I initially thought that customizing the keyboard layout would happen on the OS level. I spent some time poking around in the MacOS system preferences and even downloaded Ukelele before getting a vibe that I was headed in the wrong direction. Turns out that keyboard layouts are flashed onto the keyboard itself, not the computer. This means, among other things, that the layout is portable and can be used immediately on any computer that the keyboard is connected to.',
+})%>
+
+### Download and configure QMK firmware
+
+My keyboard, like most other from KBDFans, is compatible with QMK firmware. Several of these next steps are paraphrases from the [QMK docs](https://docs.qmk.fm/#/).
+
+Start by installing QMK with Homebrew:
+
+```sh
+brew tap qmk/qmk
+brew install qmk
+```
+
+This may take a while if Homebrew needs an update (when _doesn't_ Homebrew need to update??). Don't walk away for too long, though, since there are some interactive prompts to install dependencies of QMK.
+
+Next, fork the [QMK firmware repo on Github](https://github.com/qmk/qmk_toolbox) and run the QMK setup command using this remote URL:
+
+```sh
+qmk setup <your_github_username>/qmk_toolbox
+```
+
+Finally, follow [QMK's customization instructions](https://docs.qmk.fm/#/newbs_getting_started?id=_5-configure-your-build-environment-optional) to save yourself a lot of typing.
