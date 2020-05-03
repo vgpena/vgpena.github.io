@@ -5,10 +5,135 @@
   <id>https://vgpena.github.io/</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2020-02-29T20:37:00-08:00</updated>
+  <updated>2020-05-03T13:02:00-07:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>Basic Keyboard Customization with QMK</title>
+    <link rel="alternate" href="https://vgpena.github.io/making-my-first-custom-pcb-keyboard-layout/"/>
+    <id>https://vgpena.github.io/making-my-first-custom-pcb-keyboard-layout/</id>
+    <published>2020-05-03T13:02:00-07:00</published>
+    <updated>2020-05-03T15:29:44-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">The world of custom keyboards can be overwhelming to a newbie. Here's how I set up my custom keyboard layout using QMK from the command line.</summary>
+    <content type="html">&lt;p&gt;A few months ago, after a full year of waffling, I bought my first custom keyboard. During the setup process, I felt like most of the tutorials I was finding were geared towards people knowledgeable about keyboards and less familiar with programming in general. I&amp;#39;m exactly the opposite of this -- over 10 years&amp;#39; cumulative experience programming, but little knowledge of keyboards and their workings.&lt;/p&gt;
+
+&lt;p&gt;Because of this, I kept notes as I customized my keyboard layout. Here&amp;#39;s what I did, and I hope it helps you get started with your own custom setup 🤓&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class=" image-secondary"&gt;
+    &lt;img src="/images/kbd/top.JPG" alt="A pink-and-white keyboard." title="My custom keyboard." width="3024px" height="4032px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;My keyboard. What a beaut!&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 class='section-title' id=why-a-custom-keyboard&gt;&lt;a href='#why-a-custom-keyboard' class='section-inner'&gt;Why a Custom Keyboard?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I became interested in custom keyboards for aesthetic reasons. I was used to toggling between a chunky dark grey keyboard (when on a PC) or a slim silver one (for a Mac). Either way, keyboards were uniform and. Learning that there was another path -- of personal investment, care, and customization -- was intriguing to me.&lt;/p&gt;
+
+&lt;p&gt;Cost was my largest blocker to actually buying a keyboard. The first custom keyboards I was linked to ran about $400; the kit I actually bought totaled $340. This is a &lt;em&gt;lot&lt;/em&gt; of money, but I planned to use the keyboard for work. $400 for a tool I would use 40+ hours per week, I figured, was actually a reasonable expense when all was said and done.&lt;/p&gt;
+&lt;h2 class='section-title' id=the-kit&gt;&lt;a href='#the-kit' class='section-inner'&gt;The Kit&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;On the advice of a coworker, I bought a &lt;a href="https://kbdfans.com/products/fully-assembled-tofu65-mechanical-keyboards"&gt;Tofu65 assembled keyboard&lt;/a&gt; from &lt;a href="https://kbdfans.com/"&gt;KBDFans.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+        &lt;h3 class="aside-title"&gt;Take note&lt;/h3&gt;
+    &lt;p class="aside-body"&gt;
+        This keyboard is sometimes called a Tofu67 instead of a Tofu65.
+    &lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;p&gt;I chose &lt;a href="https://kbdfans.com/collections/cherry-switches/products/cherry-mx-silent-black"&gt;Cherry Silent Black&lt;/a&gt; switches (to be considerate to officemates -- what innocent times those were). For keycaps, I found a &lt;a href="https://kbdfans.com/products/bfcmmaxkey-pink-white-sa-profile-keycaps-set"&gt;pink-and-white Maxkey set&lt;/a&gt; that would be a joy for me to use every day.&lt;/p&gt;
+
+&lt;p&gt;The keyboard took about two months to arrive; using it was as simple as plugging it into my computer&amp;#39;s USB port. The shipment included a little wire tool for lifting keycaps off of the board, so physically rearranging keys was also trivial. The other side of this process -- configuring the keyboard firmware to send the correct signals to the computer -- would be more difficult.&lt;/p&gt;
+
+&lt;p&gt;A coworker advised me that getting set up to configure firmware would take a while, but would be worth the time. So I cleared my calendar one Saturday morning, poured myself a big cup of coffee, and got to work.&lt;/p&gt;
+&lt;h2 class='section-title' id=creating-the-custom-layout&gt;&lt;a href='#creating-the-custom-layout' class='section-inner'&gt;Creating the Custom Layout&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Here&amp;#39;s the process I followed to create and load a custom keyboard layout. This is what was useful to me, so some of these steps diverge from what you might find in other walkthroughs that assume more familiarity with keyboards in general.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+        &lt;h3 class="aside-title"&gt;False start&lt;/h3&gt;
+    &lt;p class="aside-body"&gt;
+        I initially thought that customizing the keyboard layout would happen on the OS level. I spent some time poking around in the MacOS system preferences and even downloaded Ukelele before getting a vibe that I was headed in the wrong direction. Turns out that keyboard layouts are flashed onto the keyboard itself, not the computer. This means, among other things, that the layout is portable and can be used immediately on any computer that the keyboard is connected to. Which is really cool!
+    &lt;/p&gt;
+&lt;/aside&gt;
+&lt;h3 tabIndex=0&gt;Download and configure the QMK Toolbox&lt;/h3&gt;
+&lt;p&gt;My keyboard, like most others from KBDFans, is compatible with QMK firmware. Several of these next steps are paraphrases from the &lt;a href="https://docs.qmk.fm/#/"&gt;QMK docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Start by installing QMK with Homebrew:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code shell"&gt;&lt;code&gt;brew tap qmk/qmk
+brew install qmk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This may take a while if Homebrew needs an update (which it always seems to??). Don&amp;#39;t walk away for too long, though, since there are some interactive prompts to install dependencies of QMK.&lt;/p&gt;
+
+&lt;p&gt;Next, fork the &lt;a href="https://github.com/qmk/qmk_toolbox"&gt;QMK Toolbox repo on Github&lt;/a&gt; and run the QMK setup command using this remote URL:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code shell"&gt;&lt;code&gt;qmk setup &amp;lt;your_github_username&amp;gt;/qmk_toolbox
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Finally, follow &lt;a href="https://docs.qmk.fm/#/newbs_getting_started?id=_5-configure-your-build-environment-optional"&gt;QMK&amp;#39;s customization instructions&lt;/a&gt; to save yourself a lot of typing.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Design the layout&lt;/h3&gt;
+&lt;p&gt;I did all of my layout editing in the online &lt;a href="https://config.qmk.fm/#/kbdfans/kbd67/rev2/LAYOUT_65_ansi"&gt;QMK Configurator tool&lt;/a&gt;. The drag-and-drop interface was simple to use, especially since I don&amp;#39;t know much about the underlying processes. QMK has a good &lt;a href="https://www.youtube.com/watch?v=-imgglzDMdY"&gt;video intro&lt;/a&gt; to the configurator; I&amp;#39;ll deviate from it in that I used QMK from the command line, not from a GUI.&lt;/p&gt;
+&lt;h4 tabIndex=0&gt;Select the keyboard&lt;/h4&gt;
+&lt;p&gt;Choose your keyboard type from the dropdown at the top of the configurator.&lt;/p&gt;
+
+&lt;p&gt;In my case, my keyboard (&lt;code&gt;kbdfans/kbd65&lt;/code&gt;) isn’t actually in the list of available keyboards in the QMK Configurator, but it is supported under the name &lt;code&gt;kbdfans/kbd67&lt;/code&gt;. This keyboard defaults to the &lt;code&gt;LAYOUT_65_ansi&lt;/code&gt; layout which matched my keyboard perfectly.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+    &lt;p class="aside-body"&gt;
+        Once I had the firmware installed, I was able to find a readme stating that kbd67 is just another name for kbd65. Confusing messaging, but everything worked as expected using the kbd67 option.
+    &lt;/p&gt;
+&lt;/aside&gt;
+&lt;h4 tabIndex=0&gt;Design the layout map&lt;/h4&gt;
+&lt;p&gt;This is the fun part! Drag and drop keys to where you actually want them. I won&amp;#39;t get into using multiple layers, or any actual C programming 😅 It&amp;#39;s very 1337 but not what I needed my first time around.&lt;/p&gt;
+&lt;h4 tabIndex=0&gt;Download the layout&lt;/h4&gt;
+&lt;p&gt;Since you already have the keyboard firmware installed, once you have your map made in the QMK Configurator, you can hit the &lt;code&gt;Download Keymap.json&lt;/code&gt; button without compiling the layout. From now on you’ll be working completely in the command line, but keep this browser window open for follow-up tweaks to the layout.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Flash the layout onto the keyboard&lt;/h3&gt;
+&lt;aside class="aside"&gt;
+        &lt;h3 class="aside-title"&gt;Important&lt;/h3&gt;
+    &lt;p class="aside-body"&gt;
+        The following process assumes you have a second keyboard connected; e.g., a built-in laptop keyboard. If you don't have a second keyboard, you will probably need to activate speech-to-text or an onscreen mouse-accessible keyboard before following the next steps.
+    &lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;p&gt;Your keymap needs to be compiled in order to be flashed onto the keyboard. Locate the JSON file downloaded from the QMK configurator, and run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code shell"&gt;&lt;code&gt;qmk compile &amp;lt;path/to/downloaded/layout&amp;gt;.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If successful, QMK will output a &lt;code&gt;.hex&lt;/code&gt; file into its root directory. For me, this was at &lt;code&gt;Users/&amp;lt;my_username&amp;gt;/qmk_firmware&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next, the keyboard needs to be put into DFU/Bootloader mode in order to be flashed. While in Bootloader mode, it will not send inputs to your computer like it normally does. If your keyboard underlight is on, the light will turn off when the board goes into Bootloader mode.&lt;/p&gt;
+
+&lt;p&gt;Keyboard vary in how they can be sent into Bootloader mode. QMK has &lt;a href="https://docs.qmk.fm/#/newbs_flashing?id=put-your-keyboard-into-dfu-bootloader-mode"&gt;instructions on different ways to do this&lt;/a&gt; — the first time I flashed my keyboard, the Spacebar+B strategy worked. Subsequent times, this didn’t work, but unplugging my keyboard and plugging it back in with the ESC key pressed did send it into Bootloader mode correctly.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+    &lt;p class="aside-body"&gt;
+        I moved my ESC key the first time I flashed my keyboard, and I expected to hit the "new" ESC key to send it into Bootloader mode. Not so. The "original" ESC key, remapped to a different keycode, is still what needs to be pressed here.
+    &lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;p&gt;With your keyboard in Bootloader mode, run &lt;code&gt;qmk flash&lt;/code&gt; on the command line to send your layout onto the keyboard. Don&amp;#39;t unplug the keyboard until you get a message that the flash has completed. Now your keyboard is using your custom layout! 🎉&lt;/p&gt;
+
+&lt;p&gt;You can flash your keyboard as many times as you want to. I flashed mine about ten times during that session as I honed what I actually wanted my keyboard to do.&lt;/p&gt;
+&lt;h2 class='section-title' id=the-result&gt;&lt;a href='#the-result' class='section-inner'&gt;The result&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In the end, I have a keyboard that is completely tailored to what &lt;em&gt;I&lt;/em&gt; want, and it feels glorious. In addition to a full keyboard, I have dedicated play/pause and volume up/down buttons. The volume buttons also let me skip tracks when paired with a modifier key 💅🏻 And, naturally, I have a couple of keys dedicated to toggling the keyboard underlight.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+    &lt;p class="aside-body"&gt;
+        I had NO IDEA that my keyboard had an underlight until I took it out of bootloader mode for the first time. On top of that, it's a full-spectrum underlight! So of course my default setting is to cycle through the entire rainbow.
+    &lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/kbd/win-2.JPG" alt="A pink-and-white keyboard." title="My custom keyboard." width="4032px" height="3024px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;All in all, the time and money I&amp;#39;ve invested in this keyboard has felt worth it -- because it &lt;em&gt;has&lt;/em&gt; truly felt like an investment. I love having tools that feel good to use, that work well, that feel familiar to me. I&amp;#39;ve been using this keyboard for about a month now; it&amp;#39;s a little puff of wind in my sails whenever I sit down to work, and I look forward to many years with it.&lt;/p&gt;
+&lt;h2 class='section-title' id=thank-you&gt;&lt;a href='#thank-you' class='section-inner'&gt;Thank you&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;First, thanks for reading this far, and I hope it&amp;#39;s been helpful!&lt;/p&gt;
+
+&lt;p&gt;Thanks to &lt;a href="http://egstad.com/"&gt;Jordan Egstad&lt;/a&gt; for being an endless font of keyboard inspiration &amp;amp; knowledge. Also, thank you for letting me borrow your &amp;quot;starter keyboard&amp;quot; for 😅 &lt;strong&gt;months&lt;/strong&gt; 😅 as I decided what I was actually going to buy.&lt;/p&gt;
+
+&lt;p&gt;Thanks also to &lt;a href="https://angelariggs.github.io/"&gt;Angela Riggs&lt;/a&gt; for additional keyboard intel, such as encouraging me to take my time setting up my dev environment.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Do you want to build a slide deck?</title>
     <link rel="alternate" href="https://vgpena.github.io/do-you-want-to-build-a-slide-deck/"/>
@@ -653,84 +778,6 @@
 &lt;p&gt;This is my journey to consistent wellness; I assume it will take forever, but maybe it will get easier someday.&lt;/p&gt;
 
 &lt;p&gt;In the meantime, here I will be, giving myself (making for myself) the space and the circumstances to be well.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Good is better than perfect</title>
-    <link rel="alternate" href="https://vgpena.github.io/good-is-better-than-perfect/"/>
-    <id>https://vgpena.github.io/good-is-better-than-perfect/</id>
-    <published>2017-12-27T11:42:00-08:00</published>
-    <updated>2018-07-03T11:21:36-07:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <summary type="html">Creation can be really hard because of the standards we set for ourselves. Here's how I stop worrying about perfection so that I can actually get things done.</summary>
-    <content type="html">&lt;p&gt;I don’t like my blog.&lt;/p&gt;
-
-&lt;p&gt;To clarify: as of writing, I’m lukewarm on how article titles look. I don’t have per-post tags; I haven’t added pagination to the index. I could go on.&lt;/p&gt;
-
-&lt;p&gt;When I launched, about ten months ago, my list of complaints was even longer. I didn’t love my body font; I &lt;em&gt;really&lt;/em&gt; didn’t love my &lt;code&gt;&amp;lt;ul&amp;gt;&lt;/code&gt;s. I hadn’t written styles for section headers, tables, or asides.&lt;/p&gt;
-
-&lt;p&gt;But I had made something.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;This is actually the third iteration of my blog; the first two lived only on my local server, each &lt;code&gt;rm -r&lt;/code&gt;&amp;#39;d when I realized that something about them wasn’t, and could never be, perfect.&lt;/p&gt;
-
-&lt;p&gt;As I laid the groundwork for my third version, I promised myself that &lt;em&gt;this&lt;/em&gt;, no matter what, would be what I launched. I was done spinning my wheels on mechanical problems; I needed to move past that and start actually writing.&lt;/p&gt;
-
-&lt;p&gt;Because, naturally, my quest for perfection wasn’t just because I wanted to make a good-looking site. It was also a bid to avoid ever writing a single post. After all, if my site wasn&amp;#39;t done, how could I publish things on it?&lt;/p&gt;
-
-&lt;p&gt;It’s so much easier to write CSS for myself than it is to write English for other people.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;But here I am, ten months later, with a still-flawed &lt;em&gt;but productive&lt;/em&gt; site, a site which lets me express myself, spread knowledge, and hone my writing skills. It&amp;#39;s not perfect. But, perfections included, it&amp;#39;s exactly right for me.&lt;/p&gt;
-&lt;h2 class='section-title' id=how-to-create-something-imperfect&gt;&lt;a href='#how-to-create-something-imperfect' class='section-inner'&gt;How to create something imperfect&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Most people I&amp;#39;ve talked to who self-host a blog get bogged down, as I did, in the creation step.&lt;/strong&gt; This is a reliable pattern because webdev is hard &lt;em&gt;and writing is even harder&lt;/em&gt;. This is fine. You&amp;#39;re fine. Make something good, make something that supports what you immediately need it to support, and get it out. the. door.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;#39;s a few things that helped me:&lt;/p&gt;
-&lt;h3 tabIndex=0&gt;Create content, then develop to that spec&lt;/h3&gt;
-&lt;p&gt;Since you can&amp;#39;t control another separate human&amp;#39;s actions, client work usually involves some kind of attempt &lt;a href="https://en.wikipedia.org/wiki/Three-body_problem"&gt;to anticipate every single possible thing they might want to do&lt;/a&gt;, which is a) super obnoxious and b) super fun.&lt;/p&gt;
-
-&lt;p&gt;How should we crop and position images if the client tries to upload something 800px by 80px? How should we space out the title if they only make it one word long? What if they create an article and then leave the body completely blank? Et cetera.&lt;/p&gt;
-
-&lt;p&gt;When you&amp;#39;re your own client, you don&amp;#39;t have to build what you don&amp;#39;t need.&lt;/p&gt;
-
-&lt;p&gt;In my case, I drafted a couple of articles so that I wouldn&amp;#39;t deploy an empty blog (SO EMBARASSING RITE???). As soon as they were vaguely done, I switched over to use those, not Lorem Ipsum, as dummy content. I was able to build to my own exact needs, so I made a blog that worked perfectly &lt;em&gt;even though&lt;/em&gt; I hadn&amp;#39;t written styles for tables or even section headings.&lt;/p&gt;
-
-&lt;p&gt;I&amp;#39;m not advising to make bespoke one-offs, or to work without considering stability/extensibility. Make a system, but accept that that system won&amp;#39;t be all-encompassing. Make a system that you intend to improve. Make the system &lt;em&gt;that you need&lt;/em&gt;.&lt;/p&gt;
-&lt;h3 tabIndex=0&gt;Remember that you don&amp;#39;t work in print&lt;/h3&gt;
-&lt;p&gt;Logically, this isn&amp;#39;t difficult, but something about it is emotionally hard for me.&lt;/p&gt;
-
-&lt;p&gt;If you think your site is ugly but you push ahead and publish a couple of posts, you can deploy better styles later and everything will now be pretty, &lt;em&gt;even the posts that were originally ugly&lt;/em&gt;. Hooray for the internet!&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class="image-wrap image-secondary"&gt;
-    &lt;img src="/images/first-try.gif" alt="" title="Animation from The Lego Movie: Batman throws Batarangs at a button until he hits it." width="358px" height="231px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;IT&amp;#39;LL BE FINE.&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-&lt;h3 tabIndex=0&gt;Know that you&amp;#39;re not famous&lt;/h3&gt;
-&lt;p&gt;(I assume.)&lt;/p&gt;
-
-&lt;p&gt;Anyway, a lot is made of splashy launches and Sticking The Landing, but whoever your idol is &lt;em&gt;is definitely not reading your blog right now&lt;/em&gt;. You have plenty of time to find your voice, fix your wonky line-heights, etc. before it&amp;#39;s read by Oprah or Dan Abramov or whoever. This time is a rehearsal, and it&amp;#39;s valuable.&lt;/p&gt;
-&lt;h3 tabIndex=0&gt;Don&amp;#39;t mistake labor for progress&lt;/h3&gt;
-&lt;p&gt;Is your goal to make a good website, or is it to become a better writer?&lt;/p&gt;
-
-&lt;p&gt;I don&amp;#39;t know how long it takes to get comfortable writing, to find your voice, to carve out a good schedule, to pick  topics that you reliably want to write about. But my blog has been live for ten months and I can tell you that I&amp;#39;m not there yet.&lt;/p&gt;
-
-&lt;p&gt;So let&amp;#39;s say that it takes two or three years of low-intensity blogging before you develop proficiency.&lt;/p&gt;
-
-&lt;p&gt;That timer doesn&amp;#39;t start until you&amp;#39;re actually publishing posts. You can toil away for a year and a half on an amazing perfect 👌🏻🔥💯 website; this will have zero effect on your writing prowess.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Make something that advances you towards your goal&lt;/strong&gt;, or at least be honest about what you&amp;#39;re working on and whether it&amp;#39;s part of that specific journey. I&amp;#39;ve taken detours and they&amp;#39;ve been helpful and lovely but I&amp;#39;m not going to pretend that revamping my font-loading made me a better writer.&lt;/p&gt;
-&lt;h2 class='section-title' id=the-journey&gt;&lt;a href='#the-journey' class='section-inner'&gt;The journey&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Over the past ten months, I&amp;#39;ve held tight to these maxims -- they&amp;#39;ve been invaluable not only while creating the blog, but since then, as I continue to write and publish.&lt;/p&gt;
-
-&lt;p&gt;If you&amp;#39;ve been looking for a sign to start a blog or launch a project, let this be it. You&amp;#39;ll love your imperfect, real creations a thousand times more than something flawless that&amp;#39;s never seen the light of day.&lt;/p&gt;
-
-&lt;p&gt;Excited for what you make in 2018! 💃🏻&lt;/p&gt;
 </content>
   </entry>
 </feed>
