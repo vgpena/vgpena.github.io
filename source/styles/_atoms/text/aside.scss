@@ -1,9 +1,8 @@
 .aside {
-  border: solid 3px $rich;
-  border-radius: 1em;
+  border-radius: 0.7em;
   margin: 0 $space;
   max-width: $max-content-width - $space * 2;
-  box-shadow: 0 0 0 4px $pale;
+  background-color: $pale;
   @include at-least($secondary-media-break) {
     width: calc(100% - #{$max-content-width} - #{$space});
     max-width: $max-content-width / 3 * 2;
@@ -18,12 +17,12 @@
   }
   .aside-title {
     font-family: $mono;
-    color: $rich;
-    border-bottom: dashed 3px $rich;
+    color: $dark;
+    border-bottom: dashed 3px $light;
     text-transform: uppercase;
     font-size: 1rem;
     margin: 0;
-    padding: 0.5em;
+    padding: 1em;
     text-align: center;
     display: block;
     &::first-letter {
@@ -32,5 +31,7 @@
   }
   .aside-body {
     font-size: 0.8rem;
+    padding: 1.5em 2em;
+    margin: 0;
   }
 }
