@@ -5,10 +5,163 @@
   <id>https://vgpena.github.io/</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2020-05-03T13:02:00-07:00</updated>
+  <updated>2020-05-12T21:22:00-07:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>Best Practices in JavaScript Array Iteration</title>
+    <link rel="alternate" href="https://vgpena.github.io/essential-javascript-array-iteration/"/>
+    <id>https://vgpena.github.io/essential-javascript-array-iteration/</id>
+    <published>2020-05-12T21:22:00-07:00</published>
+    <updated>2020-05-13T08:24:18-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">Learning more about JavaScript Array methods will help you write clean, idiomatic code. Let's look at four essential Array methods and how to use them.</summary>
+    <content type="html">&lt;p&gt;Getting your code to run is great, but why not aim for readability, consistency, and flexibility as well? One low-investment, high-reward way to level up your JavaScript is to learn the different ways to iterate over Arrays, and when to use each of them.&lt;/p&gt;
+
+&lt;p&gt;In this post, I’ll look at four essential Array prototype methods — &lt;code&gt;forEach&lt;/code&gt;, &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt;, and &lt;code&gt;reduce&lt;/code&gt; — and discuss best practices.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+    &lt;p class="aside-body"&gt;
+        My code samples will prioritize explicitness over brevity. There are ways to shorten almost every code sample here.
+    &lt;/p&gt;
+&lt;/aside&gt;
+&lt;h2 class='section-title' id=arrayforeach-take-an-array-give-me-nothing&gt;&lt;a href='#arrayforeach-take-an-array-give-me-nothing' class='section-inner'&gt;Array.forEach: take an Array; give me nothing&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Array.forEach&lt;/code&gt; behaves similarly to a &lt;code&gt;for&lt;/code&gt; loop incrementing by 1 — all it says is, “walk me through each element in an Array, and I will do &lt;em&gt;something&lt;/em&gt; on each step”. Looking at &lt;a href="https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1135"&gt;the TypeScript definition for this method&lt;/a&gt;, we see that the return type is &lt;code&gt;void&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code typescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;callbackfn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;void&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;thisArg&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;any&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="k"&gt;void&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This means that &lt;code&gt;forEach&lt;/code&gt; is most useful for side effects such as writing to the DOM or making an API call per member of an Array.&lt;/p&gt;
+
+&lt;p&gt;In this example, we’re appending text to the DOM but the original Array isn&amp;#39;t passed on to other calculations. Great time for a &lt;code&gt;forEach&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;element&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createElement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"span"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;element&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;innerText&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;appendChild&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;element&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Since &lt;code&gt;forEach&lt;/code&gt; returns &lt;code&gt;void&lt;/code&gt;, you should &lt;strong&gt;not&lt;/strong&gt; use it when you want to generate or build a value to keep using in your JavaScript code.&lt;/p&gt;
+
+&lt;p&gt;The most common mistake I see with &lt;code&gt;forEach&lt;/code&gt; is when developers it like a &lt;code&gt;for&lt;/code&gt; loop to build one Array out of another. For example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="c1"&gt;// DO NOT DO THIS!!&lt;/span&gt;
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;capitalized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[];&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;capitalized&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toLocaleUpperCase&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This misuse means that now you have an extra Array (&lt;code&gt;capitalized&lt;/code&gt;) hanging out in possibly global scope, even if you only needed it for that single calculation. Messy, and potentially confusing. A much better way to turn one Array into another is by using &lt;code&gt;Array.map&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 class='section-title' id=arraymap-take-an-array-give-me-an-array-of-the-same-length&gt;&lt;a href='#arraymap-take-an-array-give-me-an-array-of-the-same-length' class='section-inner'&gt;Array.map: take an Array; give me an Array of the same length&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Array.map walks through each element in an Array, does something to that element, and gives you a new Array back containing the resulting elements.&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href="https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1141"&gt;TypeScript&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code typescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;callbackfn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;thisArg&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;any&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;[];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Incoming Array members are of type &lt;code&gt;T&lt;/code&gt;, and the output Array contains members of type &lt;code&gt;U&lt;/code&gt;. That is to say, we’re free to transform the members of this Array into a completely different data type. The crux of &lt;code&gt;map&lt;/code&gt; is that each member of the outbound Array should correspond 1:1 with a member of the inbound Array.&lt;/p&gt;
+
+&lt;p&gt;In this example, we &lt;code&gt;map&lt;/code&gt; an Array of Strings to an Array of DOM nodes. We can chain this to a &lt;code&gt;forEach&lt;/code&gt; that handles adding nodes to the DOM. Three cheers for separation of concerns!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;createFancySpan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;fancySpan&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createElement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"span"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;classList&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"fancy"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;innerText&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;createFancySpan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;appendChild&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt; keeps our code free from extra Array declarations and manipulation. We get the values we need and pipe them right into the rest of our code.&lt;/p&gt;
+&lt;h2 class='section-title' id=arrayfilter-take-an-array-give-me-back-some-of-it&gt;&lt;a href='#arrayfilter-take-an-array-give-me-back-some-of-it' class='section-inner'&gt;Array.filter: take an Array; give me back some of it&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Array.filter&lt;/code&gt; intakes an Array and returns a new Array made out of elements from the original. &lt;a href="https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1153"&gt;The TypeScript spec&lt;/a&gt; for this method says:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code typescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;callbackfn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;unknown&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;thisArg&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;any&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Both the original and new Arrays contain elements of type &lt;code&gt;T&lt;/code&gt;. This means that we should not be transforming Array elements. What we &lt;em&gt;are&lt;/em&gt; doing here is building a new Array out of only elements that return &lt;code&gt;True&lt;/code&gt; when passed into a provided function.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;startsWithH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="nx"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;localeCompare&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"h"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"en"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;sensitivity&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"base"&lt;/span&gt; &lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="o"&gt;===&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;onlyHNames&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+  &lt;span class="nx"&gt;startsWithH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;filter&lt;/code&gt;, like &lt;code&gt;map&lt;/code&gt;, can be chained, since it returns an Array:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;startsWithH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;createFancySpan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;appendChild&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;aside class="aside"&gt;
+        &lt;h3 class="aside-title"&gt;Other cool Array methods&lt;/h3&gt;
+    &lt;p class="aside-body"&gt;
+        Array.some will tell you if the Array contains any members satisfying a condition. (“Does this Array contain any odd numbers?”) Array.every will tell you if the Array contains only members satisfying a condition. (“Are all of the members in this Array odd?”)
+    &lt;/p&gt;
+&lt;/aside&gt;
+&lt;h2 class='section-title' id=arrayreduce-take-an-array-give-me-anything&gt;&lt;a href='#arrayreduce-take-an-array-give-me-anything' class='section-inner'&gt;Array.reduce: take an Array; give me anything&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Array.reduce&lt;/code&gt; is the most open-ended way to iterate over an Array. This prototype method is designed to take an Array, do… whatever you want to it, and return that arbitrary result.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href="https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1159"&gt;basic usage of this method&lt;/a&gt; assumes that your return type is the same as the type of Array elements. In this type definition, the Array members and the return value are both of type &lt;code&gt;T&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code typescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;callbackfn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;previousValue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;currentValue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;currentIndex&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For example, given an Array of Strings, you can use a reducer to find the longest String:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;returnLongerString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;str1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;str2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;str1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="nx"&gt;str2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;str1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;str2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;longestName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;returnLongerString&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//String: "Hermione"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;Array.reduce&lt;/code&gt; also allows you to return a different type of data by providing an initial value to the reducer function. &lt;a href="https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1166"&gt;This type definition&lt;/a&gt; looks a little different:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code typescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;callbackfn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;previousValue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;currentValue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;currentIndex&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;initialValue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In this case, the Array members are of type &lt;code&gt;T&lt;/code&gt;, but since the initial value provided is of type &lt;code&gt;U&lt;/code&gt;, so is the return type.&lt;/p&gt;
+
+&lt;p&gt;This T → U transformation can occur if, for instance, we want to find the total length of Strings in an Array (String → Number):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;addStringLength&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;currTotal&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;newString&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;currTotal&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;newString&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;totalChars&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;curr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;addStringLength&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;curr&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+  &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//Number: 16&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 tabIndex=0&gt;Reduce vs. other methods&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt; and &lt;code&gt;filter&lt;/code&gt; are actually syntactic sugar over &lt;code&gt;reduce&lt;/code&gt;, meaning you use &lt;code&gt;reduce&lt;/code&gt; to implement anything you can implement using &lt;code&gt;map&lt;/code&gt; or &lt;code&gt;filter&lt;/code&gt;. For example, this is a reimplementation of the filter we saw above:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;startsWithHReducer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;HNames&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="nx"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;localeCompare&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"h"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"en"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;sensitivity&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"base"&lt;/span&gt; &lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="o"&gt;===&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;HNames&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;string&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;HNames&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;onlyHNamesReduced&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;curr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;startsWithHReducer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;curr&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+  &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you are replacing multiple chained &lt;code&gt;map&lt;/code&gt;s and &lt;code&gt;filter&lt;/code&gt;s with a single reducer, you may see performance gains over large data sets, since &lt;a href="https://itnext.io/you-may-need-laziness-in-your-javascript-f03e8a2d4629"&gt;JavaScript Array iterators are not lazy&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The vast majority of the time, however, I encourage you to stick with &lt;code&gt;map&lt;/code&gt; and &lt;code&gt;filter&lt;/code&gt; rather than replicating that behavior with &lt;code&gt;reduce&lt;/code&gt;. Array iteration will generally not be your performance bottleneck. If you&amp;#39;re working on something data-intensive for this to &lt;em&gt;become&lt;/em&gt; your bottleneck, you hopefully are already using monitoring tools that can alert you to this issue.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt; and &lt;code&gt;filter&lt;/code&gt; have a couple of advantages over &lt;code&gt;reduce&lt;/code&gt;. Calculations in &lt;code&gt;map&lt;/code&gt; or &lt;code&gt;filter&lt;/code&gt; wil generally be more concise than the same code in a &lt;code&gt;reduce&lt;/code&gt;. &lt;code&gt;map&lt;/code&gt; and &lt;code&gt;filter&lt;/code&gt; also keep your code scannable since your teammtes (or you, two months from now) can make assumptions about what data shape these functions return.&lt;/p&gt;
+
+&lt;p&gt;In other words, save &lt;code&gt;reduce&lt;/code&gt; for when you &lt;em&gt;actually&lt;/em&gt; want to reduce something.&lt;/p&gt;
+&lt;h2 class='section-title' id=keep-learning&gt;&lt;a href='#keep-learning' class='section-inner'&gt;Keep learning!&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;forEach&lt;/code&gt;, &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt;, and &lt;code&gt;reduce&lt;/code&gt; should be the first tools you reach for when working with Arrays. Playing to their intended uses will keep your code readable, predictable, and streamlined.&lt;/p&gt;
+
+&lt;p&gt;One way to become more confident with these methods, and with Array prototype methods in general, is to visit the &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"&gt;MDN docs&lt;/a&gt; to browse prototype methods and code samples.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://code.visualstudio.com/"&gt;Visual Studio Code&lt;/a&gt; is a great code editor if you’re looking to actively expand your understanding of JavaScript. VSCode pops up documentation and TypeScript definitions as you work, giving you constant reminders of the intent behind the function or method you’re using. &lt;em&gt;I think this is fun.&lt;/em&gt; 🤠&lt;/p&gt;
+
+&lt;p&gt;Happy coding, hang in there, and wash your hands!&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Basic Keyboard Customization with QMK</title>
     <link rel="alternate" href="https://vgpena.github.io/qmk/"/>
@@ -664,120 +817,6 @@ brew install qmk
 &lt;p&gt;Like a CoC, &lt;a href="https://help.github.com/articles/setting-guidelines-for-repository-contributors/"&gt;Contribution Guidelines&lt;/a&gt; clarify community standards and keep discussion productive. This will also be linked to when issues are opened. Contribution guidelines and CoCs are most applicable to open-source software, but it’s never &lt;em&gt;bad&lt;/em&gt; to codify expectations, even within a closed team.&lt;/p&gt;
 &lt;h2 class='section-title' id=tldr&gt;&lt;a href='#tldr' class='section-inner'&gt;TL;DR&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Better communication = more time building fun things. Github can help you. Use &lt;a href="https://github.com/vgpena/gh-docs-boilerplate"&gt;my boilerplate&lt;/a&gt; to make Pull Request and Issue templates, sit back, and enjoy the clarity 😎&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Hard Reset</title>
-    <link rel="alternate" href="https://vgpena.github.io/hard-reset/"/>
-    <id>https://vgpena.github.io/hard-reset/</id>
-    <published>2018-07-04T14:10:00-07:00</published>
-    <updated>2018-07-04T14:32:33-07:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <summary type="html">Getting away, physically and mentally, is something that I need in order to stay healthy. Of course I only realize this when it's too late. Here's an ode to nature, thoughts on burnout, and a plan to stay happy.</summary>
-    <content type="html">&lt;p&gt;Two nights ago, I slept in my own bed for the first time in almost three weeks.&lt;/p&gt;
-
-&lt;p&gt;My boyfriend and I had just returned from a two-and-a-half-week-long voyage through Amsterdam, Dubrovnik, and London. We’d seen &lt;em&gt;Sunflowers&lt;/em&gt; and the Rosetta Stone; we’d kayaked and jetskied; we’d eaten slabs of tongue-burning cheese pastry and spooky but delectable foamed asparagus.&lt;/p&gt;
-
-&lt;p&gt;But more valuable than these experiences, than fun, than knowledge, is simply having my head screwed on straight again.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;I moved to Portland in the fall of 2014 after finding that, as much as I wished otherwise, I was fundamentally incompatible with New York City. When people (usually my Detroit-based relatives; usually at Passover) ask me what I like about living here, I find myself invoking the usual Portland clichés: it’s highly bikeable; the food is top-notch; it’s close to nature.&lt;/p&gt;
-
-&lt;p&gt;This last point has done me incalculable good over the three and a half years that I’ve dwelled here. Too much good to dissect quickly with family over a noisy dinner; too much for even me to understand without careful consideration.&lt;/p&gt;
-
-&lt;p&gt;So here we go.&lt;/p&gt;
-
-&lt;p&gt;I’d basically never hiked before moving out here. Growing up in Buffalo, NY, I’d been on a handful of creek walks; I knew how to canoe, start a fire, identify nascent hypothermia. But not seeing another person for hours, for a day; anticipating and responding to hunger, thirst, cold, tiredness; drawing together two points on a map using only my own body, using my tiny self to carve new spaces out of the soil, out of air? Not a chance. The monotony, wonder, calculus, poetics of hiking were new to me, alien experiences adjacent to my everyday life. Stone, trees, mulch are there even now, separated by a spun-sugar membrane from my home and bed where I write this.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;&lt;figure role="img" class=" image-primary"&gt;
-    &lt;img src="/images/cascades.JPG" alt="A photo of a lake in a valley ringed by snowy mountains." title="The view from a snowy ridge in the North Cascades." width="1360px" height="1020px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;North Cascades, Washington State, Fall 2017. I camped by this lake.&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;When you are hiking, you are thinking about nothing else. Even if you’re talking about work, about friends, about books with your hiking companions, there is always part of your mind that’s focused not on that conversation but on sensation, on your surroundings. Part of you is aware only of smells, of temperature, of your own breathing. And when silence falls, when the conversation dies, that part of your mind expands to fit the space available.&lt;/p&gt;
-
-&lt;p&gt;For infinite moments I have been a valley, been distance, granite, innumerable trees.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;This time spent outside of myself is stranger, more elusive, than as to be easily described. I sleep well that night; I go to work the next week and spend a few minutes confused: what am I doing here; what was I working on on Friday?&lt;/p&gt;
-
-&lt;p&gt;But once the confusion clears, I feel amazing. The top sheet of paper has been torn from a notepad, revealing a completely blank page underneath. I have never been tired; I have never been hurt. How do I feel this okay?&lt;/p&gt;
-
-&lt;p&gt;As I realized that this was a pattern, a name presented itself: a hard reset.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;A hard reset is when you bypass normal, software-based ways of shutting down or restarting something, usually a computer. Instead of telling the machine to shut itself down via a dropdown option, waiting for programs to close, and telling it what to do with unsaved documents and so on, you simply hold down the Power button until the screen goes dark. When your computer boots up again it has little or no idea what it was just doing. It might have a recovery state saved that you could invoke to reopen some programs, but by and large the machine is in a fresh, &lt;em&gt;who am I and what year is it&lt;/em&gt; state.&lt;/p&gt;
-
-&lt;p&gt;This is how I am the day or two after coming back from a long hike. Being forced to (or getting to) think about hiking and only hiking for an entire day shifts my mind into a different track. I slow down, or at least my thoughts cluster differently. I don’t, I can’t think about a meeting or an architecture decision, because I’m noticing how the ground feels, listening for the first whispers of thirst, noticing acutely and dimly the ferns that litter my path.&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class=" image-secondary"&gt;
-    &lt;img src="/images/mthood.jpg" alt="A close-in photo of a snow-covered mountain." title="Looking up to Mount Hood." width="1360px" height="1020px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;Mt. Hood from Cairn Basin, Summer 2016.&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;This hard reset has become supremely important for me; this is the first time I’ve been able to identify that I need it &lt;em&gt;and&lt;/em&gt; been able to get it. For me, the cart came before the horse in that I got it and only later realized how okay it made me feel.&lt;/p&gt;
-
-&lt;p&gt;(In my experience, hard resets make me feel wonderful, happy, good, etc. but above all &lt;em&gt;okay&lt;/em&gt; in the positive sense — buoyant, stable, and whole. As I mention above: untired; unhurt.)&lt;/p&gt;
-
-&lt;p&gt;When I lived in New York City, life maintained a death grip on me. No matter what I did, I was me doing nothing but living my life, my step-by-step life in a body in a place. And it added up.&lt;/p&gt;
-
-&lt;p&gt;I didn’t move to Portland for the hard reset or for work-life balance. I didn’t know about hard resets, and balance is a nut I have yet to crack (but I’m trying). I moved here for a job, because I always move for jobs. I took the job that paid the most, the single job I applied for outside of the NYC area, the escape hatch I traced for myself out of what I slightly already understood was an untenable life.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;This summer, I needed something deeper than a hard reset. I love work and I still love my job, but the downside of this is that it has a way of creeping into hours and cycles that I should be spending doing anything but working. I may not be in the office but as I play games, read, garden, some part of my brain is mulling over how to order upcoming features, onboard a new team member, handle a change to the stack.&lt;/p&gt;
-
-&lt;p&gt;To be clear, I let this happen. Compartmentalization is a skill, one that I learned from my violin teacher. As he reworked my bow hold and gave me intervals to practice, he also helped train me to leave thoughts at the door, to make room for only what I needed in the moment.&lt;/p&gt;
-
-&lt;p&gt;(He also noticed that, when playing, my breath sometimes became irregular: I was forgetting to breathe.)&lt;/p&gt;
-
-&lt;p&gt;I let those skills slide, let my hard resets slide in the name of &lt;em&gt;career advancement&lt;/em&gt; and out of genuine pleasure at the challenges I had been handed. It was fun until it wasn’t. Until I was coming in on Mondays still-tired and still-hurt and trying everything to make it not show. I would come home late, ground down, unable to stop thinking about that day and about the one coming up.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;It wasn’t burnout, or maybe it was? Does it count as burnout if you never cry &lt;em&gt;at&lt;/em&gt; work? If you never yell at anyone, if you never look for another job?&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;I put an out-of-office responder on my email and could finally exhale. We were halfway through a Van Gough exhibit in Amsterdam. We paused between floors and I hit some buttons to give myself the space that an ocean hadn’t been able to supply.&lt;/p&gt;
-
-&lt;p&gt;I thought I would be better by the time we got to Croatia. I had allocated a few days to feel tired, to feel okay-but-down in that way you need to allow yourself to feel sometimes, because that’s the only way to not make it worse.&lt;/p&gt;
-
-&lt;p&gt;I was not better in Croatia. Thinking about work made my chest tighten. My boyfriend pecked merrily away at a side project; opening a text editor made me want to puke. I read a book, gazed at the sea, played games, was not myself for a bit. Some days I felt solidly better than before; one day I woke up and was sad from that moment until I went to sleep that night. I still don’t know why.&lt;/p&gt;
-
-&lt;p&gt;&lt;figure role="img" class=" image-secondary"&gt;
-    &lt;img src="/images/dubrovnik.jpg" alt="A photo of an old city with narrow streets and orange tiled roofs; the sea is visible beyond." title="The old section of Dubrovnik." width="1360px" height="1020px" /&gt;
-  &lt;figcaption&gt;
-    &lt;p&gt;Dubrovnik from the old city wall, Summer 2018. Getting better.&lt;/p&gt;
-  &lt;/figcaption&gt;
-&lt;/figure&gt;&lt;/p&gt;
-
-&lt;p&gt;I was better on my third day in London. I woke up early and walked around alone. Dipped in and out of shops; felt the undulations of building patterns across streets, neighborhoods. Bought a pen and was happy. I felt autonomous; I felt myself wanting things.&lt;/p&gt;
-
-&lt;p&gt;That afternoon, I wrote some code. Because I wanted to. I slept well.&lt;/p&gt;
-
-&lt;hr&gt;
-
-&lt;p&gt;Here I am, home again, working on finding and maintaining this peace. What do I need to be happy? How do I stay buoyant?&lt;/p&gt;
-
-&lt;p&gt;I thought I was low-maintenance but I guess not, or maybe this &lt;em&gt;is&lt;/em&gt; low-maintenance, or maybe the metric of “what do you need to do in your free time to be happy at work” is backwards and inside-out. (Kidding; I &lt;em&gt;know&lt;/em&gt; it is.)&lt;/p&gt;
-
-&lt;p&gt;This is my journey to consistent wellness; I assume it will take forever, but maybe it will get easier someday.&lt;/p&gt;
-
-&lt;p&gt;In the meantime, here I will be, giving myself (making for myself) the space and the circumstances to be well.&lt;/p&gt;
 </content>
   </entry>
 </feed>
