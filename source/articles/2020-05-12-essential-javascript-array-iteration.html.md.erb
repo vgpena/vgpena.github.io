@@ -1,0 +1,196 @@
+---
+title: Best Practices in JavaScript Array Iteration
+subtitle: Four essential Array methods, and how to use them
+summary: "Learning more about JavaScript Array methods will help you write clean, idiomatic code. Let's look at four essential Array methods and how to use them."
+hero: basics.jpg
+date: 2020-05-12 21:22 PDT
+---
+
+Getting your code to run is great, but why not aim for readability, consistency, and flexibility as well? One low-investment, high-reward way to level up your JavaScript is to learn the different ways to iterate over Arrays, and when to use each of them.
+
+In this post, I’ll look at four essential Array prototype methods — `forEach`, `map`, `filter`, and `reduce` — and discuss best practices.
+
+<%= partial(:aside, :locals => {
+:body => 'My code samples will prioritize explicitness over brevity. There are ways to shorten almost every code sample here.',
+})%>
+
+## Array.forEach: take an Array; give me nothing
+
+`Array.forEach` behaves similarly to a `for` loop incrementing by 1 — all it says is, “walk me through each element in an Array, and I will do _something_ on each step”. Looking at [the TypeScript definition for this method](https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1135), we see that the return type is `void`:
+
+```typescript
+forEach(callbackfn: (value: T, index: number, array: readonly T[]) => void, thisArg?: any): void;
+```
+
+This means that `forEach` is most useful for side effects such as writing to the DOM or making an API call per member of an Array.
+
+In this example, we’re appending text to the DOM but the original Array isn't passed on to other calculations. Great time for a `forEach`.
+
+```js
+["Harry", "Ron", "Hermione"].forEach((wizardName) => {
+  const element = document.createElement("span");
+  element.innerText = wizardName;
+  document.body.appendChild(element);
+});
+```
+
+Since `forEach` returns `void`, you should **not** use it when you want to generate or build a value to keep using in your JavaScript code.
+
+The most common mistake I see with `forEach` is when developers it like a `for` loop to build one Array out of another. For example:
+
+```js
+// DO NOT DO THIS!!
+const capitalized = [];
+
+["Harry", "Ron", "Hermione"].forEach((wizardName) => {
+  capitalized.push(wizardName.toLocaleUpperCase());
+});
+```
+
+This misuse means that now you have an extra Array (`capitalized`) hanging out in possibly global scope, even if you only needed it for that single calculation. Messy, and potentially confusing. A much better way to turn one Array into another is by using `Array.map`.
+
+## Array.map: take an Array; give me an Array of the same length
+
+Array.map walks through each element in an Array, does something to that element, and gives you a new Array back containing the resulting elements.
+
+Check out the [TypeScript](https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1141):
+
+```ts
+map<U>(callbackfn: (value: T, index: number, array: readonly T[]) => U, thisArg?: any): U[];
+```
+
+Incoming Array members are of type `T`, and the output Array contains members of type `U`. That is to say, we’re free to transform the members of this Array into a completely different data type. The crux of `map` is that each member of the outbound Array should correspond 1:1 with a member of the inbound Array.
+
+In this example, we `map` an Array of Strings to an Array of DOM nodes. We can chain this to a `forEach` that handles adding nodes to the DOM. Three cheers for separation of concerns!
+
+```js
+function createFancySpan(text) {
+  const fancySpan = document.createElement("span");
+  fancySpan.classList.add("fancy");
+  fancySpan.innerText = text;
+  return fancySpan;
+}
+
+["Harry", "Ron", "Hermione"]
+  .map((wizardName) => createFancySpan(wizardName))
+  .forEach((fancySpan) => document.body.appendChild(fancySpan));
+```
+
+`map` keeps our code free from extra Array declarations and manipulation. We get the values we need and pipe them right into the rest of our code.
+
+## Array.filter: take an Array; give me back some of it
+
+`Array.filter` intakes an Array and returns a new Array made out of elements from the original. [The TypeScript spec](https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1153) for this method says:
+
+```ts
+filter(callbackfn: (value: T, index: number, array: readonly T[]) => unknown, thisArg?: any): T[];
+```
+
+Both the original and new Arrays contain elements of type `T`. This means that we should not be transforming Array elements. What we _are_ doing here is building a new Array out of only elements that return `True` when passed into a provided function.
+
+```js
+function startsWithH(string) {
+  return (
+    string.split("")[0].localeCompare("h", "en", { sensitivity: "base" }) === 0
+  );
+}
+
+const onlyHNames = ["Harry", "Ron", "Hermione"].filter((wizardName) =>
+  startsWithH(wizardName)
+);
+```
+
+`filter`, like `map`, can be chained, since it returns an Array:
+
+```javascript
+["Harry", "Ron", "Hermione"]
+  .filter((wizardName) => startsWithH(wizardName))
+  .map((wizardName) => createFancySpan(wizardName))
+  .forEach((fancySpan) => document.body.appendChild(fancySpan));
+```
+
+<%= partial(:aside, :locals => {
+:title => 'Other cool Array methods',
+:body => 'Array.some will tell you if the Array contains any members satisfying a condition. (“Does this Array contain any odd numbers?”) Array.every will tell you if the Array contains only members satisfying a condition. (“Are all of the members in this Array odd?”)',
+})%>
+
+## Array.reduce: take an Array; give me anything
+
+`Array.reduce` is the most open-ended way to iterate over an Array. This prototype method is designed to take an Array, do… whatever you want to it, and return that arbitrary result.
+
+The [basic usage of this method](https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1159) assumes that your return type is the same as the type of Array elements. In this type definition, the Array members and the return value are both of type `T`.
+
+```ts
+reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T): T;
+```
+
+For example, given an Array of Strings, you can use a reducer to find the longest String:
+
+```js
+function returnLongerString(str1, str2) {
+  if (str1.length >= str2.length) {
+    return str1;
+  }
+  return str2;
+}
+
+const longestName = ["Harry", "Ron", "Hermione"].reduce(returnLongerString); //String: "Hermione"
+```
+
+`Array.reduce` also allows you to return a different type of data by providing an initial value to the reducer function. [This type definition](https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1166) looks a little different:
+
+```ts
+reduce<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: readonly T[]) => U, initialValue: U): U;
+```
+
+In this case, the Array members are of type `T`, but since the initial value provided is of type `U`, so is the return type.
+
+This T → U transformation can occur if, for instance, we want to find the total length of Strings in an Array (String → Number):
+
+```js
+function addStringLength(currTotal, newString) {
+  return currTotal + newString.length;
+}
+const totalChars = ["Harry", "Ron", "Hermione"].reduce(
+  (acc, curr) => addStringLength(acc, curr),
+  0
+); //Number: 16
+```
+
+### Reduce vs. other methods
+
+`map` and `filter` are actually syntactic sugar over `reduce`, meaning you use `reduce` to implement anything you can implement using `map` or `filter`. For example, this is a reimplementation of the filter we saw above:
+
+```js
+function startsWithHReducer(HNames, string) {
+  if (
+    string.split("")[0].localeCompare("h", "en", { sensitivity: "base" }) === 0
+  ) {
+    HNames.push(string);
+  }
+  return HNames;
+}
+
+const onlyHNamesReduced = ["Harry", "Ron", "Hermione"].reduce(
+  (acc, curr) => startsWithHReducer(acc, curr),
+  []
+);
+```
+
+If you are replacing multiple chained `map`s and `filter`s with a single reducer, you may see performance gains over large data sets, since [JavaScript Array iterators are not lazy](https://itnext.io/you-may-need-laziness-in-your-javascript-f03e8a2d4629).
+
+The vast majority of the time, however, I encourage you to stick with `map` and `filter` rather than replicating that behavior with `reduce`. Array iteration will generally not be your performance bottleneck. If you're working on something data-intensive for this to _become_ your bottleneck, you hopefully are already using monitoring tools that can alert you to this issue.
+
+`map` and `filter` have a couple of advantages over `reduce`. Calculations in `map` or `filter` wil generally be more concise than the same code in a `reduce`. `map` and `filter` also keep your code scannable since your teammtes (or you, two months from now) can make assumptions about what data shape these functions return.
+
+In other words, save `reduce` for when you _actually_ want to reduce something.
+
+## Keep learning!
+
+`forEach`, `map`, `filter`, and `reduce` should be the first tools you reach for when working with Arrays. Playing to their intended uses will keep your code readable, predictable, and streamlined.
+
+One way to become more confident with these methods, and with Array prototype methods in general, is to visit the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) to browse prototype methods and code samples.
+
+[Visual Studio Code](https://code.visualstudio.com/) is a great code editor if you’re looking to actively expand your understanding of JavaScript. VSCode pops up documentation and TypeScript definitions as you work, giving you constant reminders of the intent behind the function or method you’re using. _I think this is fun._ 🤠
+
+Happy coding, hang in there, and wash your hands!
