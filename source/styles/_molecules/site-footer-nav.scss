@@ -1,7 +1,12 @@
-@import '../_atoms/site-footer-nav-item';
+@import "../_atoms/site-footer-nav-item";
 
 #footer-nav-links {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  @media (min-width: $footer-break) {
+    height: 100%;
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+  }
 }

@@ -1,8 +1,12 @@
 .footer-nav-link {
   display: inline-block;
+  height: 100%;
   a {
     color: $dark;
-    display: inline-block;
+    display: inline-grid;
+    align-content: center;
+    height: 100%;
+    box-sizing: border-box;
     &:hover {
       color: $light;
       background-color: $dark;

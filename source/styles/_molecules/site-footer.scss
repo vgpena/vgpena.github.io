@@ -12,6 +12,8 @@ footer {
 
   @media (min-width: $footer-break) {
     text-align: initial;
+    display: grid;
+    grid-template-columns: auto auto;
   }
 
   #home & {
@@ -22,8 +24,8 @@ footer {
 .footer-item {
   display: block;
   @media (min-width: $footer-break) {
-    display: inline-block;
-    vertical-align: center;
+    // display: inline-block;
+    vertical-align: middle;
   }
 }
 
