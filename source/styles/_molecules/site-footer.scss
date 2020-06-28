@@ -24,7 +24,6 @@ footer {
 .footer-item {
   display: block;
   @media (min-width: $footer-break) {
-    // display: inline-block;
     vertical-align: middle;
   }
 }
