@@ -1,0 +1,77 @@
+<!doctype html> <html lang=en-us> <head> <meta charset=utf-8> <link rel=alternate type="application/atom+xml" href="https://vgpena.github.io/feed.xml" title="Like, subscribe, &amp; download my mixtape"/> <meta property="og:type" content=website> <meta property="og:url" content="https://vgpena.github.io/throwaway-work/"> <meta property="og:site_name" content="hey it's violet"> <meta property="og:title" content="Throwaway Work"> <meta property="og:description" content="Over the years, I've found that I generate a lot of docs and drawings that aren't part of final deliverables -- throwaway work. Here's why throwaway work is necessary, and how to get comfortable with and even celebrate it."> <meta property="og:image" content="https://vgpena.github.io/images/strange-f.jpg"> <meta name="twitter:domain" value="vgpena.github.io"> <meta property="twitter:title" content="Throwaway Work"> <meta property="twitter:description" ontent="Over the years, I've found that I generate a lot of docs and drawings that aren't part of final deliverables -- throwaway work. Here's why throwaway work is necessary, and how to get comfortable with and even celebrate it."> <meta property="twitter:url" content="https://vgpena.github.io/throwaway-work/"> <meta property="twitter:image" content="https://vgpena.github.io/images/strange-f.jpg"> <meta name=author content="Violet Peña"> <meta name=description content="Over the years, I've found that I generate a lot of docs and drawings that aren't part of final deliverables -- throwaway work. Here's why throwaway work is necessary, and how to get comfortable with and even celebrate it."> <meta name=viewport content="width=device-width, initial-scale=1"> <script>
+  if ('FontFace' in window) {
+    const fonts = [
+      {
+        name: 'Overpass Mono',
+        files: [
+          {
+            fileName: 'OverpassMono-Light',
+            weight: 'normal',
+            style: 'normal',
+          },
+          {
+            fileName: 'OverpassMono-Bold',
+            weight: 'bold',
+            style: 'normal',
+          }
+        ]
+      },
+      {
+        name: 'Pitch Display',
+        files: [
+          {
+            fileName: 'Pitch-Display',
+            weight: 'normal',
+            style: 'normal',
+          }
+        ]
+      },
+      {
+        name: 'Karla',
+        files: [
+          {
+            fileName: 'Karla-Regular',
+            weight: 'normal',
+            style: 'normal',
+          },
+          {
+            fileName: 'Karla-Bold',
+            weight: 'bold',
+            style: 'normal',
+          },
+          {
+            fileName: 'Karla-Italic',
+            weight: 'normal',
+            style: 'italic',
+          },
+          {
+            fileName: 'Karla-BoldItalic',
+            weight: 'bold',
+            style: 'italic',
+          },
+        ]
+      },
+    ];
+
+    fonts.forEach((font) => {
+      font.files.forEach((file) => {
+        const currFont = new FontFace(
+          font.name,
+          `url(/fonts/${ file.fileName }.woff2), url(/fonts/${ file.fileName }.woff)`,
+          {
+            weight: file.weight,
+            style: file.style,
+          }
+        );
+
+        currFont.load().then(() => {
+          document.fonts.add(currFont);
+        });
+      });
+    });
+  }
+</script> <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-92096829-1', 'auto');
+      ga('send', 'pageview');
+    </script> <script async src='https://www.google-analytics.com/analytics.js'></script> <title>Throwaway Work | hey it's violet</title> <link href="/styles/styles.css" rel=stylesheet media=screen /> </head> <body> <header id=site-header role=banner aria-label="Hey it's Violet: a blog"> <h1 id=site-title> <a href="/" aria-label="Back to home">Hey it's Violet</a> </h1> </header> <main> <article aria-labelledby=article-title> <div id=article-heading role=heading> <h1 id=article-title> Throwaway Work </h1> <div id=article-info> <h2 class=article-info-piece id=article-subtitle> Maybe the real friends were the docs we wrote along the way </h2> <h2 class=article-info-piece id=article-date aria-label="Published May 04, 2021"> 5.4.2021 </h2> </div> </div> <div class=content> <p>Last week, I walked my mentor through a technical discovery project my team had recently completed. Four weeks of notes, architecture diagrams, flowcharts, checklists, meeting minutes, and mind maps fed into <em>two</em> solitary write-ups which we sent over to our client. In other words, almost all of the artifacts we produced didn&#39;t end up being seen by anyone outside of our team, and aren&#39;t considered project deliverables. Going through all of these non-deliverables felt bittersweet, and one specific thought bubbled up in my mind: &quot;Wow, that&#39;s a lot of throwaway work&quot;.</p> <p>Maybe? But these documents weren&#39;t failed deliverables. They came out of a need to ask questions, propose hypotheses, provoke ourselves and our clients. They&#39;re an externalized thought process.</p> <p><div class=" image-primary"> <img src="/images/strange-f.jpg" alt="Three thick stacks of pink sticky notes on a wooden table in front of a window." title="Some throwaway work." width=4032px height=3024px /> </div></p> <p>Which brings me to the other side of this coin: I (you? most people?) <em>need</em> to produce throwaway work in order to arrive at the conclusions that we&#39;re on the hook to actually deliver. We we need room to externalize our ideas: to draw and sketch, gather links, connect elements, color-code, develop spatial relationships. Externalizing thoughts is an element of communication, but even more fundamentally, externalization forces us to reckon with and revise our own ideas. (If I&#39;m drawing boxes, why is one larger than another? Are they the same color? <em>What even is reality, man?</em>)</p> <hr> <p>For all our talk of prototyping and iterating, I often see developers hesitate to create throwaway work. This hesitation comes from a variety of sources, but one significant factor is: what output are developers expected to create? We generally produce working code, generally with a mouse and keyboard. What can we make if we <em>don&#39;t</em> stick to these modes of expression?</p> <p>Removing these norms opens the door to pseudocode, diagramming, handwriting, highlighting, paper cutouts. Changing modalities lets me shift my expression into the domain that fits the problem at hand and/or my own mind.</p> <p><div class=" image-secondary"> <img src="/images/whiteboard.jpg" alt="A green-and-orange web application architecture diagram drawn on a whiteboard table." title="More throwaway work." width=3024px height=4032px /> </div></p> <p>That thought I can&#39;t put into words — maybe I can articulate it by drawing some boxes. Maybe I have to draw these boxes three times before they look like what I was thinking about. Maybe this drawing leads me to a related question, or shows me that my idea actually isn&#39;t viable. Maybe I want to show this drawing to a colleague, use it for my own reference as I work towards a deliverable, or treat it purely as a lesson learned and never look at it again. But this drawing is doing <em>something</em>.</p> <hr> <p>Throwaway work is invisible from the outside. Just as our clients never saw my hand-drawn mind maps, we don&#39;t see the rehearsal hours that go into polished conference presentations. We don&#39;t know that an experienced colleague has already solved this problem eight times in four different ways. The work may be invisible, may be thrown away, but it&#39;s absolutely not <em>lost</em> — rather, it enables everything that <em>does</em> eventually see the light of day.</p> <p>To zoom back in, throwaway work — alternate, intermediate representations — got me to truly understand design systems, and helped me take my first steps into application architecture. It lets me tackle nebulous (and immensely rewarding) discovery projects. It helps me discuss and understand my teammates&#39; ideas.</p> <p>Throwaway work is a necessary, invisible, rarely-taught element of working in tech. (I&#39;m dreaming of a future blog post where I break this down more, by the way.) And yes, it can be sad to know that no one else will see a doc that represents a huge breakthrough. But once we have that breakthrough, we can bring it forward to inform our next round of questioning. And we&#39;ll do this again, and again, until we have what feels like an answer.</p> </div> </article> </main> <footer> <nav id=footer-nav role=navigation aria-label="Navigate to Other Pages" class="footer-item noprint"> <ul id=footer-nav-links> <li class=footer-nav-link> <a href="/" class=footer-unit>Index</a> </li> <li class=footer-nav-link> <a href="/info" class=footer-unit>Info</a> </li> <li class=footer-nav-link> <a href="https://vgpena.github.io/feed.xml" class=footer-unit>RSS</a> </li> <li class=footer-nav-link> <a href="#" class=footer-unit>Top</a> </li> </ul> </nav> <div id=footer-colophon aria-label="Made with love in 2021" class="footer-item footer-unit noprint"> <div> &hearts; 2021 </div> <div class=footer-disclaimer>All opinions are my own.</div> </div> <div class="printonly aux"> http://violet.is || Violet Pe&ntilde;a || 2021 </div> </footer> </body> </html>

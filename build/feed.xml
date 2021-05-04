@@ -5,16 +5,58 @@
   <id>https://vgpena.github.io/</id>
   <link href="https://vgpena.github.io"/>
   <link href="https://vgpena.github.io/feed.xml" rel="self"/>
-  <updated>2020-06-28T12:55:00-07:00</updated>
+  <updated>2021-05-04T12:47:00-07:00</updated>
   <author>
     <name>Violet Peña</name>
   </author>
+  <entry>
+    <title>Throwaway Work</title>
+    <link rel="alternate" href="https://vgpena.github.io/throwaway-work/"/>
+    <id>https://vgpena.github.io/throwaway-work/</id>
+    <published>2021-05-04T12:47:00-07:00</published>
+    <updated>2021-05-04T13:30:00-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">Over the years, I've found that I generate a lot of docs and drawings that aren't part of final deliverables -- throwaway work. Here's why throwaway work is necessary, and how to get comfortable with and even celebrate it.</summary>
+    <content type="html">&lt;p&gt;Last week, I walked my mentor through a technical discovery project my team had recently completed. Four weeks of notes, architecture diagrams, flowcharts, checklists, meeting minutes, and mind maps fed into &lt;em&gt;two&lt;/em&gt; solitary write-ups which we sent over to our client. In other words, almost all of the artifacts we produced didn&amp;#39;t end up being seen by anyone outside of our team, and aren&amp;#39;t considered project deliverables. Going through all of these non-deliverables felt bittersweet, and one specific thought bubbled up in my mind: &amp;quot;Wow, that&amp;#39;s a lot of throwaway work&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;Maybe? But these documents weren&amp;#39;t failed deliverables. They came out of a need to ask questions, propose hypotheses, provoke ourselves and our clients. They&amp;#39;re an externalized thought process.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/strange-f.jpg" alt="Three thick stacks of pink sticky notes on a wooden table in front of a window." title="Some throwaway work." width="4032px" height="3024px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Which brings me to the other side of this coin: I (you? most people?) &lt;em&gt;need&lt;/em&gt; to produce throwaway work in order to arrive at the conclusions that we&amp;#39;re on the hook to actually deliver. We we need room to externalize our ideas: to draw and sketch, gather links, connect elements, color-code, develop spatial relationships. Externalizing thoughts is an element of communication, but even more fundamentally, externalization forces us to reckon with and revise our own ideas. (If I&amp;#39;m drawing boxes, why is one larger than another? Are they the same color? &lt;em&gt;What even is reality, man?&lt;/em&gt;)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;For all our talk of prototyping and iterating, I often see developers hesitate to create throwaway work. This hesitation comes from a variety of sources, but one significant factor is: what output are developers expected to create? We generally produce working code, generally with a mouse and keyboard. What can we make if we &lt;em&gt;don&amp;#39;t&lt;/em&gt; stick to these modes of expression?&lt;/p&gt;
+
+&lt;p&gt;Removing these norms opens the door to pseudocode, diagramming, handwriting, highlighting, paper cutouts. Changing modalities lets me shift my expression into the domain that fits the problem at hand and/or my own mind.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-secondary"&gt;
+    &lt;img src="/images/whiteboard.jpg" alt="A green-and-orange web application architecture diagram drawn on a whiteboard table." title="More throwaway work." width="3024px" height="4032px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;That thought I can&amp;#39;t put into words — maybe I can articulate it by drawing some boxes. Maybe I have to draw these boxes three times before they look like what I was thinking about. Maybe this drawing leads me to a related question, or shows me that my idea actually isn&amp;#39;t viable. Maybe I want to show this drawing to a colleague, use it for my own reference as I work towards a 
+deliverable, or treat it purely as a lesson learned and never look at it again. But this drawing is doing &lt;em&gt;something&lt;/em&gt;.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;Throwaway work is invisible from the outside. Just as our clients never saw my hand-drawn mind maps, we don&amp;#39;t see the rehearsal hours that go into polished conference presentations. We don&amp;#39;t know that an experienced colleague has already solved this problem eight times in four different ways. The work may be invisible, may be thrown away, but it&amp;#39;s absolutely not &lt;em&gt;lost&lt;/em&gt; — rather, it enables everything that &lt;em&gt;does&lt;/em&gt; eventually see the light of day.&lt;/p&gt;
+
+&lt;p&gt;To zoom back in, throwaway work — alternate, intermediate representations — got me to truly understand design systems, and helped me take my first steps into application architecture. It lets me tackle nebulous (and immensely rewarding) discovery projects. It helps me discuss and understand my teammates&amp;#39; ideas.&lt;/p&gt;
+
+&lt;p&gt;Throwaway work is a necessary, invisible, rarely-taught element of working in tech. (I&amp;#39;m dreaming of a future blog post where I break this down more, by the way.) And yes, it can be sad to know that no one else will see a doc that represents a huge breakthrough. But once we have that breakthrough, we can bring it forward to inform our next round of questioning. And we&amp;#39;ll do this again, and again, until we have what feels like an answer.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>On Priorities</title>
     <link rel="alternate" href="https://vgpena.github.io/on-priorities/"/>
     <id>https://vgpena.github.io/on-priorities/</id>
     <published>2020-06-28T12:55:00-07:00</published>
-    <updated>2020-06-28T13:43:19-07:00</updated>
+    <updated>2021-05-04T12:16:28-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -75,7 +117,7 @@
     <link rel="alternate" href="https://vgpena.github.io/js-arrays/"/>
     <id>https://vgpena.github.io/js-arrays/</id>
     <published>2020-05-12T21:22:00-07:00</published>
-    <updated>2020-05-13T08:26:13-07:00</updated>
+    <updated>2021-05-04T12:16:28-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -228,7 +270,7 @@
     <link rel="alternate" href="https://vgpena.github.io/qmk/"/>
     <id>https://vgpena.github.io/qmk/</id>
     <published>2020-05-03T13:02:00-07:00</published>
-    <updated>2020-05-03T15:33:23-07:00</updated>
+    <updated>2021-05-04T12:16:28-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -353,7 +395,7 @@ brew install qmk
     <link rel="alternate" href="https://vgpena.github.io/do-you-want-to-build-a-slide-deck/"/>
     <id>https://vgpena.github.io/do-you-want-to-build-a-slide-deck/</id>
     <published>2020-02-29T20:37:00-08:00</published>
-    <updated>2020-02-29T20:55:08-08:00</updated>
+    <updated>2021-05-04T12:16:28-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -428,7 +470,7 @@ brew install qmk
     <link rel="alternate" href="https://vgpena.github.io/using-css-grid-the-right-way/"/>
     <id>https://vgpena.github.io/using-css-grid-the-right-way/</id>
     <published>2019-02-17T13:58:00-08:00</published>
-    <updated>2020-03-01T10:30:10-08:00</updated>
+    <updated>2021-05-04T12:16:28-07:00</updated>
     <author>
       <name>Violet Peña</name>
     </author>
@@ -703,78 +745,6 @@ brew install qmk
 &lt;ul&gt;
 &lt;li&gt;3/1/2020: Fixed column typo (&lt;a href="https://github.com/vgpena/vgpena.github.io/issues/5"&gt;#5&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Private vs. Restricted Node Packages: What's the Diff?</title>
-    <link rel="alternate" href="https://vgpena.github.io/private-vs-restricted-node-packages-what-s-the-diff/"/>
-    <id>https://vgpena.github.io/private-vs-restricted-node-packages-what-s-the-diff/</id>
-    <published>2018-12-28T15:05:00-08:00</published>
-    <updated>2018-12-28T15:52:19-08:00</updated>
-    <author>
-      <name>Violet Peña</name>
-    </author>
-    <summary type="html">'Private' and 'Restricted' may sound similar, but they're completely different when it comes to Node packages. Here's what they mean and how to use them.</summary>
-    <content type="html">&lt;p&gt;At &lt;a href="http://www.instrument.com/"&gt;work&lt;/a&gt;, my team is sharing React components with our client by packaging and publishing each component individually. Publishing Node packages is new territory for me, and the learning curve hasn’t always been gentle. I’ll take some time now to clarify a paradigm I initially found confusing: what’s the difference between making a Node package &lt;em&gt;private&lt;/em&gt; and &lt;em&gt;restricting access&lt;/em&gt; to it?&lt;/p&gt;
-&lt;h2 class='section-title' id=private-node-packages&gt;&lt;a href='#private-node-packages' class='section-inner'&gt;Private Node packages&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;A private package is not shared or distributed on its own, and cannot be published to a registry (such as &lt;a href="https://www.npmjs.com/"&gt;npmjs.com&lt;/a&gt;).&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=" image-secondary"&gt;
-    &lt;img src="/images/harriet.gif" alt="" title="Harriet the Spy shows us the cover of her journal, which reads PRIVATE." width="400px" height="232px" /&gt;
-  &lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;Marking a package as private ensures that its code will not be published, even accidentally. For instance, a one-off marketing site using React will contain a &lt;code&gt;package.json&lt;/code&gt; file. Unless this file specifies that the project is private, an errant contributor could publish the project code to a package registry, even if the code were proprietary or simply wouldn’t make sense to distribute on its own.&lt;/p&gt;
-
-&lt;p&gt;Here’s a sample &lt;code&gt;package.json&lt;/code&gt; for a non-distributable project:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code json"&gt;&lt;code&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"name"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"specific-website"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"version"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"0.0.1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"description"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"A bespoke website for &amp;lt;Client&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"main"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"index.js"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"private"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"scripts"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"dependencies"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"devDependencies"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
-    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Privacy only affects the ability to publish to a package registry — it won’t affect other ways of sharing code, such as pushing to a Github repo.&lt;/p&gt;
-
-&lt;p&gt;As a sidenote, private packages are generally ignored by packaging utilities. For example, &lt;a href="https://github.com/lerna/lerna"&gt;Lerna&lt;/a&gt; won’t include private packages in its &lt;code&gt;lerna list&lt;/code&gt; output unless you pass in the &lt;code&gt;--all&lt;/code&gt; flag.&lt;/p&gt;
-&lt;h2 class='section-title' id=restricted-node-packages&gt;&lt;a href='#restricted-node-packages' class='section-inner'&gt;Restricted Node packages&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;In contrast to private packages, restricted packages &lt;em&gt;can&lt;/em&gt; be distributed via a package registry, but only to whitelisted individuals. To use a restricted package, you need an account with the specific registry to which it was published, and you must belong to the organization or team that has access to that package. Otherwise, the package’s URL will 404.&lt;/p&gt;
-
-&lt;p&gt;One use for restricted packages is for sharing proprietary code within a company. For example, a custom lazyloader that conforms to studio standards can be used on multiple projects either through copy-pasting the original code over and over (boo), or through publishing the code once to npmjs.com and including it as a dependency on subsequent projects (yay!).&lt;/p&gt;
-
-&lt;p&gt;Here’s a sample &lt;code&gt;package.json&lt;/code&gt; for a project with locked-down distribution permissions:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="code json"&gt;&lt;code&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"name"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"@company/awesome-lazyloader"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"version"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"0.0.1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"description"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"A reusable lazyloader for use at &amp;lt;Company&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"main"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"index.js"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"license"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"UNLICENSED"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"publishConfig"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
-        &lt;/span&gt;&lt;span class="s2"&gt;"access"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"restricted"&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="s2"&gt;"dependencies"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="w"&gt;  
-      &lt;/span&gt;&lt;span class="s2"&gt;"devDependencies"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
-      &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
-    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;If you publish to npmjs.com, take note that the site UI diverges from actual Node packaging terminology: a restricted package’s UI will have a “Private” badge even though the package &lt;em&gt;isn’t&lt;/em&gt; private. (I can’t explain this; it’s just bad UX.)&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=" image-primary"&gt;
-    &lt;img src="/images/npmjs-com-private.png" alt="" title="A screengrab of a restricted package on npmjs.com; the site UI includes a &amp;quot;Private&amp;quot; badge under the package name." width="2470px" height="966px" /&gt;
-  &lt;/div&gt;&lt;/p&gt;
-&lt;h3 tabIndex=0&gt;Licensing&lt;/h3&gt;
-&lt;p&gt;If you are publishing a restricted package, you probably want it to be unlicensed, which means that no one is inherently authorized to modify or redistribute it. You can set this either by removing the &lt;code&gt;license&lt;/code&gt; field from the project’s &lt;code&gt;package.json&lt;/code&gt; or by setting it to &lt;code&gt;license: &amp;quot;UNLICENSED&amp;quot;&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 class='section-title' id=&gt;&lt;a href='#' class='section-inner'&gt;👋🏻&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Thanks for reading! I hope this saved you some time. May 2019 be full of writing and sharing great JavaScript. 🥂🥂&lt;/p&gt;
-
-&lt;p&gt;Many thanks to Daniel, Ginger, and Thomas for your time, energy, and expertise.&lt;/p&gt;
 </content>
   </entry>
 </feed>
