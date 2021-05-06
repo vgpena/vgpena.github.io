@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>hey it's violet</title>
+  <subtitle>developer &amp; human in the PNW</subtitle>
+  <id>https://vgpena.github.io/</id>
+  <link href="https://vgpena.github.io"/>
+  <link href="https://vgpena.github.io/feed.xml" rel="self"/>
+  <updated>2021-05-04T12:47:00-07:00</updated>
+  <author>
+    <name>Violet Peña</name>
+  </author>
+  <entry>
+    <title>Throwaway Work</title>
+    <link rel="alternate" href="https://vgpena.github.io/throwaway-work/"/>
+    <id>https://vgpena.github.io/throwaway-work/</id>
+    <published>2021-05-04T12:47:00-07:00</published>
+    <updated>2021-05-05T21:18:32-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">Over the years, I've found that I generate a lot of docs and drawings that aren't part of final deliverables -- throwaway work. Here's why throwaway work is necessary, and how to get comfortable with and even celebrate it.</summary>
+    <content type="html">&lt;p&gt;Last week, I walked my mentor through a technical discovery project my team had recently completed. Four weeks of notes, architecture diagrams, flowcharts, checklists, meeting minutes, and mind maps fed into &lt;em&gt;two&lt;/em&gt; solitary write-ups which we sent over to our client. In other words, almost all of the artifacts we produced didn&amp;#39;t end up being seen by anyone outside of our team, and aren&amp;#39;t considered project deliverables. Going through all of these non-deliverables felt bittersweet, and one specific thought bubbled up in my mind: &amp;quot;Wow, that&amp;#39;s a lot of throwaway work&amp;quot;.&lt;/p&gt;
+
+&lt;p&gt;Maybe? But these documents weren&amp;#39;t failed deliverables. They came out of a need to ask questions, propose hypotheses, provoke ourselves and our clients. They&amp;#39;re an externalized thought process.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/strange-f.jpg" alt="Three thick stacks of pink sticky notes on a wooden table in front of a window." title="Some throwaway work." width="4032px" height="3024px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Which brings me to the other side of this coin: I (you? most people?) &lt;em&gt;need&lt;/em&gt; to produce throwaway work in order to arrive at the conclusions that we&amp;#39;re on the hook to actually deliver. We we need room to externalize our ideas: to draw and sketch, gather links, connect elements, color-code, develop spatial relationships. Externalizing thoughts is an element of communication, but even more fundamentally, externalization forces us to reckon with and revise our own ideas. (If I&amp;#39;m drawing boxes, why is one larger than another? Are they the same color? &lt;em&gt;What even is reality, man?&lt;/em&gt;)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;For all our talk of prototyping and iterating, I often see developers hesitate to create throwaway work. This hesitation comes from a variety of sources, but one significant factor is: what output are developers expected to create? We generally produce working code, generally with a mouse and keyboard. What can we make if we &lt;em&gt;don&amp;#39;t&lt;/em&gt; stick to these modes of expression?&lt;/p&gt;
+
+&lt;p&gt;Removing these norms opens the door to pseudocode, diagramming, handwriting, highlighting, paper cutouts. Changing modalities lets me shift my expression into the domain that fits the problem at hand and/or my own mind.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-secondary"&gt;
+    &lt;img src="/images/whiteboard.jpg" alt="A green-and-orange web application architecture diagram drawn on a whiteboard table." title="More throwaway work." width="3024px" height="4032px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;That thought I can&amp;#39;t put into words — maybe I can articulate it by drawing some boxes. Maybe I have to draw these boxes three times before they look like what I was thinking about. Maybe this drawing leads me to a related question, or shows me that my idea actually isn&amp;#39;t viable. Maybe I want to show this drawing to a colleague, use it for my own reference as I work towards a 
+deliverable, or treat it purely as a lesson learned and never look at it again. But this drawing is doing &lt;em&gt;something&lt;/em&gt;.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;Throwaway work is invisible from the outside. Just as our clients never saw my hand-drawn mind maps, we don&amp;#39;t see the rehearsal hours that go into polished conference presentations. We don&amp;#39;t know that an experienced colleague has already solved this problem eight times in four different ways. The work may be invisible, may be thrown away, but it&amp;#39;s absolutely not &lt;em&gt;lost&lt;/em&gt; — rather, it enables everything that &lt;em&gt;does&lt;/em&gt; eventually see the light of day.&lt;/p&gt;
+
+&lt;p&gt;To zoom back in, throwaway work — alternate, intermediate representations — got me to truly understand design systems, and helped me take my first steps into application architecture. It lets me tackle nebulous (and immensely rewarding) discovery projects. It helps me discuss and understand my teammates&amp;#39; ideas.&lt;/p&gt;
+
+&lt;p&gt;Throwaway work is a necessary, invisible, rarely-taught element of working in tech. (I&amp;#39;m dreaming of a future blog post where I break this down more, by the way.) And yes, it can be sad to know that no one else will see a doc that represents a huge breakthrough. But once we have that breakthrough, we can bring it forward to inform our next round of questioning. And we&amp;#39;ll do this again, and again, until we have what feels like an answer.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>On Priorities</title>
+    <link rel="alternate" href="https://vgpena.github.io/on-priorities/"/>
+    <id>https://vgpena.github.io/on-priorities/</id>
+    <published>2020-06-28T12:55:00-07:00</published>
+    <updated>2021-05-05T21:18:32-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">As corporations renew their equity and inclusion efforts, questioning how these efforts are powered can reveal their authenticity.</summary>
+    <content type="html">&lt;p&gt;Over the past few weeks, numerous companies, projects, and working groups have put forth statements outlining their new racial equity efforts. There is a &lt;em&gt;lot&lt;/em&gt; to unpack in these corporate initiatives, but I want to focus on the specific dimension of how racial equity work is prioritized.&lt;/p&gt;
+
+&lt;p&gt;This post references patterns I have observed in tech and adjacent industries. It does not refer in totality to specific events at any specific company.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;By default, I reject zero-sum thinking and am most interested in how to get to &lt;code&gt;A &amp;amp;&amp;amp; B&lt;/code&gt; instead of &lt;code&gt;A || B&lt;/code&gt;. This mindset is how I understand and survive in the world and the tech industry. I also see it as the cornerstone to dismantling patriarchal and white supremacist systems which, by nature, thrive on exclusion and on defining the world as zero-sum (e.g., “It’s nice that we want to hire more Black people but then what about all the white candidates who we’ll have to turn down?”)&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+    &lt;p class="aside-body"&gt;
+        Some changes are superficially win-lose (e.g., white peoples’ comfort no longer being centered) but are actually win-win (because EVERYONE will thrive more outside of a white supremacist system)
+    &lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;p&gt;That said, time and energy are measurable, finite quantities that we can only access a bit at a time. And I respect that. This is where prioritization comes into play.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;Over time, yes, Virginia, you can have it all. You &lt;strong&gt;can&lt;/strong&gt; have an inclusive and safe environment, you &lt;strong&gt;can&lt;/strong&gt; raise your profit margin, you &lt;strong&gt;can&lt;/strong&gt; win all the work awards, you &lt;strong&gt;can&lt;/strong&gt; recruit easily, you &lt;strong&gt;can&lt;/strong&gt; operate efficiently. But in the short term, if any of these systems need fixing, you need to figure out where the effort to make the fix is going to come from. If you’re spinning up a task force to improve recruiting, or to guarantee pay equity, where do the group members come from? &lt;a href="https://www.washingtonpost.com/technology/2020/06/26/black-ergs-tech/"&gt;Are they current employees who will need to swap this work out for their current 9-5 responsibilities?&lt;/a&gt; Then you’re probably taking an efficiency/quality-of-work hit. Are you hiring a third-party consultancy? Then may lessen your coveted profit margins. (And so on.)&lt;/p&gt;
+
+&lt;p&gt;Any of these options can be correctly executed on, but my point is that &lt;strong&gt;if you need to fix your white supremacy and you can’t tell me what you will sacrifice to make this possible, then you’re not part of the solution.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;I have been circling around prioritization for a while now, so I’ll finally come to it directly, in terms many tech workers will find familiar. Some features are launch-critical/P0 (e.g., having a navigation on your website). Other features are nice-to-haves/P1 (adding page transition animations). Articulating priorities makes it OK to lose a P1 in order to complete a P0.&lt;/p&gt;
+
+&lt;p&gt;I see many companies claim that equity &amp;amp; inclusion (E&amp;amp;I) is “a priority” or that they intend to “put in the work”, but so far I overwhelmingly see efforts that demand E&amp;amp;I be fixed &lt;strong&gt;at no cost to anything else.&lt;/strong&gt; ERG members are not given time within the 9-5 to do this work; companies shy away from third-party consultancies; chains of accountability and empowerment remain as-is.&lt;/p&gt;
+
+&lt;p&gt;If E&amp;amp;I is a P0 — if Black employees’ safety and health is a P0 — you are pulling every lever possible that does not compromise other P0s (e.g., job security; keeping the business solvent). You&amp;#39;re delaying release dates, reducing ERG members&amp;#39; normal workload, prepping notes for your shareholders on why your profits stayed flat this quarter.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+    &lt;p class="aside-body"&gt;
+        At time of writing, this blog is hosted on Github Pages, signaling that I prioritize keeping a consistent coding/deployment platform over divesting from a company that works with ICE. I know I need to fix my shit. I’d prefer that Github fixed their shit instead, but I can’t control that.
+    &lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;p&gt;So, my personal commitment, and what I encourage from the reader, is to ask yourself and your employers: &lt;strong&gt;if we’re making a change, where do these resources come from? What are we giving up, even a little, while we fix our white supremacist M.O.?&lt;/strong&gt; (And what are we OK &lt;em&gt;having&lt;/em&gt; lost/”lost” once these systems have been fixed? But that’s another blog post.)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;If there’s no answer to this question, or the answer is “we’re not giving up anything”, reflect on what this implies. And reflect on how powerful this change can possibly be when it’s coming in addition to everything, at the cost of nothing. E&amp;amp;I being a non-prioritized “priority” is one manifestation of the #causeascene guiding principle that &lt;a href="https://hashtagcauseascene.com/"&gt;“Intention without strategy is chaos”&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;These are reasonable questions to ask of any large-scale effort or project. Articulating them may not be easy, and you may be met with defensive reactions. Stand by your questions. If you can expect priorities out of a software feature list, you can expect the same from a corporate restructuring effort.&lt;/p&gt;
+
+&lt;p&gt;Know that I will be here with you, also asking these questions, also evaluating the answers.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;P.S -- This has &lt;em&gt;always&lt;/em&gt; been the question. Whethere it&amp;#39;s about encrypting data, hiring women, time off policies, or ad-buying, always look for what is being put on the line to achieve a professed &amp;quot;priority&amp;quot;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Best Practices in JavaScript Array Iteration</title>
+    <link rel="alternate" href="https://vgpena.github.io/js-arrays/"/>
+    <id>https://vgpena.github.io/js-arrays/</id>
+    <published>2020-05-12T21:22:00-07:00</published>
+    <updated>2021-05-05T21:18:32-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">Learning more about JavaScript Array methods will help you write clean, idiomatic code. Let's look at four essential Array methods and how to use them.</summary>
+    <content type="html">&lt;p&gt;Getting your code to run is great, but why not aim for readability, consistency, and flexibility as well? One low-investment, high-reward way to level up your JavaScript is to learn the different ways to iterate over Arrays, and when to use each of them.&lt;/p&gt;
+
+&lt;p&gt;In this post, I’ll look at four essential Array prototype methods — &lt;code&gt;forEach&lt;/code&gt;, &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt;, and &lt;code&gt;reduce&lt;/code&gt; — and discuss best practices.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+    &lt;p class="aside-body"&gt;
+        My code samples will prioritize explicitness over brevity. There are ways to shorten almost every code sample here.
+    &lt;/p&gt;
+&lt;/aside&gt;
+&lt;h2 class='section-title' id=arrayforeach-take-an-array-give-me-nothing&gt;&lt;a href='#arrayforeach-take-an-array-give-me-nothing' class='section-inner'&gt;Array.forEach: take an Array; give me nothing&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Array.forEach&lt;/code&gt; behaves similarly to a &lt;code&gt;for&lt;/code&gt; loop incrementing by 1 — all it says is, “walk me through each element in an Array, and I will do &lt;em&gt;something&lt;/em&gt; on each step”. Looking at &lt;a href="https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1135"&gt;the TypeScript definition for this method&lt;/a&gt;, we see that the return type is &lt;code&gt;void&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code typescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;callbackfn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;void&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;thisArg&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;any&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="k"&gt;void&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This means that &lt;code&gt;forEach&lt;/code&gt; is most useful for side effects such as writing to the DOM or making an API call per member of an Array.&lt;/p&gt;
+
+&lt;p&gt;In this example, we’re appending text to the DOM but the original Array isn&amp;#39;t passed on to other calculations. Great time for a &lt;code&gt;forEach&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;element&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createElement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"span"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;element&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;innerText&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;appendChild&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;element&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Since &lt;code&gt;forEach&lt;/code&gt; returns &lt;code&gt;void&lt;/code&gt;, you should &lt;strong&gt;not&lt;/strong&gt; use it when you want to generate or build a value to keep using in your JavaScript code.&lt;/p&gt;
+
+&lt;p&gt;The most common mistake I see with &lt;code&gt;forEach&lt;/code&gt; is when developers it like a &lt;code&gt;for&lt;/code&gt; loop to build one Array out of another. For example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="c1"&gt;// DO NOT DO THIS!!&lt;/span&gt;
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;capitalized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[];&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;capitalized&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toLocaleUpperCase&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+&lt;span class="p"&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This misuse means that now you have an extra Array (&lt;code&gt;capitalized&lt;/code&gt;) hanging out in possibly global scope, even if you only needed it for that single calculation. Messy, and potentially confusing. A much better way to turn one Array into another is by using &lt;code&gt;Array.map&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 class='section-title' id=arraymap-take-an-array-give-me-an-array-of-the-same-length&gt;&lt;a href='#arraymap-take-an-array-give-me-an-array-of-the-same-length' class='section-inner'&gt;Array.map: take an Array; give me an Array of the same length&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Array.map walks through each element in an Array, does something to that element, and gives you a new Array back containing the resulting elements.&lt;/p&gt;
+
+&lt;p&gt;Check out the &lt;a href="https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1141"&gt;TypeScript&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code typescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;callbackfn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;thisArg&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;any&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;[];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Incoming Array members are of type &lt;code&gt;T&lt;/code&gt;, and the output Array contains members of type &lt;code&gt;U&lt;/code&gt;. That is to say, we’re free to transform the members of this Array into a completely different data type. The crux of &lt;code&gt;map&lt;/code&gt; is that each member of the outbound Array should correspond 1:1 with a member of the inbound Array.&lt;/p&gt;
+
+&lt;p&gt;In this example, we &lt;code&gt;map&lt;/code&gt; an Array of Strings to an Array of DOM nodes. We can chain this to a &lt;code&gt;forEach&lt;/code&gt; that handles adding nodes to the DOM. Three cheers for separation of concerns!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;createFancySpan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;fancySpan&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;createElement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"span"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;classList&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"fancy"&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;innerText&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;createFancySpan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;appendChild&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt; keeps our code free from extra Array declarations and manipulation. We get the values we need and pipe them right into the rest of our code.&lt;/p&gt;
+&lt;h2 class='section-title' id=arrayfilter-take-an-array-give-me-back-some-of-it&gt;&lt;a href='#arrayfilter-take-an-array-give-me-back-some-of-it' class='section-inner'&gt;Array.filter: take an Array; give me back some of it&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Array.filter&lt;/code&gt; intakes an Array and returns a new Array made out of elements from the original. &lt;a href="https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1153"&gt;The TypeScript spec&lt;/a&gt; for this method says:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code typescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;callbackfn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;value&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;unknown&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;thisArg&lt;/span&gt;&lt;span class="p"&gt;?:&lt;/span&gt; &lt;span class="nx"&gt;any&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[];&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Both the original and new Arrays contain elements of type &lt;code&gt;T&lt;/code&gt;. This means that we should not be transforming Array elements. What we &lt;em&gt;are&lt;/em&gt; doing here is building a new Array out of only elements that return &lt;code&gt;True&lt;/code&gt; when passed into a provided function.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;startsWithH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="nx"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;localeCompare&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"h"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"en"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;sensitivity&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"base"&lt;/span&gt; &lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="o"&gt;===&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;onlyHNames&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+  &lt;span class="nx"&gt;startsWithH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;filter&lt;/code&gt;, like &lt;code&gt;map&lt;/code&gt;, can be chained, since it returns an Array:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;startsWithH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;createFancySpan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;wizardName&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+  &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;body&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;appendChild&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;fancySpan&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;aside class="aside"&gt;
+        &lt;h3 class="aside-title"&gt;Other cool Array methods&lt;/h3&gt;
+    &lt;p class="aside-body"&gt;
+        Array.some will tell you if the Array contains any members satisfying a condition. (“Does this Array contain any odd numbers?”) Array.every will tell you if the Array contains only members satisfying a condition. (“Are all of the members in this Array odd?”)
+    &lt;/p&gt;
+&lt;/aside&gt;
+&lt;h2 class='section-title' id=arrayreduce-take-an-array-give-me-anything&gt;&lt;a href='#arrayreduce-take-an-array-give-me-anything' class='section-inner'&gt;Array.reduce: take an Array; give me anything&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Array.reduce&lt;/code&gt; is the most open-ended way to iterate over an Array. This prototype method is designed to take an Array, do… whatever you want to it, and return that arbitrary result.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href="https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1159"&gt;basic usage of this method&lt;/a&gt; assumes that your return type is the same as the type of Array elements. In this type definition, the Array members and the return value are both of type &lt;code&gt;T&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code typescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;callbackfn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;previousValue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;currentValue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;currentIndex&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For example, given an Array of Strings, you can use a reducer to find the longest String:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;returnLongerString&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;str1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;str2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;str1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="nx"&gt;str2&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;str1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;str2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;longestName&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;returnLongerString&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//String: "Hermione"&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;Array.reduce&lt;/code&gt; also allows you to return a different type of data by providing an initial value to the reducer function. &lt;a href="https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1166"&gt;This type definition&lt;/a&gt; looks a little different:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code typescript"&gt;&lt;code&gt;&lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;callbackfn&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;previousValue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;currentValue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;currentIndex&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;array&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;readonly&lt;/span&gt; &lt;span class="nx"&gt;T&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;initialValue&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="nx"&gt;U&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In this case, the Array members are of type &lt;code&gt;T&lt;/code&gt;, but since the initial value provided is of type &lt;code&gt;U&lt;/code&gt;, so is the return type.&lt;/p&gt;
+
+&lt;p&gt;This T → U transformation can occur if, for instance, we want to find the total length of Strings in an Array (String → Number):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;addStringLength&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;currTotal&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;newString&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;currTotal&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;newString&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;totalChars&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;curr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;addStringLength&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;curr&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+  &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt; &lt;span class="c1"&gt;//Number: 16&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 tabIndex=0&gt;Reduce vs. other methods&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt; and &lt;code&gt;filter&lt;/code&gt; are actually syntactic sugar over &lt;code&gt;reduce&lt;/code&gt;, meaning you use &lt;code&gt;reduce&lt;/code&gt; to implement anything you can implement using &lt;code&gt;map&lt;/code&gt; or &lt;code&gt;filter&lt;/code&gt;. For example, this is a reimplementation of the filter we saw above:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code javascript"&gt;&lt;code&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;startsWithHReducer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;HNames&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="nx"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;""&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;localeCompare&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"h"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"en"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;sensitivity&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"base"&lt;/span&gt; &lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="o"&gt;===&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;HNames&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;push&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;string&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;HNames&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;onlyHNamesReduced&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"Harry"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Ron"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Hermione"&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;reduce&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;curr&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;startsWithHReducer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;acc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;curr&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+  &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you are replacing multiple chained &lt;code&gt;map&lt;/code&gt;s and &lt;code&gt;filter&lt;/code&gt;s with a single reducer, you may see performance gains over large data sets, since &lt;a href="https://itnext.io/you-may-need-laziness-in-your-javascript-f03e8a2d4629"&gt;JavaScript Array iterators are not lazy&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The vast majority of the time, however, I encourage you to stick with &lt;code&gt;map&lt;/code&gt; and &lt;code&gt;filter&lt;/code&gt; rather than replicating that behavior with &lt;code&gt;reduce&lt;/code&gt;. Array iteration will generally not be your performance bottleneck. If you&amp;#39;re working on something data-intensive for this to &lt;em&gt;become&lt;/em&gt; your bottleneck, you hopefully are already using monitoring tools that can alert you to this issue.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;map&lt;/code&gt; and &lt;code&gt;filter&lt;/code&gt; have a couple of advantages over &lt;code&gt;reduce&lt;/code&gt;. Calculations in &lt;code&gt;map&lt;/code&gt; or &lt;code&gt;filter&lt;/code&gt; wil generally be more concise than the same code in a &lt;code&gt;reduce&lt;/code&gt;. &lt;code&gt;map&lt;/code&gt; and &lt;code&gt;filter&lt;/code&gt; also keep your code scannable since your teammtes (or you, two months from now) can make assumptions about what data shape these functions return.&lt;/p&gt;
+
+&lt;p&gt;In other words, save &lt;code&gt;reduce&lt;/code&gt; for when you &lt;em&gt;actually&lt;/em&gt; want to reduce something.&lt;/p&gt;
+&lt;h2 class='section-title' id=keep-learning&gt;&lt;a href='#keep-learning' class='section-inner'&gt;Keep learning!&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;forEach&lt;/code&gt;, &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt;, and &lt;code&gt;reduce&lt;/code&gt; should be the first tools you reach for when working with Arrays. Playing to their intended uses will keep your code readable, predictable, and streamlined.&lt;/p&gt;
+
+&lt;p&gt;One way to become more confident with these methods, and with Array prototype methods in general, is to visit the &lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"&gt;MDN docs&lt;/a&gt; to browse prototype methods and code samples.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://code.visualstudio.com/"&gt;Visual Studio Code&lt;/a&gt; is a great code editor if you’re looking to actively expand your understanding of JavaScript. VSCode pops up documentation and TypeScript definitions as you work, giving you constant reminders of the intent behind the function or method you’re using. &lt;em&gt;I think this is fun.&lt;/em&gt; 🤠&lt;/p&gt;
+
+&lt;p&gt;Happy coding, hang in there, and wash your hands!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Basic Keyboard Customization with QMK</title>
+    <link rel="alternate" href="https://vgpena.github.io/qmk/"/>
+    <id>https://vgpena.github.io/qmk/</id>
+    <published>2020-05-03T13:02:00-07:00</published>
+    <updated>2021-05-05T21:18:32-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">The world of custom keyboards can be overwhelming to a newbie. Here's how I set up my custom keyboard layout using QMK from the command line.</summary>
+    <content type="html">&lt;p&gt;A few months ago, after a full year of waffling, I bought my first custom keyboard. During the setup process, I felt like most of the tutorials I was finding were geared towards people knowledgeable about keyboards and less familiar with programming in general. I&amp;#39;m exactly the opposite of this -- over 10 years&amp;#39; cumulative experience programming, but little knowledge of keyboards and their workings.&lt;/p&gt;
+
+&lt;p&gt;Because of this, I kept notes as I customized my keyboard layout. Here&amp;#39;s what I did, and I hope it helps you get started with your own custom setup 🤓&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class=" image-secondary"&gt;
+    &lt;img src="/images/kbd/top.JPG" alt="A pink-and-white keyboard." title="My custom keyboard." width="3024px" height="4032px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;My keyboard. What a beaut!&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 class='section-title' id=why-a-custom-keyboard&gt;&lt;a href='#why-a-custom-keyboard' class='section-inner'&gt;Why a Custom Keyboard?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I became interested in custom keyboards for aesthetic reasons. I was used to toggling between a chunky dark grey keyboard (when on a PC) or a slim silver one (for a Mac). Either way, keyboards were uniform and. Learning that there was another path -- of personal investment, care, and customization -- was intriguing to me.&lt;/p&gt;
+
+&lt;p&gt;Cost was my largest blocker to actually buying a keyboard. The first custom keyboards I was linked to ran about $400; the kit I actually bought totaled $340. This is a &lt;em&gt;lot&lt;/em&gt; of money, but I planned to use the keyboard for work. $400 for a tool I would use 40+ hours per week, I figured, was actually a reasonable expense when all was said and done.&lt;/p&gt;
+&lt;h2 class='section-title' id=the-kit&gt;&lt;a href='#the-kit' class='section-inner'&gt;The Kit&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;On the advice of a coworker, I bought a &lt;a href="https://kbdfans.com/products/fully-assembled-tofu65-mechanical-keyboards"&gt;Tofu65 assembled keyboard&lt;/a&gt; from &lt;a href="https://kbdfans.com/"&gt;KBDFans.com&lt;/a&gt;.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+        &lt;h3 class="aside-title"&gt;Take note&lt;/h3&gt;
+    &lt;p class="aside-body"&gt;
+        This keyboard is sometimes called a Tofu67 instead of a Tofu65.
+    &lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;p&gt;I chose &lt;a href="https://kbdfans.com/collections/cherry-switches/products/cherry-mx-silent-black"&gt;Cherry Silent Black&lt;/a&gt; switches (to be considerate to officemates -- what innocent times those were). For keycaps, I found a &lt;a href="https://kbdfans.com/products/bfcmmaxkey-pink-white-sa-profile-keycaps-set"&gt;pink-and-white Maxkey set&lt;/a&gt; that would be a joy for me to use every day.&lt;/p&gt;
+
+&lt;p&gt;The keyboard took about two months to arrive; using it was as simple as plugging it into my computer&amp;#39;s USB port. The shipment included a little wire tool for lifting keycaps off of the board, so physically rearranging keys was also trivial. The other side of this process -- configuring the keyboard firmware to send the correct signals to the computer -- would be more difficult.&lt;/p&gt;
+
+&lt;p&gt;A coworker advised me that getting set up to configure firmware would take a while, but would be worth the time. So I cleared my calendar one Saturday morning, poured myself a big cup of coffee, and got to work.&lt;/p&gt;
+&lt;h2 class='section-title' id=creating-the-custom-layout&gt;&lt;a href='#creating-the-custom-layout' class='section-inner'&gt;Creating the Custom Layout&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Here&amp;#39;s the process I followed to create and load a custom keyboard layout. This is what was useful to me, so some of these steps diverge from what you might find in other walkthroughs that assume more familiarity with keyboards in general.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+        &lt;h3 class="aside-title"&gt;False start&lt;/h3&gt;
+    &lt;p class="aside-body"&gt;
+        I initially thought that customizing the keyboard layout would happen on the OS level. I spent some time poking around in the MacOS system preferences and even downloaded Ukelele before getting a vibe that I was headed in the wrong direction. Turns out that keyboard layouts are flashed onto the keyboard itself, not the computer. This means, among other things, that the layout is portable and can be used immediately on any computer that the keyboard is connected to. Which is really cool!
+    &lt;/p&gt;
+&lt;/aside&gt;
+&lt;h3 tabIndex=0&gt;Download and configure the QMK Toolbox&lt;/h3&gt;
+&lt;p&gt;My keyboard, like most others from KBDFans, is compatible with QMK firmware. Several of these next steps are paraphrases from the &lt;a href="https://docs.qmk.fm/#/"&gt;QMK docs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Start by installing QMK with Homebrew:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code shell"&gt;&lt;code&gt;brew tap qmk/qmk
+brew install qmk
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This may take a while if Homebrew needs an update (which it always seems to??). Don&amp;#39;t walk away for too long, though, since there are some interactive prompts to install dependencies of QMK.&lt;/p&gt;
+
+&lt;p&gt;Next, fork the &lt;a href="https://github.com/qmk/qmk_toolbox"&gt;QMK Toolbox repo on Github&lt;/a&gt; and run the QMK setup command using this remote URL:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code shell"&gt;&lt;code&gt;qmk setup &amp;lt;your_github_username&amp;gt;/qmk_toolbox
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Finally, follow &lt;a href="https://docs.qmk.fm/#/newbs_getting_started?id=_5-configure-your-build-environment-optional"&gt;QMK&amp;#39;s customization instructions&lt;/a&gt; to save yourself a lot of typing.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Design the layout&lt;/h3&gt;
+&lt;p&gt;I did all of my layout editing in the online &lt;a href="https://config.qmk.fm/#/kbdfans/kbd67/rev2/LAYOUT_65_ansi"&gt;QMK Configurator tool&lt;/a&gt;. The drag-and-drop interface was simple to use, especially since I don&amp;#39;t know much about the underlying processes. QMK has a good &lt;a href="https://www.youtube.com/watch?v=-imgglzDMdY"&gt;video intro&lt;/a&gt; to the configurator; I&amp;#39;ll deviate from it in that I used QMK from the command line, not from a GUI.&lt;/p&gt;
+&lt;h4 tabIndex=0&gt;Select the keyboard&lt;/h4&gt;
+&lt;p&gt;Choose your keyboard type from the dropdown at the top of the configurator.&lt;/p&gt;
+
+&lt;p&gt;In my case, my keyboard (&lt;code&gt;kbdfans/kbd65&lt;/code&gt;) isn’t actually in the list of available keyboards in the QMK Configurator, but it is supported under the name &lt;code&gt;kbdfans/kbd67&lt;/code&gt;. This keyboard defaults to the &lt;code&gt;LAYOUT_65_ansi&lt;/code&gt; layout which matched my keyboard perfectly.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+    &lt;p class="aside-body"&gt;
+        Once I had the firmware installed, I was able to find a readme stating that kbd67 is just another name for kbd65. Confusing messaging, but everything worked as expected using the kbd67 option.
+    &lt;/p&gt;
+&lt;/aside&gt;
+&lt;h4 tabIndex=0&gt;Design the layout map&lt;/h4&gt;
+&lt;p&gt;This is the fun part! Drag and drop keys to where you actually want them. I won&amp;#39;t get into using multiple layers, or any actual C programming 😅 It&amp;#39;s very 1337 but not what I needed my first time around.&lt;/p&gt;
+&lt;h4 tabIndex=0&gt;Download the layout&lt;/h4&gt;
+&lt;p&gt;Since you already have the keyboard firmware installed, once you have your map made in the QMK Configurator, you can hit the &lt;code&gt;Download Keymap.json&lt;/code&gt; button without compiling the layout. From now on you’ll be working completely in the command line, but keep this browser window open for follow-up tweaks to the layout.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Flash the layout onto the keyboard&lt;/h3&gt;
+&lt;aside class="aside"&gt;
+        &lt;h3 class="aside-title"&gt;Important&lt;/h3&gt;
+    &lt;p class="aside-body"&gt;
+        The following process assumes you have a second keyboard connected; e.g., a built-in laptop keyboard. If you don't have a second keyboard, you will probably need to activate speech-to-text or an onscreen mouse-accessible keyboard before following the next steps.
+    &lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;p&gt;Your keymap needs to be compiled in order to be flashed onto the keyboard. Locate the JSON file downloaded from the QMK configurator, and run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code shell"&gt;&lt;code&gt;qmk compile &amp;lt;path/to/downloaded/layout&amp;gt;.json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If successful, QMK will output a &lt;code&gt;.hex&lt;/code&gt; file into its root directory. For me, this was at &lt;code&gt;Users/&amp;lt;my_username&amp;gt;/qmk_firmware&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next, the keyboard needs to be put into DFU/Bootloader mode in order to be flashed. While in Bootloader mode, it will not send inputs to your computer like it normally does. If your keyboard underlight is on, the light will turn off when the board goes into Bootloader mode.&lt;/p&gt;
+
+&lt;p&gt;Keyboard vary in how they can be sent into Bootloader mode. QMK has &lt;a href="https://docs.qmk.fm/#/newbs_flashing?id=put-your-keyboard-into-dfu-bootloader-mode"&gt;instructions on different ways to do this&lt;/a&gt; — the first time I flashed my keyboard, the Spacebar+B strategy worked. Subsequent times, this didn’t work, but unplugging my keyboard and plugging it back in with the ESC key pressed did send it into Bootloader mode correctly.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+    &lt;p class="aside-body"&gt;
+        I moved my ESC key the first time I flashed my keyboard, and I expected to hit the "new" ESC key to send it into Bootloader mode. Not so. The "original" ESC key, remapped to a different keycode, is still what needs to be pressed here.
+    &lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;p&gt;With your keyboard in Bootloader mode, run &lt;code&gt;qmk flash&lt;/code&gt; on the command line to send your layout onto the keyboard. Don&amp;#39;t unplug the keyboard until you get a message that the flash has completed. Now your keyboard is using your custom layout! 🎉&lt;/p&gt;
+
+&lt;p&gt;You can flash your keyboard as many times as you want to. I flashed mine about ten times during that session as I honed what I actually wanted my keyboard to do.&lt;/p&gt;
+&lt;h2 class='section-title' id=the-result&gt;&lt;a href='#the-result' class='section-inner'&gt;The result&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In the end, I have a keyboard that is completely tailored to what &lt;em&gt;I&lt;/em&gt; want, and it feels glorious. In addition to a full keyboard, I have dedicated play/pause and volume up/down buttons. The volume buttons also let me skip tracks when paired with a modifier key 💅🏻 And, naturally, I have a couple of keys dedicated to toggling the keyboard underlight.&lt;/p&gt;
+
+&lt;aside class="aside"&gt;
+    &lt;p class="aside-body"&gt;
+        I had NO IDEA that my keyboard had an underlight until I took it out of bootloader mode for the first time. On top of that, it's a full-spectrum underlight! So of course my default setting is to cycle through the entire rainbow.
+    &lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/kbd/win-2.JPG" alt="A pink-and-white keyboard." title="My custom keyboard." width="4032px" height="3024px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;All in all, the time and money I&amp;#39;ve invested in this keyboard has felt worth it -- because it &lt;em&gt;has&lt;/em&gt; truly felt like an investment. I love having tools that feel good to use, that work well, that feel familiar to me. I&amp;#39;ve been using this keyboard for about a month now; it&amp;#39;s a little puff of wind in my sails whenever I sit down to work, and I look forward to many years with it.&lt;/p&gt;
+&lt;h2 class='section-title' id=thank-you&gt;&lt;a href='#thank-you' class='section-inner'&gt;Thank you&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;First, thanks for reading this far, and I hope it&amp;#39;s been helpful!&lt;/p&gt;
+
+&lt;p&gt;Thanks to &lt;a href="http://egstad.com/"&gt;Jordan Egstad&lt;/a&gt; for being an endless font of keyboard inspiration &amp;amp; knowledge. Also, thank you for letting me borrow your &amp;quot;starter keyboard&amp;quot; for 😅 &lt;strong&gt;months&lt;/strong&gt; 😅 as I decided what I was actually going to buy.&lt;/p&gt;
+
+&lt;p&gt;Thanks also to &lt;a href="https://angelariggs.github.io/"&gt;Angela Riggs&lt;/a&gt; for additional keyboard intel, such as encouraging me to take my time setting up my dev environment.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Do you want to build a slide deck?</title>
+    <link rel="alternate" href="https://vgpena.github.io/do-you-want-to-build-a-slide-deck/"/>
+    <id>https://vgpena.github.io/do-you-want-to-build-a-slide-deck/</id>
+    <published>2020-02-29T20:37:00-08:00</published>
+    <updated>2021-05-05T21:18:32-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">Giving a presentation often means building a deck. Here's a comparison of my favorite  deck-building tools, including times to use or avoid each of them.</summary>
+    <content type="html">&lt;p&gt;Over the past several years, I’ve given a few conference talks and many less-formal workplace presentations. This means I’ve spent a lot of time writing and editing slide decks. Along the way, I’ve grown to love three deck-building tools: Dropbox Paper, Google Slides, and Keynote. They each have their own strengths and flourish in different settings.&lt;/p&gt;
+
+&lt;p&gt;Here’s a rundown of these presentation tools based on my preferences and experience.&lt;/p&gt;
+&lt;h2 class='section-title' id=dropbox-paper&gt;&lt;a href='#dropbox-paper' class='section-inner'&gt;Dropbox Paper&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;The simple one.&lt;/strong&gt; Technically, you don’t make decks in Paper, but it’s my go-to for for informal presentations.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure role="img" class=" image-secondary"&gt;
+    &lt;img src="/images/snowman.gif" alt="Ana from Disney's &amp;quot;Frozen&amp;quot; sings into a closed door. Subtitle reads: &amp;quot;Do you want to build a snowman?&amp;quot;" title="It doesn't have to be a snowman" width="281px" height="252px" /&gt;
+  &lt;figcaption&gt;
+    &lt;p&gt;It doesn&amp;#39;t have to be a slide deck 🎵&lt;/p&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;If you hit the Present button on any Paper doc, you get a cleaned-up view of the doc with larger text, no toolbars, etc. The secret sauce here is that horizontal rules in the original doc create slide breaks in Presentation mode. This creates cleaner visuals and transforms a wall of text into something resembling a slide deck.&lt;/p&gt;
+
+&lt;p&gt;Paper lacks the layout and formatting options of other presentation apps. For informal presentations, this tradeoff is worth it because it frees you up to focus on the writing instead of the visuals. This is great news when you need to work quickly 😅 or when you simply don’t want to sink effort into type, colors, and spacing.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Use Paper when…&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;The talk is fairly informal&lt;/li&gt;
+&lt;li&gt;You’re on a &lt;em&gt;super&lt;/em&gt; tight deadline&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 tabIndex=0&gt;Avoid Paper when..&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;You need a distinctive visual style&lt;/li&gt;
+&lt;li&gt;You need speaker notes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class='section-title' id=google-slides&gt;&lt;a href='#google-slides' class='section-inner'&gt;Google Slides&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;The collaborative one.&lt;/strong&gt; Google Slides is my most-used presentation app, and the absolute winner for group work. You can grant different permissions levels; for example, allow anyone at your company to comment but restrict editing to specific individuals. Slides gives you robust drawing and layout features, but is lighter and easier to learn than Keynote.&lt;/p&gt;
+
+&lt;p&gt;Although Slides is web-based, it has an offline mode which is great for conference settings with unreliable internet. The caveat here is that offline presentations don’t play videos; the first frame shows as a poster image instead. In all situations, the Slides embedded video player feels unpolished as compared with Keynote.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Use Slides when…&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;You’re working in a group&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 tabIndex=0&gt;Avoid Slides when…&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;You want attractive video embedding&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class='section-title' id=keynote&gt;&lt;a href='#keynote' class='section-inner'&gt;Keynote&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;The classy one.&lt;/strong&gt; Keynote is for making an ultra-polished presentation with no compromises. Out of all these tools, Keynote gives you the most control over all aspects of your deck, and you get luxe features such as magic transitions 🤩 and beautiful video embedding. Keynote also includes helpful presenter tools, such as a Rehearsal Mode and a robust Presenter Display during the talk itself.&lt;/p&gt;
+
+&lt;p&gt;All of this comes with a couple of tradeoffs. Firstly, the learning curve for Keynote is steeper than that of Slides, and even if you’re good with Slides, Keynote won’t necessarily feel familiar. Additionally, group work in Keynote is challenging as compared to Slides.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Use Keynote when…&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;You want the most beautiful deck possible&lt;/li&gt;
+&lt;li&gt;You want great video embedding&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 tabIndex=0&gt;Avoid Keynote when…&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Working in a group&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class='section-title' id=in-conclusion&gt;&lt;a href='#in-conclusion' class='section-inner'&gt;In Conclusion&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Every presentation is different, and I haven’t found the One True Deck-Builder that I will use for every deck for the rest of my career. In the meantime, I rotate between Dropbox Paper, Google Slides, and Keynote depending on how quickly vs. collaboratively vs. polished I want to work.&lt;/p&gt;
+
+&lt;p&gt;I hope this comparison has been helpful. Sending you good presentation vibes!&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;PS - Thank you to Ginger for asking me the original question about presentation tools 🙂&lt;/p&gt;
+
+&lt;p&gt;PPS - I haven’t used it professionally, so I can’t speak to it here, but I &lt;em&gt;love&lt;/em&gt; Prezi. Maybe deserves an Honorable Mention?&lt;/p&gt;
+
+&lt;p&gt;PPPS - That&amp;#39;s right, I got a February 29th publish date in there! Goooo leap years 🥳&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Using CSS Grid the right way</title>
+    <link rel="alternate" href="https://vgpena.github.io/using-css-grid-the-right-way/"/>
+    <id>https://vgpena.github.io/using-css-grid-the-right-way/</id>
+    <published>2019-02-17T13:58:00-08:00</published>
+    <updated>2021-05-05T21:18:32-07:00</updated>
+    <author>
+      <name>Violet Peña</name>
+    </author>
+    <summary type="html">CSS Grid is fun to use but hard to learn. Here are three tips to help you understand and leverage the Grid spec.</summary>
+    <content type="html">&lt;p&gt;CSS Grid is robust, flexible, and a refreshing paradigm shift from other CSS layout systems. While these are selling points for Grid, they also make it hard to learn.&lt;/p&gt;
+
+&lt;p&gt;“Learning” CSS Grid requires developing working knowledge of many new properties that don’t just describe &lt;em&gt;one&lt;/em&gt; aspect of appearance or behavior, but feed into a completely new layout system. This system includes &lt;a href="https://css-tricks.com/snippets/css/complete-guide-grid/"&gt;around 18&lt;/a&gt; properties which use paradigms and syntax rarely (or never) seen anywhere else in the CSS spec.&lt;/p&gt;
+
+&lt;p&gt;This means that CSS Grid has a pretty high &lt;a href="https://us.battle.net/forums/en/overwatch/topic/20759355930#post-2"&gt;skill floor&lt;/a&gt; — a developer needs to learn and internalize lots of new information in order to be effective with it. Once you’re above that skill floor, Grid is an amazing ally in layout creation. Below that skill floor, Grid is an encumbrance. You wonder why you’re bothering to use it at all, since it seems to require lots of additional work for little reward.&lt;/p&gt;
+
+&lt;p&gt;In this post, I want to help you overcome that skill floor by showing you the most effective ways to leverage the Grid spec. While I’m not covering the spec in its entirety — for something like that, see &lt;a href="https://css-tricks.com/snippets/css/complete-guide-grid/"&gt;this CSS Tricks post&lt;/a&gt; — but what I cover here are, for me, the helpful aspects of this layout system.&lt;/p&gt;
+&lt;h2 class='section-title' id=use-names-not-numbers&gt;&lt;a href='#use-names-not-numbers' class='section-inner'&gt;Use names, not numbers&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Grid columns and rows, at their most basic, are referred to by number. For example, this CSS sets up a grid with two columns and puts the page’s main content into the second column:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This works, but it misses an amazing feature of Grid: you can give your rows and columns specific names. You should take advantage of this whenever possible.&lt;/p&gt;
+
+&lt;p&gt;Here’s the same CSS, adjusted to use names:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Even in lightweight cases like this, it&amp;#39;s to your advantage to name grid areas.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Benefits&lt;/h3&gt;
+&lt;p&gt;Adding names to your grid brings a couple of major benefits.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Readability &amp;mdash;&lt;/strong&gt; Right off the bat, your code is easier to understand. Line 3 now &lt;em&gt;describes&lt;/em&gt; everything going on inside of the Grid container. You’re not just listing out columns; you’re outlining the &lt;em&gt;intent&lt;/em&gt; of each column.&lt;/p&gt;
+
+&lt;p&gt;Line 7 has also become more descriptive. Previously, we only knew that &lt;code&gt;.content&lt;/code&gt; lived in the second column, which doesn’t mean much without more context — column 2 out of 3? 2 of 200? Assigning a column name, however, signals that this element has specifically been accounted for within the larger system. Naming also makes it easier to find the original column declaration, should we need to.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Future-proofing &amp;mdash;&lt;/strong&gt; Adding names makes your CSS more flexible. Specifically, you can iterate on &lt;code&gt;.container&lt;/code&gt; without having to edit &lt;code&gt;.content&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Want to swap the visual order of the content and the sidebar? Easy.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Want to add another column? No prob.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;related-posts&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Without using named columns, you would have to update the column number in line 7 to reflect the changes made in line 3. Named columns give &lt;code&gt;.content&lt;/code&gt; consistent behavior that’s independent of the column count or order.&lt;/p&gt;
+&lt;h2 class='section-title' id=use-codefrcode-as-your-flexible-unit&gt;&lt;a href='#use-codefrcode-as-your-flexible-unit' class='section-inner'&gt;Use &lt;code&gt;fr&lt;/code&gt; as your flexible unit&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;CSS Grid introduces the &lt;code&gt;fr&lt;/code&gt; unit, which tells an area to occupy some fraction of the total available space. While &lt;code&gt;fr&lt;/code&gt; might seem like a sidenote within the Grid spec, it&amp;#39;s actually indispensible.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;fr&lt;/code&gt; unit is different from &lt;code&gt;%&lt;/code&gt; or &lt;code&gt;vw&lt;/code&gt; because while the latter units describe portions of a 100-unit whole, &lt;code&gt;fr&lt;/code&gt;s are defined by the space not already used by something else. &lt;code&gt;fr&lt;/code&gt;s split up this space relative to each other.&lt;/p&gt;
+
+&lt;p&gt;Here, the &lt;code&gt;content&lt;/code&gt; column is twice as wide as the &lt;code&gt;sidebar&lt;/code&gt; column.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Since there are no non-&lt;code&gt;fr&lt;/code&gt; units and three &lt;code&gt;fr&lt;/code&gt;s in total, 1fr = ~33% of the width of the grid.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Benefits&lt;/h3&gt;
+&lt;p&gt;The &lt;code&gt;fr&lt;/code&gt; unit offers a couple of things that other flexible units lack.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Readability and clearer intent &amp;mdash;&lt;/strong&gt; Using &lt;code&gt;fr&lt;/code&gt;s, unlike using percents, lets us stick with whole numbers that are sized relative to each other, not relative to a whole. This keeps the intended behavior clear. For example, line 3 is straightforward to translate into English: “The content is twice as wide as the sidebar”.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;fr&lt;/code&gt;s also let you divvy up space in ways that would be hard to calculate (and read) using percentages.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.container&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Less math &amp;mdash;&lt;/strong&gt; The biggest benefit of the &lt;code&gt;fr&lt;/code&gt; is that it takes the responsibility for doing exact arithmetic away from the developer and hands it off to the browser’s layout engine. For example, &lt;a href="https://codepen.io/vvviolet/pen/VgVExq"&gt;here’s a CodePen&lt;/a&gt; showing two ways to make the same layout using CSS Grid.&lt;/p&gt;
+
+&lt;p&gt;These lines are the crux of the demo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.percents&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nc"&gt;.frs&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-column-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;20px&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.percents&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;repeat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;calc&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="m"&gt;100%&lt;/span&gt; &lt;span class="n"&gt;-&lt;/span&gt; &lt;span class="m"&gt;40px&lt;/span&gt;&lt;span class="p"&gt;)/&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.frs&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;repeat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The code on line 7 is hard to write, hard to read, and brittle. Any change to &lt;code&gt;grid-column-gap&lt;/code&gt; or to our column count will break the layout, unless we manually update the column width to match.&lt;/p&gt;
+
+&lt;p&gt;Line 11 can ignore the gap size and won’t require new math if we update the column count. It’s easy to read and future-proof.&lt;/p&gt;
+&lt;h2 class='section-title' id=dont-use-a-grid-system&gt;&lt;a href='#dont-use-a-grid-system' class='section-inner'&gt;Don’t use a grid system&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This contradictory-sounding recommendation extends beyond the CSS Grid spec and bleeds into how web design works and how developers interface with designers and their work.&lt;/p&gt;
+
+&lt;p&gt;Layouts are often understood as elements aligned along a grid system.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/grid-1.png" alt="" title="A 14-column grid system." width="2147px" height="1249px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Typically, development strives for exact parity with design. If designs are based on a 14-column grid, development will set up some kind of 14-column grid in code and write helper classes to make items span 1, 2, 3, 6, etc. columns. Most frontend frameworks, like &lt;a href="https://getbootstrap.com/docs/4.3/layout/grid/"&gt;Bootstrap&lt;/a&gt;, work this way.&lt;/p&gt;
+
+&lt;p&gt;In the above example, we have a 14-column grid, with these elements to place and size:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The header, which starts at column 2 and spans 12 columns&lt;/li&gt;
+&lt;li&gt;The sidebar, which starts at column 2 and spans 4 columns&lt;/li&gt;
+&lt;li&gt;The main content, which starts at column 6 and spans 8 columns&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In CSS Grid, it’s easy to set up a system that mimics the design:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.main&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-column-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2rem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-row-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1rem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-rows&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;100px&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nb"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;repeat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="m"&gt;14&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.header&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.sidebar&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But is this actually a good plan? Our attempt at 1:1 reproduction has two drawbacks.&lt;/p&gt;
+
+&lt;p&gt;First, it foils our plan to name columns. Additionally, out of our 14 columns, we are only “using” columns 2, 5, 6, and 13. This &lt;em&gt;technically&lt;/em&gt; works, but it suggests a bad signal-to-noise ratio.&lt;/p&gt;
+
+&lt;p&gt;Both of these problems are solved if we can take a couple of steps away from the original design:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.main&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-column-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2rem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-row-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1rem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-rows&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;100px&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="nb"&gt;auto&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;left-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;right-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.header&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;header&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sidebar&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;right-gutter&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.sidebar&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now instead of having fourteen columns, we only have four, but they still divide up the lateral space into fourteen parts. We have the exact same visual effect as in the first iteration, but our code is less noisy and directly reflects how it’s used.&lt;/p&gt;
+
+&lt;p&gt;We can continue this paradigm throughout the layout. Say that within the &lt;code&gt;.content&lt;/code&gt; element, we have a need for auxiliary information (an author bio, a blurb, etc.) next to the main article.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=" image-primary"&gt;
+    &lt;img src="/images/grid-2.png" alt="" title="A 14-column grid system with additional nested elements." width="2132x" height="1248px" /&gt;
+  &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;If we have adhered tightly to the 14-column grid, it appears that we need something like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;6&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.article&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;7&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.info&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;11&lt;/span&gt; &lt;span class="p"&gt;/&lt;/span&gt; &lt;span class="n"&gt;span&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Which will be tricky, since CSS Grid has no concept of inheritance. &lt;code&gt;.info&lt;/code&gt; doesn’t know anything about the grid set up on &lt;code&gt;.main&lt;/code&gt;, its grandparent element.&lt;/p&gt;
+
+&lt;p&gt;If we have let go of the literal 14-column grid, however, we may notice that &lt;code&gt;.article&lt;/code&gt; and &lt;code&gt;.info&lt;/code&gt; don’t &lt;em&gt;need&lt;/em&gt; to know anything about the top-level grid — they’re part of a new grid inside of &lt;code&gt;.content&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.content&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;left-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;article&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;right-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-column-gap&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2rem&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.article&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;article&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.info&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using this setup, &lt;code&gt;.content&lt;/code&gt; is simple and internally consistent, but also aligns perfectly with our outer columns set up on &lt;code&gt;.main&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Benefits&lt;/h3&gt;
+&lt;p&gt;In addition to what I’ve already outlined, looser adherence to the original design system sets us up as developers to leverage our expertise and our tools — the browser — more effectively. Pixels and columns are less salient than relationships and proportional space.&lt;/p&gt;
+
+&lt;p&gt;It’s not significant that &lt;code&gt;.article&lt;/code&gt; starts at column 7 and &lt;code&gt;.info&lt;/code&gt; at column 11. It &lt;em&gt;is&lt;/em&gt; significant that &lt;code&gt;.article&lt;/code&gt; is twice as wide as &lt;code&gt;.info&lt;/code&gt;. Thinking about elements proportionally and questioning how they interact with each other helps us treat layouts as dynamic systems.&lt;/p&gt;
+&lt;h3 tabIndex=0&gt;Sidenote: Nesting Markup&lt;/h3&gt;
+&lt;p&gt;One thing you may have noticed about the code samples in this section is the usage of &lt;code&gt;left-gutter&lt;/code&gt; and &lt;code&gt;right-gutter&lt;/code&gt; columns. This CSS assumes the most flat HTML possible.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"main"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"header"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"sidebar"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"content"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.main&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;left-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;right-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If we are willing to put a wrapper div into the markup, we can write more direct CSS with fewer columns per element.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="code html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"main"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"wrapper"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"header"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"sidebar"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"content"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="code css"&gt;&lt;code&gt;&lt;span class="nc"&gt;.main&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;left-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;wrapper&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;12&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;right-gutter&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nc"&gt;.wrapper&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nl"&gt;grid-column&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;wrapper&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="nl"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;grid&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="py"&gt;grid-template-columns&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;sidebar&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="n"&gt;fr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The second approach feels inherently better because the math is simpler — you get to stop worrying as soon as possible about numbers that add to 14 and just think about a 1:2 ratio. This feels true to the spirit of CSS Grid.&lt;/p&gt;
+
+&lt;p&gt;What doesn’t feel true to CSS Grid, though, is adding the &lt;code&gt;.wrapper&lt;/code&gt; div. Grid works hard to help us separate presentation from content — i.e., we don’t need to add extra elements to make the styling work or “behave nicely”. So, at least for today, I encourage you &lt;em&gt;not&lt;/em&gt; to add or change markup for the sole purpose of cleaner CSS Grid styling.&lt;/p&gt;
+&lt;h2 class='section-title' id=coda&gt;&lt;a href='#coda' class='section-inner'&gt;Coda&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Thanks for coming on this CSS Grid journey with me! I’ve been using and loving it over the past couple of months, and I hope this helps you understand and use it on your end 💐&lt;/p&gt;
+
+&lt;p&gt;To reiterate my points from the intro, CSS Grid is easy to use but difficult to learn. It’s a more intuitive paradigm than any other CSS layout technique, but it’s completely different from its predecessors.&lt;/p&gt;
+
+&lt;p&gt;All this to say: take Grid as slowly as you need to. Don’t try to understand it all just from reading the spec. Set up simple examples, pop open that web inspector (especially in Firefox!), and be kind to yourself.&lt;/p&gt;
+
+&lt;p&gt;It’ll be worth it.&lt;/p&gt;
+&lt;h2 class='section-title' id=changelog&gt;&lt;a href='#changelog' class='section-inner'&gt;Changelog&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;3/1/2020: Fixed column typo (&lt;a href="https://github.com/vgpena/vgpena.github.io/issues/5"&gt;#5&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+</feed>
