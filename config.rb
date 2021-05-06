@@ -73,7 +73,7 @@ page '/404.html', layout: false, :directory_index => false
 
 # With alternative layout
 # page "/path/to/file.html", layout: :otherlayout
-page '/info.html', :layout => "article"
+page '/info.html', layout: "article", locals: {not_article: true}
 
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", locals: {
@@ -153,5 +153,5 @@ configure :build do
   activate :minify_css
   activate :gzip
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript
 end

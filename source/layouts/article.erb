@@ -4,16 +4,16 @@
       <h1 id="article-title">
         <%= current_page.data.title %>
       </h1>
-      <div id="article-info">
-        <% if current_page.data.subtitle %>
-          <span class="article-info-piece" id="article-subtitle">
-            <%= current_page.data.subtitle %>
-          </span>
-        <% end %>
+      <% if current_page.respond_to?(:date) %>
+        <div id="article-info">
+            <span class="article-info-piece" id="article-subtitle">
+              <%= current_page.data.subtitle %>
+            </span>
           <span class="article-info-piece" id="article-date" aria-label="Published <%= current_page.date.strftime('%B %d, %Y') %>">
             <%= current_page.date.strftime('%-m.%-d.%Y') %>
           </span>
-      </div>
+        </div>
+      <% end %>
     </div>
     <div class="content">
       <%= yield %>
