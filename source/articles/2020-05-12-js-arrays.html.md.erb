@@ -27,7 +27,7 @@ This means that `forEach` is most useful for side effects such as writing to the
 In this example, we’re appending text to the DOM but the original Array isn't passed on to other calculations. Great time for a `forEach`.
 
 ```js
-["Harry", "Ron", "Hermione"].forEach((wizardName) => {
+["Nita", "Kit", "Dairine"].forEach((wizardName) => {
   const element = document.createElement("span");
   element.innerText = wizardName;
   document.body.appendChild(element);
@@ -42,7 +42,7 @@ The most common mistake I see with `forEach` is when developers it like a `for` 
 // DO NOT DO THIS!!
 const capitalized = [];
 
-["Harry", "Ron", "Hermione"].forEach((wizardName) => {
+["Nita", "Kit", "Dairine"].forEach((wizardName) => {
   capitalized.push(wizardName.toLocaleUpperCase());
 });
 ```
@@ -71,7 +71,7 @@ function createFancySpan(text) {
   return fancySpan;
 }
 
-["Harry", "Ron", "Hermione"]
+["Nita", "Kit", "Dairine"]
   .map((wizardName) => createFancySpan(wizardName))
   .forEach((fancySpan) => document.body.appendChild(fancySpan));
 ```
@@ -89,22 +89,22 @@ filter(callbackfn: (value: T, index: number, array: readonly T[]) => unknown, th
 Both the original and new Arrays contain elements of type `T`. This means that we should not be transforming Array elements. What we _are_ doing here is building a new Array out of only elements that return `True` when passed into a provided function.
 
 ```js
-function startsWithH(string) {
+function isShortWord(string) {
   return (
-    string.split("")[0].localeCompare("h", "en", { sensitivity: "base" }) === 0
+    string.length <= 5;
   );
 }
 
-const onlyHNames = ["Harry", "Ron", "Hermione"].filter((wizardName) =>
-  startsWithH(wizardName)
+const onlyShortNames = ["Nita", "Kit", "Dairine"].filter((wizardName) =>
+  isShortWord(wizardName)
 );
 ```
 
 `filter`, like `map`, can be chained, since it returns an Array:
 
 ```javascript
-["Harry", "Ron", "Hermione"]
-  .filter((wizardName) => startsWithH(wizardName))
+["Nita", "Kit", "Dairine"]
+  .filter((wizardName) => isShortWord(wizardName))
   .map((wizardName) => createFancySpan(wizardName))
   .forEach((fancySpan) => document.body.appendChild(fancySpan));
 ```
@@ -134,7 +134,7 @@ function returnLongerString(str1, str2) {
   return str2;
 }
 
-const longestName = ["Harry", "Ron", "Hermione"].reduce(returnLongerString); //String: "Hermione"
+const longestName = ["Nita", "Kit", "Dairine"].reduce(returnLongerString); //String: "Dairine"
 ```
 
 `Array.reduce` also allows you to return a different type of data by providing an initial value to the reducer function. [This type definition](https://github.com/microsoft/TypeScript/blob/master/src/lib/es5.d.ts#L1166) looks a little different:
@@ -151,10 +151,10 @@ This T → U transformation can occur if, for instance, we want to find the tota
 function addStringLength(currTotal, newString) {
   return currTotal + newString.length;
 }
-const totalChars = ["Harry", "Ron", "Hermione"].reduce(
+const totalChars = ["Nita", "Kit", "Dairine"].reduce(
   (acc, curr) => addStringLength(acc, curr),
   0
-); //Number: 16
+); //Number: 14
 ```
 
 ### Reduce vs. other methods
@@ -162,17 +162,17 @@ const totalChars = ["Harry", "Ron", "Hermione"].reduce(
 `map` and `filter` are actually syntactic sugar over `reduce`, meaning you use `reduce` to implement anything you can implement using `map` or `filter`. For example, this is a reimplementation of the filter we saw above:
 
 ```js
-function startsWithHReducer(HNames, string) {
+function isShortWordReducer(shortWords, string) {
   if (
-    string.split("")[0].localeCompare("h", "en", { sensitivity: "base" }) === 0
+    string.length <= 5
   ) {
-    HNames.push(string);
+    shortWords.push(string);
   }
-  return HNames;
+  return longWshortWordsords;
 }
 
-const onlyHNamesReduced = ["Harry", "Ron", "Hermione"].reduce(
-  (acc, curr) => startsWithHReducer(acc, curr),
+const onlyShortNamesReduced = ["Nita", "Kit", "Dairine"].reduce(
+  (acc, curr) => isShortWordReducer(acc, curr),
   []
 );
 ```
@@ -194,3 +194,5 @@ One way to become more confident with these methods, and with Array prototype me
 [Visual Studio Code](https://code.visualstudio.com/) is a great code editor if you’re looking to actively expand your understanding of JavaScript. VSCode pops up documentation and TypeScript definitions as you work, giving you constant reminders of the intent behind the function or method you’re using. _I think this is fun._ 🤠
 
 Happy coding, hang in there, and wash your hands!
+
+PS - The names in this post are characters from the _Young Wizards_ series by Diane Duane. These books were life-changing for me when I was younger and I absolutely encourage you to [check them out for yourself](https://www.hmhbooks.com/shop/books/so-you-want-to-be-a-wizard/9780152162504)!
